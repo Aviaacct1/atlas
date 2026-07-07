@@ -1,0 +1,15 @@
+{
+  "year": 2025,
+  "airports_total": 3233,
+  "airports_modelled": 677,
+  "countries": 227,
+  "residual_pseudo_airports": 141,
+  "catchments_modelled": 642,
+  "multi_airport_catchments": 27,
+  "goal_gap_airports_below_scope_above_500k": 275,
+  "world_od_m": 3139.7,
+  "modelled_od_m": 2705.6,
+  "coverage_pct": 86.17,
+  "inclusion_floor_pax": 2000000,
+  "coverage_target": 0.8
+}

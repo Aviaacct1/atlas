@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Global Aviation Forecast &middot; Avia Cortex</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{--ink:#1c2b39;--mut:#5f7185;--line:#e2e8ef;--bg:#f6f8fa;--card:#fff;
+        --a:#156082;--b:#E97132;--c:#196B24;--d:#0F9ED5;--e:#A02B93;--f:#4EA72E;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Ebrima,sans-serif;color:var(--ink);background:var(--bg)}
+  header{background:var(--a);color:#fff;padding:16px 24px}
+  header h1{margin:0;font-size:20px;font-weight:700}
+  header p{margin:4px 0 0;font-size:13px;opacity:.85}
+  .wrap{max-width:1200px;margin:0 auto;padding:20px 24px 60px}
+  .row{display:flex;gap:16px;flex-wrap:wrap}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;flex:1 1 300px}
+  .card h2{margin:0 0 12px;font-size:15px;font-weight:700}
+  .kpi{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+  .kpi .card{flex:1 1 160px;text-align:center}
+  .kpi .big{font-size:26px;font-weight:700;color:var(--a)}
+  .kpi .lab{font-size:12px;color:var(--mut);margin-top:2px}
+  .seg{display:inline-flex;border:1px solid var(--a);border-radius:8px;overflow:hidden;margin-bottom:12px}
+  .seg button{border:0;background:#fff;color:var(--a);padding:7px 16px;font-size:13px;cursor:pointer}
+  .seg button.on{background:var(--a);color:#fff}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:right;padding:6px 8px;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--mut);font-weight:600;cursor:pointer;user-select:none}
+  tr:hover td{background:#f0f5f8}
+  input{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font-size:14px}
+  .badge{display:inline-block;background:#eef4f7;color:var(--a);border-radius:20px;padding:3px 10px;font-size:12px;font-weight:700}
+  .mut{color:var(--mut);font-size:12px}
+  .bar{height:16px;background:var(--a);border-radius:3px}
+  .src{color:var(--mut);font-size:11px;margin-top:24px;text-align:center}
+  canvas{max-height:300px}
+</style>
+</head>
+<body>
+<header>
+  <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+    <h1>Global Aviation Forecast</h1>
+    <span style="font-size:12px;opacity:.8;border-left:1px solid rgba(255,255,255,.4);padding-left:12px">powered by <b>Avia&nbsp;Cortex</b></span>
+  </div>
+  <p id="sub">Terminal passengers with transfers &middot; anchored to ACI, driven by Sabre O&amp;D, OAG routing and OEF GDP</p>
+  <p style="margin:2px 0 0;font-size:11px;opacity:.6">Internal demo &middot; confidential &middot; not for distribution</p>
+</header>
+<div class="wrap">
+
+  <div class="seg" id="scen"></div>
+
+  <div class="kpi" id="kpi"></div>
+
+  <div class="row">
+    <div class="card" style="flex:2 1 520px">
+      <h2>World terminal passengers (m)</h2>
+      <canvas id="worldChart"></canvas>
+    </div>
+    <div class="card">
+      <h2>Growth by region, 2024-2050</h2>
+      <table id="regTable"><thead><tr><th>Region</th><th>2024</th><th>2050</th><th>%/yr</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top:16px">
+    <div class="card">
+      <h2>Airport explorer</h2>
+      <input id="search" list="apts" placeholder="Type an airport code or city, e.g. LHR, DXB, Singapore"/>
+      <datalist id="apts"></datalist>
+      <div id="apInfo" style="margin-top:12px"></div>
+      <canvas id="apChart" style="margin-top:10px"></canvas>
+      <div id="apHub" style="margin-top:12px"></div>
+    </div>
+    <div class="card" style="flex:1 1 420px">
+      <h2>Largest airports (2024 terminal, m) &middot; <span class="mut">click a row</span></h2>
+      <div style="max-height:360px;overflow:auto">
+        <table id="topTable"><thead><tr><th>Airport</th><th>2024</th><th>2050</th><th>%/yr</th><th>Cnx</th></tr></thead><tbody></tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <div class="src" id="src"></div>
+</div>
+
+<script>
+const REGCOL={"Asia Pacific":"#156082","North America":"#E97132","EU+UK":"#196B24",
+ "Other Europe":"#0F9ED5","Middle East":"#A02B93","Africa":"#4EA72E","South America":"#7f5539","Other":"#999"};
+let WORLD, APTS, META, SCEN="Baseline", worldChart, apChart, curAp;
+
+async function boot(){
+  WORLD=await (await fetch("data/world.json")).json();
+  APTS =await (await fetch("data/airports.json")).json();
+  META =await (await fetch("data/meta.json")).json();
+  document.getElementById("scen").innerHTML=META.scenarios.map(s=>
+    `<button data-s="${s}" class="${s===SCEN?'on':''}">${s}</button>`).join("");
+  document.querySelectorAll("#scen button").forEach(b=>b.onclick=()=>{SCEN=b.dataset.s;
+    document.querySelectorAll("#scen button").forEach(x=>x.classList.toggle("on",x.dataset.s===SCEN));render();});
+  document.getElementById("apts").innerHTML=APTS.slice(0,1500).map(a=>
+    `<option value="${a.iata}">${a.iata} - ${a.city} (${a.country})</option>`).join("");
+  document.getElementById("search").addEventListener("change",e=>{
+    const q=e.target.value.trim().toUpperCase().slice(0,3); if(APTS.find(a=>a.iata===q)) showAp(q);});
+  document.getElementById("src").textContent=
+    `Source: ACI, Sabre, OAG, Oxford Economics; Avia Solutions analysis. ${META.n_airports} airports, ${META.base_year}-${META.horizon}.`;
+  render(); showAp("LHR");
+}
+
+function render(){
+  const yrs=WORLD.years, w=WORLD.world[SCEN];
+  const cg=WORLD.world_cagr[SCEN];
+  document.getElementById("kpi").innerHTML=`
+    <div class="card"><div class="big">${(w[yrs[0]]/1000).toFixed(2)}bn</div><div class="lab">terminal pax ${yrs[0]}</div></div>
+    <div class="card"><div class="big">${(w[yrs[yrs.length-1]]/1000).toFixed(2)}bn</div><div class="lab">forecast ${yrs[yrs.length-1]}</div></div>
+    <div class="card"><div class="big">${cg.toFixed(2)}%</div><div class="lab">CAGR (${SCEN})</div></div>
+    <div class="card"><div class="big">${META.n_airports}</div><div class="lab">airports modelled</div></div>`;
+  // world chart: all three scenarios
+  const ds=META.scenarios.map((s,i)=>({label:s,data:yrs.map(y=>WORLD.world[s][y]),
+    borderColor:[ '#156082','#196B24','#E97132'][i],borderWidth:s===SCEN?3:1.5,
+    borderDash:s===SCEN?[]:[5,4],pointRadius:0,tension:.25}));
+  worldChart=draw(worldChart,"worldChart",{labels:yrs,datasets:ds},true);
+  // region table
+  const reg=WORLD.regions[SCEN], tb=document.querySelector("#regTable tbody"); tb.innerHTML="";
+  Object.entries(reg).sort((a,b)=>b[1][yrs[yrs.length-1]]-a[1][yrs[yrs.length-1]]).forEach(([r,s])=>{
+    const c=Math.pow(s[yrs[yrs.length-1]]/s[yrs[0]],1/(yrs[yrs.length-1]-yrs[0]))-1;
+    tb.innerHTML+=`<tr><td><span style="color:${REGCOL[r]||'#999'}">&#9632;</span> ${r}</td>
+      <td>${Math.round(s[yrs[0]])}</td><td>${Math.round(s[yrs[yrs.length-1]])}</td><td>${(c*100).toFixed(2)}</td></tr>`;});
+  // top airports
+  const tt=document.querySelector("#topTable tbody"); tt.innerHTML="";
+  APTS.slice(0,120).forEach(a=>{const b=a.scen[SCEN],y0=WORLD.years[0],y1=WORLD.years[WORLD.years.length-1];
+    const cg2=b[y0]>0?Math.pow(b[y1]/b[y0],1/(y1-y0))-1:0;
+    tt.innerHTML+=`<tr data-i="${a.iata}"><td>${a.iata} <span class="mut">${a.city}</span></td>
+      <td>${b[y0].toFixed(1)}</td><td>${b[y1].toFixed(1)}</td><td>${(cg2*100).toFixed(1)}</td>
+      <td>${a.connecting_share!=null?Math.round(a.connecting_share*100)+'%':'-'}</td></tr>`;});
+  document.querySelectorAll("#topTable tbody tr").forEach(tr=>tr.onclick=()=>showAp(tr.dataset.i));
+  if(curAp) showAp(curAp);
+}
+
+function showAp(iata){
+  curAp=iata; const a=APTS.find(x=>x.iata===iata); if(!a)return;
+  const yrs=WORLD.years,y0=yrs[0],y1=yrs[yrs.length-1];
+  document.getElementById("apInfo").innerHTML=
+    `<b style="font-size:16px">${a.iata}</b> ${a.city} <span class="mut">(${a.country}, ${a.region})</span><br>
+     <span class="badge">${a.connecting_share!=null?Math.round(a.connecting_share*100)+'% connecting':'O&D'}</span>
+     <span class="mut">&nbsp; ${a.scen[SCEN][y0].toFixed(1)}m (${y0}) &rarr; ${a.scen[SCEN][y1].toFixed(1)}m (${y1}), ${a.cagr}%/yr</span>`;
+  const ds=META.scenarios.map((s,i)=>({label:s,data:yrs.map(y=>a.scen[s][y]),
+    borderColor:['#156082','#196B24','#E97132'][i],borderWidth:s===SCEN?3:1.5,
+    borderDash:s===SCEN?[]:[5,4],pointRadius:0,tension:.25}));
+  apChart=draw(apChart,"apChart",{labels:yrs,datasets:ds},true);
+  const M=a.M||{}, tot=Object.values(M).reduce((x,y)=>x+y,0)||1;
+  const rows=Object.entries(M).sort((x,y)=>y[1]-x[1]).slice(0,7).map(([r,v])=>
+    `<div style="display:flex;align-items:center;gap:8px;margin:3px 0">
+       <span style="width:96px;font-size:12px">${r}</span>
+       <div class="bar" style="width:${(v/tot*160).toFixed(0)}px;background:${REGCOL[r]||'#156082'}"></div>
+       <span class="mut">${Math.round(v/tot*100)}%</span></div>`).join("");
+  document.getElementById("apHub").innerHTML=Object.keys(M).length?
+    `<div class="mut" style="margin-bottom:4px">Onward network (share of departing seats by region, OAG)</div>${rows}`:"";
+}
+
+function draw(ch,id,data,legend){
+  if(ch)ch.destroy();
+  return new Chart(document.getElementById(id),{type:"line",data,
+    options:{responsive:true,plugins:{legend:{display:legend,position:"bottom",labels:{boxWidth:12,font:{size:11}}}},
+      scales:{x:{ticks:{maxTicksLimit:8,font:{size:11}}},y:{ticks:{font:{size:11}},beginAtZero:false}}}});
+}
+boot();
+</script>
+</body>
+</html>

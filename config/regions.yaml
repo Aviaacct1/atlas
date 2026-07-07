@@ -1,0 +1,14 @@
+# The eight destination regions (Method Spec 1.1). Fixed lookup; Annex A of the
+# assumptions book carries the full country->region mapping.
+# Author: Avia Solutions
+regions:
+  - Domestic
+  - EU+UK          # split out from Other Europe so ETS/SAF mandate coverage is exact
+  - Other Europe
+  - Africa
+  - Middle East
+  - Asia Pacific
+  - North America
+  - South America
+directions: [out, in]
+segments: [Domestic, International Short Haul, Long Haul]

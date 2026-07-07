@@ -1,0 +1,48 @@
+# Source register head (full country-by-country register: Data Source Register v0.2.xlsx).
+# Licence classes A-D per Data Architecture 2.3. Author: Avia Solutions
+licence_classes:
+  A: "Open/attribution (public statistics, CC BY-type). May display as history with attribution."
+  B: "Public and free to analyse; redistribution restricted/unclear. Internal + aggregates only."
+  C: "Commercial licence; use per specific grant. Estimation only; nothing exported beyond grant."
+  D: "Internal Avia data and judgements. Fully usable; documented via reason codes."
+sources:
+  caa_uk:
+    name: "UK CAA Airport Statistics + Departing Passenger Survey"
+    url: "https://www.caa.co.uk/data-and-analysis/uk-aviation-market/"
+    licence_class: A        # detailed survey tables treated as B (use, do not republish tables)
+    refresh: annual
+    rights_summary: "Government open data; attribution displayed in product."
+  sabre_gdd:
+    name: "Sabre Global Demand Data"
+    licence_class: C
+    rights_summary: "Work Order 2026 (1 Jun 2026) grants product-use rights (Data Arch 4.2). Attribution where material input; no reconstitutable extracts."
+  imf_weo:
+    name: "IMF World Economic Outlook"
+    licence_class: A
+    rights_summary: "GDP history + 5-yr forecast, free."
+
+# CAA CSV column mapping (Table 12.1 international / 12.2 domestic). Lock against
+# Jess's real extract; the adapter reads names from here, not from code.
+caa_columns:
+  period: reporting_period          # YYYYMM or YYYY
+  airport: reporting_airport
+  country: origin_destination_country
+  passengers: total_pax
+  market: scheduled_charter          # optional; SCH/CHT
+default_direction: out               # standard tables carry no arr/dep split (DPS needed)
+
+# Mirror-flow canonicality (Method Spec 7.2; Fable Q5). Home-side is canonical by
+# default; a review may flip a country pair to the partner side. Versioned config,
+# never build-time logic. Key: "ORIGIN>DEST".
+mirror_canonicality:
+  default: home
+  flips: []                 # e.g. ["RU>DE"] to take the partner side for that pair
+
+# Sabre GDD 2025 O&D extract column mapping (Work Order 2026, class C, internal
+# parameter use only). Lock against the QSI tool's sabre.duckdb export.
+sabre_columns:
+  airport: origin_airport            # reporting UK airport (origin of the O&D)
+  country: destination_country       # final-destination country
+  passengers: od_passengers          # booked O&D passengers (base year)
+  period: year                       # 2025
+sabre_default_direction: out         # extract is UK-origin O&D; inbound added later

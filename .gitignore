@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.tmp
+*.duckdb
+*.tif
+.DS_Store
+# large generated extracts (regenerate via the build; keep out of git history)
+webapp/data/cockpit.json
+webapp/data/dashboard.json
+webapp/data/world.json
+webapp/data/airports.json
+data/airport_regress.json

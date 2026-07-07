@@ -1,0 +1,22 @@
+iata,name,country,K_grade,declared_mvts_per_hr,operating_hours,seats_per_mvt,load_factor,design_annual_pax_m,committed_steps,source,source_date,confidence,notes
+LHR,Heathrow,GB,A,,5840,,,,,ACL / Eurocontrol Airport Corner,,to-extract,two-runway; near-slot-saturated; declared movements to read from ACL
+LGW,Gatwick,GB,A,,5840,,,,,ACL / Airport Corner,,to-extract,single-runway; high declared hourly
+STN,Stansted,GB,A,,5840,,,,,ACL / Airport Corner,,to-extract,
+MAN,Manchester,GB,A,,5840,,,,,ACL / Airport Corner,,to-extract,two-runway
+GRU,Sao Paulo Guarulhos,BR,A,45,5840,,,,,ANAC slot declaration,2026,B,45 ops/hr decree
+BOG,Bogota El Dorado,CO,A,74,5840,,,,,Aerocivil formal declaration,2026,B,74 ops/hr
+MEX,Mexico City,MX,A,44,5840,,,,,AFAC decree,2026,B,43-46 ops/hr; capped
+BRU,Brussels,BE,A,74,5840,,,,,Eurocontrol Airport Corner,2026,B,config 25L&25R 74 global/hr; 215700 mvts/yr
+PEK,Beijing Capital,CN,A,70,5840,,,,,CAAC ATMB notice,2023,C,70/hr peak; Chinese-language notice
+PKX,Beijing Daxing,CN,A,62,5840,,,,,CAAC ATMB notice,2023,C,62/hr peak
+DXB,Dubai,AE,B,,,,,90,2031:+25,Operator (Dubai Airports),2026,B,90m now rising to 115m by 2031
+DOH,Doha Hamad,QA,B,,,,,65,,QNA / operator,2026,B,65m+ design
+IST,Istanbul,TR,B,,,,,90,,Operator (IGA),2026,B,90m design; further phases planned
+DEL,Delhi,IN,B,,,,,100,,DIAL / AERA filing,2026,B,100m across T1-T3
+PVG,Shanghai Pudong,CN,B,,,,,80,,NDRC/CAAC masterplan,2026,B,80m post-Phase 3
+CAN,Guangzhou,CN,B,,,,,120,,Municipal government approval,2026,B,120m pax / 775k movements post-expansion
+CAI,Cairo,EG,B,,,,,30,2030:+30,Operator / government,2026,C,30m rising to 60m+
+JNB,Johannesburg,ZA,B,,,,,28,,ACSA,2026,C,28m design
+SVO,Moscow Sheremetyevo,RU,C,,,,,,,none post-2022,,C,no reliable current figure; model unconstrained
+MAD,Madrid-Barajas,ES,B,,,,,,"DORA 3 2027-31: Madrid circa EUR4.5bn: Terminal 4 and T4 Satellite expansion, new passenger processing building, T1/2/3 renovation, access upgrades. Terminal-level peak-hour capacity management from summer 2027.",AENA via Aviation Week / Routes (D. Casey),2026-07-06,press-note,"From S2027 AENA publishes capacity by terminal and traffic type, not only runway. Manages terminal peaks pending DORA 3; historical slot rights unchanged; affects only airlines growing at peak times or months. Context: S2026 circa 24.2m departing seats (OAG, +7% YoY); May 2026 traffic 6.0m pax (+4.8%)."
+BCN,Barcelona-El Prat,ES,B,,,,,,Terminal-level peak-hour capacity management from summer 2027 (AENA). Part of DORA 3 2027-31 network investment circa EUR10bn ($11.4bn).,AENA via Aviation Week / Routes (D. Casey),2026-07-06,press-note,"From S2027 capacity published by terminal and traffic type; manages terminal peaks; historical slot rights unchanged. Context: S2026 circa 22m departing seats (OAG, +5.5% YoY); May 2026 traffic 5.5m pax (+6.4%)."

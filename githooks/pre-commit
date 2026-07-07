@@ -1,0 +1,7 @@
+#!/bin/sh
+# Avia repo gate: block commits that would ship invalid served JSON or absolute sandbox paths.
+python scripts/validate_repo.py
+if [ $? -ne 0 ]; then
+  echo "commit blocked: fix the above (see scripts/validate_repo.py)"
+  exit 1
+fi

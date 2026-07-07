@@ -1,0 +1,1118 @@
+{
+ "SOU": [
+  {
+   "dst": "GVA",
+   "name": "Geneva",
+   "market_pax_000": 11.6,
+   "est_pax_000": 4.1,
+   "qsi": 0.009,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "CDG",
+   "name": "Paris",
+   "market_pax_000": 3.3,
+   "est_pax_000": 1.2,
+   "qsi": 0.004,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "EGC",
+   "name": "Bergerac",
+   "market_pax_000": 1.7,
+   "est_pax_000": 1.4,
+   "qsi": 0.391,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "AGP",
+   "name": "Malaga",
+   "market_pax_000": 1.4,
+   "est_pax_000": 0.5,
+   "qsi": 0.018,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "CFR",
+   "name": "Caen",
+   "market_pax_000": 0.6,
+   "est_pax_000": 0.6,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "LHR",
+   "name": "London",
+   "market_pax_000": 0.1,
+   "est_pax_000": 0.0,
+   "qsi": 0.003,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "LHR": [
+  {
+   "dst": "FNC",
+   "name": "Funchal",
+   "market_pax_000": 25.6,
+   "est_pax_000": 20.9,
+   "qsi": 0.411,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "IKA",
+   "name": "Tehran",
+   "market_pax_000": 19.6,
+   "est_pax_000": 20.3,
+   "qsi": 0.983,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "SVG",
+   "name": "Stavanger",
+   "market_pax_000": 17.1,
+   "est_pax_000": 6.9,
+   "qsi": 0.049,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "ANU",
+   "name": "Antigua",
+   "market_pax_000": 15.7,
+   "est_pax_000": 16.2,
+   "qsi": 0.971,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "ISB",
+   "name": "Islamabad",
+   "market_pax_000": 15.7,
+   "est_pax_000": 16.2,
+   "qsi": 0.939,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "UVF",
+   "name": "St Lucia",
+   "market_pax_000": 11.2,
+   "est_pax_000": 11.6,
+   "qsi": 0.985,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "SZG",
+   "name": "Salzburg",
+   "market_pax_000": 8.7,
+   "est_pax_000": 4.0,
+   "qsi": 0.097,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "INN",
+   "name": "Innsbruck",
+   "market_pax_000": 8.5,
+   "est_pax_000": 4.4,
+   "qsi": 0.155,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "PLS",
+   "name": "Providenciales",
+   "market_pax_000": 4.2,
+   "est_pax_000": 4.3,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "NUE",
+   "name": "Nuremberg",
+   "market_pax_000": 3.8,
+   "est_pax_000": 1.7,
+   "qsi": 0.088,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "LGW": [
+  {
+   "dst": "OTP",
+   "name": "Bucharest",
+   "market_pax_000": 70.3,
+   "est_pax_000": 36.6,
+   "qsi": 0.153,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "SOF",
+   "name": "Sofia",
+   "market_pax_000": 40.2,
+   "est_pax_000": 23.7,
+   "qsi": 0.213,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "YVR",
+   "name": "Vancouver",
+   "market_pax_000": 36.5,
+   "est_pax_000": 37.8,
+   "qsi": 0.866,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "COK",
+   "name": "Kochi",
+   "market_pax_000": 35.9,
+   "est_pax_000": 37.2,
+   "qsi": 0.907,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "GOI",
+   "name": "Goa",
+   "market_pax_000": 33.1,
+   "est_pax_000": 34.3,
+   "qsi": 0.961,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BGY",
+   "name": "Milan",
+   "market_pax_000": 25.3,
+   "est_pax_000": 9.3,
+   "qsi": 0.02,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BLQ",
+   "name": "Bologna",
+   "market_pax_000": 20.8,
+   "est_pax_000": 7.8,
+   "qsi": 0.028,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "RVN",
+   "name": "Rovaniemi",
+   "market_pax_000": 16.8,
+   "est_pax_000": 17.4,
+   "qsi": 0.608,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "FRA",
+   "name": "Frankfurt",
+   "market_pax_000": 16.0,
+   "est_pax_000": 5.6,
+   "qsi": 0.006,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BGI",
+   "name": "Barbados",
+   "market_pax_000": 15.4,
+   "est_pax_000": 15.9,
+   "qsi": 0.844,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "MAN": [
+  {
+   "dst": "ORY",
+   "name": "Paris",
+   "market_pax_000": 46.0,
+   "est_pax_000": 17.3,
+   "qsi": 0.027,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "IAH",
+   "name": "Houston",
+   "market_pax_000": 29.4,
+   "est_pax_000": 30.4,
+   "qsi": 0.713,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BLL",
+   "name": "Billund",
+   "market_pax_000": 26.9,
+   "est_pax_000": 11.9,
+   "qsi": 0.084,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "SOF",
+   "name": "Sofia",
+   "market_pax_000": 26.0,
+   "est_pax_000": 15.8,
+   "qsi": 0.228,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TPS",
+   "name": "Trapani",
+   "market_pax_000": 9.3,
+   "est_pax_000": 9.6,
+   "qsi": 0.714,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TGD",
+   "name": "Podgorica",
+   "market_pax_000": 9.1,
+   "est_pax_000": 7.5,
+   "qsi": 0.418,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "KTT",
+   "name": "Kittila",
+   "market_pax_000": 9.0,
+   "est_pax_000": 9.3,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "ZAD",
+   "name": "Zadar",
+   "market_pax_000": 8.1,
+   "est_pax_000": 8.4,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TRN",
+   "name": "Turin",
+   "market_pax_000": 8.0,
+   "est_pax_000": 3.4,
+   "qsi": 0.066,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "REG",
+   "name": "Reggio Di Calabria",
+   "market_pax_000": 8.0,
+   "est_pax_000": 8.3,
+   "qsi": 0.858,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "EDI": [
+  {
+   "dst": "HAM",
+   "name": "Hamburg",
+   "market_pax_000": 28.4,
+   "est_pax_000": 10.2,
+   "qsi": 0.012,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BLL",
+   "name": "Billund",
+   "market_pax_000": 16.6,
+   "est_pax_000": 6.9,
+   "qsi": 0.06,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "EIN",
+   "name": "Eindhoven",
+   "market_pax_000": 15.7,
+   "est_pax_000": 5.8,
+   "qsi": 0.023,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "RTM",
+   "name": "Rotterdam",
+   "market_pax_000": 10.4,
+   "est_pax_000": 3.9,
+   "qsi": 0.024,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "PIS",
+   "name": "Poitiers",
+   "market_pax_000": 6.6,
+   "est_pax_000": 3.2,
+   "qsi": 0.12,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "ZAD",
+   "name": "Zadar",
+   "market_pax_000": 5.8,
+   "est_pax_000": 6.0,
+   "qsi": 0.997,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "INN",
+   "name": "Innsbruck",
+   "market_pax_000": 2.8,
+   "est_pax_000": 1.5,
+   "qsi": 0.155,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "SZG",
+   "name": "Salzburg",
+   "market_pax_000": 2.2,
+   "est_pax_000": 1.0,
+   "qsi": 0.08,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TRN",
+   "name": "Turin",
+   "market_pax_000": 2.2,
+   "est_pax_000": 0.9,
+   "qsi": 0.058,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "RVN",
+   "name": "Rovaniemi",
+   "market_pax_000": 1.7,
+   "est_pax_000": 1.8,
+   "qsi": 0.608,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "BHX": [
+  {
+   "dst": "MXP",
+   "name": "Milan",
+   "market_pax_000": 14.1,
+   "est_pax_000": 5.2,
+   "qsi": 0.021,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TIA",
+   "name": "Tirana",
+   "market_pax_000": 10.3,
+   "est_pax_000": 5.2,
+   "qsi": 0.141,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "WAW",
+   "name": "Warsaw",
+   "market_pax_000": 7.5,
+   "est_pax_000": 2.8,
+   "qsi": 0.029,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "ZAD",
+   "name": "Zadar",
+   "market_pax_000": 7.4,
+   "est_pax_000": 7.7,
+   "qsi": 0.997,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TRN",
+   "name": "Turin",
+   "market_pax_000": 6.5,
+   "est_pax_000": 2.8,
+   "qsi": 0.068,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "PGF",
+   "name": "Perpignan",
+   "market_pax_000": 5.8,
+   "est_pax_000": 6.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "WRO",
+   "name": "Wroclaw",
+   "market_pax_000": 3.9,
+   "est_pax_000": 4.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "LYS",
+   "name": "Lyon",
+   "market_pax_000": 3.9,
+   "est_pax_000": 1.4,
+   "qsi": 0.022,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "CLJ",
+   "name": "Cluj-Napoca",
+   "market_pax_000": 3.7,
+   "est_pax_000": 2.3,
+   "qsi": 0.239,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "CGN",
+   "name": "Cologne/Bonn",
+   "market_pax_000": 2.1,
+   "est_pax_000": 0.8,
+   "qsi": 0.013,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "DXB": [
+  {
+   "dst": "MLA",
+   "name": "Malta",
+   "market_pax_000": 34.6,
+   "est_pax_000": 35.8,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TZX",
+   "name": "Trabzon",
+   "market_pax_000": 24.1,
+   "est_pax_000": 24.9,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "UTP",
+   "name": "Utapao",
+   "market_pax_000": 12.9,
+   "est_pax_000": 13.4,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "JUB",
+   "name": "Juba",
+   "market_pax_000": 7.4,
+   "est_pax_000": 7.7,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BJV",
+   "name": "Bodrum",
+   "market_pax_000": 6.8,
+   "est_pax_000": 7.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "IDR",
+   "name": "Indore",
+   "market_pax_000": 5.4,
+   "est_pax_000": 5.6,
+   "qsi": 0.639,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BOJ",
+   "name": "Burgas",
+   "market_pax_000": 3.9,
+   "est_pax_000": 4.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "MGQ",
+   "name": "Mogadishu",
+   "market_pax_000": 3.6,
+   "est_pax_000": 3.7,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BUS",
+   "name": "Batumi",
+   "market_pax_000": 3.3,
+   "est_pax_000": 3.4,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TIV",
+   "name": "Tivat",
+   "market_pax_000": 3.3,
+   "est_pax_000": 3.4,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "DEL": [
+  {
+   "dst": "NRT",
+   "name": "Tokyo",
+   "market_pax_000": 18.6,
+   "est_pax_000": 19.3,
+   "qsi": 0.867,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "IXY",
+   "name": "Kandla",
+   "market_pax_000": 10.5,
+   "est_pax_000": 4.8,
+   "qsi": 0.098,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "EVN",
+   "name": "Yerevan",
+   "market_pax_000": 7.0,
+   "est_pax_000": 7.2,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TLV",
+   "name": "Tel Aviv-yafo",
+   "market_pax_000": 5.4,
+   "est_pax_000": 5.6,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BOS",
+   "name": "Boston",
+   "market_pax_000": 2.2,
+   "est_pax_000": 2.3,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "LGW",
+   "name": "London",
+   "market_pax_000": 0.1,
+   "est_pax_000": 0.1,
+   "qsi": 0.94,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "LIS",
+   "name": "Lisbon",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 0.88,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BER",
+   "name": "Berlin",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "MCO",
+   "name": "Orlando",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 0.983,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TIV",
+   "name": "Tivat",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "GOA": [
+  {
+   "dst": "OLB",
+   "name": "Olbia",
+   "market_pax_000": 10.8,
+   "est_pax_000": 3.8,
+   "qsi": 0.009,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BDS",
+   "name": "Brindisi",
+   "market_pax_000": 10.5,
+   "est_pax_000": 3.9,
+   "qsi": 0.023,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "CPH",
+   "name": "Copenhagen",
+   "market_pax_000": 1.7,
+   "est_pax_000": 0.7,
+   "qsi": 0.034,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "PSA",
+   "name": "Pisa",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 0.014,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TRN",
+   "name": "Turin",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 0.016,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "VCE",
+   "name": "Venice",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 0.017,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TRS",
+   "name": "Trieste",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 0.035,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "NCE",
+   "name": "Nice",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 0.026,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "CUF",
+   "name": "Cuneo",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "FLL",
+   "name": "Fort Lauderdale",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 0.978,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "BLQ": [
+  {
+   "dst": "ORY",
+   "name": "Paris",
+   "market_pax_000": 32.1,
+   "est_pax_000": 11.4,
+   "qsi": 0.009,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "LGW",
+   "name": "London",
+   "market_pax_000": 20.8,
+   "est_pax_000": 7.6,
+   "qsi": 0.016,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "JMK",
+   "name": "Mykonos",
+   "market_pax_000": 10.7,
+   "est_pax_000": 11.1,
+   "qsi": 0.949,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "SCQ",
+   "name": "Santiago de Compostela",
+   "market_pax_000": 10.0,
+   "est_pax_000": 10.3,
+   "qsi": 0.989,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "ZAZ",
+   "name": "Zaragoza",
+   "market_pax_000": 9.7,
+   "est_pax_000": 4.6,
+   "qsi": 0.111,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "TLS",
+   "name": "Toulouse",
+   "market_pax_000": 9.1,
+   "est_pax_000": 3.8,
+   "qsi": 0.061,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BLL",
+   "name": "Billund",
+   "market_pax_000": 8.6,
+   "est_pax_000": 8.9,
+   "qsi": 0.884,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "KGS",
+   "name": "Kos",
+   "market_pax_000": 7.8,
+   "est_pax_000": 8.1,
+   "qsi": 0.904,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "KEF",
+   "name": "Reykjavik",
+   "market_pax_000": 4.5,
+   "est_pax_000": 4.7,
+   "qsi": 0.75,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "KIV",
+   "name": "Chisinau",
+   "market_pax_000": 4.4,
+   "est_pax_000": 4.6,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "JFK": [
+  {
+   "dst": "PSE",
+   "name": "Ponce",
+   "market_pax_000": 30.1,
+   "est_pax_000": 16.0,
+   "qsi": 0.163,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "PVR",
+   "name": "Puerto Vallarta",
+   "market_pax_000": 14.8,
+   "est_pax_000": 5.6,
+   "qsi": 0.029,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "RNO",
+   "name": "Reno",
+   "market_pax_000": 13.1,
+   "est_pax_000": 4.6,
+   "qsi": 0.007,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "PEI",
+   "name": "Pereira",
+   "market_pax_000": 10.0,
+   "est_pax_000": 10.3,
+   "qsi": 0.862,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "PAP",
+   "name": "Port au Prince",
+   "market_pax_000": 8.8,
+   "est_pax_000": 9.1,
+   "qsi": 0.933,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "EGE",
+   "name": "Vail",
+   "market_pax_000": 8.5,
+   "est_pax_000": 3.7,
+   "qsi": 0.081,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "PMO",
+   "name": "Palermo",
+   "market_pax_000": 8.5,
+   "est_pax_000": 8.8,
+   "qsi": 0.999,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BZN",
+   "name": "Bozeman",
+   "market_pax_000": 7.7,
+   "est_pax_000": 2.8,
+   "qsi": 0.013,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "CLO",
+   "name": "Cali",
+   "market_pax_000": 7.0,
+   "est_pax_000": 5.6,
+   "qsi": 0.389,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BWI",
+   "name": "Baltimore",
+   "market_pax_000": 6.8,
+   "est_pax_000": 2.4,
+   "qsi": 0.004,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "SIN": [
+  {
+   "dst": "IXM",
+   "name": "Madurai",
+   "market_pax_000": 55.2,
+   "est_pax_000": 57.1,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "CTS",
+   "name": "Sapporo",
+   "market_pax_000": 2.2,
+   "est_pax_000": 2.3,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "HNL",
+   "name": "Honolulu",
+   "market_pax_000": 0.7,
+   "est_pax_000": 0.7,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "SJC",
+   "name": "San Jose",
+   "market_pax_000": 0.2,
+   "est_pax_000": 0.2,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "GUM",
+   "name": "Guam",
+   "market_pax_000": 0.2,
+   "est_pax_000": 0.2,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "HIJ",
+   "name": "Hiroshima",
+   "market_pax_000": 0.1,
+   "est_pax_000": 0.1,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "IAH",
+   "name": "Houston",
+   "market_pax_000": 0.1,
+   "est_pax_000": 0.1,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "CUR",
+   "name": "Curacao",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "GIG",
+   "name": "Rio de Janeiro",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "MVD",
+   "name": "Montevideo",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "JED": [
+  {
+   "dst": "UPG",
+   "name": "Ujung Pandang",
+   "market_pax_000": 62.1,
+   "est_pax_000": 64.3,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "IKA",
+   "name": "Tehran",
+   "market_pax_000": 43.2,
+   "est_pax_000": 44.7,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BEN",
+   "name": "Benghazi",
+   "market_pax_000": 26.3,
+   "est_pax_000": 27.2,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "MZR",
+   "name": "Mazar-e Sharif",
+   "market_pax_000": 11.8,
+   "est_pax_000": 12.2,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "FRU",
+   "name": "Bishkek",
+   "market_pax_000": 9.6,
+   "est_pax_000": 9.9,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "JNB",
+   "name": "Johannesburg",
+   "market_pax_000": 8.7,
+   "est_pax_000": 9.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "SKD",
+   "name": "Samarkand",
+   "market_pax_000": 8.7,
+   "est_pax_000": 9.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "MHD",
+   "name": "Mashhad",
+   "market_pax_000": 7.9,
+   "est_pax_000": 7.2,
+   "qsi": 0.488,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "OTP",
+   "name": "Bucharest",
+   "market_pax_000": 7.5,
+   "est_pax_000": 7.8,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "SOC",
+   "name": "Solo City",
+   "market_pax_000": 7.3,
+   "est_pax_000": 7.6,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ],
+ "BOM": [
+  {
+   "dst": "MEL",
+   "name": "Melbourne",
+   "market_pax_000": 15.1,
+   "est_pax_000": 15.6,
+   "qsi": 0.84,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "LOS",
+   "name": "Lagos",
+   "market_pax_000": 6.6,
+   "est_pax_000": 6.8,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "PNQ",
+   "name": "Pune",
+   "market_pax_000": 5.3,
+   "est_pax_000": 1.9,
+   "qsi": 0.004,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "CAN",
+   "name": "Guangzhou",
+   "market_pax_000": 1.0,
+   "est_pax_000": 1.0,
+   "qsi": 0.974,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BGW",
+   "name": "Baghdad",
+   "market_pax_000": 1.0,
+   "est_pax_000": 1.0,
+   "qsi": 0.961,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "PBH",
+   "name": "Paro",
+   "market_pax_000": 0.5,
+   "est_pax_000": 0.2,
+   "qsi": 0.046,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BCN",
+   "name": "Barcelona",
+   "market_pax_000": 0.3,
+   "est_pax_000": 0.3,
+   "qsi": 0.887,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "MCO",
+   "name": "Orlando",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 0.959,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "BRE",
+   "name": "Bremen",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 1.0,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  },
+  {
+   "dst": "MIA",
+   "name": "Miami",
+   "market_pax_000": 0.0,
+   "est_pax_000": 0.0,
+   "qsi": 0.998,
+   "source": "QSI share real (route_qsi); est on the airport's own O&D x QSI-recapture; full catchment demand via --optimise"
+  }
+ ]
+}

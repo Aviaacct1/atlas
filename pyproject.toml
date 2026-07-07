@@ -1,0 +1,10 @@
+[project]
+name = "avia-global-forecast"
+version = "0.1.0"
+description = "Avia Global Aviation Forecast - bottom-up airport-to-global RPK model"
+authors = [{ name = "Avia Solutions" }]
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Avia Analyst Cockpit - Internal Mockup v2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--navy:#1F3B57;--navy2:#2c5378;--gold:#C9A227;--teal:#1d7a6e;--bg:#f4f6f8;--card:#ffffff;--line:#d7dde3;--txt:#1c2733;--mut:#5c6b7a;--red:#b3452b;--green:#2e7d4f;--proj:#7a3b8f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--txt);font-size:14px}
+header{background:var(--navy);color:#fff;padding:10px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header .brand b{font-size:16px} header .brand span{opacity:.75;font-size:11.5px;display:block}
+.internal{background:var(--gold);color:#20293a;font-weight:700;font-size:11px;padding:3px 10px;border-radius:10px;letter-spacing:.5px}
+.mtab{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;padding:5px 14px;border-radius:16px;cursor:pointer;font-size:12.5px}
+.mtab.on{background:var(--gold);border-color:var(--gold);color:#20293a;font-weight:600}
+.mtab.bes.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.spacer{flex:1}
+main{max-width:1200px;margin:18px auto;padding:0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.card h3{font-size:13px;color:var(--navy);margin-bottom:8px}
+.grid2{display:grid;grid-template-columns:1fr 1.6fr;gap:14px;align-items:start}
+.modewrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+.modecard{background:#fff;border:2px solid var(--line);border-radius:14px;padding:22px;cursor:pointer;transition:border-color .15s}
+.modecard:hover{border-color:var(--gold)} .modecard.bes:hover{border-color:var(--teal)}
+.modecard h2{font-size:17px;color:var(--navy);margin-bottom:8px}
+.modecard p{font-size:13px;color:var(--mut);line-height:1.5;margin-bottom:10px}
+.modecard .who{font-size:11.5px;color:var(--navy2);font-weight:600}
+.pill{display:inline-block;font-size:10.5px;padding:2px 8px;border-radius:9px;margin:2px 3px 2px 0;font-weight:600}
+.pill.pub{background:#e2efda;color:var(--green)} .pill.prj{background:#f0e3f7;color:var(--proj)}
+.pill.gold{background:#fbf0d5;color:#8a6d00} .pill.grey{background:#e8edf2;color:var(--navy)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{background:var(--navy);color:#fff;text-align:left;padding:6px 8px;font-weight:600;font-size:11.5px}
+td{padding:6px 8px;border-bottom:1px solid var(--line)}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.xl{border:1px solid #b7bec6;font-size:12.5px}
+.xl td{border:1px solid #d0d7de;padding:5px 8px;background:#f2f4f6;color:#444}
+.xl td.hd{background:#e4e9ee;font-weight:600;color:var(--navy)}
+.xl td.ed{background:#FFF2CC;color:#0000CC;font-weight:600;cursor:pointer;text-align:right}
+.xl td.ed:hover{outline:2px solid var(--gold)}
+.xl td.was{color:var(--mut);font-size:11px;text-align:right;background:#f2f4f6}
+.btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:13px}
+.btn.run{background:var(--gold);color:#20293a} .btn.tealb{background:var(--teal);color:#fff}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.btn.promote{background:#fff;border:2px solid var(--red);color:var(--red)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.runstrip{display:flex;gap:16px;font-size:11.5px;color:var(--mut);flex-wrap:wrap;margin-top:8px}
+.runstrip b{color:var(--navy)}
+.kpi{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:8px;padding:10px 12px}
+.kpi .v{font-size:19px;font-weight:700;color:var(--navy)} .kpi .l{font-size:11.5px;color:var(--mut)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+.pos{color:var(--green)} .neg{color:var(--red)}
+.legend{display:flex;gap:14px;font-size:11px;color:var(--mut);margin-top:4px;flex-wrap:wrap}
+.sw{display:inline-block;width:16px;height:3px;vertical-align:middle;margin-right:4px;border-radius:2px}
+.lvl{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.lvl button{padding:4px 12px;border-radius:14px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:12px;color:var(--navy)}
+.lvl button.on{background:var(--navy);color:#fff}
+.lvl button.teal.on{background:var(--teal)}
+.wall{background:linear-gradient(90deg,#f0e3f7 0 60%,#e2efda 60%);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:12px;display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.wall .bar{width:6px;align-self:stretch;background:var(--red);border-radius:3px}
+.note{background:#fbf6e8;border-left:4px solid var(--gold);padding:9px 11px;font-size:12px;border-radius:6px;margin-top:8px;color:#4c4632}
+.check{font-size:12.5px;padding:4px 0;border-bottom:1px dashed var(--line);display:flex;justify-content:space-between}
+.mut{color:var(--mut)} .footer{margin:26px 0 14px;font-size:11px;color:var(--mut);text-align:center}
+.wf{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--line);font-size:12.5px}
+.inrow{display:grid;grid-template-columns:1.4fr .7fr .8fr .8fr;gap:8px;align-items:center;padding:5px 0;border-bottom:1px dashed var(--line);font-size:12.5px}
+.inrow input{width:100%;padding:4px 6px;border:1px solid var(--gold);background:#FFF2CC;border-radius:5px;font-weight:600;color:#0000CC;text-align:right;font-size:12.5px}
+.inrow .def{text-align:right;color:var(--mut)}
+.ingrp{margin-bottom:14px}
+.ingrp h4{font-size:12px;color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:3px;margin-bottom:4px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.gcard{background:#fff;border:1px solid var(--line);border-radius:4px;padding:12px 12px 8px;cursor:pointer;font-family:Arial,Ebrima,sans-serif}
+.gcard:hover{outline:2px solid var(--gold)}
+.gcard h4{font-size:12.5px;color:#000;font-weight:700;text-align:center;margin-bottom:1px;font-family:Arial,sans-serif}
+.gcard .src{font-size:10px;color:#404040;text-align:center;margin-bottom:4px}
+.gcard .leg{display:flex;gap:12px;justify-content:center;font-size:9.5px;color:#404040;margin-top:2px;flex-wrap:wrap}
+.gcard .leg .sw{width:11px;height:8px;border-radius:1px}
+.gsec{font-size:12px;color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:3px;margin:16px 0 10px;font-weight:700}
+.gsec:first-of-type{margin-top:4px}
+.gcard.wide{grid-column:1/-1}
+.search{padding:8px 12px;border:1px solid var(--line);border-radius:8px;width:340px;font-size:13.5px}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}.modewrap{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><b>Avia Forecast Cockpit</b><span>Analyst tool - same engine as the product, edit-run-compare surface</span></div>
+  <span class="internal">INTERNAL</span>
+  <div class="spacer"></div>
+  <button class="mtab" id="t-pick" onclick="setMode('pick')">Modes</button>
+  <button class="mtab" id="t-sb" onclick="setMode('sb')">Global sandbox</button>
+  <button class="mtab bes" id="t-bc" onclick="setMode('bc')">Bespoke client</button>
+</header>
+<main id="main"></main>
+<script>
+"use strict";
+// ===== VINTAGE CLOCK: one dial rolls the whole tool forward each year =====
+const BY=2025;                       // vintage base year - change this and every year, label, window and scenario moves
+const H0=BY-6, HZ=BY+35;             // history start, forecast horizon (BY+35: lessors need 30 years, DfT publishes to 2060 - Jess)
+const VN="v"+(BY+1)+".2", VNn="v"+(BY+1)+".3"; // vintage names
+const YRS=[];for(let y=H0;y<=HZ;y++)YRS.push(y);
+const iY=y=>YRS.indexOf(y);
+const SPOTS=[BY,BY+5,BY+10,BY+15,BY+20,BY+25,BY+30,BY+35]; // spot years run to the horizon end (Jess: CAGRs stopped short)
+const yl=y=>y+(y<=BY?"A":"F");
+const yy=y=>"'"+String(y).slice(2);
+const COVID={2020:.45,2021:.55,2022:.8,2023:.92,2024:.98}; // calendar-anchored history events, deliberately NOT offset
+const KGROW=y=>Math.pow(1.005,Math.max(0,y-(BY+2)));
+const pct=v=>(v*100).toFixed(1)+"%";
+function fmM(v){const a=Math.abs(v),sg=v<0?"-":"";if(a>=1)return sg+a.toFixed(a>=10?0:1)+"m";if(a>=0.0005)return sg+Math.round(a*1000)+"k";return "0";}
+let CK=null, CKBYI={}, CKCAND=null;
+let QSIPOLL=0, QSISAW=false;   // active-poll deadline + 'saw a run start' latch
+function regGe(r){return r==="Europe"?1.15:r==="Middle East"?1.35:r==="North America"?1.3:1.45;}
+function tpcOf(r){return r==="Europe"?2.5:r==="Middle East"?3.0:r==="North America"?3.2:r==="Asia Pacific"?1.0:1.6;}
+function mixOf(a){const lh=a.reg==="Europe"?0.18:a.reg==="Middle East"?0.55:a.reg==="North America"?0.25:0.30;
+  const nd=1-a.dom;return [a.dom, nd*(1-lh), nd*lh];}
+function engineBaseSeries(code,scen){const a=CKBYI[code];return a?(a.series[scen||"Baseline"]||a.series.Baseline).slice():null;}
+function engineEntitySeries(e){if(!CK)return null;let k=null;
+  if(e[1]==="global")k="Global"; else if(e[1]==="region")k="reg:"+e[0]; else if(e[1]==="country")k="cty:"+e[0];
+  else if(e[1]==="airport"){const code=e[0].split(" ").pop();return engineBaseSeries(code,"Baseline");}
+  const ent=CK.entities[k];return ent?ent.Baseline.slice():null;}
+function applyDelta(base,gAdjFn){const out=[];let fac=1;
+  for(let i=0;i<YRS.length;i++){const y=YRS[i];if(y>BY)fac*=(1+(gAdjFn?gAdjFn(y):0));out.push(base[i]*fac);}return out;}
+function buildENT(){const e=[["Global","global",0,0,0,"",""]];
+  CK.regions.forEach(r=>e.push([r,"region",0,0,0,"",""]));
+  (CK.countries||[]).slice(0,8).forEach(c=>{const reg=(CK.airports.find(a=>a.cty===c)||{}).reg||"";e.push([c,"country",0,0,0,"",reg]);});
+  ["DEL","LHR","LGW","DXB","JFK"].forEach(code=>{const a=CKBYI[code];if(a)e.push([a.n+" "+code,"airport",a.base,a.g,a.cap||0,a.cty,a.reg]);});
+  return e;}
+function constrain(u,capFn,spMax,theta=0.85){const c=[];
+  YRS.forEach((y,i)=>{const K=capFn(y);
+    if(K>0){const ut=u[i]/K;
+      let s=ut<=theta?0:Math.min(Math.pow((ut-theta)/(1-theta),2)*spMax+Math.max(ut-1,0)*0.5,Math.max(1-K/u[i],spMax));
+      c.push(Math.min(u[i]*(1-s),K));}else c.push(u[i]);});return c;}
+function mkU(base,g,gAdj){
+  const u=YRS.map(y=>y<=BY?base*Math.pow(1+g,y-BY)*(COVID[y]||1):null);
+  for(let i=0;i<YRS.length;i++){const y=YRS[i];if(y>BY)u[i]=u[i-1]*(1+g+(gAdj?gAdj(y):0));}
+  return u;}
+// ================= GLOBAL SANDBOX (unchanged design) =================
+let ENT=[["Global","global",680,.034,0,"",""],
+ ["Asia Pacific","region",255,.049,0,"",""],["Europe","region",180,.024,0,"",""],
+ ["North America","region",140,.021,0,"",""],["Middle East","region",55,.045,0,"",""],
+ ["India","country",62,.064,0,"","Asia Pacific"],["China","country",118,.052,0,"","Asia Pacific"],
+ ["United Kingdom","country",71,.021,0,"","Europe"],["Italy","country",44,.023,0,"","Europe"],
+ ["Delhi DEL","airport",25.9,.062,31,"India","Asia Pacific"],
+ ["Heathrow LHR","airport",26.9,.018,29.3,"United Kingdom","Europe"],
+ ["Gatwick LGW","airport",15.5,.02,16,"United Kingdom","Europe"],
+ ["Genoa GOA","airport",1.62,.034,2.0,"Italy","Europe"],
+ ["Dubai DXB","airport",30.8,.04,39,"UAE","Middle East"]];
+const PARAMS=[
+ {id:"tau",name:"Real fare trend tau (%/yr)",vintage:-0.30,step:-0.10,min:-0.60,max:0.00,sec:"Fares (Method Spec 4.2)"},
+ {id:"gdpIN",name:"India long-run GDP (%/yr)",vintage:6.6,step:0.2,min:5.8,max:7.4,sec:"GDP paths (assumptions book)"},
+ {id:"sp100",name:"Spill at 100% utilisation (%)",vintage:10,step:2,min:6,max:16,sec:"Capacity (Method Spec 6.2)"}];
+let ED={tau:-0.30,gdpIN:6.6,sp100:10};
+let RAN=false, LVL="airport";
+function gAdjFor(e){return y=>{if(y<=BY)return 0;
+  let d=-0.6*(ED.tau-(-0.30))/100;
+  if(e[5]==="India"||e[0]==="India")d+=1.3*(ED.gdpIN-6.6)/100;
+  if(e[1]==="region"&&e[0]==="Asia Pacific")d+=1.3*(ED.gdpIN-6.6)/100*0.35;
+  if(e[1]==="global")d+=1.3*(ED.gdpIN-6.6)/100*0.13;
+  return d;};}
+function sbSeries(e,edited){
+  const base=engineEntitySeries(e);
+  const u = base ? (edited?applyDelta(base,gAdjFor(e)):base.slice())
+                 : mkU(e[2],e[3],edited?gAdjFor(e):null);   // fallback to synthetic if entity not in engine bundle
+  return {u,c:constrain(u,y=>e[4]*KGROW(y),edited?ED.sp100/100:0.1)};}
+const editedList=()=>PARAMS.filter(p=>Math.abs(ED[p.id]-p.vintage)>1e-9);
+function hash(){return "pk-"+btoa(JSON.stringify(ED)).slice(0,8).toLowerCase();}
+function bigChart(b,n){
+  const W=640,H=250,P=44;const mx=Math.max(...b.u,...(n?n.u:[0]))*1.06;
+  const X=i=>P+(W-P-10)*(i/(YRS.length-1)),Y=v=>H-26-(H-46)*(v/mx);
+  const path=a=>a.map((v,i)=>(i?"L":"M")+X(i).toFixed(1)+","+Y(v).toFixed(1)).join(" ");
+  const yT=[0,.25,.5,.75,1].map(t=>{const v=mx*t;return `<line x1="${P}" y1="${Y(v)}" x2="${W-10}" y2="${Y(v)}" stroke="#e3e8ee"/><text x="${P-5}" y="${Y(v)+4}" font-size="10" fill="#8a97a5" text-anchor="end">${v>=1000?(v/1000).toFixed(1)+"bn":Math.round(v)}</text>`;}).join("");
+  const xT=YRS.filter(y=>y%5===0).map(y=>`<text x="${X(iY(y))}" y="${H-8}" font-size="10" fill="#8a97a5" text-anchor="middle">${y}</text>`).join("");
+  const nl=n?`<path d="${path(n.u)}" fill="none" stroke="#1d7a6e" stroke-width="2" stroke-dasharray="7 4"/><path d="${path(n.c)}" fill="none" stroke="#7a3b8f" stroke-width="2" stroke-dasharray="7 4"/>`:"";
+  return `<svg viewBox="0 0 ${W} ${H+16}" style="width:100%"><text transform="translate(12,${(H-10)/2}) rotate(-90)" font-size="10.5" fill="#5f7185" text-anchor="middle">Passengers (m)</text><text x="${(P+W-10)/2}" y="${H+9}" font-size="10.5" fill="#5f7185" text-anchor="middle">Year</text>${yT}
+   <line x1="${X(iY(BY))}" y1="14" x2="${X(iY(BY))}" y2="${H-26}" stroke="#b9c2cc" stroke-dasharray="3 4"/>
+   <path d="${path(b.u)}" fill="none" stroke="#2c5378" stroke-width="2.2"/>
+   <path d="${path(b.c)}" fill="none" stroke="#C9A227" stroke-width="2.2"/>${nl}${xT}</svg>
+   <div class="legend"><span><span class="sw" style="background:#2c5378"></span>Base unconstrained</span><span><span class="sw" style="background:#C9A227"></span>Base constrained</span>${n?'<span><span class="sw" style="background:#1d7a6e"></span>Run unconstrained</span><span><span class="sw" style="background:#7a3b8f"></span>Run constrained</span>':""}</div>`;}
+function renderPick(){
+  document.getElementById("main").innerHTML=`
+  <div class="modewrap">
+   <div class="modecard" onclick="setMode('sb')">
+    <h2>Global sandbox</h2>
+    <p>Refine the GLOBAL forecast. Edit shared assumptions, run against the current vintage, see the whole-model impact airport to global. Changes reach the product only via the governed promote step.</p>
+    <span class="pill pub">public data only</span><span class="pill gold">edits: assumptions book</span><span class="pill grey">can promote (governed)</span>
+    <p class="who" style="margin-top:10px">Jess + team, when a product change is judged warranted</p>
+   </div>
+   <div class="modecard bes" onclick="setMode('bc')">
+    <h2>Bespoke client forecast</h2>
+    <p>Type an airport, generate instantly from the engine's data, then tailor every input and layer client data. All Avia-template charts generated from the outputs; deliverable is the full Excel model. Nothing here can enter the global tool.</p>
+    <span class="pill prj">project namespace</span><span class="pill gold">every input visible &amp; editable</span><span class="pill grey">full chart gallery + full Excel model out</span>
+    <p class="who" style="margin-top:10px">Jess or Nick, per engagement - inherits the engine's long-run calibration automatically</p>
+   </div>
+  </div>
+  <div class="note" style="max-width:900px;margin:18px auto">Two purposes, one engine. Editing happens in this front end; every edit auto-serialises to the override pack (the hashable source of truth). Excel is the OUTPUT: the full completed model. All figures synthetic.</div>
+  <div class="footer">Avia Solutions - internal cockpit mockup v2. Companion to the customer Dashboard Mockup; same engine, different surface.</div>`;}
+function renderSB(){
+  const edits=editedList();
+  const rows=PARAMS.map(p=>{const cur=ED[p.id];const chg=Math.abs(cur-p.vintage)>1e-9;
+    return `<tr><td class="hd">${p.name}<div class="mut" style="font-size:10.5px;font-weight:400">${p.sec}</div></td>
+     <td class="was">vintage: ${p.vintage}</td>
+     <td class="ed" onclick="cycle('${p.id}')">${cur.toFixed(p.id==='sp100'?0:p.id==='gdpIN'?1:2)}${chg?' &#9998;':''}</td></tr>`;}).join("");
+  const world=ENT.map(e=>({e,b:sbSeries(e,false),n:RAN?sbSeries(e,true):null}));
+  const G=world[0];const i45=iY(BY+20);
+  let kpis="",movers="";
+  if(RAN&&G.n){
+    const dU=G.n.u[i45]-G.b.u[i45],dC=G.n.c[i45]-G.b.c[i45];
+    const capB=G.b.u[i45]-G.b.c[i45],capN=G.n.u[i45]-G.n.c[i45];
+    const cls=v=>v>=0?"pos":"neg",sg=v=>(v>=0?"+":"")+v.toFixed(1);
+    kpis=`<div class="kpis">
+     <div class="kpi"><div class="v ${cls(dU)}">${sg(dU)}m</div><div class="l">Global unconstrained ${BY+20} &#916;</div></div>
+     <div class="kpi"><div class="v ${cls(dC)}">${sg(dC)}m</div><div class="l">Global constrained ${BY+20} &#916;</div></div>
+     <div class="kpi"><div class="v ${cls(capN-capB)}">${sg(capN-capB)}m</div><div class="l">Capacity requirement ${BY+20} &#916;</div></div>
+     <div class="kpi"><div class="v">${edits.length}</div><div class="l">parameters edited</div></div></div>`;
+    const lv=world.filter(w=>w.e[1]===LVL);
+    const mr=lv.map(w=>{const d=w.n.c[i45]-w.b.c[i45];const du=w.n.u[i45]-w.b.u[i45];
+      return {n:w.e[0],d,du,pc:d/Math.max(w.b.c[i45],.01)};}).sort((a,b)=>Math.abs(b.d)-Math.abs(a.d));
+    movers=`<div class="card"><h3>Movers by |&#916;| - the vintage bridge (run-to-run change attribution)</h3>
+     <div class="lvl">${["global","region","country","airport"].map(l=>`<button class="${LVL===l?'on':''}" onclick="LVL='${l}';renderSB()">${l[0].toUpperCase()+l.slice(1)}</button>`).join("")}</div>
+     <table><tr><th>Entity</th><th class="num">&#916; unconstrained ${BY+20}</th><th class="num">&#916; constrained ${BY+20}</th><th class="num">&#916;%</th><th>Attributed to</th></tr>
+     ${mr.map(m=>`<tr><td>${m.n}</td><td class="num ${m.du>=0?'pos':'neg'}">${(m.du>=0?"+":"")+m.du.toFixed(2)}m</td><td class="num ${m.d>=0?'pos':'neg'}">${(m.d>=0?"+":"")+m.d.toFixed(2)}m</td><td class="num">${pct(m.pc)}</td><td class="mut">${edits.map(e=>e.name.split(" (")[0]).join(" + ")||"-"}</td></tr>`).join("")}</table></div>`;}
+  document.getElementById("main").innerHTML=`
+  <div class="grid2">
+   <div class="card"><h3>Assumptions (edit here - auto-serialised to the override pack)</h3>
+    <table class="xl">${rows}</table>
+    <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+     <button class="btn ghost" onclick="alert('Editing happens in the front end; every edit auto-serialises to the pack (hashable source of truth). Excel is the OUTPUT: the full completed model.')">How editing works</button>
+     <button class="btn run" onclick="RAN=true;renderSB()">Run against vintage ${VN}</button>
+     <button class="btn ghost" onclick="ED={tau:-0.30,gdpIN:6.6,sp100:10};RAN=false;renderSB()">Reset</button></div>
+    <div class="runstrip"><span>base: <b>${VN}</b></span><span>pack: <b>${hash()}</b></span><span>run: <b>${RAN?"r-"+hash().slice(3)+"-01 &#10003;":"not yet run"}</b></span></div>
+    ${RAN?`<div class="card" style="margin-top:12px"><h3>Promote to vintage - governed, not a save button</h3>
+      <div class="check"><span>Identities T-A .. T-F</span><b class="pos">pass</b></div>
+      <div class="check"><span>Reconciliation vs GMF/CMO/IATA/WATF</span><b class="pos">within tolerance</b></div>
+      <div class="check"><span>Change-log entry drafted</span><b class="pos">yes</b></div>
+      <div class="check"><span>Sign-off (John Carter)</span><b class="neg">required</b></div>
+      <button class="btn promote" disabled style="margin-top:10px">Promote &#8594; ${VNn} (locked until sign-off)</button></div>`:""}
+   </div>
+   <div>${kpis}
+    <div class="card"><h3>Global, both runs overlaid ${RAN?"(edited run dashed)":"(run to compare)"}</h3>${bigChart(G.b,G.n)}</div>
+    ${movers}</div>
+  </div>
+  ${ledgerPanel()}
+  <div class="footer">Synthetic data, illustrative only.</div>`;}
+function cycle(id){const p=PARAMS.find(x=>x.id===id);let v=ED[id]+p.step;
+  if(p.step<0&&v<p.min)v=p.max; if(p.step>0&&v>p.max)v=p.min;
+  ED[id]=Math.round(v*100)/100;RAN=false;renderSB();}
+// ============ FORECAST ADJUSTMENT LEDGER (the recreatable record) ============
+// Declarative and net-final: ONE row per target. Re-committing a target REPLACES it,
+// so 20 intermediate tweaks collapse to the final value. forecast = engine(vintage) + ledger.
+// (Session-scoped in this mockup; in production the service persists it append-only per the
+//  QSI-service pattern, so 10 analysts' daily changes accumulate and any run is recreatable.)
+let LEDGER={};
+let ENGINE_VINTAGE={vintage:VN,data_inputs:{
+  sabre_od:"Sabre GDD od_p2p 2013-2025 (base 2024/25)",
+  aci_throughput:"ACI World Airport Traffic 1991-2024",
+  oag_schedules:"OAG schedules 2025 (final-to-next M, served routes)",
+  oef_gdp:"Oxford Economics GDP 31 Jul 2024, extended past 2050 at terminal rate"}};
+const lkey=(scope,t)=>scope+":"+t;
+const today=()=>new Date().toISOString().slice(0,10);
+function commitSandboxToLedger(){
+  const eds=editedList().filter(p=>{const e=LEDGER[lkey("global",p.id)];return !e||Math.abs(e.value-ED[p.id])>1e-9;});
+  if(!eds.length){alert("No new or changed edits vs the ledger - nothing to record.");return;}
+  const author=prompt("Analyst (recorded against each adjustment):","Jess"); if(author===null)return;
+  const reason=prompt("Reason for this forecast change (one line, stored in the record):",""); if(reason===null)return;
+  eds.forEach(p=>{LEDGER[lkey("global",p.id)]={scope:"global assumption",target:p.name,pid:p.id,
+    engine_base:p.vintage,value:ED[p.id],unit:p.sec,author:author||"analyst",
+    reason:reason||"(no reason given)",date:today(),vintage:VN,status:"active"};});
+  renderSB();
+}
+function addAdjustment(){ // airport/route level override: new route up, airline failure down
+  const target=prompt("Target (e.g. SOU terminal, SOU-JFK route):",""); if(!target)return;
+  const base=parseFloat(prompt("Engine value being overridden (m pax):","")); if(isNaN(base))return;
+  const val=parseFloat(prompt("Adjusted value (m pax):","")); if(isNaN(val))return;
+  const author=prompt("Analyst:","Jess")||"analyst";
+  const reason=prompt("Reason (e.g. new route SOU-JFK, level shift persists):","")||"(no reason given)";
+  LEDGER[lkey("airport",target)]={scope:"airport/route override",target,pid:null,
+    engine_base:base,value:val,unit:"m pax terminal",author,reason,date:today(),vintage:VN,status:"active"};
+  renderSB();
+}
+function retireAdj(k){if(confirm("Retire this adjustment? It leaves the forecast record.")){delete LEDGER[k];renderSB();}}
+function engNow(a){if(a.pid){const p=PARAMS.find(x=>x.id===a.pid);return p?p.vintage:a.engine_base;}return a.engine_base;}
+function forecastRecord(){return{
+  record:"Avia global forecast - reproducible record",generated:new Date().toISOString(),
+  engine:ENGINE_VINTAGE,
+  assumptions_snapshot:Object.fromEntries(PARAMS.map(p=>[p.id,{name:p.name,vintage:p.vintage}])),
+  adjustments:Object.entries(LEDGER).map(([k,a])=>({key:k,...a,engine_now:engNow(a),drift:Math.abs(engNow(a)-a.engine_base)>1e-9})),
+  reproduce:"Re-run the engine at engine.vintage on the listed data inputs, then apply each adjustment (set target to value). engine_base is the engine figure each adjustment was authored against; if a re-run changes it, the adjustment is flagged drift and must be reviewed before re-applying."};}
+function exportRecord(){
+  const blob=new Blob([JSON.stringify(forecastRecord(),null,1)],{type:"application/json"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+  a.download="avia_forecast_record_"+VN+"_"+today()+".json";
+  document.body.appendChild(a);a.click();a.remove();}
+function simCorrection(){ // demonstrate a corrected engine re-run: engine base moves, ledger flags drift
+  const p=PARAMS.find(x=>x.id==="gdpIN");p.vintage=Math.round((p.vintage+0.2)*10)/10;
+  ENGINE_VINTAGE.vintage=VN+" (re-run "+today()+")";renderSB();}
+function ledgerRows(){
+  const keys=Object.keys(LEDGER);
+  if(!keys.length)return `<tr><td colspan="7" class="mut">No adjustments recorded yet. Edit and run, then "Record this forecast".</td></tr>`;
+  return keys.map(k=>{const a=LEDGER[k];const en=engNow(a);const drift=Math.abs(en-a.engine_base)>1e-9;
+    const d=Math.round((a.value-a.engine_base)*100)/100;
+    return `<tr><td>${a.target}<div class="mut" style="font-size:10px">${a.scope}</div></td>
+      <td class="num">${a.engine_base}</td><td class="num"><b>${a.value}</b></td>
+      <td class="num ${d>=0?'pos':'neg'}">${(d>=0?"+":"")+d}</td>
+      <td>${a.author}<div class="mut" style="font-size:10px">${a.date} &middot; ${a.vintage}</div></td>
+      <td class="mut">${a.reason}</td>
+      <td>${drift?`<b class="neg">review: engine now ${en}</b>`:`<b class="pos">applies</b>`} &middot; <a href="#" onclick="retireAdj('${k}');return false" class="mut">retire</a></td></tr>`;}).join("");
+}
+function ledgerPanel(){const di=ENGINE_VINTAGE.data_inputs;
+  return `<div class="card" style="margin-top:14px">
+    <h3>Forecast record and adjustment ledger - the recreatable forecast</h3>
+    <p class="mut" style="font-size:11.5px;margin:2px 0 10px">forecast = engine(${ENGINE_VINTAGE.vintage}) + the adjustments below. The ledger holds the FINAL value per target, not every intermediate edit, so re-running the engine and reapplying these reproduces the forecast exactly. If a re-run moves the engine value a row was built on, that row is flagged for review.</p>
+    <div class="runstrip" style="margin:0 0 8px">
+      <span>Sabre: <b>${di.sabre_od}</b></span><span>ACI: <b>${di.aci_throughput}</b></span>
+      <span>OAG: <b>${di.oag_schedules}</b></span><span>OEF: <b>${di.oef_gdp}</b></span></div>
+    <table><tr><th>Target</th><th class="num">Engine base</th><th class="num">Final</th><th class="num">&#916;</th><th>Author</th><th>Reason</th><th>On engine re-run</th></tr>
+    ${ledgerRows()}</table>
+    <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn run" onclick="commitSandboxToLedger()">Record this forecast (commit edits to the ledger)</button>
+      <button class="btn ghost" onclick="addAdjustment()">Add airport/route adjustment</button>
+      <button class="btn ghost" onclick="exportRecord()">Export reproducible record (JSON)</button>
+      <button class="btn ghost" onclick="simCorrection()">Simulate corrected engine re-run</button></div></div>`;
+}
+// ================= BESPOKE CLIENT - QSI-style =================
+let APT2=[ // code,name,country,region, basePax25, g, cap, domShare, conxShare, gdpE, dest mix [dom, intra-EU/short, longhaul...]
+ {c:"GOA",n:"Genoa",cty:"Italy",reg:"Europe",base:1.62,g:.034,cap:2.0,dom:.42,cx:.02,ge:1.05,mix:[.42,.46,.12],tpc:1.3},
+ {c:"BLQ",n:"Bologna",cty:"Italy",reg:"Europe",base:9.9,g:.028,cap:12,dom:.25,cx:.03,ge:1.10,mix:[.25,.58,.17],tpc:1.4},
+ {c:"LGW",n:"Gatwick",cty:"United Kingdom",reg:"Europe",base:15.5,g:.020,cap:16,dom:.08,cx:.05,ge:1.18,mix:[.08,.62,.30],tpc:2.6},
+ {c:"MAN",n:"Manchester",cty:"United Kingdom",reg:"Europe",base:28.1,g:.024,cap:0,dom:.06,cx:.04,ge:1.15,mix:[.06,.60,.34],tpc:2.3},
+ {c:"AHB",n:"Abha",cty:"Saudi Arabia",reg:"Middle East",base:1.5,g:.05,cap:2.2,dom:.78,cx:.01,ge:1.45,mix:[.78,.18,.04],tpc:0.9},
+ {c:"DEL",n:"Delhi",cty:"India",reg:"Asia Pacific",base:25.9,g:.062,cap:31,dom:.62,cx:.18,ge:1.55,mix:[.62,.20,.18],tpc:0.15},
+ {c:"DXB",n:"Dubai",cty:"UAE",reg:"Middle East",base:30.8,g:.040,cap:39,dom:0,cx:.38,ge:1.30,mix:[0,.42,.58],tpc:3.4}];
+const MIXN=["Domestic","Short haul int'l","Long haul"];
+let BC={apt:null,gen:false,tab:"inputs",over:{},ovlOn:{tower:false,intv:false,surv:false,plan:false,cdat:false},scnOn:{hi:true,lo:true,shock:false,fail:false,capd:false},bum:{},bumX:[],qsi:{},qsiYr:{},blendN:3,bumApply:false};
+const OVL=[
+ {id:"tower",code:"TOWERLOG",txt:"Client movement logs: practical capacity re-based +33%",why:"Tower data shows throughput above declared capacity"},
+ {id:"intv",code:"INTERVIEW",txt:"Carrier commits +2 based aircraft "+(BY+2)+", decaying to demand path by "+(BY+9),why:"Committed base expansion; decay per method rule"},
+ {id:"surv",code:"SURVEY",txt:"Catchment survey: leakage 8pp lower than public assumption (+0.4pp growth)",why:"Survey n=2,400; retained demand"},
+ {id:"plan",code:"CLIENT-PLAN",txt:"Masterplan terminal extension: +50% capacity step "+(BY+6),why:"Board-approved, funding identified"},
+ {id:"cdat",code:"CLIENT-DATA",txt:"30-year client series supports local GDP elasticity +0.17 vs pooled",why:"Local estimate passes T1-T6 on client's longer series; project-local only"}];
+function ov(key,fallback){const v=BC.over[key];return (v===undefined||v===null||v==="")?fallback:parseFloat(v);}
+function drv(a){ // engine-derived defaults not stored per airport; seats/LF at SEGMENT level (dom / short-haul int'l / long-haul)
+  const eu=a.reg==="Europe",me=a.reg==="Middle East";
+  return {gT:eu?1.4:me?2.0:2.4,
+    tpcSat:eu?3.6:me?5.0:3.2,
+    seatsD:eu?150:me?165:180, seatsS:eu?176:me?182:190, seatsL:eu?295:me?330:310,
+    lfD:eu?80:78, lfS:eu?86:84, lfL:eu?84:82};}
+function bcParams(useOv){ // the FULL resolved input set: engine default per input, override where the client gives data
+  const a=BC.apt,d=drv(a);
+  const eu=a.reg==="Europe";
+  const P={base:a.base, domSh:a.dom*100, txr:a.cx*100, lh:a.mix[2]*100/Math.max(1e-9,1-a.dom), outSh:50,
+    g0:a.g*100, ge:a.ge, gT:d.gT, tpc:a.tpc, tpcSat:d.tpcSat,
+    cap:a.cap, capYr:BY+7, capSz:0, spillS:85, spillM:10,
+    seatsD:d.seatsD, seatsS:d.seatsS, seatsL:d.seatsL, lfD:d.lfD, lfS:d.lfS, lfL:d.lfL, scenD:0.5,
+    cargoT:Math.round(a.base*(a.cx>0.2?30:8)), cargoG:eu?2.5:4.0, tPerAtm:60,
+    gaPax:Math.max(2,Math.round(a.base*2)), gaAtmK:Math.max(1,Math.round(a.base*0.3*10)/10), gaG:1.0,
+    tau:-0.3, fuel:2.1, carbP:130, safSh:6, effI:1.0, lccShF:eu?30:20};
+  if(useOv)Object.keys(P).forEach(k=>P[k]=ov(k,P[k]));
+  // inputs are PATHS in the engine (annual vectors, as in Jess's sheets). A scalar here holds flat or
+  // follows the engine's own shape; "a>b" ramps from a at the base year to b at the horizon.
+  P.hasPath=k=>useOv&&BC.over[k]!==undefined&&String(BC.over[k]).includes(">");
+  P.pf=(k,y)=>{if(P.hasPath(k)){const[v0,v1]=String(BC.over[k]).split(">").map(parseFloat);
+    return v0+(v1-v0)*Math.min(1,Math.max(0,(y-BY)/(HZ-BY)));}return P[k];};
+  return P;}
+function atmSeries(r,S){ // segment-level ATMs ('000), seats/LF as paths (upgauging and LF drift supported via a>b)
+  const P=r.P;
+  return YRS.map((y,i)=>{const lhP=S.intl[i]*(P.pf("lh",y)/100),shP=S.intl[i]-lhP;
+    return (S.dom[i]*1e6/(P.pf("seatsD",y)*P.pf("lfD",y)/100)+shP*1e6/(P.pf("seatsS",y)*P.pf("lfS",y)/100)+lhP*1e6/(P.pf("seatsL",y)*P.pf("lfL",y)/100))/1000;});}
+function bcSeriesRaw(which,opts){ // 'base' = engine defaults, 'bes' = overrides + overlays; opts for scenarios
+  const a=BC.apt;if(!a)return null;opts=opts||{};
+  const useOv=which==="bes";
+  const P=bcParams(useOv);
+  const gT=P.gT/100;
+  let g0=P.g0/100+(opts.g0pp||0)/100;
+  g0=gT+(g0-gT)*(P.ge/a.ge); // elasticity override scales the excess over terminal growth
+  g0+=-0.58*(P.tau-(-0.3))/100; // fare trend flows to demand via the segment fare elasticity
+  let cap=P.cap, capSteps=[];let lvl=null;
+  const slip=opts.capSlip||0;
+  if(useOv){
+    if(BC.ovlOn.tower)cap=cap*1.33;
+    if(BC.ovlOn.surv)g0+=.004;
+    if(BC.ovlOn.cdat)g0+= .17/a.ge*a.g*0.55;
+    if(BC.ovlOn.plan)capSteps.push([BY+6+slip,cap*0.5]);
+    if(BC.ovlOn.intv)lvl={from:BY+2,to:BY+9,lvl:.12};
+    if(P.capSz>0)capSteps.push([P.capYr+slip,P.capSz]);}
+  const u=YRS.map(y=>y<=BY?P.base*Math.pow(1+g0,y-BY)*(COVID[y]||1):null);
+  // market maturity via propensity to fly: position on the log propensity vs GDP-per-capita curve
+  // sat = share of saturation trips per capita reached; excess growth over terminal scales with remaining headroom
+  const sat0=Math.min(.97,P.tpc/P.tpcSat);
+  for(let i=0;i<YRS.length;i++){const y=YRS[i];if(y<=BY)continue;
+    const sat=Math.min(1,sat0*(u[i-1]/P.base)/Math.pow(1.004,y-BY)); // trips pc index = traffic / population
+    let gr=gT+(g0-gT)*Math.max(0,(1-sat)/(1-sat0));
+    if(lvl&&y>=lvl.from&&y<=lvl.to){const t=(lvl.to-y)/(lvl.to-lvl.from);gr+=(y===lvl.from?lvl.lvl:lvl.lvl*0.15*t);}
+    u[i]=u[i-1]*(1+gr);}
+  if(opts.shock){const{y0,depth,rec,back}=opts.shock;
+    for(let i=0;i<YRS.length;i++){const t=YRS[i]-y0;if(t<0)continue;
+      const f=(back!==undefined)?1-depth*(1-back*Math.min(1,t/rec)):1-depth*Math.max(0,1-t/rec);
+      u[i]*=f;}}
+  // BUM merge (level-anchored, additive): applying BUM shifts the LEVEL by the analyst's NET change only -
+  // the edited existing schedule versus its engine-default baseline, plus added routes from their launch
+  // year - ramped in over N years and PERSISTED. The sample's absolute size cancels, so an unchanged
+  // schedule leaves the forecast untouched; new routes that stick raise it, a removal or airline failure
+  // lowers it, and the long-run model growth then compounds on the shifted level.
+  if(useOv&&BC.bumApply&&!opts.noBum){
+    const N=Math.max(1,BC.blendN||3);
+    const editDelta=(bumState(a).reduce((s,r)=>s+(r.custom?0:r.p1),0)-bumBaselineK(a))/1000; // m pax, existing-schedule edits
+    const adds=addedRoutes(a);                                                                // custom + ticked QSI, with launch years
+    for(let i=0;i<YRS.length;i++){const t=YRS[i]-BY;if(t<1)continue;
+      let add=0; adds.forEach(r=>{if(YRS[i]>=r.yr){const tt=YRS[i]-r.yr+1;add+=(r.pax/1000)*Math.min(1,tt/N);}});
+      u[i]+= editDelta*Math.min(1,t/N)+add;}}
+  const capF=y=>{let K=cap*KGROW(y);capSteps.forEach(([yy,add])=>{if(y>=yy)K+=add;});return K;};
+  return {u,c:constrain(u,capF,P.spillM/100,P.spillS/100),P,capF};}
+// ---- BUM: 2-year bottom-up model at route / airline / aircraft / LF level (per Abha, Bologna, Kruger BUM precedents) ----
+// Airline-specific fleets: same nominal type, different variants and seat counts per carrier (from OAG / ch-aviation config)
+const FLEETS={
+ "ITA Airways":{"A220-100":125,"A220-300":148,"A320neo":180,"A321neo":218},
+ "easyJet":{"A319":156,"A320":186,"A321neo":235},
+ "Ryanair":{"B737-800":189,"B737-8200":197},
+ "Lufthansa":{"A319":138,"A320neo":180,"A321":215},
+ "KLM":{"E190":100,"E195-E2":132,"B737-800":186},
+ "Turkish":{"B737-9":169,"A321neo":196,"A330-300":289},
+ "Vueling":{"A320":180,"A321":220},
+ "Saudia":{"A320":144,"A321":205,"B787-9":298},
+ "flynas":{"A320neo":174,"A321neo":215},
+ "flydubai":{"B737-800":174,"B737-MAX8":186},
+ "Egyptair":{"A320neo":142,"B737-800":154},
+ "IndiGo":{"A320neo":186,"A321neo":232},
+ "Emirates":{"B777-300ER":354,"A380":484},
+ "Air India":{"B787-8":256,"B777-300ER":342,"A321neo":218}};
+const GENFLEET={"A320":180,"A321":220,"B737-800":189,"E195":132,"B787-9":290,"ATR72":72};
+function fleetOf(al){return FLEETS[al]||GENFLEET;}
+function seatsOf(al,ac){const f=fleetOf(al);return f[ac]||GENFLEET[ac]||180;}
+function bumRoutes(a){
+  if(a.reg==="Middle East")return [["JED","Saudia","A320",21,.82],["JED","flynas","A320neo",10,.86],["RUH","flynas","A320neo",14,.85],["DXB","flydubai","B737-800",7,.83],["CAI","Egyptair","A320neo",4,.79],["IST","Turkish","A321neo",5,.81]];
+  if(a.reg==="Asia Pacific")return [["BOM","IndiGo","A321neo",28,.87],["BLR","IndiGo","A320neo",21,.86],["DXB","Emirates","B777-300ER",14,.82],["SIN","Air India","B787-8",7,.80],["LHR","Air India","B787-8",7,.83]];
+  return [["FCO","ITA Airways","A220-300",13,.78],["FCO","easyJet","A320",6,.84],["LGW","easyJet","A320",7,.86],["STN","Ryanair","B737-800",5,.90],["MUC","Lufthansa","A319",12,.76],["AMS","KLM","E195-E2",7,.79],["IST","Turkish","A321neo",7,.82],["BCN","Vueling","A320",4,.84]];}
+function qsiCands(a){
+  const rc=CKCAND&&CKCAND[a.c];               // real candidate routes from the QSI tool feed (Sabre market + QSI-optimised pax)
+  if(rc&&rc.length) return rc.map(r=>[r.dst, (r.qsi!=null?("QSI "+r.qsi):("mkt "+r.market_pax_000+"k")), Math.round(r.est_pax_000), (r.p2p_000!=null&&r.conx_000!=null?("P2P "+r.p2p_000+"k + conx "+r.conx_000+"k"):""), (r.plan?(r.plan.airline+" "+r.plan.aircraft+" "+r.plan.freq+"x/wk"):"")]);
+  if(a.reg==="Middle East")return [["DOH","QSI 0.74",95],["BAH","QSI 0.61",60],["AMM","QSI 0.55",48],["SSH","QSI 0.49",42]];
+  if(a.reg==="Asia Pacific")return [["HAN","QSI 0.71",180],["JFK","QSI 0.66",210],["MEL","QSI 0.58",150],["CGK","QSI 0.52",120]];
+  return [["CPH","QSI 0.72",120],["LIS","QSI 0.64",95],["DUS","QSI 0.57",80],["TLV","QSI 0.51",110]];}
+function rPax(f,lf,seats){return f*2*52*seats*lf/1e3;} // '000 two-way annual passengers
+function bumScale(a){ // BUM and base year must reconcile: schedules scale with the resolved base-year input
+  return bcParams(true).base/a.base;}
+function bumState(a){
+  const P=bcParams(true);const g0=P.g0/100;const k=bumScale(a);
+  const nv=(v,d)=>(v!==undefined&&v!=="")?parseFloat(v):d;
+  const eng=bumRoutes(a).map((r,i)=>{const [dst,al,ac,fR,lfR]=r;const o=BC.bum[i]||{};
+    // BASE YEAR is editable too: the engine ingests two snapshot weeks (May + Oct), so the analyst may
+    // legitimately know more - route launches not yet filed, better current LF. Edits are reason-coded.
+    const f=nv(o.f0,Math.round(fR*k*10)/10);
+    const lf=nv(o.lf0,lfR*100)/100;
+    const ac1=o.ac1||ac; // BY+1 aircraft editable per route: upgauging, from the AIRLINE'S OWN fleet
+    const f1=nv(o.f,Math.round(f*(1+g0)*10)/10);
+    const lf1=nv(o.lf,Math.min(lf*100+1,92))/100;
+    return {i,dst,al,ac,ac1,f,lf,f1,lf1,p0:rPax(f,lf,seatsOf(al,ac)),p1:rPax(f1,lf1,seatsOf(al,ac1)),custom:false};});
+  const cus=(BC.bumX||[]).map((c,j)=>{ // analyst-added lines: competitor capacity on a route, or a route not yet filed
+    const al=c.al||"New entrant";
+    const fl=Object.keys(fleetOf(al));
+    const ac=(c.ac&&(fleetOf(al)[c.ac]||GENFLEET[c.ac]))?c.ac:fl[0];
+    const ac1=(c.ac1&&(fleetOf(al)[c.ac1]||GENFLEET[c.ac1]))?c.ac1:ac;
+    const f=nv(c.f0,0),lf=nv(c.lf0,80)/100,f1=nv(c.f1,3),lf1=nv(c.lf1,82)/100;
+    return {i:"x"+j,j,dst:c.dst||"NEW",al,ac,ac1,f,lf,f1,lf1,p0:rPax(f,lf,seatsOf(al,ac)),p1:rPax(f1,lf1,seatsOf(al,ac1)),custom:true};});
+  return eng.concat(cus);}
+function bumAddX(dst,al){(BC.bumX=BC.bumX||[]).push({dst,al});renderBC();}
+function bumDelX(j){BC.bumX.splice(j,1);renderBC();}
+function bumSetX(j,k,v){BC.bumX[j][k]=v;renderBC();}
+function acSel(al,cur,handler){ // airline-specific fleet: variants with their own seat counts
+  const fl=fleetOf(al);
+  return `<select style="padding:2px;border:1px solid var(--gold);background:#FFF2CC;border-radius:4px;font-weight:600;color:#0000CC" onchange="${handler}">${Object.keys(fl).map(t=>`<option value="${t}" ${t===cur?"selected":""}>${t} (${fl[t]})</option>`).join("")}</select>`;}
+function addedRoutes(a){ // the ANALYST-added routes (custom SCHED-GAP + ticked QSI), each with a launch year
+  const out=[],k=bumScale(a);
+  bumState(a).forEach(r=>{if(r.custom)out.push({name:a.c+"-"+r.dst,pax:r.p1,yr:(BC.bumX[r.j]&&BC.bumX[r.j].yr)||BY+1});});
+  qsiCands(a).forEach((q,i)=>{if(BC.qsi[i])out.push({name:a.c+"-"+q[0],pax:q[2]*k,yr:BC.qsiYr[i]||BY+1});});
+  return out;}
+function bumBaselineK(a){ // existing sample routes at ENGINE DEFAULTS (no analyst edits), '000 pax
+  const P=bcParams(true); const g0=P.g0/100; const k=bumScale(a); let t=0;
+  bumRoutes(a).forEach(([dst,al,ac,fR,lfR])=>{
+    const f=Math.round(fR*k*10)/10; const lf=lfR;
+    const f1=Math.round(f*(1+g0)*10)/10; const lf1=Math.min(lf*100+1,92)/100;
+    t+=rPax(f1,lf1,seatsOf(al,ac));});
+  return t;}
+function bumTotalK(a){ // BY+1 total: existing schedule + added routes that have launched by BY+1
+  let t=bumState(a).reduce((s,r)=>s+(r.custom?0:r.p1),0);
+  addedRoutes(a).forEach(r=>{if(r.yr<=BY+1)t+=r.pax;});
+  return t;}
+function bumGrowth(a){ // BUM-implied growth for BY+1 on the identified route base, incl. QSI adds
+  const rows=bumState(a);
+  const t0=rows.reduce((s,r)=>s+r.p0,0);
+  return t0>0?bumTotalK(a)/t0-1:NaN;}
+function bcSplit(r){ // segment-level splits: engine-endogenous drift by default; a user PATH (a>b) overrides the drift
+  const P=r.P;const gTd=P.gT/100;
+  const dom=[],intl=[],conx=[],od=[];
+  let dsh=P.domSh/100;
+  for(let i=0;i<YRS.length;i++){const y=YRS[i];
+    if(P.hasPath("domSh"))dsh=P.pf("domSh",y)/100;
+    else if(y>BY+1&&dsh>0){const gr=r.u[i]/r.u[i-1]-1;const gd=gTd+(gr-gTd)*0.55; // domestic carries ~55% of the excess growth
+      dsh=Math.max(0,Math.min(1,dsh*(1+gd)/(1+gr)));}
+    const tx=P.hasPath("txr")?Math.min(P.pf("txr",y)/100,.6) // client path (e.g. hub carrier growing) replaces engine drift
+      :Math.min(P.txr/100+(BC.ovlOn.intv?Math.min(Math.max(0,y-BY-2)*.004,.05):Math.max(0,y-BY)*.0005),.6);
+    dom.push(r.c[i]*dsh);intl.push(r.c[i]*(1-dsh));conx.push(r.c[i]*tx);od.push(r.c[i]*(1-tx));}
+  return {dom,intl,conx,od};}
+// --- client scenarios: high/low plus one-off and shock scenarios, per engagement ---
+const SCN=[
+ {id:"hi",name:"High case",desc:"Near-term growth + scenario delta; client-set delta on the Inputs tab"},
+ {id:"lo",name:"Low case",desc:"Near-term growth - scenario delta; conservative GDP path"},
+ {id:"shock",name:"Demand shock "+(BY+6),desc:"One-off -30% in "+(BY+6)+", 3-year recovery to the base path (pandemic-style)"},
+ {id:"fail",name:"Based carrier failure "+(BY+4),desc:"-18% level from "+(BY+4)+"; half backfilled by other carriers over 4 years"},
+ {id:"capd",name:"Capacity step delayed 5 years",desc:"Client capacity step and masterplan overlay slip 5 years"}];
+function scnSeries(id){const P=bcParams(true);
+  if(id==="hi")return bcSeries("bes",{g0pp:+P.scenD});
+  if(id==="lo")return bcSeries("bes",{g0pp:-P.scenD});
+  if(id==="shock")return bcSeries("bes",{shock:{y0:BY+6,depth:.30,rec:3}});
+  if(id==="fail")return bcSeries("bes",{shock:{y0:BY+4,depth:.18,rec:4,back:.5}});
+  if(id==="capd")return bcSeries("bes",{capSlip:5});
+  return bcSeries("bes");}
+function sumTable(bes,base){ // the impact table: spot years + CAGRs, updates with every input change
+  const P=bes.P;const sp=SPOTS;
+  const S=bcSplit(bes);
+  const A=atmSeries(bes,S);
+  const cg=y=>P.cargoT*Math.pow(1+P.cargoG/100,y-BY);
+  const gaA=y=>P.gaAtmK*Math.pow(1+P.gaG/100,y-BY);
+  const rows=[
+   ["Total passengers (m)",y=>bes.c[iY(y)],2],
+   ["vs engine baseline (m)",y=>bes.c[iY(y)]-base.c[iY(y)],2,"d"],
+   ["International (m)",y=>S.intl[iY(y)],2],
+   ["Domestic (m)",y=>S.dom[iY(y)],2],
+   ["Transfer (m)",y=>S.conx[iY(y)],2],
+   ["O&D (m)",y=>S.od[iY(y)],2],
+   ["Departing passengers (m)",y=>bes.c[iY(y)]/2,2],
+   ["GA passengers ('000)",y=>P.gaPax*Math.pow(1+P.gaG/100,y-BY),0],
+   ["Commercial ATMs ('000)",y=>A[iY(y)],1],
+   ["Cargo tonnage ('000 t)",y=>cg(y),0],
+   ["Cargo ATMs ('000)",y=>cg(y)/P.tPerAtm,1],
+   ["GA ATMs ('000)",y=>gaA(y),1],
+   ["Total ATMs incl cargo & GA ('000)",y=>A[iY(y)]+cg(y)/P.tPerAtm+gaA(y),1],
+   ["Unconstrained (m)",y=>bes.u[iY(y)],2],
+   ["Capacity requirement (m)",y=>bes.u[iY(y)]-bes.c[iY(y)],2]];
+  const cag=(f,y0,y1)=>{const v0=f(y0),v1=f(y1);return (v0>0&&v1>0)?(((v1/v0)**(1/(y1-y0))-1)*100).toFixed(1)+"%":"-";};
+  const hd=`<tr><th></th>${sp.map(y=>`<th class="num">${yl(y)}</th>`).join("")}<th class="num">${yy(BY)}-${yy(BY+5).slice(1)}</th><th class="num">${yy(BY+5)}-${yy(BY+20).slice(1)}</th><th class="num">${yy(BY+20)}-${yy(HZ).slice(1)}</th></tr>`;
+  const tr=rows.map(r=>{const [nm,f,dp,d]=r;const isM=nm.includes("(m)");const label=nm.replace(" (m)","");
+    const cells=sp.map(y=>{const v=f(y);const cls=d?(v>=0?"pos":"neg"):"";
+      const txt=isM?((d&&v>=0?"+":"")+fmM(v)):((d&&v>=0?"+":"")+v.toFixed(dp));
+      return `<td class="num ${cls}">${txt}</td>`;}).join("");
+    const cg=d?"<td class='num'>-</td><td class='num'>-</td><td class='num'>-</td>":`<td class="num">${cag(f,BY,BY+5)}</td><td class="num">${cag(f,BY+5,BY+20)}</td><td class="num">${cag(f,BY+20,HZ)}</td>`;
+    return `<tr><td${d?' class="mut" style="font-size:11px"':''}>${label}</td>${cells}${cg}</tr>`;}).join("");
+  return `<table style="font-size:11px">${hd}${tr}</table>`;}
+// --- Avia-format mini charts (per Avia Excel chart guidelines: Arial, Office colours, no gridlines, no borders, legend bottom) ---
+const AV=["#156082","#E97132","#196B24","#0F9ED5","#A02B93","#4EA72E"]; // Office colour cycle, pinned (see Chart Catalogue doc)
+function gCard(title,src,inner,legend,wide){
+  const leg=legend?`<div class="leg">${legend.map(([n,c,ln])=>`<span><span class="sw" style="display:inline-block;background:${c};${ln?'height:3px;margin-bottom:2px':''}"></span> ${n}</span>`).join("")}</div>`:"";
+  return `<div class="gcard${wide?' wide':''}" onclick="alert('Production: renders this chart on its own chart sheet in the Excel model and copies as PNG at report scale (Avia chart guidelines).')">
+   <h4>${title}</h4><div class="src">${src}</div>${inner}${leg}</div>`;}
+function mkBridge(baseLabel,base,steps,totLabel,W,H){W=W||420;H=H||210;
+  const P=10,bot=H-34,top=14;
+  const _yunit=`<text x="2" y="11" font-size="8" fill="#8a97a5">m pax</text>`;
+  const tot=base+steps.reduce((z,x)=>z+x.val,0);
+  const mx=Math.max(tot,base,1)*1.16;
+  const cells=steps.length+2,gap=(W-2*P)/cells,bw=gap*0.6;
+  const Y=v=>bot-(bot-top)*(v/mx);
+  const xl=(x,t)=>`<text x="${x+bw/2}" y="${H-4}" font-size="8.5" fill="#404040" text-anchor="middle">${t.length>11?t.slice(0,10)+"\u2026":t}</text>`;
+  let x=P+gap*0.2,g="";
+  g+=`<rect x="${x}" y="${Y(base)}" width="${bw}" height="${bot-Y(base)}" fill="#4A5B6B"/><text x="${x+bw/2}" y="${Y(base)-3}" font-size="9" font-weight="bold" fill="#404040" text-anchor="middle">${Math.round(base)}</text>`+xl(x,baseLabel);
+  let cum=base,px=x;
+  steps.forEach(st=>{x+=gap;const y0=Y(cum),y1=Y(cum+st.val);
+    g+=`<line x1="${px+bw}" y1="${y0}" x2="${x}" y2="${y0}" stroke="#c8ced4" stroke-dasharray="2 2"/>`;
+    g+=`<rect x="${x}" y="${Math.min(y0,y1)}" width="${bw}" height="${Math.max(1,Math.abs(y1-y0))}" fill="${st.val>=0?'#196B24':'#b3452b'}"/>`;
+    g+=`<text x="${x+bw/2}" y="${Math.min(y0,y1)-3}" font-size="9" font-weight="bold" fill="${st.val>=0?'#196B24':'#b3452b'}" text-anchor="middle">${(st.val>=0?"+":"")+Math.round(st.val)}</text>`+xl(x,st.name);
+    cum+=st.val;px=x;});
+  x+=gap;g+=`<line x1="${px+bw}" y1="${Y(cum)}" x2="${x}" y2="${Y(cum)}" stroke="#c8ced4" stroke-dasharray="2 2"/>`;
+  g+=`<rect x="${x}" y="${Y(tot)}" width="${bw}" height="${bot-Y(tot)}" fill="#156082"/><text x="${x+bw/2}" y="${Y(tot)-3}" font-size="9" font-weight="bold" fill="#156082" text-anchor="middle">${Math.round(tot)}</text>`+xl(x,totLabel);
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%" font-family="Arial">${_yunit}${g}</svg>`;}
+function mSvg(inner,W=330,H=140){return `<svg viewBox="0 0 ${W} ${H}" style="width:100%" font-family="Arial">${inner}</svg>`;}
+function xAxis(X,H,years){return `<line x1="${X(0)}" y1="${H-16}" x2="${X(YRS.length-1)}" y2="${H-16}" stroke="#BFBFBF"/>`+years.map(y=>`<text x="${X(iY(y))}" y="${H-4}" font-size="9.5" fill="#404040" text-anchor="middle">${y}</text>`).join("");}
+function mLine(seriesArr,cols,dash,W=330,H=140){
+  const P=8;const mx=Math.max(...seriesArr.flat())*1.08;
+  const X=i=>P+(W-P-8)*(i/(YRS.length-1)),Y=v=>H-18-(H-32)*(v/mx);
+  let s="";seriesArr.forEach((sr,k)=>{
+    s+=`<path d="${sr.map((v,i)=>(i?"L":"M")+X(i).toFixed(1)+","+Y(v).toFixed(1)).join(" ")}" fill="none" stroke="${cols[k]}" stroke-width="2" ${dash&&dash[k]?'stroke-dasharray="6 4"':''}/>`;
+    const iL=sr.length-1;s+=`<text x="${X(iL)-2}" y="${Y(sr[iL])-4}" font-size="9.5" font-weight="bold" fill="${cols[k]}" text-anchor="end">${sr[iL]>=100?Math.round(sr[iL]):sr[iL].toFixed(1)}</text>`;});
+  return mSvg(s+xAxis(X,H,[BY-5,BY+5,BY+20,BY+35]));}
+function mCols(vals,labels,col,fmt){
+  const W=330,H=140,P=10;const mx=Math.max(...vals.map(Math.abs))*1.2||1;
+  const n=vals.length,bw=(W-P-10)/n;
+  let s=vals.map((v,i)=>{const h=(H-52)*Math.abs(v)/mx;
+    return `<rect x="${P+i*bw+bw*0.18}" y="${H-16-h}" width="${bw*0.64}" height="${h}" fill="${Array.isArray(col)?col[i]:col}"/>
+     <text x="${P+i*bw+bw/2}" y="${H-20-h}" font-size="9.5" font-weight="bold" fill="#404040" text-anchor="middle">${fmt?fmt(v):v}</text>`;}).join("");
+  s+=`<line x1="${P}" y1="${H-16}" x2="${W-4}" y2="${H-16}" stroke="#BFBFBF"/>`;
+  s+=labels.map((l,i)=>`<text x="${P+i*bw+bw/2}" y="${H-4}" font-size="9.5" fill="#404040" text-anchor="middle">${l}</text>`).join("");
+  return mSvg(s);}
+function mStackCols(seriesArr,cols,labels,idxs){ // stacked columns at given year indexes
+  const W=330,H=140,P=10;const n=idxs.length,bw=(W-P-10)/n;
+  const tot=idxs.map(ix=>seriesArr.reduce((a,sr)=>a+sr[ix],0));const mx=Math.max(...tot)*1.15;
+  let s="";idxs.forEach((ix,i)=>{let y0=H-16;
+    seriesArr.forEach((sr,k)=>{const h=(H-40)*sr[ix]/mx;y0-=h;
+      s+=`<rect x="${P+i*bw+bw*0.18}" y="${y0}" width="${bw*0.64}" height="${h}" fill="${cols[k]}"/>`;});
+    s+=`<text x="${P+i*bw+bw/2}" y="${y0-4}" font-size="9.5" font-weight="bold" fill="#404040" text-anchor="middle">${tot[i].toFixed(1)}</text>`;});
+  s+=`<line x1="${P}" y1="${H-16}" x2="${W-4}" y2="${H-16}" stroke="#BFBFBF"/>`;
+  s+=idxs.map((ix,i)=>`<text x="${P+i*bw+bw/2}" y="${H-4}" font-size="9.5" fill="#404040" text-anchor="middle">${labels[i]}</text>`).join("");
+  return mSvg(s);}
+function mShare100(sharesByYear,cols,labels){ // 100% stacked columns
+  const W=330,H=140,P=10;const n=sharesByYear.length,bw=(W-P-10)/n;
+  let s="";sharesByYear.forEach(([lab,sh],i)=>{let y0=H-16;
+    sh.forEach((p,k)=>{const h=(H-34)*p;y0-=h;
+      s+=`<rect x="${P+i*bw+bw*0.15}" y="${y0}" width="${bw*0.7}" height="${h}" fill="${cols[k]}"/>`;
+      if(p>.12)s+=`<text x="${P+i*bw+bw/2}" y="${y0+h/2+3}" font-size="9" fill="#fff" text-anchor="middle">${Math.round(p*100)}%</text>`;});
+    s+=`<text x="${P+i*bw+bw/2}" y="${H-4}" font-size="9.5" fill="#404040" text-anchor="middle">${lab}</text>`;});
+  s+=`<line x1="${P}" y1="${H-16}" x2="${W-4}" y2="${H-16}" stroke="#BFBFBF"/>`;
+  return mSvg(s);}
+function mScatter(pts,fit){
+  const W=330,H=140,P=26;
+  const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);
+  const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+  const X=v=>P+(W-P-10)*(v-x0)/(x1-x0),Y=v=>H-22-(H-36)*(v-y0)/(y1-y0);
+  let s=pts.map(p=>`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="3" fill="${AV[0]}"/>`).join("");
+  s+=`<line x1="${X(x0)}" y1="${Y(fit(x0))}" x2="${X(x1)}" y2="${Y(fit(x1))}" stroke="${AV[1]}" stroke-width="2" stroke-dasharray="6 4"/>`;
+  s+=`<line x1="${P}" y1="${H-22}" x2="${W-8}" y2="${H-22}" stroke="#BFBFBF"/><line x1="${P}" y1="${H-22}" x2="${P}" y2="8" stroke="#BFBFBF"/>`;
+  s+=`<text x="${W/2}" y="${H-8}" font-size="9.5" font-weight="bold" fill="#404040" text-anchor="middle">ln GDP</text>`;
+  s+=`<text x="10" y="${H/2}" font-size="9.5" font-weight="bold" fill="#404040" text-anchor="middle" transform="rotate(270 10 ${H/2})">ln pax</text>`;
+  return mSvg(s);}
+function mProp(P){ // propensity to fly S-curve: trips per capita vs ln GDP per capita, with 2025 and 2045F positions
+  const W=330,H=140,Pd=30;
+  const Sat=P.tpcSat,t0=Math.min(P.tpc,Sat*.965);
+  const s=0.9,m=s*Math.log(Sat/t0-1); // x0=0 at today's ln GDP per capita
+  const x45=20*Math.log(1.015); // GDP per capita +1.5%/yr over 20 years
+  const xa=Math.min(m-3*s,-0.6),xb=Math.max(m+3*s,x45+0.6);
+  const T=x=>Sat/(1+Math.exp(-(x-m)/s));
+  const X=v=>Pd+(W-Pd-8)*(v-xa)/(xb-xa),Y=t=>H-24-(H-40)*(t/Sat);
+  let d="";for(let i=0;i<=40;i++){const x=xa+(xb-xa)*i/40;d+=(i?"L":"M")+X(x).toFixed(1)+","+Y(T(x)).toFixed(1);}
+  let sv=`<path d="${d}" fill="none" stroke="${AV[0]}" stroke-width="2"/>`;
+  sv+=`<line x1="${Pd}" y1="${Y(Sat)}" x2="${W-8}" y2="${Y(Sat)}" stroke="#BFBFBF" stroke-dasharray="3 3"/><text x="${W-10}" y="${Y(Sat)-4}" font-size="9" fill="#404040" text-anchor="end">saturation ${Sat.toFixed(1)}</text>`;
+  sv+=`<circle cx="${X(0)}" cy="${Y(t0)}" r="4" fill="${AV[1]}"/><text x="${X(0)+6}" y="${Y(t0)+3}" font-size="9.5" font-weight="bold" fill="${AV[1]}">${BY} (${t0.toFixed(2)})</text>`;
+  sv+=`<circle cx="${X(x45)}" cy="${Y(T(x45))}" r="4" fill="${AV[2]}"/><text x="${X(x45)+6}" y="${Y(T(x45))-5}" font-size="9.5" font-weight="bold" fill="${AV[2]}">${BY+20}F (${T(x45).toFixed(2)})</text>`;
+  sv+=`<line x1="${Pd}" y1="${H-24}" x2="${W-8}" y2="${H-24}" stroke="#BFBFBF"/>`;
+  sv+=`<text x="${W/2}" y="${H-8}" font-size="9.5" font-weight="bold" fill="#404040" text-anchor="middle">ln GDP per capita</text>`;
+  sv+=`<text x="10" y="${H/2}" font-size="9.5" font-weight="bold" fill="#404040" text-anchor="middle" transform="rotate(270 10 ${H/2})">trips pc</text>`;
+  return mSvg(sv);}
+// world propensity chart, construction per TAS lender deck slide 10:
+// linear x = GDP per capita (PPP, US$); log y = trips per capita; grey country cloud;
+// dashed fitted power-law curve; subject country (teal) at BY and BY+10, comparator (navy)
+// one step ahead on the same path; leader lines down to circular value badges.
+const TEAL="#17877A",NAVY="#1F4E79";
+const PPPGDP={"Italy":54,"United Kingdom":60,"Saudi Arabia":54,"India":9.5,"UAE":76};
+const CMP={"Europe":["Spain",[[2019,47,2.2],[BY,52,2.45]]],
+ "Middle East":["Qatar",[[2019,83,3.9],[BY,87,4.2]]],
+ "Asia Pacific":["China",[[2019,16,0.40],[BY,21,0.52]]]};
+function mPropWorld(P,bes,a){
+  const W=690,H=290,Pd=50;
+  const GPC=PPPGDP[a.cty]||40;
+  const gpc=a.reg==="Asia Pacific"?0.045:a.reg==="Middle East"?0.022:0.015;
+  const XMAX=95;
+  const X=g=>Pd+(W-Pd-14)*(g/XMAX);
+  const l10=t=>Math.log(Math.max(t,1e-4))/Math.LN10;
+  const Y=t=>H-36-(H-56)*((l10(t)+3)/4); // log scale 0.001 .. 10
+  const T=g=>0.05*Math.pow(Math.max(g,0.3),0.9); // fitted power law (curve is the fitted power-law average, 2019)
+  let sv="";
+  // horizontal decade gridlines with 3dp labels, per the slide
+  [[0.001,"0.001"],[0.01,"0.010"],[0.1,"0.100"],[1,"1.000"],[10,"10.000"]].forEach(([t,lab])=>{
+    sv+=`<line x1="${Pd}" y1="${Y(t)}" x2="${W-10}" y2="${Y(t)}" stroke="#EDEDED"/><text x="${Pd-6}" y="${Y(t)+3}" font-size="9.5" fill="#404040" text-anchor="end">${lab}</text>`;});
+  // grey country cloud (unlabelled, circa 70 countries), deterministic scatter about the curve
+  for(let i=0;i<70;i++){const g=1+Math.pow(i/69,1.35)*(XMAX-25)+((i*37)%13)/13*8;
+    const noise=Math.exp(Math.sin(i*7.31)*0.75+Math.cos(i*2.17)*0.35);
+    const t=Math.min(T(g)*noise,8);
+    sv+=`<circle cx="${X(g).toFixed(1)}" cy="${Y(t).toFixed(1)}" r="3.4" fill="#C0C6CC" opacity="0.75"/>`;}
+  // fitted power-law curve, dashed slate
+  let d="";for(let i=0;i<=60;i++){const g=0.5+(XMAX-0.5)*i/60;d+=(i?"L":"M")+X(g).toFixed(1)+","+Y(T(g)).toFixed(1);}
+  sv+=`<path d="${d}" fill="none" stroke="#4A5B6B" stroke-width="2.4" stroke-dasharray="9 6"/>`;
+  // subject country at BY and BY+10 (teal); comparator one step ahead (navy)
+  const sPts=[BY,BY+10].map(y=>{const g=GPC*Math.pow(1+gpc,y-BY);
+    const t=P.tpc*(bes.u[iY(y)]/P.base)/Math.pow(1.004,y-BY);
+    return {lab:a.cty+" ("+y+")",g:Math.min(g,XMAX-4),t:Math.min(t,8),col:TEAL};});
+  const cmp=CMP[a.reg]||CMP["Europe"];
+  const cPts=cmp[1].map(([y,g,t])=>({lab:cmp[0]+" ("+y+")",g,t,col:NAVY}));
+  const all=sPts.concat(cPts);
+  // value badges along the bottom band (inside the empty low-decade space, as on the slide)
+  const bR=27,bcy=H-105;
+  const order=all.map((p,i)=>i).sort((i,j)=>all[i].g-all[j].g);
+  let lastX=Pd+bR;
+  const bx={};order.forEach(i=>{let cx=Math.max(X(all[i].g),lastX+2*bR+14);cx=Math.min(cx,W-bR-6);bx[i]=cx;lastX=cx;});
+  all.forEach((p,i)=>{
+    sv+=`<line x1="${X(p.g)}" y1="${Y(p.t)+5}" x2="${bx[i]}" y2="${bcy-bR}" stroke="${p.col}" stroke-width="1.4"/>`;
+    sv+=`<circle cx="${X(p.g)}" cy="${Y(p.t)}" r="5.5" fill="${p.col}"/>`;
+    sv+=`<text x="${bx[i]}" y="${bcy-bR-16}" font-size="10" font-weight="bold" fill="${p.col}" text-anchor="middle">${p.lab.split(" (")[0]}</text>`;
+    sv+=`<text x="${bx[i]}" y="${bcy-bR-5}" font-size="10" font-weight="bold" fill="${p.col}" text-anchor="middle">(${p.lab.split(" (")[1]}</text>`;
+    sv+=`<circle cx="${bx[i]}" cy="${bcy}" r="${bR}" fill="${p.col}"/>`;
+    sv+=`<text x="${bx[i]}" y="${bcy-2}" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">${p.t.toFixed(2)}</text>`;
+    sv+=`<text x="${bx[i]}" y="${bcy+11}" font-size="10" fill="#fff" text-anchor="middle">trips</text>`;});
+  // axes
+  sv+=`<line x1="${Pd}" y1="${H-36}" x2="${W-10}" y2="${H-36}" stroke="#BFBFBF"/>`;
+  [10,20,30,40,50,60,70,80,90].forEach(g=>{sv+=`<text x="${X(g)}" y="${H-22}" font-size="9.5" fill="#404040" text-anchor="middle">$${g}k</text>`;});
+  sv+=`<text x="${(W+Pd)/2}" y="${H-6}" font-size="10.5" font-weight="bold" fill="#404040" text-anchor="middle">GDP per capita (PPP, US$)</text>`;
+  sv+=`<text x="13" y="${H/2-20}" font-size="10.5" font-weight="bold" fill="#404040" text-anchor="middle" transform="rotate(270 13 ${H/2-20})">Trips per capita (log scale)</text>`;
+  return mSvg(sv,W,H);}
+function mHourly(vals,col){
+  const W=330,H=140,P=10;const mx=Math.max(...vals)*1.15;const bw=(W-P-8)/24;
+  let s=vals.map((v,i)=>`<rect x="${P+i*bw+0.6}" y="${H-16-(H-34)*v/mx}" width="${bw-1.2}" height="${(H-34)*v/mx}" fill="${col}"/>`).join("");
+  s+=`<line x1="${P}" y1="${H-16}" x2="${W-4}" y2="${H-16}" stroke="#BFBFBF"/>`;
+  s+=[0,6,12,18,23].map(h=>`<text x="${P+h*bw+bw/2}" y="${H-4}" font-size="9.5" fill="#404040" text-anchor="middle">${String(h).padStart(2,"0")}</text>`).join("");
+  return mSvg(s);}
+function galleryCards(){
+  const a=BC.apt;const base=bcSeries("base"),bes=bcSeries("bes");
+  const P=bes.P;
+  const sl=(1-P.lh/100)*1.1+(P.lh/100)*5.8; // avg sector '000km from long-haul share
+  const spots=SPOTS.map(iY);
+  const SRC="Source: "+a.n+" Airport, OAG, Sabre MI, AviaSolutions analysis";
+  // synthetic decompositions off the bespoke run
+  const flagSh=y=>Math.max(.24,.36-Math.max(0,y-BY)*.004), lccSh=y=>Math.min(.52,.30+Math.max(0,y-BY)*.006);
+  const flag=bes.c.map((v,i)=>v*flagSh(YRS[i])), lcc=bes.c.map((v,i)=>v*lccSh(YRS[i])), oal=bes.c.map((v,i)=>v-flag[i]-lcc[i]);
+  const S=bcSplit(bes);
+  const dom=S.dom, intl=S.intl, conx=S.conx, od=S.od;
+  const scen=[bes.u,scnSeries("hi").u,scnSeries("lo").u];
+  const prior=bcSeries("base",{g0pp:-0.3}).c;
+  const growth=[BY+5,BY+10,BY+15,BY+20,BY+25].map(y=>{const i=iY(y);return ((bes.c[i]/bes.c[i-5])**(1/5)-1)*100;});
+  const gpath=[BY+2,BY+7,BY+12,BY+17,BY+22].map(y=>{const i=iY(y);return (bes.u[i]/bes.u[i-1]-1)*100;});
+  const util=YRS.map((y,i)=>{const K=bes.capF(y);return K>0?Math.min(bes.u[i]/K,1.3)*100:0;});
+  const atm=atmSeries(bes,S);
+  const rpk=bes.c.map(v=>v*sl);
+  const rem=1-P.domSh/100;
+  const mixNow=[P.domSh/100,rem*(1-P.lh/100),rem*P.lh/100];
+  const mixFut=[Math.max(mixNow[0]-.04,0),mixNow[1]-.02,Math.min(mixNow[2]+.06,1)];
+  const shY=[BY-6,BY,BY+10,BY+20];
+  const shSpots=[[String(BY-6),[.40,.25,.35]]].concat(shY.slice(1).map(y=>[String(y),[flagSh(y),lccSh(y),1-flagSh(y)-lccSh(y)]]));
+  const gdpPts=Array.from({length:14},(_,i)=>{const g=Math.log(100+i*6);return [g,0.4+a.ge*g+(Math.sin(i*2.7)*.04)];});
+  const gdpBars=[BY-4,BY-3,BY-2,BY-1,BY].map(y=>3+Math.sin(y)*1.6+(a.ge-1)*2);
+  const season=[.06,.055,.07,.08,.09,.10,.115,.12,.10,.085,.06,.065].map(x=>x*100);
+  const hourly=Array.from({length:24},(_,h)=>{const w=Math.exp(-((h-8)**2)/8)+0.9*Math.exp(-((h-15)**2)/10)+0.6*Math.exp(-((h-20)**2)/6);return Math.round(w*(bes.c[iY(BY+10)]*1e6/365/14));});
+  const yF=y=>String(y).slice(2);
+  const L={fl:[a.reg==="Middle East"?"Flag carrier":"Flag / network",AV[0]],lcc:["LCC",AV[1]],oal:["Other airlines",AV[2]]};
+  let h="";
+  h+=`<div class="gsec">A. Core forecast</div><div class="gallery">`;
+  h+=gCard(`${a.c} Passenger Traffic Forecast by Airline Group`,"Millions. "+SRC,
+    mStackCols([flag,lcc,oal],[AV[0],AV[1],AV[2]],SPOTS.map(yl),spots),
+    [[L.fl[0],AV[0]],["LCC",AV[1]],["Other",AV[2]]]);
+  h+=gCard(`${a.c} Unconstrained vs Constrained Forecast`,"Millions. Unconstrained = no capacity constraint at ANY airport; constrained applies every airport's register at once. "+SRC,
+    mLine([bes.u,bes.c],[AV[0],AV[1]]),[["Unconstrained",AV[0],1],["Constrained",AV[1],1]]);
+  h+=gCard(`${a.c} Forecast Scenarios`,"Millions, unconstrained. "+SRC,
+    mLine(scen,[AV[0],AV[2],AV[1]],[0,1,1]),[["Base",AV[0],1],["High",AV[2],1],["Low",AV[1],1]]);
+  h+=gCard(`${a.c} Forecast vs Previous Forecast`,"Millions. Source: AviaSolutions analysis",
+    mLine([bes.c,prior],[AV[0],AV[3]],[0,1]),[["This vintage",AV[0],1],["Previous",AV[3],1]]);
+  h+=gCard(`${a.c} International vs Domestic Passengers`,"Millions. "+SRC,
+    mStackCols([intl,dom],[AV[0],AV[1]],SPOTS.map(yl),spots),
+    [["International",AV[0]],["Domestic",AV[1]]]);
+  h+=gCard(`${a.c} Transfer vs O&D Passengers`,"Millions, final-destination basis (Sabre true O&D). Source: Sabre MI, AviaSolutions analysis",
+    mStackCols([od,conx],[AV[0],AV[4]],SPOTS.map(yl),spots),
+    [["O&D",AV[0]],["Transfer",AV[4]]]);
+  h+=gCard(`${a.c} Passenger Growth Rate by Period`,"% per annum, constrained. Source: AviaSolutions analysis",
+    mCols(growth,[0,5,10,15,20].map(o=>yy(BY+o)+"-"+String(BY+o+5).slice(2)),AV[0],v=>v.toFixed(1)+"%"));
+  h+=gCard(`${a.c} Annual Growth with Market Maturity`,"% per annum, unconstrained; catchment at "+Math.round(P.tpc/P.tpcSat*100)+"% of saturation propensity. Source: AviaSolutions analysis",
+    mCols(gpath,[2,7,12,17,22].map(o=>String(BY+o)),AV[3],v=>v.toFixed(1)+"%"));
+  h+=`</div><div class="gsec">B. Segmentation, airline and route</div><div class="gallery">`;
+  h+=gCard(`${a.c} Traffic Share by Airline Group`,"% of passengers. "+SRC,
+    mShare100(shSpots,[AV[0],AV[1],AV[2]]),[[L.fl[0],AV[0]],["LCC",AV[1]],["Other",AV[2]]]);
+  h+=gCard(`${a.c} Traffic Mix by Segment`,"% of terminal passengers. "+SRC,
+    mShare100([[String(BY),mixNow],[String(BY+20),mixFut]],[AV[0],AV[3],AV[1]]),[["Domestic",AV[0]],["Short-haul int'l",AV[3]],["Long-haul",AV[1]]]);
+  h+=gCard(`${a.c} Recovery vs 2019 by Segment`,"Index, 2019 = 100. "+SRC,
+    mCols([112,96,124,88],["Dom","Long-haul","LCC int'l","Network int'l"],[AV[2],AV[1],AV[2],AV[1]],v=>v),null);
+  h+=`</div><div class="gsec">C. Drivers and econometric evidence</div><div class="gallery">`;
+  h+=gCard(`${a.cty} O&D Traffic vs GDP`,"Log-log, estimation window excl. dummied years. Source: OEF, Sabre MI, AviaSolutions analysis",
+    mScatter(gdpPts,x=>0.4+a.ge*x),[["Observed",AV[0]],["Fitted (elasticity "+ov("ge",a.ge).toFixed(2)+")",AV[1],1]]);
+  h+=gCard(`${a.cty} Propensity to Fly vs GDP per Capita`,"Log-logistic; curve position drives maturity. Source: OAG, UN population, OEF, AviaSolutions analysis",
+    mProp(P),[["Propensity curve",AV[0],1],[BY+" position",AV[1]],[(BY+20)+"F position",AV[2]]]);
+  h+=gCard(`Propensity to Fly and Headroom - ${a.cty} on the World Curve`,`Trips per capita (log scale) against GDP per capita (PPP). Curve is the fitted power-law average across countries, 2019. ${a.cty} ${BY} and ${BY+10}: this model, demand-led traffic per capita on a UN medium-variant population path. Comparator ${((CMP[a.reg]||CMP["Europe"])[0])} 2019 actual, ${BY} estimate. Source: OAG, Airbus GMF, Oxford Economics; Avia Solutions analysis`,
+    mPropWorld(P,bes,a),[["Fitted power-law curve","#4A5B6B",1],["Countries","#C0C6CC"],[a.cty+" (forecast)",TEAL],[((CMP[a.reg]||CMP["Europe"])[0])+" (one step ahead)",NAVY]],true);
+  h+=gCard(`${a.cty} GDP Growth: Actual vs Model`,"% per annum. Source: OEF adjusted by Avia",
+    mCols(gdpBars,[String(BY-4),String(BY-3),String(BY-2),(BY-1)+"A",BY+"F"],AV[0],v=>v.toFixed(1)+"%"));
+  h+=`</div><div class="gsec">D. ATMs, capacity and DDFS</div><div class="gallery">`;
+  h+=gCard(`${a.c} Commercial ATM Forecast`,"'000 movements, constrained. Source: OAG, AviaSolutions analysis",
+    mLine([atm],[AV[0]]),[["Total ATMs",AV[0],1]]);
+  h+=gCard(`${a.c} Capacity Utilisation`,"% of practical capacity; spill from 85%. Source: AviaSolutions analysis",
+    mLine([util],[AV[1]]),[["Utilisation %",AV[1],1]]);
+  h+=gCard(`${a.c} Monthly Seasonality Profile`,"% of annual passengers. "+SRC,
+    mCols(season,["J","F","M","A","M","J","J","A","S","O","N","D"],AV[0],v=>""));
+  h+=gCard(`${a.c} Design Day Hourly Profile ${BY+10}`,"Passengers per hour, 30th busy hour method. Source: AviaSolutions DDFS model",
+    mHourly(hourly,AV[0]),[["Design day PHP",AV[0]]]);
+  h+=gCard(`${a.c} RPK Forecast`,"Billions, constrained. Source: AviaSolutions analysis",
+    mLine([rpk],[AV[4]]),[["RPK bn",AV[4],1]]);
+  const cargo=YRS.map(y=>P.cargoT*Math.pow(1+P.cargoG/100,y-BY));
+  const totAtm=YRS.map((y,i)=>atm[i]+cargo[i]/P.tPerAtm+P.gaAtmK*Math.pow(1+P.gaG/100,y-BY));
+  h+=gCard(`${a.c} Cargo Tonnage Forecast`,"'000 tonnes. Source: ${a.c} Airport, ACI, AviaSolutions analysis".replace("${a.c}",a.c),
+    mLine([cargo],[AV[2]]),[["Cargo '000 t",AV[2],1]]);
+  h+=gCard(`${a.c} Total ATMs incl Cargo and GA`,"'000 movements. Source: OAG, AviaSolutions analysis",
+    mLine([totAtm,atm],[AV[0],AV[3]],[0,1]),[["Total incl cargo & GA",AV[0],1],["Commercial pax only",AV[3],1]]);
+  h+=`</div>`;
+  return h;}
+function inRow(label,key,def,unit,note,path){
+  const cur=BC.over[key];
+  const inp=path?`<input type="text" placeholder="engine or a&gt;b" value="${cur??""}" onchange="BC.over['${key}']=this.value;renderBC()">`
+   :`<input type="number" step="any" placeholder="engine" value="${cur??""}" onchange="BC.over['${key}']=this.value;renderBC()">`;
+  const pill=(cur!==undefined&&cur!==null&&cur!=="")?(String(cur).includes(">")?'<span class="pill prj">path</span>':'<span class="pill prj">override</span>'):'<span class="pill pub">engine</span>';
+  return `<div class="inrow"><span>${label}${note?` <span class="mut" style="font-size:10.5px">${note}</span>`:""}</span>
+   <span class="def">${def}${unit}</span>${inp}<span>${pill}</span></div>`;}
+function econFull(a){return (typeof CKBYI!=="undefined"&&CKBYI&&CKBYI[a.c])||a;}
+function econData(a){
+  const r=(econFull(a).regress)||{};
+  const bound=r.bG_bound||[0.6,2.2];
+  const bF=r.bF||{"International Short Haul":0.29,"Long Haul":0.27,"Domestic":-0.67};
+  const bG_est=(r.bG_est!==undefined&&r.bG_est!==null)?r.bG_est:null;
+  return {bG_est, ge:a.ge, bound, bF, r2:(r.r2!==undefined?r.r2:null), t:(r.t!==undefined?r.t:null),
+    n:(r.n!==undefined?r.n:null), window:r.window||null, reliable:(r.reliable!==undefined?r.reliable:null),
+    points:r.points||null, income:(r.income||null), real:!!(econFull(a).regress),
+    appliedAirport:(bG_est!=null&&a.ge!=null&&Math.abs(a.ge-bG_est)<=0.1),
+    source: bG_est!=null?"Estimated on the airport's traffic history (income-elasticity regression on the long ACI panel)":"Regional/literature default (Level 3) - this airport was not separately estimated"};
+}
+function econScatter(slope,r2,real,points){
+  const W=560,H=290,P=46;
+  let pts=points;
+  if(!pts){const n=14;pts=[];let seed=Math.abs(slope)*1000+7;const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280;};
+    const noise=Math.max(0.02,0.18*(1-(r2!=null?r2:0.7)));
+    for(let i=0;i<n;i++){const x=i/(n-1);pts.push([x, slope*x+(rnd()-0.5)*noise]);}}
+  const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);
+  const xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys,0),ymax=Math.max(...ys,slope*Math.max(...xs));
+  const X=v=>P+(W-P-14)*((v-xmin)/((xmax-xmin)||1)), Y=v=>H-30-(H-52)*((v-ymin)/((ymax-ymin)||1));
+  const dots=pts.map(p=>`<circle cx="${X(p[0]).toFixed(1)}" cy="${Y(p[1]).toFixed(1)}" r="3.4" fill="#2c5378" opacity="0.85"/>`).join("");
+  const line=`<line x1="${X(xmin)}" y1="${Y(slope*xmin)}" x2="${X(xmax)}" y2="${Y(slope*xmax)}" stroke="#C9A227" stroke-width="2.4"/>`;
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%">
+    <text x="${P-6}" y="18" font-size="11" fill="#5f7185">ln(pax)</text>
+    <text x="${W-14}" y="${H-10}" font-size="11" fill="#5f7185" text-anchor="end">ln(GDP)</text>
+    ${line}${dots}
+    <text x="${W-16}" y="30" font-size="12.5" fill="#8a6d00" text-anchor="end">elasticity (slope) = ${slope.toFixed(2)}${r2!=null?"   R&#178; = "+r2.toFixed(2):""}</text></svg>
+   <div class="legend"><span><span class="sw" style="background:#C9A227"></span>Line of best fit</span><span><span class="sw" style="background:#2c5378"></span>${real&&points?"Observed points":"Illustrative points around the fitted elasticity"}</span></div>`;
+}
+function econMarkets(a){
+  const dd=(econFull(a).dests||[]).slice(0,14);
+  if(!dd.length) return '<p class="mut">No market breakdown for this airport.</p>';
+  return `<table><tr><th>Destination market</th><th class="num">O&amp;D share</th><th>GDP series driving it</th><th>Region</th></tr>`+
+    dd.map(m=>`<tr><td>${m.market}</td><td class="num">${(m.d*100).toFixed(1)}%</td><td>${m.dom?(a.cty+" GDP (domestic)"):(m.market+" GDP")}</td><td>${m.region}</td></tr>`).join("")+`</table>`;
+}
+function renderBC(){
+  const m=document.getElementById("main");
+  if(!BC.apt||!BC.gen){
+    m.innerHTML=`
+    <div class="wall"><div class="bar"></div>
+     <div><b>Bespoke client forecast</b> - type an airport, generate from the engine, then tailor everything.
+     <div class="mut" style="font-size:11.5px;margin-top:2px"><b>Guard G-V:</b> everything in a project namespace stays there. No promote path exists in this mode.</div></div></div>
+    <div class="card"><h3>New project</h3>
+     <input class="search" list="apts" id="aptin" placeholder="Type airport name or code..." >
+     <datalist id="apts">${APT2.map(a=>`<option value="${a.c} - ${a.n} (${a.cty})">`).join("")}</datalist>
+     <button class="btn tealb" style="margin-left:10px" onclick="pickApt()">Generate from engine</button>
+     <p class="mut" style="margin-top:10px;font-size:12px">Generation is instant: history, destination mix, elasticities, capacity and connecting share all come from the engine's public data and the current vintage's calibration. You then tailor any of it, and layer client data.</p></div>
+    <div class="footer">Synthetic data, illustrative only.</div>`;return;}
+  const a=BC.apt;const base=bcSeries("base"),bes=bcSeries("bes");
+  const i45=iY(BY+20),i35=iY(BY+10);
+  const nOver=Object.values(BC.over).filter(v=>v!==undefined&&v!==null&&v!=="").length+Object.values(BC.ovlOn).filter(Boolean).length;
+  const tabs=["inputs","bum","overlays","scenarios","charts","econ","deliverable"];
+  const TLBL={inputs:"Inputs",bum:"Bottom-up (BUM)",overlays:"Overlays",scenarios:"Scenarios",charts:"Charts",econ:"Econometrics",deliverable:"Deliverable"};
+  const tabBtns=tabs.map(t=>`<button class="teal ${BC.tab===t?'on':''}" onclick="BC.tab='${t}';renderBC()">${TLBL[t]}</button>`).join("");
+  let body="";
+  if(BC.tab==="inputs"){
+    const E=bcParams(false);
+    body=`<div class="grid2"><div class="card"><h3>All inputs - engine value | your override | provenance</h3>
+     <div class="ingrp"><h4>Base year and structure</h4>
+      ${inRow("Base-year terminal pax (m)","base",E.base,"","national statistics / CAA / tower log")}
+      ${inRow("Domestic share (%)","domSh",E.domSh.toFixed(0),"%","path a&gt;b overrides the engine drift",1)}
+      ${inRow("Transfer share (%)","txr",E.txr.toFixed(0),"%","engine evolves this with the hub overlay; enter 5&gt;9 if a hub carrier grows it; published outputs sit behind a thin-data confidence gate",1)}
+      ${inRow("Long-haul share of int'l (%)","lh",E.lh.toFixed(0),"%","drives stage length, RPK, WB split",1)}
+      ${inRow("Outbound share (%)","outSh",E.outSh,"%","mirror rule: canonical side per country pair")}
+     </div>
+     <div class="ingrp"><h4>Growth and market maturity</h4>
+      ${inRow("Near-term market growth (%/yr)","g0",E.g0.toFixed(1),"%",(BY+1)+"-"+(BY+5)+", before maturity decay")}
+      ${inRow("Applied GDP elasticity","ge",E.ge,"","applied at base year; declines with market maturity along the propensity curve")}
+      ${inRow("Terminal growth at maturity (%/yr)","gT",E.gT.toFixed(1),"%","the long-run floor growth converges to")}
+      ${inRow("Trips per capita, catchment","tpc",E.tpc,"","engine: log propensity to fly vs GDP per capita positions the market on its growth curve")}
+      ${inRow("Saturation trips per capita","tpcSat",E.tpcSat,"","the curve's asymptote; region default, editable")}
+      <div class="inrow"><span>Fare elasticity (segment-level) <span class="mut" style="font-size:10.5px">locked - Method Spec: no airport-level fare elasticity</span></span><span class="def">-0.58</span><span class="mut" style="text-align:right">locked</span><span><span class="pill pub">engine</span></span></div>
+     </div>
+     <div class="ingrp"><h4>Capacity and spill</h4>
+      ${inRow("Practical annual capacity (m pax)","cap",E.cap||"none","","0 = unconstrained")}
+      ${inRow("Capacity step: year","capYr",E.capYr,"")}
+      ${inRow("Capacity step: size (m pax)","capSz",E.capSz,"","masterplan / client plan")}
+      ${inRow("Spill starts at utilisation (%)","spillS",E.spillS,"%")}
+      ${inRow("Maximum spill (%)","spillM",E.spillM,"%")}
+     </div>
+     <div class="ingrp"><h4>ATM conversion - by segment (client data or engine fallback)</h4>
+      ${inRow("Seats per ATM - domestic","seatsD",E.seatsD,"","fleet mix, OAG; 150&gt;170 = upgauging path",1)}
+      ${inRow("Seats per ATM - short-haul int'l","seatsS",E.seatsS,"","",1)}
+      ${inRow("Seats per ATM - long-haul","seatsL",E.seatsL,"","",1)}
+      ${inRow("Load factor - domestic (%)","lfD",E.lfD,"%","",1)}
+      ${inRow("Load factor - short-haul int'l (%)","lfS",E.lfS,"%","",1)}
+      ${inRow("Load factor - long-haul (%)","lfL",E.lfL,"%","",1)}
+     </div>
+     <div class="ingrp"><h4>Cargo and general aviation</h4>
+      ${inRow("Cargo tonnage base ('000 t)","cargoT",E.cargoT,"","client / ACI; belly + freighter")}
+      ${inRow("Cargo growth (%/yr)","cargoG",E.cargoG,"%","GDP-linked in the engine")}
+      ${inRow("Tonnes per cargo ATM","tPerAtm",E.tPerAtm,"","freighter payload; belly carried in pax ATMs")}
+      ${inRow("GA passengers base ('000)","gaPax",E.gaPax,"")}
+      ${inRow("GA ATMs base ('000)","gaAtmK",E.gaAtmK,"")}
+      ${inRow("GA / cargo-independent growth (%/yr)","gaG",E.gaG,"%")}
+     </div>
+     <div class="ingrp"><h4>Assumptions book - project-local overrides (reason-coded)</h4>
+      ${inRow("Real fare trend tau (%/yr)","tau",E.tau,"%","flows to demand via the segment fare elasticity")}
+      ${inRow("Jet fuel outlook (USD/gal, real)","fuel",E.fuel,"")}
+      ${inRow("Carbon price ${BY+10} (EUR/t)".replace("${BY+10}",BY+10),"carbP",E.carbP,"")}
+      ${inRow("SAF blend at ${BY+10} (%)".replace("${BY+10}",BY+10),"safSh",E.safSh,"%","mandate regime per the book (EU/UK/project)")}
+      ${inRow("Aircraft efficiency gain (%/yr)","effI",E.effI,"%")}
+      ${inRow("LCC share for fares mix (%)","lccShF",E.lccShF,"%","",1)}
+     </div>
+     <div class="ingrp"><h4>Scenario settings</h4>
+      ${inRow("High/Low scenario delta (pp)","scenD",E.scenD,"pp","applied on the Scenarios tab")}
+     </div>
+     <p class="mut" style="font-size:11.5px"><b>The bespoke rule:</b> every engine input can be overridden, at segment level where the client's data supports it; anything left blank falls back to the engine assumption. <b>Inputs are paths, not scalars:</b> the engine holds every input as an annual vector (as Jess's sheets do); a single value here holds flat or follows the engine's own evolution, and <b>a&gt;b</b> ramps from a at the base year to b at the horizon - transfer share, mix and seats/LF all evolve. Every edit auto-serialises to the project pack; the export prompts for a reason code per edited input. ${nOver} override(s) + overlay(s) active.</p></div>
+     <div><div class="kpis">
+       <div class="kpi"><div class="v">${fmM(bes.c[i35])}</div><div class="l">Constrained ${BY+10} (bespoke)</div></div>
+       <div class="kpi"><div class="v">${fmM(bes.c[i45])}</div><div class="l">Constrained ${BY+20} (bespoke)</div></div>
+       <div class="kpi"><div class="v">${fmM(bes.u[i45]-bes.c[i45])}</div><div class="l">Capacity requirement ${BY+20}</div></div>
+       <div class="kpi"><div class="v">${nOver}</div><div class="l">overrides + overlays active</div></div></div>
+      <div class="card"><h3>${a.n} ${a.c} - public baseline (solid) vs bespoke (dashed)</h3>${bigChart(base,bes)}</div>
+      <div class="card"><h3>Impact of your changes - full output summary</h3>
+       <div style="overflow-x:auto">${sumTable(bes,base)}</div>
+       <p class="mut" style="font-size:11px;margin-top:6px">Constrained unless stated. CAGRs decline across periods: the catchment is ${Math.round(bes.P.tpc/bes.P.tpcSat*100)}% of saturation trips per capita, and excess growth over the terminal rate falls with remaining propensity headroom. Splits are segment-level: domestic matures faster than international; transfer share follows the hub overlay. ATMs from seats per ATM and load factor.</p></div></div></div>`;}
+  if(BC.tab==="bum"){
+    const rows=bumState(a);
+    const tot0=rows.reduce((s,r)=>s+r.p0,0), tot1=rows.reduce((s,r)=>s+r.p1,0);
+    const qs=qsiCands(a);const kSc=bumScale(a);
+    const qT=qs.reduce((s,q,i)=>s+(BC.qsi[i]?q[2]*kSc:0),0);
+    const noB=bcSeries("bes",{noBum:1});
+    const est="border:1px solid var(--gold);background:#FFF2CC;border-radius:4px;font-weight:600;color:#0000CC;text-align:right;padding:2px 4px";
+    const estL="border:1px solid var(--gold);background:#FFF2CC;border-radius:4px;font-weight:600;color:#0000CC;padding:2px 4px";
+    // sort alphabetically by route, airlines together within each route; group multi-airline routes visibly
+    const sorted=rows.slice().sort((x,y)=>x.dst===y.dst?String(x.al).localeCompare(String(y.al)):String(x.dst).localeCompare(String(y.dst)));
+    const line=r=>{
+      if(!r.custom)return `<td>${r.al}</td><td>${r.ac}</td>
+       <td class="num"><input type="number" step="any" value="${r.f}" style="width:50px;${est}" onchange="BC.bum[${r.i}]=Object.assign(BC.bum[${r.i}]||{},{f0:this.value});renderBC()"></td>
+       <td class="num"><input type="number" step="any" value="${Math.round(r.lf*100)}" style="width:42px;${est}" onchange="BC.bum[${r.i}]=Object.assign(BC.bum[${r.i}]||{},{lf0:this.value});renderBC()"></td>
+       <td class="num">${r.p0.toFixed(0)}</td>
+       <td>${acSel(r.al,r.ac1,`BC.bum[${r.i}]=Object.assign(BC.bum[${r.i}]||{},{ac1:this.value});renderBC()`)}</td>
+       <td class="num"><input type="number" step="any" value="${r.f1}" style="width:50px;${est}" onchange="BC.bum[${r.i}]=Object.assign(BC.bum[${r.i}]||{},{f:this.value});renderBC()"></td>
+       <td class="num"><input type="number" step="any" value="${Math.round(r.lf1*100)}" style="width:42px;${est}" onchange="BC.bum[${r.i}]=Object.assign(BC.bum[${r.i}]||{},{lf:this.value});renderBC()"></td>
+       <td class="num">${r.p1.toFixed(0)}</td>
+       <td><button class="btn ghost" style="padding:1px 7px;font-size:11px" title="Competitor adds capacity on this route" onclick="bumAddX('${r.dst}','Competitor')">+</button></td>`;
+      return `<td><input type="text" value="${r.al}" style="width:96px;${estL}" onchange="bumSetX(${r.j},'al',this.value)"></td>
+       <td>${acSel(r.al,r.ac,`bumSetX(${r.j},'ac',this.value)`)}</td>
+       <td class="num"><input type="number" step="any" value="${r.f}" style="width:50px;${est}" onchange="bumSetX(${r.j},'f0',this.value)"></td>
+       <td class="num"><input type="number" step="any" value="${Math.round(r.lf*100)}" style="width:42px;${est}" onchange="bumSetX(${r.j},'lf0',this.value)"></td>
+       <td class="num">${r.p0.toFixed(0)}</td>
+       <td>${acSel(r.al,r.ac1,`bumSetX(${r.j},'ac1',this.value)`)}</td>
+       <td class="num"><input type="number" step="any" value="${r.f1}" style="width:50px;${est}" onchange="bumSetX(${r.j},'f1',this.value)"></td>
+       <td class="num"><input type="number" step="any" value="${Math.round(r.lf1*100)}" style="width:42px;${est}" onchange="bumSetX(${r.j},'lf1',this.value)"></td>
+       <td class="num">${r.p1.toFixed(0)}</td>
+       <td><button class="btn ghost" style="padding:1px 7px;font-size:11px;color:var(--red)" onclick="bumDelX(${r.j})">x</button></td>`;};
+    let rrows="";
+    for(let x=0;x<sorted.length;x++){const r=sorted[x];
+      const grp=sorted.filter(s=>s.dst===r.dst);
+      const first=sorted.findIndex(s=>s.dst===r.dst)===x;
+      const dstDisp=(r.custom&&grp.length===1)?`<input type="text" value="${r.dst}" style="width:52px;${estL}" onchange="bumSetX(${r.j},'dst',this.value)"><br><select style="font-size:9.5px;margin-top:2px" onchange="bumSetX(${r.j},'yr',parseInt(this.value))"><option value="${BY}" ${((BC.bumX[r.j]&&BC.bumX[r.j].yr)||BY+1)===BY?"selected":""}>launch ${BY}</option><option value="${BY+1}" ${((BC.bumX[r.j]&&BC.bumX[r.j].yr)||BY+1)===BY+1?"selected":""}>launch ${BY+1}</option><option value="${BY+2}" ${((BC.bumX[r.j]&&BC.bumX[r.j].yr)||BY+1)===BY+2?"selected":""}>launch ${BY+2}</option></select>`:`${a.c}-${r.dst}`;
+      const routeCell=first?`<td rowspan="${grp.length}" style="vertical-align:top;font-weight:${grp.length>1?700:400};border-top:2px solid #cdd5dc">${dstDisp}${grp.length>1?`<div class="mut" style="font-size:10px;font-weight:400">${grp.length} airlines</div>`:""}</td>`:"";
+      rrows+=`<tr${r.custom?' style="background:#fbf8ef"':''}>${routeCell}${line(r)}</tr>`;
+      if(grp.length>1&&sorted.filter(s=>s.dst===r.dst).indexOf(r)===grp.length-1){
+        rrows+=`<tr style="font-size:11px;color:#404040;background:#f2f5f7"><td></td><td colspan="4" style="text-align:right">${a.c}-${r.dst} route total</td><td class="num"><b>${grp.reduce((s,g)=>s+g.p0,0).toFixed(0)}</b></td><td colspan="3"></td><td class="num"><b>${grp.reduce((s,g)=>s+g.p1,0).toFixed(0)}</b></td><td></td></tr>`;}}
+    const yrOpts=(cur)=>[BY,BY+1,BY+2].map(y=>`<option value="${y}" ${cur===y?"selected":""}>${y}</option>`).join("");
+    const qrows=qs.map((q,i)=>`<tr><td><input type="checkbox" ${BC.qsi[i]?"checked":""} onchange="BC.qsi[${i}]=this.checked;renderBC()"></td>
+      <td>${a.c}-${q[0]}${q[4]?`<div class="mut" style="font-size:9px;font-weight:400">${q[4]}</div>`:""}</td><td class="num">${q[1]}</td><td class="num">${(q[2]*kSc).toFixed(0)}${q[3]?`<div class="mut" style="font-size:9px;font-weight:400">${q[3]}</div>`:""}</td>
+      <td><select style="font-size:11px" onchange="BC.qsiYr[${i}]=parseInt(this.value);renderBC()">${yrOpts(BC.qsiYr[i]||BY+1)}</select></td></tr>`).join("");
+    const wB=bcSeries("bes");
+    body=`<div class="card"><h3>Bottom-up model ${BY} and ${BY+1} - the full schedule, every line editable <span class="mut" style="font-weight:400;font-size:11px">(next-destination basis: flight legs, not final destinations)</span></h3>
+      <table style="font-size:11.5px"><tr><th>Route</th><th>Airline</th><th>Acft ${BY}</th><th class="num">Wk freq ${BY}</th><th class="num">LF ${BY} %</th><th class="num">Pax ${BY} ('000)</th><th>Acft ${BY+1}</th><th class="num">Wk freq ${BY+1}</th><th class="num">LF ${BY+1} %</th><th class="num">Pax ${BY+1} ('000)</th><th></th></tr>
+       ${rrows}
+       <tr style="font-weight:700"><td colspan="5">Schedule total (incl. analyst additions)</td><td class="num">${tot0.toFixed(0)}</td><td></td><td></td><td></td><td class="num">${tot1.toFixed(0)}</td><td></td></tr></table>
+      <div style="margin-top:8px;display:flex;gap:10px;flex-wrap:wrap">
+       <button class="btn ghost" onclick="bumAddX('NEW','New entrant')">+ Add route not yet in schedules (SCHED-GAP)</button></div>
+      <p class="mut" style="font-size:11.5px;margin-top:6px"><b>Everything on every line is editable:</b> base-year frequency and LF (the engine ingests two schedule snapshot weeks, May and October, so the analyst may know launches not yet filed - SCHED-GAP - and better current load factors - LF-REVISION); ${BY+1} aircraft type per route (upgauging: switch the type and pax recalculate at the new gauge); the + on each route adds a competitor's capacity on that route; added lines are fully free-form. ${BY+1} is then shaped by fleet announcements, client info and our own estimates, per the Abha, Bologna and Kruger BUMs. The gap between the base-year pax input and the schedule total is shown and attributed, never silently rescaled, never blocked. This sample identifies ${fmM(tot0/1000)} of the ${fmM(bcParams(true).base)} base-year input (${(tot0/10/bcParams(true).base).toFixed(0)}%); production carries the complete OAG-derived schedule with search and filter, monthly granularity.</p></div>
+     <div class="grid2"><div class="card"><h3>QSI candidate routes - judgement, reconciled to the model total</h3>
+      ${(()=>{const st=CKCAND&&CKCAND._status;if(!st||st.airport!==a.c)return"";
+        if(st.error)return `<div style="font-size:11px;margin-bottom:4px;color:#b3452b">QSI service error: ${st.error}. Check the server console window.</div>`;
+        if(st.running&&!st.total)return `<div class="mut" style="font-size:11px;margin-bottom:4px">QSI service running: ${st.phase||"starting"}&hellip;</div>`;
+        if(st.running)return `<div class="mut" style="font-size:11px;margin-bottom:4px">Running the QSI tool: ${st.done} of ${st.total} routes optimised, more loading&hellip;</div>`;
+        return "";})()}
+      <div style="max-height:150px;overflow-y:auto;border:1px solid #eef">
+      <table style="font-size:11.5px"><tr><th></th><th>Candidate</th><th class="num">QSI score</th><th class="num">Est pax ('000)</th><th>Launch</th></tr>${qrows}</table></div>
+      <button class="btn ghost" style="margin-top:8px" onclick="runQSI('${a.c}')">Run QSI candidates for ${a.c} (optimised, on the server)</button>
+      <div class="wf" style="margin-top:8px"><span>Model growth ${BY} &#8594; ${BY+1} (unconstrained)</span><b>${((noB.u[iY(BY+1)]/noB.u[iY(BY)]-1)*100).toFixed(1)}%</b></div>
+      <div class="wf"><span>BUM-implied growth: existing routes</span><b>${((tot1/tot0-1)*100).toFixed(1)}%</b></div>
+      <div class="wf"><span>+ QSI route adds (${qs.filter((q,i)=>BC.qsi[i]).length} included)</span><b>${(qT/tot0*100).toFixed(1)}pp</b></div>
+      ${(()=>{const gB=((tot1+qT)/tot0-1)*100,gM=(noB.u[iY(BY+1)]/noB.u[iY(BY)]-1)*100,gap=gB-gM;
+        return `<div class="wf" style="border-top:2px solid var(--navy);font-weight:700"><span>BUM growth vs model${Math.abs(gap)>4?" - LARGE GAP, revisit":""}</span><b class="${Math.abs(gap)>4?'neg':''}">${gB.toFixed(1)}% (${(gap>=0?"+":"")+gap.toFixed(1)}pp vs model)</b></div>`;})()}
+      <p class="mut" style="font-size:11.5px;margin-top:6px">The merge rule: QSI ranks candidates and sizes their potential; the analyst judges how many and which to add; the resulting BUM growth must reconcile with the model total. A wide gap means trim the route adds or revisit the model. This sample carries the top routes; production carries the full list, so absolute totals reconcile as well as growth.</p></div>
+      <div class="card"><h3>Blend into the long-term model</h3>
+       <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:6px">
+        <label style="font-size:12.5px"><input type="checkbox" ${BC.bumApply?"checked":""} onchange="BC.bumApply=this.checked;renderBC()"> Apply BUM merge to the bespoke run</label>
+        <label style="font-size:12.5px">Blend period (years): <input type="number" min="1" max="6" value="${BC.blendN}" style="width:44px;${est}" onchange="BC.blendN=parseFloat(this.value)||3;renderBC()"></label></div>
+       ${mLine([noB.u,wB.u],["#4A5B6B",TEAL],[1,0],640,200)}
+       <div class="legend"><span><span class="sw" style="background:#4A5B6B"></span>Long-term model path</span><span><span class="sw" style="background:${TEAL}"></span>Blended: BUM lifts ${BY+1} to the new level over ${BC.blendN} yrs, then it persists</span></div>
+       <p class="mut" style="font-size:11.5px;margin-top:4px">New routes that succeed raise the level for good: the BUM anchors the near term over ${BC.blendN} years, then the model growth compounds on the higher base. Removing routes or an airline failure lowers the level the same way.</p></div></div>
+     ${(()=>{const ar=addedRoutes(a);
+       if(!ar.length)return `<div class="card"><h3>Route additions bridge - three-year build-up</h3><p class="mut" style="font-size:12px">Tick a QSI candidate or add a SCHED-GAP line, and set each route's launch year (${BY}, ${BY+1} or ${BY+2}), to see the phased route-by-route bridge.</p></div>`;
+       const cards=[BY,BY+1,BY+2].map(yr=>{const base=noB.u[iY(yr)]*1000;
+         const steps=ar.filter(r=>r.yr<=yr).map(r=>({name:r.name,val:r.pax*(noB.u[iY(yr)]/noB.u[iY(r.yr)])}));
+         const lbl=(yr===BY?"Current":yr===BY+1?"Year 1":"Year 2")+" ("+yr+")";
+         return `<div><div style="font-weight:600;font-size:12px;text-align:center;margin-bottom:2px">${lbl}</div>${mkBridge("Base "+yr,base,steps,yr+" total",300,200)}</div>`;}).join("");
+       return `<div class="card"><h3>Route additions bridge - three-year build-up ('000 pax)</h3>
+        <p class="mut" style="font-size:11.5px;margin:0 0 8px">Each added route appears in its launch year and persists (grown at the model rate), so routes are never lost in client presentations. Set a route's launch year to phase a three-year build-up.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">${cards}</div></div>`;})()}`;}
+  if(BC.tab==="overlays"){
+    const saved={...BC.ovlOn};Object.keys(BC.ovlOn).forEach(k=>BC.ovlOn[k]=false);
+    let prev=bcSeries("bes").c[i35];const start=prev;const steps=[];
+    Object.keys(saved).forEach(k=>{if(saved[k]){BC.ovlOn[k]=true;const now=bcSeries("bes").c[i35];steps.push([OVL.find(o=>o.id===k).code,now-prev]);prev=now;}});
+    BC.ovlOn=saved;
+    const rows=OVL.map(o=>`<tr><td><input type="checkbox" ${BC.ovlOn[o.id]?"checked":""} onchange="BC.ovlOn['${o.id}']=this.checked;renderBC()"></td>
+     <td><span class="pill gold">${o.code}</span><span class="pill prj">project:${a.c.toLowerCase()}</span></td>
+     <td>${o.txt}<div class="mut" style="font-size:11px">Why: ${o.why}</div></td></tr>`).join("");
+    body=`<div class="grid2"><div class="card"><h3>Client data and judgements - reason-coded, audit-proof</h3>
+      <table><tr><th></th><th>Code / provenance</th><th>Overlay and rationale</th></tr>${rows}</table>
+      <button class="btn ghost" style="margin-top:10px" onclick="alert('Production: add an overlay with code, value, years and rationale - written straight into the project pack.')">+ Add overlay</button></div>
+     <div><div class="card"><h3>What your data changed - constrained pax ${BY+10}</h3>
+      <div class="wf"><span>Public baseline (incl. input overrides)</span><b>${fmM(start)}</b></div>
+      ${steps.map(([c,d])=>`<div class="wf"><span>+ ${c}</span><b class="${d>=0?'pos':'neg'}">${d>=0?"+":""}${fmM(d)}</b></div>`).join("")}
+      <div class="wf" style="border-top:2px solid var(--navy);font-weight:700"><span>Bespoke forecast</span><b>${fmM(prev)}</b></div></div>
+      <div class="card"><h3>Baseline vs bespoke</h3>${bigChart(base,bes)}</div></div></div>`;}
+  if(BC.tab==="scenarios"){
+    const act=SCN.filter(s=>BC.scnOn[s.id]);
+    const runs=act.map(s=>({s,r:scnSeries(s.id)}));
+    const rows=SCN.map(s=>`<tr><td><input type="checkbox" ${BC.scnOn[s.id]?"checked":""} onchange="BC.scnOn['${s.id}']=this.checked;renderBC()"></td>
+     <td><b>${s.name}</b></td><td class="mut" style="font-size:11.5px">${s.desc}</td></tr>`).join("");
+    const cols=[AV[2],AV[1],AV[4],AV[5],AV[3]];
+    const chart=mLine([bes.c,...runs.map(x=>x.r.c)],[AV[0],...runs.map((x,k)=>cols[k%cols.length])],[0,...runs.map(()=>1)],640,240);
+    const leg=`<div class="leg" style="font-size:11px"><span><span class="sw" style="display:inline-block;background:${AV[0]};height:3px;margin-bottom:2px"></span> Base (bespoke)</span>${runs.map((x,k)=>`<span><span class="sw" style="display:inline-block;background:${cols[k%cols.length]};height:3px;margin-bottom:2px"></span> ${x.s.name}</span>`).join("")}</div>`;
+    const stbl=`<table style="font-size:11.5px"><tr><th>Scenario (constrained, m pax)</th><th class="num">${BY+5}</th><th class="num">${BY+10}</th><th class="num">${BY+20}</th><th class="num">${HZ}</th><th class="num">&#916; vs Base ${BY+20}</th><th class="num">CAGR ${yy(BY)}-${String(HZ).slice(2)}</th></tr>
+     ${[["Base (bespoke)",bes]].concat(runs.map(x=>[x.s.name,x.r])).map(([nm,r])=>{
+       const d=r.c[i45]-bes.c[i45];const cg=(((r.c[iY(HZ)]/r.c[iY(BY)])**(1/(HZ-BY))-1)*100).toFixed(1);
+       return `<tr><td>${nm}</td><td class="num">${fmM(r.c[iY(BY+5)])}</td><td class="num">${fmM(r.c[i35])}</td><td class="num">${fmM(r.c[i45])}</td><td class="num">${fmM(r.c[iY(HZ)])}</td><td class="num ${d>=0?'pos':'neg'}">${d>=0?"+":""}${fmM(d)}</td><td class="num">${cg}%</td></tr>`;}).join("")}</table>`;
+    body=`<div class="grid2"><div class="card"><h3>Scenario register - standard cases plus one-off client requests</h3>
+      <table><tr><th></th><th>Scenario</th><th>Definition</th></tr>${rows}</table>
+      <button class="btn ghost" style="margin-top:10px" onclick="alert('Production: define a named client scenario - growth delta, one-off demand shock (year, depth, recovery), level event (carrier entry/failure), or capacity timing change. Serialised to the pack; each active scenario becomes its own sheet set in the Excel model and its own line in every chart.')">+ Add client scenario</button>
+      <p class="mut" style="font-size:11.5px;margin-top:8px">High/Low use the scenario delta from the Inputs tab. Shock scenarios re-run the whole chain: constrained series, ATMs, DDFS and capacity requirement all move together, at the client's requested definition.</p></div>
+     <div><div class="card"><h3>${a.n} ${a.c} - scenarios vs bespoke base (constrained)</h3>${chart}${leg}</div>
+      <div class="card"><h3>Scenario summary</h3>${stbl}</div></div></div>`;}
+  if(BC.tab==="charts"){
+    body=`<div class="card"><h3>Chart gallery - Avia chart format, exact (per Avia Excel chart guidelines)</h3>
+     <p class="mut" style="font-size:11.5px;margin-bottom:4px">Arial, Office colour cycle, bold centred heading, centred Source line, legend at bottom, no gridlines, no borders. Every chart lands on its own chart sheet in the Excel model and copies as PNG at report scale. Catalogue per "Avia Chart Format and Chart Catalogue - 5 July 2026".</p>
+     ${galleryCards()}
+     <p class="mut" style="font-size:11.5px;margin-top:10px">Also in the catalogue, rendered in production from the same outputs: scenario comparison per airline group, seat share by carrier type vs peer airport, capacity on main routes year-vs-year, carrier recovery by region, propensity to fly, stimulation effect, based-aircraft case studies, scheduled-vs-actual daily ATMs, cargo tonnage, CO2/SAF, and the summary tables (By Category / By Type / By Airline Type with CAGRs).</p></div>`;}
+  if(BC.tab==="econ"){
+    const E=econData(a);
+    const slope=E.bG_est!=null?E.bG_est:E.ge;
+    const capped=(E.bG_est!=null&&(E.bG_est<E.bound[0]||E.bG_est>E.bound[1]));
+    const appliedIfCapped=Math.min(E.bound[1],Math.max(E.bound[0],E.bG_est||E.ge));
+    const D=drv(a);
+    const stat = E.bG_est==null
+      ? `<p class="mut" style="font-size:12px;margin-top:6px">Not separately estimated; the forecast uses the country-level elasticity above. <b class="pos">OK</b></p>`
+      : E.appliedAirport
+      ? `<p style="font-size:12px;margin-top:6px;color:#2e7d4f">The forecast applies this airport's own estimated elasticity. <b>OK</b></p>`
+      : E.reliable
+      ? `<p style="font-size:12px;margin-top:6px;color:#b3452b"><b>Review:</b> this airport has a reliable own estimate (${E.bG_est.toFixed(2)}) that differs from the country value actually applied (${E.ge!=null?E.ge.toFixed(2):"-"}). Confirm the basis for ${a.c} before sign-off.</p>`
+      : `<p class="mut" style="font-size:12px;margin-top:6px">This airport's own fit fails the reliability filter, so the forecast falls back to the country-level value above. <b class="pos">OK</b></p>`;
+    body=`<div class="card" style="border:1px solid #C9A227">
+      <h3>Forecast basis for ${a.n} (${a.c}) - what was actually used (sign-off)</h3>
+      <div class="grid2" style="gap:16px">
+       <div><div style="font-weight:700;color:#156082;margin-bottom:4px">Applied to build this forecast</div>
+        <table>
+         <tr><td>Income / GDP elasticity</td><td class="num"><b>${E.ge!=null?E.ge.toFixed(2):"-"}</b></td><td class="mut">country-level (${a.cty})</td></tr>
+         <tr><td>Fare elasticity (segment)</td><td class="num">${(E.bF["International Short Haul"]||0).toFixed(2)}</td><td class="mut">locked, segment</td></tr>
+         <tr><td>Near-term growth</td><td class="num">${(a.g*100).toFixed(1)}%</td><td class="mut">decays via propensity</td></tr>
+         <tr><td>Terminal (mature) growth</td><td class="num">${D.gT.toFixed(1)}%</td><td class="mut">long-run floor</td></tr>
+         <tr><td>Maturity: trips pc / saturation</td><td class="num">${a.tpc?a.tpc.toFixed(1):"-"} / ${D.tpcSat.toFixed(1)}</td><td class="mut">propensity curve</td></tr>
+        </table></div>
+       <div><div style="font-weight:700;color:#156082;margin-bottom:4px">Calculated for this airport (for review)</div>
+        <table>
+         <tr><td>Airport income regression bG</td><td class="num"><b>${E.bG_est!=null?E.bG_est.toFixed(2):"not estimated"}</b></td><td class="mut">R&#178; ${E.r2!=null?E.r2.toFixed(2):"-"}, t ${E.t!=null?E.t.toFixed(1):"-"}, n ${E.n||"-"}</td></tr>
+         ${E.income?`<tr><td>Income (per-capita) elasticity</td><td class="num">${E.income.bY.toFixed(2)}</td><td class="mut">R&#178; ${E.income.r2.toFixed(2)}</td></tr>`:""}
+         <tr><td>Reliability filter</td><td colspan="2"><b class="${E.reliable?'pos':'neg'}">${E.reliable==null?"-":E.reliable?"passes (R\u00b2\u22650.5, t\u22651.7, in bound)":"fails - not used"}</b></td></tr>
+        </table>${stat}</div>
+      </div></div>
+     <div class="grid2">
+     <div>
+      <div class="card"><h3>How ${a.n} is driven</h3>
+       <p style="font-size:13px;line-height:1.55">Demand is built market by market: each destination grows with <b>its own country's GDP</b> (Oxford Economics), weighted by O&amp;D share, with domestic and home markets on ${a.cty} GDP. The model applies <b>one estimated elasticity for the airport</b>, not a separate regression per market, plus a segment-level fare term and a propensity-to-fly maturity damping. So ${a.c} reads ${(econFull(a).dests||[]).length} country GDP series but a single elasticity.</p>
+       <p class="mut" style="font-size:12px;line-height:1.5;margin-top:4px">The headline fit is passengers on <b>total GDP</b>, so it is a GDP elasticity: it absorbs population growth, because total GDP is population times GDP per head. The <b>income elasticity</b> proper regresses passengers per capita on GDP per capita, with population as its own driver (passengers = population x propensity of income). Both are shown where population history is available.</p>
+       <div class="runstrip">
+        <span>GDP elasticity (total GDP): <b>${E.bG_est!=null?E.bG_est.toFixed(2):"not separately estimated"}</b></span>
+        ${E.income?`<span>Income elasticity (per capita): <b>${E.income.bY.toFixed(2)}</b></span>`:""}
+        <span>Applied in this forecast: <b>${E.ge.toFixed(2)}</b></span>
+        <span>Book bound: <b>${E.bound[0]}-${E.bound[1]}</b></span>
+        ${E.n?`<span>obs: <b>${E.n}</b>${E.window?" ("+E.window+")":""}</span>`:""}
+        ${E.reliable!=null?`<span>reliability: <b class="${E.reliable?'pos':'neg'}">${E.reliable?"passes filter (used)":"fails filter - falls back to pooled/default"}</b></span>`:""}</div>
+       ${capped?`<p style="color:#b3452b;font-size:12px;margin-top:6px">The estimated elasticity ${E.bG_est.toFixed(2)} sits outside the book bound, so the forecast does not apply it directly; it is capped to ${appliedIfCapped.toFixed(2)} pending re-estimation on O&amp;D. Surfacing that is exactly why this page exists.</p>`:""}
+       <p class="mut" style="font-size:11.5px;margin-top:6px">Source: ${E.source}.${E.r2!=null?"":" R&#178;, t-stat and the observed scatter fill in from the estimation extract when the engine is re-run; the elasticities shown are the model's actual values."}</p></div>
+      <div class="card"><h3>GDP-elasticity fit: ln(passengers) vs ln(total GDP)</h3>${econScatter(slope,E.r2,E.real,E.points)}</div>
+      ${E.income&&E.income.points?`<div class="card"><h3>Income-elasticity fit: ln(pax per capita) vs ln(GDP per capita)</h3>${econScatter(E.income.bY,E.income.r2,true,E.income.points)}</div>`:""}
+     </div>
+     <div>
+      <div class="card"><h3>GDP series behind the forecast - ${a.c}'s key markets</h3>${econMarkets(a)}
+       <p class="mut" style="font-size:11.5px;margin-top:6px">National GDP or key-market GDP? Each market grows with the series named. A hub reads many country GDPs; a regional airport reads mostly domestic and near-Europe.</p></div>
+      <div class="card"><h3>Fare elasticity (segment level, locked)</h3>
+       <table><tr><th>Segment</th><th class="num">Fare term</th></tr>${Object.entries(E.bF).map(([k,v])=>`<tr><td>${k}</td><td class="num">${(+v).toFixed(2)}</td></tr>`).join("")}</table>
+       <p class="mut" style="font-size:11.5px;margin-top:6px">Segment-level per Method Spec (no airport-level fare elasticity); identified mainly on the 2014-16 fare episode, excluding anomalous fare years.</p></div>
+     </div></div>`;}
+  if(BC.tab==="deliverable"){
+    body=`<div class="grid2"><div class="card"><h3>Full Excel model - the deliverable</h3>
+      <div class="check"><span>Every template sheet populated by the engine</span><b class="pos">yes</b></div>
+      <div class="check"><span>Parity: engine vs template Output Contract</span><b class="pos">412 / 412 cells within 0.001%</b></div>
+      <div class="check"><span>Licence filter (client data + Avia outputs only)</span><b class="pos">pass</b></div>
+      <div class="check"><span>All charts embedded (gallery set)</span><b class="pos">yes</b></div>
+      <div class="check"><span>Scenario sheet sets (active scenarios, incl. client one-offs)</span><b class="pos">${Object.values(BC.scnOn).filter(Boolean).length} included</b></div>
+      <button class="btn tealb" style="margin-top:10px" onclick="alert('Production: writes the complete client model. Post-export Excel edits round-trip to the pack, or the file is review-only.')">Generate full client model (.xlsx)</button>
+      <div style="margin-top:8px"><span class="pill grey">Review</span><span class="pill gold">Edit &#8594; round-trip to pack</span><span class="pill prj">Lock &amp; save as client model</span></div></div>
+     <div><div class="card"><h3>Backtest with overrides (v1.1) - the accuracy edge</h3>
+      <table><tr><th>Fit to 2019, scored 2022-25</th><th class="num">MAPE</th></tr>
+       <tr><td>Public baseline model</td><td class="num">6.2%</td></tr>
+       <tr><td>With client pack applied</td><td class="num pos"><b>3.4%</b></td></tr></table></div>
+      <div class="card"><h3>DDFS module (chained; internal v1.1, airport add-on later)</h3>
+       ${(()=>{const S=bcSplit(bes);const A=atmSeries(bes,S);const P=bes.P;
+        const totA=y=>A[iY(y)]+P.cargoT*Math.pow(1+P.cargoG/100,y-BY)/P.tPerAtm+P.gaAtmK*Math.pow(1+P.gaG/100,y-BY);
+        const dd=y=>Math.round(totA(y)*1000/365*1.15);
+        const bh=y=>Math.round(dd(y)*0.09), st=y=>Math.round(bh(y)*0.78);
+        return `<table><tr><th>Design day output</th><th class="num">${BY+2}</th><th class="num">${BY+10}</th></tr>
+        <tr><td>Design-day ATMs (incl cargo &amp; GA)</td><td class="num">${dd(BY+2)}</td><td class="num">${dd(BY+10)}</td></tr>
+        <tr><td>Busy-hour pax (PHP)</td><td class="num">${Math.round(bes.c[iY(BY+2)]*1e6/365*1.3*.085)}</td><td class="num">${Math.round(bes.c[i35]*1e6/365*1.3*.085)}</td></tr>
+        <tr><td>Busy-hour ATMs / stands</td><td class="num">${bh(BY+2)} / ${st(BY+2)}</td><td class="num">${bh(BY+10)} / ${st(BY+10)}</td></tr></table>`;})()}
+       <p class="mut" style="font-size:11px;margin-top:4px">Per the Avia DDFS method (AUH 2022, Bologna 2023/25, Abha 2025 on Egnyte). All values derive from the current run: total ATMs including cargo and GA, 30th busy hour convention. <b>The DDFS module is the single source for every peak metric</b> - no ratio-based peak figures exist anywhere else in the tool.</p></div></div></div>`;}
+  m.innerHTML=`
+  <div class="wall"><div class="bar"></div>
+   <div><b>Project ${a.n} ${a.c}</b> &nbsp;|&nbsp; base vintage <b>${VN}</b> &nbsp;|&nbsp; namespace <span class="pill prj">project:${a.c.toLowerCase()}</span>
+    <div class="mut" style="font-size:11.5px;margin-top:2px"><b>Guard G-V:</b> client data refines THIS forecast, never the global tool. No promote path exists here.</div></div>
+   <div style="margin-left:auto;display:flex;gap:8px;align-items:center"><span class="pill pub">public baseline</span>&#8853;<span class="pill prj">client pack (${nOver})</span>
+    <button class="btn ghost" onclick="BC={apt:null,gen:false,tab:'inputs',over:{},ovlOn:{tower:false,intv:false,surv:false,plan:false,cdat:false},scnOn:{hi:true,lo:true,shock:false,fail:false,capd:false},bum:{},bumX:[],qsi:{},qsiYr:{},blendN:3,bumApply:false};renderBC()">New project</button></div></div>
+  <div class="lvl">${tabBtns}</div>
+  ${body}
+  <div class="footer">Synthetic data, illustrative only. Editing in the front end; the full Excel model is the output.</div>`;}
+function bcSeries(which,opts){
+  const a=BC.apt; if(!a) return null; opts=opts||{};
+  const raw=bcSeriesRaw(which,opts);
+  const real=engineBaseSeries(a.c,"Baseline");
+  if(!real||!raw) return raw;
+  const rb=bcSeriesRaw("base",{});
+  const u=real.map((v,i)=> (rb.u[i]>0 ? v*(raw.u[i]/rb.u[i]) : v));
+  return {u, c:constrain(u, raw.capF, raw.P.spillM/100, raw.P.spillS/100), P:raw.P, capF:raw.capF};
+}
+// ---------- shell ----------
+function pickApt(){
+  const v=document.getElementById("aptin").value.trim();
+  const code=(v.split(" - ")[0]||v).trim().toUpperCase();
+  const a=APT2.find(x=>x.c.toUpperCase()===code);
+  if(!a){alert("Pick an airport from the list (mockup carries "+APT2.length+" synthetic airports).");return;}
+  BC.apt=a;BC.gen=true;BC.tab="inputs";renderBC();}
+function setMode(m){["pick","sb","bc"].forEach(x=>document.getElementById("t-"+x).classList.toggle("on",x===m));
+  if(m==="pick")renderPick(); if(m==="sb")renderSB(); if(m==="bc")renderBC();}
+async function runQSI(code){
+  try{const j=await (await fetch("/api/bum?airport="+encodeURIComponent(code)+"&n=10")).json();
+    if(j.busy||j.started){QSIPOLL=Date.now()+600000; QSISAW=false; setTimeout(pollBUM,1200);
+      alert((j.busy?"Already running ":"Running the QSI optimiser for ")+code+" on the server. Candidates appear in the list as each route completes.");}
+    else alert("QSI service did not start: "+(j.error||"unknown"));
+  }catch(e){
+    alert("QSI route service not reachable.\n\nThis needs qsi_service.py running on the machine that has the QSI tool and databases (the box behind the tunnel). When it is running, this button computes the optimised candidates on demand and streams them in.");
+  }
+}
+async function CK_BOOT(){
+  try{
+    const R=await fetch("data/cockpit.json"); CK=await R.json();
+    try{CKCAND=await (await fetch("data/bum_candidates.json")).json();}catch(e){CKCAND=null;}
+    CK.airports.forEach(a=>CKBYI[a.c]=a);
+    APT2=CK.airports.map(a=>({c:a.c,n:a.n,cty:a.cty,reg:a.reg,base:a.base,g:a.g,cap:a.cap||0,
+      dom:a.dom,cx:a.cx,ge:a.ge||regGe(a.reg),mix:mixOf(a),tpc:tpcOf(a.reg)}));
+    ENT=buildENT();
+  }catch(e){console.warn("cockpit.json not loaded; using synthetic fallback",e);}
+  setMode("pick");
+}
+CK_BOOT();
+async function pollBUM(){
+  if(!CK||BC.tab!=="bum")return;
+  const active = Date.now()<QSIPOLL || (CKCAND&&CKCAND._status&&CKCAND._status.running);
+  if(!active)return;
+  try{const nc=await (await fetch("data/bum_candidates.json?_="+Date.now())).json();
+    if(nc._status&&nc._status.running)QSISAW=true;
+    if(JSON.stringify(nc._status)!==JSON.stringify(CKCAND&&CKCAND._status)){CKCAND=nc;renderBC();}
+    if(QSISAW&&nc._status&&!nc._status.running)QSIPOLL=0;   // run finished - stop polling
+  }catch(e){}
+}
+setInterval(pollBUM,4000);
+</script>
+</body>
+</html>

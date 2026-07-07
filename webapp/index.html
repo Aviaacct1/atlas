@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Avia Cortex - Aviation Forecasting</title>
+<style>
+ body{margin:0;font-family:Arial,Ebrima,sans-serif;background:#f6f8fa;color:#1c2b39}
+ header{background:#156082;color:#fff;padding:18px 28px}
+ header h1{margin:0;font-size:21px}
+ header span{font-size:12px;opacity:.85}
+ .wrap{max-width:900px;margin:40px auto;padding:0 24px;display:flex;gap:22px;flex-wrap:wrap}
+ .card{flex:1 1 340px;background:#fff;border:1px solid #e2e8ef;border-radius:12px;padding:24px;text-decoration:none;color:inherit;transition:.15s}
+ .card:hover{box-shadow:0 6px 22px rgba(21,96,130,.14);transform:translateY(-2px)}
+ .card h2{margin:0 0 6px;color:#156082;font-size:18px}
+ .card p{margin:0;font-size:13.5px;color:#5f7185;line-height:1.5}
+ .tag{display:inline-block;margin-top:14px;font-size:11px;background:#eef4f7;color:#156082;border-radius:20px;padding:3px 11px;font-weight:700}
+ .foot{max-width:900px;margin:0 auto;padding:0 24px 40px;color:#8a97a5;font-size:11.5px}
+</style></head>
+<body>
+<header><h1>Global Aviation Forecast</h1><span>powered by Avia Cortex &middot; internal demo, confidential</span></header>
+<div class="wrap">
+ <a class="card" href="dashboard.html">
+   <h2>Global forecast dashboard &rarr;</h2>
+   <p>The published world forecast: terminal passengers, RPK, ASK, ATMs and CO2 to 2060, three scenarios, drill from world to region to country to airport, comparator overlays.</p>
+   <span class="tag">client-facing view</span></a>
+ <a class="card" href="cockpit.html">
+   <h2>Analyst cockpit &rarr;</h2>
+   <p>The internal forecasting tool: pick any airport, generate from the engine, then tailor inputs and layer client data to see the impact. Global sandbox for whole-model assumption changes.</p>
+   <span class="tag">internal / bespoke</span></a>
+</div>
+<div class="foot">Built from ACI, Sabre, OAG and Oxford Economics; Avia Solutions analysis. Data is licensed - keep access controlled.</div>
+</body></html>

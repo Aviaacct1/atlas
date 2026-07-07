@@ -1,0 +1,23 @@
+# OEF real GDP growth (Oxford Economics, March 2026 vintage) - the GDP driver.
+# Source: Egnyte /Shared/Company Data/02 Knowledge/6 Non Aviation/Oxford Economic
+# Forecasting/OEF GDP Forecast Mar 2026/OEF GDP Forecasts to 2032 - Mar 2026 (JK).xlsx
+# Base/Low/High map to the model scenarios Baseline/Low/High. Beyond 2032 the last
+# rate is held (long-run assumption). Author: Avia Solutions.
+meta:
+  vintage: "OEF March 2026"
+  horizon_hard: 2032
+  long_run_from: 2033
+uk:                                   # UK-Continental, real GDP growth per year
+  actual: {2023: 0.003, 2024: 0.011, 2025: 0.013}
+  Baseline: {2026: 0.008, 2027: 0.013, 2028: 0.015, 2029: 0.015, 2030: 0.015, 2031: 0.015, 2032: 0.015}
+  Low:      {2026: -0.002, 2027: 0.003, 2028: 0.005, 2029: 0.010, 2030: 0.010, 2031: 0.010, 2032: 0.010}
+  High:     {2026: 0.018, 2027: 0.023, 2028: 0.025, 2029: 0.020, 2030: 0.020, 2031: 0.020, 2032: 0.020}
+# OEF Table 7.3 GDP growth by traffic region (Base), stored for the destination-side
+# GDP driver in the bidirectional/global build; model-region mapping is a Phase 2 task.
+regions_base:
+  Asia/Pacific:      {2026: 0.028, 2027: 0.026, 2028: 0.026, 2029: 0.025, 2030: 0.024, 2031: 0.024, 2032: 0.023}
+  North Atlantic:    {2026: 0.027, 2027: 0.024, 2028: 0.022, 2029: 0.021, 2030: 0.020, 2031: 0.019, 2032: 0.019}
+  Middle-East:       {2026: 0.004, 2027: 0.056, 2028: 0.041, 2029: 0.032, 2030: 0.028, 2031: 0.025, 2032: 0.023}
+  North-Africa:      {2026: 0.038, 2027: 0.032, 2028: 0.027, 2029: 0.024, 2030: 0.022, 2031: 0.021, 2032: 0.020}
+  Southern Africa:   {2026: 0.043, 2027: 0.043, 2028: 0.041, 2029: 0.039, 2030: 0.038, 2031: 0.037, 2032: 0.035}
+  South-Atlantic:    {2026: 0.030, 2027: 0.031, 2028: 0.028, 2029: 0.027, 2030: 0.024, 2031: 0.023, 2032: 0.022}

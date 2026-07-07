@@ -1,0 +1,21 @@
+{
+  "_source": "World Bank (UN Population Division population, SP.POP.TOTL 2024; GDP per capita PPP NY.GDP.PCAP.PP.CD 2023). Retrieved 5 Jul 2026.",
+  "_keys": "ISO2 -> {pop (persons, 2024), gdp_pc_ppp (current intl $, 2023)}",
+  "data": {
+    "AE": {"pop": 10986400, "gdp_pc_ppp": 77955}, "AU": {"pop": 27194286, "gdp_pc_ppp": 72273},
+    "BR": {"pop": 211998573, "gdp_pc_ppp": 21176}, "CH": {"pop": 9005582, "gdp_pc_ppp": 95142},
+    "CN": {"pop": 1408975000, "gdp_pc_ppp": 25179}, "DE": {"pop": 83516593, "gdp_pc_ppp": 71684},
+    "EG": {"pop": 116538258, "gdp_pc_ppp": 18525}, "ES": {"pop": 48848840, "gdp_pc_ppp": 55682},
+    "FR": {"pop": 68551653, "gdp_pc_ppp": 60839}, "GB": {"pop": 69281000, "gdp_pc_ppp": 59911},
+    "GR": {"pop": 10405134, "gdp_pc_ppp": 42711}, "HK": {"pop": 7524100, "gdp_pc_ppp": 71512},
+    "ID": {"pop": 283487931, "gdp_pc_ppp": 15416}, "IN": {"pop": 1450935791, "gdp_pc_ppp": 10323},
+    "IE": {"pop": 5395790, "gdp_pc_ppp": 129683}, "IT": {"pop": 58952704, "gdp_pc_ppp": 60030},
+    "JP": {"pop": 123975371, "gdp_pc_ppp": 50662}, "MA": {"pop": 38081173, "gdp_pc_ppp": 9895},
+    "MX": {"pop": 130861007, "gdp_pc_ppp": 25243}, "NG": {"pop": 232679478, "gdp_pc_ppp": 8705},
+    "NL": {"pop": 17993485, "gdp_pc_ppp": 81729}, "NO": {"pop": 5572279, "gdp_pc_ppp": 103638},
+    "PL": {"pop": 36559233, "gdp_pc_ppp": 48473}, "PT": {"pop": 10694681, "gdp_pc_ppp": 49353},
+    "SA": {"pop": 35300280, "gdp_pc_ppp": 71565}, "SG": {"pop": 6036860, "gdp_pc_ppp": 143786},
+    "TH": {"pop": 71668011, "gdp_pc_ppp": 23519}, "TR": {"pop": 85518661, "gdp_pc_ppp": 42786},
+    "US": {"pop": 340003797, "gdp_pc_ppp": 82305}, "ZA": {"pop": 64007187, "gdp_pc_ppp": 15200}
+  }
+}
