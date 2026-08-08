@@ -2,16 +2,19 @@
 cd /d "%~dp0"
 echo Starting the Avia Global Forecast viewer...
 echo Open http://localhost:8000 in your browser (it should open automatically).
-rem Call the interpreter inside the repository's own .venv by path. "python" is whatever
-rem is first on PATH, which on a machine running several Avia tools is not necessarily
-rem the one that has this tool's dependencies installed.
-if exist "%~dp0..\.venv\Scripts\python.exe" (
-    "%~dp0..\.venv\Scripts\python.exe" serve.py
-) else (
-    echo No .venv found. Create one: py -3.12 -m venv .venv
-    echo then: .venv\Scripts\python.exe -m pip install -r requirements.txt
-    echo Falling back to the system interpreter.
-    python serve.py
-    if errorlevel 1 py serve.py
-)
+rem Use the interpreter inside the repository's own .venv. "python" is whatever is first
+rem on PATH, which on a machine running several Avia tools is not necessarily the one
+rem with this tool's dependencies. No parenthesised if/else block: cmd.exe handles those
+rem badly, and this file must be CRLF for the same reason.
+set "PY=%~dp0..\.venv\Scripts\python.exe"
+if not exist "%PY%" goto novenv
+goto run
+:novenv
+echo No .venv found at %~dp0..\.venv
+echo Create one:  py -3.12 -m venv .venv
+echo Then:        .venv\Scripts\python.exe -m pip install -r requirements.txt
+echo Falling back to the system interpreter.
+set "PY=python"
+:run
+"%PY%" serve.py
 pause
