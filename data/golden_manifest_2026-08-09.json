@@ -1,0 +1,2288 @@
+{
+ "captured": "2026-08-09",
+ "files": {
+  "Avia/back_test.py": {
+   "bytes": 8799,
+   "sha256": "e0444d78c78e6d9861ba2786ef7b300b30a1380fcb93a1251ea6d9dc0bbf7561"
+  },
+  "Avia/back_test_cohort.py": {
+   "bytes": 15859,
+   "sha256": "c0ba88f3ae2454a30e5b917156f20fa17b4d58cc2253810058b912cb315a6c34"
+  },
+  "Avia/back_test_v2.py": {
+   "bytes": 10860,
+   "sha256": "df75de4fadfad8a855ef4ca90d1c5b31623db8bfee6cd1a7468ecc995a6598de"
+  },
+  "Avia/bt2/_cpn_worker.py": {
+   "bytes": 1734,
+   "sha256": "98b9f1e7578ad72e040ea7aaeea45bc0525ce152279d851ba1ea50cf23d6936e"
+  },
+  "Avia/bt2/_db1b_worker.py": {
+   "bytes": 1157,
+   "sha256": "e4146a4e66e7e5ea6ab61b1690ba4e2024d4b19d7e15f253289fca85bd317ba8"
+  },
+  "Avia/bt2/airport_track_record.csv": {
+   "bytes": 22077,
+   "semantic": {
+    "rows": 982
+   },
+   "sha256": "d78310ff4dba4f2ca37e1203818f36e2f0cc09fe5f451fc82844e858deef83a9"
+  },
+  "Avia/bt2/base_strength_2016.json": {
+   "bytes": 2385919,
+   "semantic": {
+    "keys": 97790,
+    "type": "dict"
+   },
+   "sha256": "7f184bdee086718c677a3d229db1764c11a9abbbaef75f6dcf99065c71f07819"
+  },
+  "Avia/bt2/base_strength_2017.json": {
+   "bytes": 2869121,
+   "semantic": {
+    "keys": 117551,
+    "type": "dict"
+   },
+   "sha256": "f149b95316dc52e3baa88a4796c2f9c4bbb0c261001395e8a56b3aadc5521195"
+  },
+  "Avia/bt2/base_strength_2018.json": {
+   "bytes": 3118212,
+   "semantic": {
+    "keys": 127804,
+    "type": "dict"
+   },
+   "sha256": "b3651080f73113b0be18a949f56bf2b65312efb8cb4ead131db8b6b4078ffd3b"
+  },
+  "Avia/bt2/base_strength_2019.json": {
+   "bytes": 2884200,
+   "semantic": {
+    "keys": 118171,
+    "type": "dict"
+   },
+   "sha256": "ad59bc2dcfe5ff8af02136e1f5ef4a038538bc05a968efd86dc19279d6013db5"
+  },
+  "Avia/bt2/base_strength_2025.json": {
+   "bytes": 2600744,
+   "semantic": {
+    "keys": 106653,
+    "type": "dict"
+   },
+   "sha256": "fdd0523875d81254b523fd26cfb3add9b153b319ef788013ae2c4769481921cc"
+  },
+  "Avia/bt2/bt2_airport_chart.py": {
+   "bytes": 3282,
+   "sha256": "3626872e95f3a8fe9861deed8a63bc11a0b0e35f7e6e217b475d5bf935ea437c"
+  },
+  "Avia/bt2/bt2_base.py": {
+   "bytes": 1500,
+   "sha256": "5e3b454ac957870f63cf31dc8d6b32c9c295eba7b777d05756ddea25235ab3b0"
+  },
+  "Avia/bt2/bt2_blind_preds.csv": {
+   "bytes": 197691,
+   "semantic": {
+    "rows": 2208
+   },
+   "sha256": "e2d110e1f1c473ca347c47dc7cd03ee30bf265f18c3d55c24780ecd73d338828"
+  },
+  "Avia/bt2/bt2_capture.py": {
+   "bytes": 7444,
+   "sha256": "3df8f3c489606cdf96be586e53cc14576a5c2a4884438216b8d8471468c871a2"
+  },
+  "Avia/bt2/bt2_claims.py": {
+   "bytes": 3515,
+   "sha256": "26eef8d210b299f41b0878d55f279a366d4e4b3cee27f20e83b87db87422b16a"
+  },
+  "Avia/bt2/bt2_coupon.py": {
+   "bytes": 3512,
+   "sha256": "2c34f26352d8e12ec3fa458ca76d1f44aa399f5047ef1bcdd7b0ecf37e268d25"
+  },
+  "Avia/bt2/bt2_db1b.py": {
+   "bytes": 4027,
+   "sha256": "fefc22a3b978523d0e9b4ab34a34a3a0589b6a03480ca075e0e30f18e5d9e915"
+  },
+  "Avia/bt2/bt2_discover.py": {
+   "bytes": 3714,
+   "sha256": "4e1f752695f02c5a7bf86c9b729422d1fa187602545889d526227ab3a21c1779"
+  },
+  "Avia/bt2/bt2_exp.py": {
+   "bytes": 2733,
+   "sha256": "5f79efef128926a3408923381360660946aa9820c10e7d9d0f2dadfa23f5e0e4"
+  },
+  "Avia/bt2/bt2_gbm.py": {
+   "bytes": 4738,
+   "sha256": "0eff7afc7d5c6871bb49c8ea12561f3478d830b7abe54bbdc068e032cde2088e"
+  },
+  "Avia/bt2/bt2_growth.py": {
+   "bytes": 1058,
+   "sha256": "d854300dad2a05fb1ca26a3dc685e712f0b405d0e18a467e67a1ea3a12b7172a"
+  },
+  "Avia/bt2/bt2_lib.py": {
+   "bytes": 5290,
+   "sha256": "fff12691855decbd0ee1a62705e7d6fa338cc96917707ea0b28eebc9b7055b8c"
+  },
+  "Avia/bt2/bt2_metro.py": {
+   "bytes": 4427,
+   "sha256": "4012510b10769455bc12287bfbfe6a074f356ae24b7ef651c6cc6b578ac2f489"
+  },
+  "Avia/bt2/bt2_model.pkl": {
+   "bytes": 5848053,
+   "sha256": "7426031c9661d5bf0f4462998739da0f432fc729dc60cf0cd4a839f96fc7b5fe"
+  },
+  "Avia/bt2/bt2_model.py": {
+   "bytes": 6777,
+   "sha256": "2eb6a7011aaadfde6e7eb019fe7762f32d8c6fb81738d29a86f5d2dd0e6c33b3"
+  },
+  "Avia/bt2/bt2_model_v1_1.pkl": {
+   "bytes": 6460032,
+   "sha256": "565ed8338c03557f2cf91e5474337aa714602d1b94d7c60c5478097edc8c297d"
+  },
+  "Avia/bt2/bt2_model_v1_2.pkl": {
+   "bytes": 6481957,
+   "sha256": "27b665dcfce91b3a1623f5c72b28f215bc26bd937c523d1cafc82716f6503d3b"
+  },
+  "Avia/bt2/bt2_months.py": {
+   "bytes": 2451,
+   "sha256": "7e3608e8e186a6801a28b57264560069d36145a9ae222753bd4b7a23b4d63cf7"
+  },
+  "Avia/bt2/bt2_paths.py": {
+   "bytes": 5428,
+   "sha256": "bc6c35bd980f19e5b5e1a008197d6bc910da1382d2b0fd69598c3351025f0ed1"
+  },
+  "Avia/bt2/bt2_profile.py": {
+   "bytes": 3367,
+   "sha256": "df750918f959bf19ec5a66df383bae470b52ea6dc9cdaf89190312a62f7e5669"
+  },
+  "Avia/bt2/bt2_reg.py": {
+   "bytes": 3002,
+   "sha256": "d74b85beee4a88a357fb7d67e4195767cfa093100c3be6931b565dc59f6a120d"
+  },
+  "Avia/bt2/bt2_tier.py": {
+   "bytes": 4666,
+   "sha256": "d83d389fd49268d6f221b718e171207738d515025d1662a8155fbb8b19f34444"
+  },
+  "Avia/bt2/capture_2016.csv": {
+   "bytes": 37055,
+   "semantic": {
+    "rows": 460
+   },
+   "sha256": "a8463e0c9ac9c7e211b86bbf91043884dae8bea1a602624efddbf85e1306da7a"
+  },
+  "Avia/bt2/capture_2017.csv": {
+   "bytes": 44717,
+   "semantic": {
+    "rows": 557
+   },
+   "sha256": "89afd76f83f7e94f4e837a084837916c818368b61f55e57f96e77ce51fe98795"
+  },
+  "Avia/bt2/capture_2018.csv": {
+   "bytes": 54999,
+   "semantic": {
+    "rows": 688
+   },
+   "sha256": "a593b19cacfb94d4db51a450c1a97a93390ec62ccc8d0ab2b54feac6c97c34f5"
+  },
+  "Avia/bt2/capture_2019.csv": {
+   "bytes": 47929,
+   "semantic": {
+    "rows": 605
+   },
+   "sha256": "4a6e20f382a41b90187b3463a76c6caf8ba3d12852af9b5b8bfe2e57d27d4004"
+  },
+  "Avia/bt2/capture_2025.csv": {
+   "bytes": 54958,
+   "semantic": {
+    "rows": 715
+   },
+   "sha256": "935df323aa7e303c6c27b18b7ac4a4814df71172083edb07aa8f32497e44e7a1"
+  },
+  "Avia/bt2/coupon_seg_2018.csv": {
+   "bytes": 2486,
+   "semantic": {
+    "rows": 149
+   },
+   "sha256": "0ea850dfb862858d2508e9d36fe8c48ee9ab3aae66a69bf81761ac9efa0d1cb5"
+  },
+  "Avia/bt2/coupon_seg_2019.csv": {
+   "bytes": 2051,
+   "semantic": {
+    "rows": 123
+   },
+   "sha256": "30d44f57e36ffa7cce1375bfcdbb4519975aca992e729ec8482922fe5dfc3935"
+  },
+  "Avia/bt2/cpn_qtr_2018_1p1.csv": {
+   "bytes": 41074,
+   "semantic": {
+    "rows": 2975
+   },
+   "sha256": "e31b84ff8e7b8fe491eb5add25f38c175c94881211120041e0f9d72e4117d45c"
+  },
+  "Avia/bt2/cpn_qtr_2018_1p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/cpn_qtr_2018_2p1.csv": {
+   "bytes": 44433,
+   "semantic": {
+    "rows": 3216
+   },
+   "sha256": "97c6fc7c36ef31d3bc8f5a22d21e5ffd99d0180ec56dff3cff113400213820bb"
+  },
+  "Avia/bt2/cpn_qtr_2018_2p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/cpn_qtr_2018_3p1.csv": {
+   "bytes": 43663,
+   "semantic": {
+    "rows": 3154
+   },
+   "sha256": "8d023b766f372ec10d3c0f242cc495a39d72a09fd7da81faf931512cc0db3909"
+  },
+  "Avia/bt2/cpn_qtr_2018_3p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/cpn_qtr_2018_4p1.csv": {
+   "bytes": 43434,
+   "semantic": {
+    "rows": 3135
+   },
+   "sha256": "dadb36ce4dbeadee4a810ed56324451563975895131134ee5a98fff49188170f"
+  },
+  "Avia/bt2/cpn_qtr_2018_4p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/cpn_qtr_2019_1p1.csv": {
+   "bytes": 34262,
+   "semantic": {
+    "rows": 2465
+   },
+   "sha256": "59eee82cee55f7f52f19e283ec5689a1a33e1eb66b81dc05071488edf8cd48a2"
+  },
+  "Avia/bt2/cpn_qtr_2019_1p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/cpn_qtr_2019_2p1.csv": {
+   "bytes": 36909,
+   "semantic": {
+    "rows": 2651
+   },
+   "sha256": "6d73513c86cf44ad2ea7098ee7c61c815349d31b4308b443f47bec137da7608f"
+  },
+  "Avia/bt2/cpn_qtr_2019_2p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/cpn_qtr_2019_3p1.csv": {
+   "bytes": 36182,
+   "semantic": {
+    "rows": 2593
+   },
+   "sha256": "1e91158d6203e8bd92245c3d68a381abd155462fb2cbcefaa0a9eab39d0f7631"
+  },
+  "Avia/bt2/cpn_qtr_2019_3p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/cpn_qtr_2019_4p1.csv": {
+   "bytes": 35846,
+   "semantic": {
+    "rows": 2572
+   },
+   "sha256": "ae11591a764a9c40edcb9c241fd515dfe4dabd23da3829e7ddb9a18dfbe94168"
+  },
+  "Avia/bt2/cpn_qtr_2019_4p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_outturn_2016.csv": {
+   "bytes": 1000,
+   "semantic": {
+    "rows": 45
+   },
+   "sha256": "2d3e1410b64d028e9c0f429ff40e0ebdc25dedaba3b2922a95257be0ed1453cb"
+  },
+  "Avia/bt2/db1b_outturn_2017.csv": {
+   "bytes": 1628,
+   "semantic": {
+    "rows": 71
+   },
+   "sha256": "9095ad4b1616fbd5dd2d9b1b6e2a683e8e7f40d32b78741b95d32a11bb25bd29"
+  },
+  "Avia/bt2/db1b_outturn_2018.csv": {
+   "bytes": 3327,
+   "semantic": {
+    "rows": 147
+   },
+   "sha256": "fd4f12242c0d9658f0e047e3138a58eaa689f7530cd3b62c1423eb9c0b93fd34"
+  },
+  "Avia/bt2/db1b_outturn_2019.csv": {
+   "bytes": 2706,
+   "semantic": {
+    "rows": 120
+   },
+   "sha256": "3f3f76eaae65a36b4de68cbb76b92090ff2c0b1292fff07303131444287ef07f"
+  },
+  "Avia/bt2/db1b_qtr_2016_1.MISSING": {
+   "bytes": 23,
+   "sha256": "177dd91b189027ba9fd741ff9134e4fb1e496fe7aabfe5568717de47bee574f4"
+  },
+  "Avia/bt2/db1b_qtr_2016_2p1.csv": {
+   "bytes": 9505,
+   "semantic": {
+    "rows": 679
+   },
+   "sha256": "e5d0369fbdf09c8f9ea106c7e69532617bc1fb700ac1020664f97a094b52d732"
+  },
+  "Avia/bt2/db1b_qtr_2016_2p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2016_3p1.csv": {
+   "bytes": 9646,
+   "semantic": {
+    "rows": 689
+   },
+   "sha256": "d0717c83b4c53175f707898dd60708eb1efc397de633790ba6e2e28a681a02ff"
+  },
+  "Avia/bt2/db1b_qtr_2016_3p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2016_4p1.csv": {
+   "bytes": 9829,
+   "semantic": {
+    "rows": 705
+   },
+   "sha256": "ca128f47e6f5b516bbb2109bbd49914d1dfa73c90760334ee2144d5477673454"
+  },
+  "Avia/bt2/db1b_qtr_2016_4p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2017_1p1.csv": {
+   "bytes": 19292,
+   "semantic": {
+    "rows": 1370
+   },
+   "sha256": "b029c088a66f6d23efacdd4013ea734291a8fe7ca40ed400af53067d9da110c6"
+  },
+  "Avia/bt2/db1b_qtr_2017_1p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2017_2p1.csv": {
+   "bytes": 20854,
+   "semantic": {
+    "rows": 1482
+   },
+   "sha256": "fc199fdc7fb7b4c40c0fde226be9c5f517b5d3daa0ef441543ac1f2aa64a54a9"
+  },
+  "Avia/bt2/db1b_qtr_2017_2p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2017_3p1.csv": {
+   "bytes": 20424,
+   "semantic": {
+    "rows": 1447
+   },
+   "sha256": "f8ebcc7ea0b95170587d92b534973730f165f394d63a75e41ef70906e1e7ad84"
+  },
+  "Avia/bt2/db1b_qtr_2017_3p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2017_4p1.csv": {
+   "bytes": 19893,
+   "semantic": {
+    "rows": 1405
+   },
+   "sha256": "4271a0490b4af089148afca167099ff000c7ed9e835fa905e36a4856054e094f"
+  },
+  "Avia/bt2/db1b_qtr_2017_4p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2018_1.csv": {
+   "bytes": 32168,
+   "semantic": {
+    "rows": 2300
+   },
+   "sha256": "08384eb29bbc3461fa7b8eaa820d4e2a0777da2ea16d0b3da511805cd45a7956"
+  },
+  "Avia/bt2/db1b_qtr_2018_2.csv": {
+   "bytes": 0,
+   "semantic": {
+    "rows": -1
+   },
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "Avia/bt2/db1b_qtr_2018_2p1.csv": {
+   "bytes": 34486,
+   "semantic": {
+    "rows": 2456
+   },
+   "sha256": "672708d21813eadcf721dbd62e6915ad8380fcc14091495d514cc9824f70e289"
+  },
+  "Avia/bt2/db1b_qtr_2018_2p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2018_3p1.csv": {
+   "bytes": 33697,
+   "semantic": {
+    "rows": 2393
+   },
+   "sha256": "d36daaf4b57dd73e8e881da09f759f557020058cbe546f205a009c3de416b492"
+  },
+  "Avia/bt2/db1b_qtr_2018_3p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2018_4p1.csv": {
+   "bytes": 33941,
+   "semantic": {
+    "rows": 2409
+   },
+   "sha256": "88cffb2e08f1efdc6e291e2c814f9b1f82d2a4a0c2d39c71b4746b0478271170"
+  },
+  "Avia/bt2/db1b_qtr_2018_4p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2019_1p1.csv": {
+   "bytes": 26487,
+   "semantic": {
+    "rows": 1874
+   },
+   "sha256": "7d0d7689f593837c711f811c24be9c14ebf37efc79a535a6243604b1588d84cb"
+  },
+  "Avia/bt2/db1b_qtr_2019_1p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2019_2p1.csv": {
+   "bytes": 28393,
+   "semantic": {
+    "rows": 2002
+   },
+   "sha256": "524f48a3c5c28c821709f6cb68732441f51a95d3019e5841b9c98183c09c9e39"
+  },
+  "Avia/bt2/db1b_qtr_2019_2p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2019_3p1.csv": {
+   "bytes": 28685,
+   "semantic": {
+    "rows": 2028
+   },
+   "sha256": "65f5cf84e76aaca9beaaa5dc16bcd72453c3b704d16ef0127ff1aaa5ad4b6a5e"
+  },
+  "Avia/bt2/db1b_qtr_2019_3p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/db1b_qtr_2019_4p1.csv": {
+   "bytes": 28707,
+   "semantic": {
+    "rows": 2033
+   },
+   "sha256": "f52693e67b660cf22f5ce4acb183fbb6be1a8b11a8cbb9abea99109d894487f1"
+  },
+  "Avia/bt2/db1b_qtr_2019_4p2.csv": {
+   "bytes": 15,
+   "semantic": {
+    "rows": 0
+   },
+   "sha256": "bb7c9156890348815ead29b00d71950d8a8bf984a847e56cd4ccfc71601cbe38"
+  },
+  "Avia/bt2/fitted_dist.json": {
+   "bytes": 66317,
+   "semantic": {
+    "keys": 4,
+    "type": "dict"
+   },
+   "sha256": "06f4ec69666fc4c35426289b888a20b0ecb8487d9b557a177af0333a66f15333"
+  },
+  "Avia/bt2/growth_2016.csv": {
+   "bytes": 13757,
+   "semantic": {
+    "rows": 559
+   },
+   "sha256": "46db648d205136af3f9a1bbdbcb80d3d0792b898e97f493478bbc6ded663d7c3"
+  },
+  "Avia/bt2/growth_2017.csv": {
+   "bytes": 16089,
+   "semantic": {
+    "rows": 651
+   },
+   "sha256": "65a522f15cf218c0d512799d009d3e6ce053870f71b23d34663e84cc0d03a4cc"
+  },
+  "Avia/bt2/growth_2018.csv": {
+   "bytes": 18832,
+   "semantic": {
+    "rows": 761
+   },
+   "sha256": "54b2e9ace6d3ede4d484c6ed97f6fc1b551dbe060848bf7a98d7c4328c6187d9"
+  },
+  "Avia/bt2/growth_2019.csv": {
+   "bytes": 16615,
+   "semantic": {
+    "rows": 675
+   },
+   "sha256": "67f3e5dc4a8a010c68e3ebbaef99894ec3da12aa53e50377b236da75900b6e32"
+  },
+  "Avia/bt2/growth_2025.csv": {
+   "bytes": 18518,
+   "semantic": {
+    "rows": 772
+   },
+   "sha256": "996fa0c5f668b46460d479cd460ef912eb4534f64b2dbee174ca9ef65ef34f05"
+  },
+  "Avia/bt2/launch_profile_2016.csv": {
+   "bytes": 36875,
+   "semantic": {
+    "rows": 460
+   },
+   "sha256": "07c4b66add38076bf633e21c564f5d559b4f2271f07273ac3f6fd05a83b29a1b"
+  },
+  "Avia/bt2/launch_profile_2017.csv": {
+   "bytes": 44563,
+   "semantic": {
+    "rows": 557
+   },
+   "sha256": "0214d6c26d2367710bf2adf64adf1418ffe945192dad21bf3603ed9fe9e92a7c"
+  },
+  "Avia/bt2/launch_profile_2018.csv": {
+   "bytes": 54979,
+   "semantic": {
+    "rows": 688
+   },
+   "sha256": "d2143f59169c1789aa472ae252eaa5c37c7e1130a4f64fc34954f612001aadfc"
+  },
+  "Avia/bt2/launch_profile_2019.csv": {
+   "bytes": 48276,
+   "semantic": {
+    "rows": 605
+   },
+   "sha256": "c2baf831387dbbd9955c1546cbe9ac7b363bb2570936c62b765fbdb3b2c0de7d"
+  },
+  "Avia/bt2/launch_profile_2025.csv": {
+   "bytes": 57139,
+   "semantic": {
+    "rows": 715
+   },
+   "sha256": "95e840dfb360e75da1a45b289119acefb5f0a244ad5690fbc739e821c48f962c"
+  },
+  "Avia/bt2/launches_2016.csv": {
+   "bytes": 21649,
+   "semantic": {
+    "rows": 559
+   },
+   "sha256": "c61ce8e1d02fcee27d212a3aad8e17b525bd8841f25fc0b15ca21754c39b792d"
+  },
+  "Avia/bt2/launches_2017.csv": {
+   "bytes": 25194,
+   "semantic": {
+    "rows": 651
+   },
+   "sha256": "2a97ba69c2eea78524746629a4151e1e9d63b0332b2c048550a9047c0fd674ee"
+  },
+  "Avia/bt2/launches_2018.csv": {
+   "bytes": 29489,
+   "semantic": {
+    "rows": 761
+   },
+   "sha256": "a0fdc4872a4376036d2ffb676a16d8dcc565fbc91182e3d327f6f3226a1c6b9a"
+  },
+  "Avia/bt2/launches_2019.csv": {
+   "bytes": 26067,
+   "semantic": {
+    "rows": 675
+   },
+   "sha256": "9045d3e0c58d4a63df1a569b21824e68711a019555954c7738e3bb94ee987aa4"
+  },
+  "Avia/bt2/launches_2025.csv": {
+   "bytes": 29904,
+   "semantic": {
+    "rows": 772
+   },
+   "sha256": "de52b5be97b8e095982075ce76f0d57d7b08d91236b28d7a0aeb6e0da596d965"
+  },
+  "Avia/bt2/metro_ns_2016.json": {
+   "bytes": 6426975,
+   "semantic": {
+    "keys": 4,
+    "type": "dict"
+   },
+   "sha256": "ad1da0f92e33be62af96c0e5572e69538c2f2cf6b819ec46d44eb86d6b070de5"
+  },
+  "Avia/bt2/metro_ns_2017.json": {
+   "bytes": 6497822,
+   "semantic": {
+    "keys": 4,
+    "type": "dict"
+   },
+   "sha256": "b6052be7309c10aefa57263ca745dab3a16e1ee7458c8747b22198ed903ca700"
+  },
+  "Avia/bt2/metro_ns_2018.json": {
+   "bytes": 6832149,
+   "semantic": {
+    "keys": 4,
+    "type": "dict"
+   },
+   "sha256": "46ce0b843a4bb58897a3c6e174398dc13654b126a62de8187f0b46179b41fea7"
+  },
+  "Avia/bt2/metro_ns_2019.json": {
+   "bytes": 7270189,
+   "semantic": {
+    "keys": 4,
+    "type": "dict"
+   },
+   "sha256": "058d8ffd01084fd63c31c5780cba8f510b3a0c2c3fea507503ab21a454ffb515"
+  },
+  "Avia/bt2/metro_ns_2025.json": {
+   "bytes": 5911782,
+   "semantic": {
+    "keys": 4,
+    "type": "dict"
+   },
+   "sha256": "b28416a0fbc957c6b88d6db34aa9acbd5e0c27777098970119e66dbc4ed1034e"
+  },
+  "Avia/bt2/pair_months_2016.csv": {
+   "bytes": 96013,
+   "semantic": {
+    "rows": 3574
+   },
+   "sha256": "f53479d5e803074f61eda1575ad335f648e83e6a57e3d5a5516d3d64a7db26cc"
+  },
+  "Avia/bt2/pair_months_2017.csv": {
+   "bytes": 102400,
+   "semantic": {
+    "rows": 3840
+   },
+   "sha256": "f18624d53e99508151b6f7a73feffc21f446a929966f504e4fb1cb984782de03"
+  },
+  "Avia/bt2/pair_months_2018.csv": {
+   "bytes": 120829,
+   "semantic": {
+    "rows": 4530
+   },
+   "sha256": "3c99a64d59e652b0b698f0268aed51cf57f7d37be2f43bb7d977e793d7b90e15"
+  },
+  "Avia/bt2/pair_months_2019.csv": {
+   "bytes": 108752,
+   "semantic": {
+    "rows": 4072
+   },
+   "sha256": "3f0dafd04dd1c43dd358a0048e93be5e93f3bac0e5f7fb4dd2b9d8336532297d"
+  },
+  "Avia/bt2/pair_months_2025.csv": {
+   "bytes": 114161,
+   "semantic": {
+    "rows": 4267
+   },
+   "sha256": "a81be76f5bac54463baab1ba1aee90d05558a50ed3679f9bdf6c03a1a66b92cf"
+  },
+  "Avia/bt2/pm25_2024.csv": {
+   "bytes": 3365,
+   "semantic": {
+    "rows": 129
+   },
+   "sha256": "778078ef842dbaa346ad353f5b2ffd696b200053194b2f7f46383cd25cfdef71"
+  },
+  "Avia/bt2/pm25_2025.csv": {
+   "bytes": 110822,
+   "semantic": {
+    "rows": 4138
+   },
+   "sha256": "082e7242217b7467cd1bee14382c292b43ae8542149824398fa2bcc26b64948c"
+  },
+  "Avia/bt2/route_fitted_errors.csv": {
+   "bytes": 85773,
+   "semantic": {
+    "rows": 2915
+   },
+   "sha256": "436cc10173ff3703bece5999107968d131ab6d9baa947445ca94d90a2fe01f25"
+  },
+  "Avia/bt2/tier_preds_2016.csv": {
+   "bytes": 16766,
+   "semantic": {
+    "rows": 444
+   },
+   "sha256": "4a8ef32655c6c92e676fce1c2efb99114f2d74d953f3d46d4f3811fdea2006d1"
+  },
+  "Avia/bt2/tier_preds_2017.csv": {
+   "bytes": 19763,
+   "semantic": {
+    "rows": 524
+   },
+   "sha256": "4181b6f934307506eeabaae057830e8acccda71005216c8524231fde22391ce9"
+  },
+  "Avia/bt2/tier_preds_2018.csv": {
+   "bytes": 24971,
+   "semantic": {
+    "rows": 662
+   },
+   "sha256": "495645737bc52d073328c7340040bfe86336b0e474c4bcef492fab3cbc9dedd6"
+  },
+  "Avia/bt2/tier_preds_2019.csv": {
+   "bytes": 21789,
+   "semantic": {
+    "rows": 578
+   },
+   "sha256": "a1d5c8dda0e6d34910e370bc75e5a4e72da3888a0c8898e75c6ee19ec927a444"
+  },
+  "Avia/bt2/tier_preds_2025.csv": {
+   "bytes": 26641,
+   "semantic": {
+    "rows": 707
+   },
+   "sha256": "56671b58842f6b0a5bb93331b1725aec8a9090d03f4e046ea4139d7b1a740bd7"
+  },
+  "Avia/check_oag_truncation.py": {
+   "bytes": 1988,
+   "sha256": "44b8e5d33df922ca77937b420edde505475749a2da48a5424af6bd928b77b578"
+  },
+  "Avia/check_oag_weeks.py": {
+   "bytes": 1198,
+   "sha256": "fd5657af1b36f4218847fe4415c7194a979c7c29cf26343463fe51bff425ec21"
+  },
+  "Avia/comparator_extract.py": {
+   "bytes": 10040,
+   "sha256": "3480326dda55d61b5cd0f73611a1eb723bbdc8aaad564aff1d316efae9f7415f"
+  },
+  "Avia/dedupe_oag_periods.py": {
+   "bytes": 2791,
+   "sha256": "d8c70efed19c14b916d9f07888ea2c78c4a33378611ab033319de9f45caebd1a"
+  },
+  "Avia/genoa_extract.py": {
+   "bytes": 5386,
+   "sha256": "56336b570717f4d230f72075807d261db3d2eb9577257aa061424bdf687f1acc"
+  },
+  "Avia/goa_nyc_forecast.py": {
+   "bytes": 6626,
+   "sha256": "5269a45a9543959a49579063b5052ccc7cb8d9e260fd9ff25d14b9586f14c064"
+  },
+  "Avia/goa_qsi_test.py": {
+   "bytes": 7028,
+   "sha256": "5e4e884830ece5f054da66eb0c3f106688b876d0283c3f462c4209b31870bc93"
+  },
+  "Avia/ingest_all_oag.py": {
+   "bytes": 3167,
+   "sha256": "114d998a21685b9052fd61d984255451cd062c4e6ad29c97c97677cd958557f2"
+  },
+  "Avia/ingest_all_years.py": {
+   "bytes": 2279,
+   "sha256": "4ca9c35ebf92a05a4f3dd64c2e639f29b123f526a3a66bc1300ea504570cfb88"
+  },
+  "Avia/oag_ingest.py": {
+   "bytes": 8473,
+   "sha256": "82051c7a1a536eb14750572bc04001f5152c349f3877f8e917567edcf0ae7921"
+  },
+  "Avia/qsi_market.py": {
+   "bytes": 7894,
+   "sha256": "6f6c0916d8f0d7dd9956fa9d9b56099856858c610c481ab43b7f082b2bf6896e"
+  },
+  "Avia/reingest_multisheet.py": {
+   "bytes": 1805,
+   "sha256": "96b197f6d5309812bab843346a021ebbdf920a44d0f9b7e022ace040cead46cd"
+  },
+  "Avia/run_forecast.py": {
+   "bytes": 2951,
+   "sha256": "d903c8aac18229d2a59c57c3fd7e3dd1291adee34727b4091c096c2b8b8f61f6"
+  },
+  "Avia/run_multihub_qsi.py": {
+   "bytes": 5593,
+   "sha256": "5dbd6da0b908dee04076be772c4f280835ed7ff9f853691b9e83de74b51ef476"
+  },
+  "Avia/sabre_2023_control.py": {
+   "bytes": 2435,
+   "sha256": "cca4ec6ee6a5af1ee805fdeaf3166b4074ac492755296ab0b8d36e1f0a1c4532"
+  },
+  "Avia/sabre_cabin_diff.py": {
+   "bytes": 1785,
+   "sha256": "24beeef2d1046d57ecf0f187ad29fa0453bd655720ee1eeb761b87b34e93d4f5"
+  },
+  "Avia/sabre_carrier_diff.py": {
+   "bytes": 1922,
+   "sha256": "d73d14129475332f507a29ce6604b2a35ebea0828e3bfc8623a8ede5fdbe322b"
+  },
+  "Avia/sabre_check_2025.py": {
+   "bytes": 1969,
+   "sha256": "8b8819e1dca84a305279b0fc1eafcfc06a7227f5d66da0d1e819391120eb366e"
+  },
+  "Avia/sabre_compare_analyst.py": {
+   "bytes": 1918,
+   "sha256": "bfddb9fcbd665461fea36b0aab1b9064a68404a89c6f57cea36cc50297a64b39"
+  },
+  "Avia/sabre_compare_exact.py": {
+   "bytes": 2735,
+   "sha256": "9219d9db5959234f7a806888a9729edef425f421ceae02536cf57e7025a477b9"
+  },
+  "Avia/sabre_compare_refined.py": {
+   "bytes": 3733,
+   "sha256": "71655b45c2a8db3dd9f656630be657aaabe5f3a15870d3180fb083b6e6323137"
+  },
+  "Avia/sabre_direction_check.py": {
+   "bytes": 1673,
+   "sha256": "eed356dc2af0d89413558c3c946eedc9289636966b125b82a30ba1274542fe80"
+  },
+  "Avia/sabre_factor_check.py": {
+   "bytes": 1516,
+   "sha256": "47b7b7af3d1e2388d7a43113105bf44c3e178c3f298519fb0b8dbda15d2a6514"
+  },
+  "Avia/sabre_generate_demand.py": {
+   "bytes": 5721,
+   "sha256": "8e29bae206327a966d22bb505035a7d2e5a126a6edafe2059cb5a24cc4a40b01"
+  },
+  "Avia/sabre_generate_extract.py": {
+   "bytes": 4955,
+   "sha256": "f076da612f112c1b2f7b0d90b94d06acf4e3145f61ddae5fbec7360cf51304d1"
+  },
+  "Avia/sabre_ingest.py": {
+   "bytes": 6731,
+   "sha256": "cb63d9da5ee2f70c34c041737b5d2cee07cd4422662ec4f75b78df6097ac6e61"
+  },
+  "Avia/sabre_query_lhrsjc.py": {
+   "bytes": 2723,
+   "sha256": "fdf4134b24c49d4459b920b86f94185f8769757637a337392acce7451f4b6eec"
+  },
+  "Avia/validate_oag_store.py": {
+   "bytes": 3576,
+   "sha256": "76ae3e0b87c87bea25d86cc143acaba100ff455b6af6a68be034f009455fd50c"
+  },
+  "atlas/avia_forecast/__init__.py": {
+   "bytes": 193,
+   "sha256": "1099ad06e68afb8c665622b944b40b6ec36b8ad83ec4931e3985791afd523ce4"
+  },
+  "atlas/avia_forecast/aggregate/__init__.py": {
+   "bytes": 102,
+   "sha256": "3182d607127f5dcc3ba77f19dd48da91d91d0b0405b733e7404cdb41d5bad799"
+  },
+  "atlas/avia_forecast/aggregate/atm.py": {
+   "bytes": 2127,
+   "sha256": "60d484e87a4802936a42d6a7bbc879b23573abfc6d9259251cbbc0571ce7ad23"
+  },
+  "atlas/avia_forecast/aggregate/reconcile.py": {
+   "bytes": 7055,
+   "sha256": "b64809b4e32af9d11ee0fb7dac5e08c0402df5de674f4587bee9af13c46cacf9"
+  },
+  "atlas/avia_forecast/aggregate/rpk.py": {
+   "bytes": 2447,
+   "sha256": "450d934eba04e95380a594a88b0c3ff74b7542be5ba734d560a3b2676fea742b"
+  },
+  "atlas/avia_forecast/airports/__init__.py": {
+   "bytes": 179,
+   "sha256": "732ccc0ae9edd56405cf7f8e5797c04c8683bf283b4cb519b3c15276d3a38d72"
+  },
+  "atlas/avia_forecast/airports/instance.py": {
+   "bytes": 26729,
+   "sha256": "cf6513c3e17ddcc837b5b2b92c8685f5b9282a3824d6f56789e109eaa375776c"
+  },
+  "atlas/avia_forecast/airports/qa.py": {
+   "bytes": 3229,
+   "sha256": "badb8f6592fadffe0b382ac42b29b3ceb3b3c9a9beb48cadc69c05fa2560bd1d"
+  },
+  "atlas/avia_forecast/backtest/__init__.py": {
+   "bytes": 101,
+   "sha256": "cb4f39a0032786a566c13f4a267264b32f74ed696a2596ba719f7293726c9832"
+  },
+  "atlas/avia_forecast/backtest/at_scale.py": {
+   "bytes": 4058,
+   "sha256": "ab9eb01c86bff9dac374324bcb195bffc9d8d4a218513caf83e7458c1611b36d"
+  },
+  "atlas/avia_forecast/backtest/backtest.py": {
+   "bytes": 4552,
+   "sha256": "0f5d1ba8fb774643a4b792b92935a2c05690bc7c8b3fb1137fc9057ed14d3fd2"
+  },
+  "atlas/avia_forecast/backtest/full_engine.py": {
+   "bytes": 2712,
+   "sha256": "49eecd9eeaeb7a3fe8090f9c954c7f753d827b4057de924a2491289fba93f15b"
+  },
+  "atlas/avia_forecast/backtest/scaffold.py": {
+   "bytes": 2498,
+   "sha256": "27cf592bf8334f37b781c8cb7359ba83388f45f6390a9b830bac0b3c5f8cb500"
+  },
+  "atlas/avia_forecast/capacity/__init__.py": {
+   "bytes": 101,
+   "sha256": "03e73c8a655ed2fa36f91c2a7d30c8542bec85dc82df4dd3f14f7d4cedd3b27a"
+  },
+  "atlas/avia_forecast/capacity/catchment_join.py": {
+   "bytes": 6134,
+   "sha256": "04c17818d2281ebb62aee6351c5465b87aeba0eec04968ee0c10b423e77b1475"
+  },
+  "atlas/avia_forecast/capacity/constrain.py": {
+   "bytes": 7121,
+   "sha256": "5c9ca738ddaa27722847deab653ffad0bf8447ccac425f6388f239299151d8e1"
+  },
+  "atlas/avia_forecast/capacity/evidence.py": {
+   "bytes": 29247,
+   "sha256": "4d150a48b39a2b720d9a3268217ea8c3e33ff6c28d9d44374cfde41be2d96e2a"
+  },
+  "atlas/avia_forecast/capacity/overrun.py": {
+   "bytes": 4420,
+   "sha256": "d6debe8ed2aa3c9c26fbb34de8eb9c4e5c0350275ab93d4bfb8ec70d45ef5718"
+  },
+  "atlas/avia_forecast/capacity/peakhour.py": {
+   "bytes": 24522,
+   "sha256": "f37d3cf6593722b37cc6a956bcfaa98cec7f519e470854f70c34b5838dea0005"
+  },
+  "atlas/avia_forecast/capacity/register.py": {
+   "bytes": 5661,
+   "sha256": "17db58a1d5106be2554e136f3ab1fb4178b0f7fe747f9bdcb88d2b2d349c35d9"
+  },
+  "atlas/avia_forecast/capacity/spill.py": {
+   "bytes": 5327,
+   "sha256": "a5e3ae11191ccb6c5a7ccc8fdd73e414812e34006202ccd6bf8a4d00c4cd5b29"
+  },
+  "atlas/avia_forecast/cockpit/__init__.py": {
+   "bytes": 163,
+   "sha256": "77910a22551c7f9cdb54c32bddd2d19bdc85e04bdc5885c71beba44bf0a464ff"
+  },
+  "atlas/avia_forecast/cockpit/bum.py": {
+   "bytes": 4934,
+   "sha256": "1d69dac74c65188cf97792bd3582a164da96089ccd01ac995aab140aeafcb8a5"
+  },
+  "atlas/avia_forecast/cockpit/pack.py": {
+   "bytes": 4987,
+   "sha256": "68fc46f867eca5e422b3392f6555d7aef02c7bf73a41b0ee9924dfa15fa852d7"
+  },
+  "atlas/avia_forecast/cockpit/scenarios.py": {
+   "bytes": 2881,
+   "sha256": "d2c280274d72ab9183f6cbe167943321bd6135740a4d60b763972e1fe29afe80"
+  },
+  "atlas/avia_forecast/coherence/__init__.py": {
+   "bytes": 65,
+   "sha256": "c9ce07f73bfe1a0327926f5cc5d80b07a5c665ff2a6c7653fff9a6602d389d06"
+  },
+  "atlas/avia_forecast/coherence/coherence.py": {
+   "bytes": 2804,
+   "sha256": "e40cf6a946d0dd16e680122af6cbece4a81a64db9bc074a5a2252b2187ce98c7"
+  },
+  "atlas/avia_forecast/config.py": {
+   "bytes": 1126,
+   "sha256": "c30893d738fcda66f9ac50a61e684c74ee8273579af5bfdf3aeba14c83da01ac"
+  },
+  "atlas/avia_forecast/db.py": {
+   "bytes": 547,
+   "sha256": "b35289accbb279aad1897beea591bb34e7bfa54d7978527215ba6c6b949f1ec6"
+  },
+  "atlas/avia_forecast/demand/__init__.py": {
+   "bytes": 99,
+   "sha256": "0e0cea9c83a3f34e99f97242522f996b5b3dfa3d725cea662b8235960518b5ed"
+  },
+  "atlas/avia_forecast/demand/capacity_anchor.py": {
+   "bytes": 2331,
+   "sha256": "31df56b3a94d44a364562ec8bcef88b7e6ff1a139ea077296dee8903194a85a2"
+  },
+  "atlas/avia_forecast/demand/core.py": {
+   "bytes": 3884,
+   "sha256": "fae10f6bca5207d7cb856a7857645919f572806bf372729f7d883f21748e2388"
+  },
+  "atlas/avia_forecast/demand/splits.py": {
+   "bytes": 2464,
+   "sha256": "2c3609b2d5f9ab060cd5c0495302995bb0896ac088dfa30fbe5892472405a7c4"
+  },
+  "atlas/avia_forecast/estimate/__init__.py": {
+   "bytes": 251,
+   "sha256": "365c83378d5583c049d3b335c3d522a16a3fc05042c37cbc4169ad7c37bfd09e"
+  },
+  "atlas/avia_forecast/estimate/fare_construction.py": {
+   "bytes": 1728,
+   "sha256": "6d6dfb182b6c03764a5f8732a493363ee81b8787ab2117c851c131b9f9fce895"
+  },
+  "atlas/avia_forecast/estimate/level1.py": {
+   "bytes": 4731,
+   "sha256": "22ce3eb69c100bd61c04cd416abf152a40711ec0f7d8a228092fd742532aff89"
+  },
+  "atlas/avia_forecast/estimate/level2.py": {
+   "bytes": 4965,
+   "sha256": "9b9109491aaecec779f0596759413c2d697b3f63ee41ef6564525902343dfa09"
+  },
+  "atlas/avia_forecast/estimate/level3.py": {
+   "bytes": 1784,
+   "sha256": "e1c676613d0f6a6fa6d44c30e312afeb3e5b7ed3839a5ad001aa4399ebad3be9"
+  },
+  "atlas/avia_forecast/estimate/maturity.py": {
+   "bytes": 608,
+   "sha256": "fe190278e450f3311283557c8e16e2fb411304c2a2269d6f3ec5ac8202e58c12"
+  },
+  "atlas/avia_forecast/estimate/od_reest.py": {
+   "bytes": 1942,
+   "sha256": "06eb35b864391b95f8298a0dbaa625395b978d74908d26b55e59ee723b2ff34d"
+  },
+  "atlas/avia_forecast/estimate/propensity.py": {
+   "bytes": 3422,
+   "sha256": "de170625d6d68015f66f88986a6fb7a70f15cebf16b282b987255531022d9b60"
+  },
+  "atlas/avia_forecast/estimate/reliability.py": {
+   "bytes": 4224,
+   "sha256": "3a35e6fe860a50839665a390196b6c5a7ae0b12ea7a02be66d8160c3249cfbd0"
+  },
+  "atlas/avia_forecast/estimate/select.py": {
+   "bytes": 1615,
+   "sha256": "0e23dc4551ead51e551c83a2a4ddeecef58609519cfea79cce3e7c18a5ba748e"
+  },
+  "atlas/avia_forecast/estimate/synthetic.py": {
+   "bytes": 5474,
+   "sha256": "f991677902f8f95037e7d83ace53573ddb6aa224c6def098b09646f07b91917c"
+  },
+  "atlas/avia_forecast/estimate/validate.py": {
+   "bytes": 925,
+   "sha256": "ac6c91064520da8d0c394cb9fac65a237fb0f8ffaf5f8e0e5eb43edfcf4378e3"
+  },
+  "atlas/avia_forecast/fixtures.py": {
+   "bytes": 13559,
+   "sha256": "d8d13067348c441c8bd75081f966f2f1268473fa3d11b690ccd6d9afa16e3146"
+  },
+  "atlas/avia_forecast/geo/__init__.py": {
+   "bytes": 82,
+   "sha256": "f55abe5e4b8e48ca2b0cec9a4b779fdca9cfaabe3869797122235a719362f19c"
+  },
+  "atlas/avia_forecast/geo/regions_iso2.py": {
+   "bytes": 3767,
+   "sha256": "60412293954087ea54e256838b726a192a49df69c6f798ec2a8d25371d4b57ac"
+  },
+  "atlas/avia_forecast/global_checks.py": {
+   "bytes": 4399,
+   "sha256": "50855de40ed98551afa1a6937ded45e91d094ab9a4678df456fdcce14309c19a"
+  },
+  "atlas/avia_forecast/global_demand.py": {
+   "bytes": 14830,
+   "sha256": "f7a239e1e3109a4af8983b399512856912ea8f193b0c22cf7a43944118d7e962"
+  },
+  "atlas/avia_forecast/global_terminal.py": {
+   "bytes": 7950,
+   "sha256": "74e92ba42e5b5591dda233f8aa29b7b2829cdeccab0b175405e9bbdf7cf91f57"
+  },
+  "atlas/avia_forecast/ingest/__init__.py": {
+   "bytes": 262,
+   "sha256": "962b96a425082df5da6553f93049a7714a4269cdc0fb482736025450ff6a7849"
+  },
+  "atlas/avia_forecast/ingest/base.py": {
+   "bytes": 824,
+   "sha256": "81140cb6db0c8cf9588178ca99a895cc8ffd118df6a8a36328ab1b12a708ec29"
+  },
+  "atlas/avia_forecast/ingest/caa.py": {
+   "bytes": 3211,
+   "sha256": "799dcf6c79f5de1f38ea82d8e392b60a25e8605a4c5a59ff450fc8463c5260b4"
+  },
+  "atlas/avia_forecast/ingest/oag_peak.py": {
+   "bytes": 20401,
+   "sha256": "985808e607a0736b57adc1fda7ac831df55d19440ac332987d87052c423be471"
+  },
+  "atlas/avia_forecast/ingest/oag_store.py": {
+   "bytes": 9938,
+   "sha256": "ca4eae8187f8cac4db2e18e8520a39de35542324ceb04763ba9b2c132603d8f5"
+  },
+  "atlas/avia_forecast/ingest/sabre.py": {
+   "bytes": 3319,
+   "sha256": "48170222f4af3a588d01722bc79f3c6bdfa503c22e93a8219d0a6c843658c2bf"
+  },
+  "atlas/avia_forecast/io_safe.py": {
+   "bytes": 1166,
+   "sha256": "0b1e5ee562e90e63b982f0611f3a744ed2d2a3dd2abe395f1ef1e063c8fb6a45"
+  },
+  "atlas/avia_forecast/outputs/__init__.py": {
+   "bytes": 100,
+   "sha256": "ea138b0a88bde2af3d00acbfa609d68946f727c028969c314dcd2be6b3967298"
+  },
+  "atlas/avia_forecast/outputs/chart_format.py": {
+   "bytes": 1607,
+   "sha256": "9f5b7fed93facfac7086230cd67b7faedf4ab44c65bf1f415f1795fed1c18adf"
+  },
+  "atlas/avia_forecast/outputs/chart_writer.py": {
+   "bytes": 2810,
+   "sha256": "8fc751bcda17daf198218b4e614d506954e410ac6be0f1a8b73bd00713f08230"
+  },
+  "atlas/avia_forecast/outputs/derive.py": {
+   "bytes": 3045,
+   "sha256": "dce74289f8ca6526fab30352331cbdb38060603b3c59d0294365f52339ef81dd"
+  },
+  "atlas/avia_forecast/outputs/excel_writer.py": {
+   "bytes": 3519,
+   "sha256": "1858f1820237b26de6cc4842663bc044c86f5b0a3f20c53eec9b6cacd205e4c8"
+  },
+  "atlas/avia_forecast/outputs/extract.py": {
+   "bytes": 3545,
+   "sha256": "db5e086cd902c984c8660b60c0e9049729a649bfbe22668b43250ed98c85cc6f"
+  },
+  "atlas/avia_forecast/outputs/free_page.py": {
+   "bytes": 2279,
+   "sha256": "547fa2af120e720ae701e5a6dc6e83c013949575ea0ebc9ad6e2f5fa1cf5f2d7"
+  },
+  "atlas/avia_forecast/outputs/impact.py": {
+   "bytes": 1838,
+   "sha256": "351f0634fcce3973a2b597fd7ff917c2fc8cc03e8f7ef662918e22b95b44fa8f"
+  },
+  "atlas/avia_forecast/outputs/licence.py": {
+   "bytes": 1247,
+   "sha256": "4947d253cb29be027ac54a688b1db39bde01a6a728ac5b043c67c741d5b8c4b6"
+  },
+  "atlas/avia_forecast/outputs/persona.py": {
+   "bytes": 3271,
+   "sha256": "84a0f3c0568926b2049088142b1e3210bda45693258eb91b2bae6a532d019e86"
+  },
+  "atlas/avia_forecast/outputs/run_id.py": {
+   "bytes": 990,
+   "sha256": "e25dad1b165830984aa7c8af0337a72c834995a9514f9cf89954169bcd43c851"
+  },
+  "atlas/avia_forecast/overlays/__init__.py": {
+   "bytes": 101,
+   "sha256": "c92fbe358e11e59ce17540f0763a7ea305a7b4410565d982cfe34d7d9b1622a7"
+  },
+  "atlas/avia_forecast/overlays/connecting.py": {
+   "bytes": 3666,
+   "sha256": "74e299090fd157a5ef941a4973ea47a2ae149e63300ce87b39b826112d60fa46"
+  },
+  "atlas/avia_forecast/parity/__init__.py": {
+   "bytes": 99,
+   "sha256": "e92cce16cabd2382facdaeeeda20e9583e73fd0b6066b52a2aa8f4c8c8f62977"
+  },
+  "atlas/avia_forecast/parity/harness.py": {
+   "bytes": 3199,
+   "sha256": "d6fff444aa8bd4db30d73a79e1af282a362c9170b1b4b77897db02aeff891623"
+  },
+  "atlas/avia_forecast/paths.py": {
+   "bytes": 7032,
+   "sha256": "0cba57fefd740312931f14b3e43cf607a27dd0b9c5aa2cb063b0562b07ff7a4c"
+  },
+  "atlas/avia_forecast/pipeline.py": {
+   "bytes": 9992,
+   "sha256": "9612b0a12905f57435f95bf66232afb01a86d31a50caef2ca8699b9824f48a77"
+  },
+  "atlas/avia_forecast/schema.sql": {
+   "bytes": 3140,
+   "sha256": "0ab69d5a30541033925c408a3de858e270a2fbccdc0b07e1de1b2d92c956e206"
+  },
+  "atlas/avia_forecast/scope/__init__.py": {
+   "bytes": 78,
+   "sha256": "602f01622c7c7714ae59c807929e9568d67f0c2a9b167d4486cffaf756c2277a"
+  },
+  "atlas/avia_forecast/scope/selection.py": {
+   "bytes": 4337,
+   "sha256": "18365189bb9ebf53c4cd8536e4c893d1db7f2ece7ff94b0de0ef8a8ab2bdc85d"
+  },
+  "atlas/avia_forecast/shocks/__init__.py": {
+   "bytes": 414,
+   "sha256": "0beb1aaf7656f420e4d9d82ddd1c022e383c7d3575efca2796bd68726d809a00"
+  },
+  "atlas/avia_forecast/shocks/resilience.py": {
+   "bytes": 10651,
+   "sha256": "a664b8cc6e0b74b774417977be27a3f0c57ba56476e2b6494375fd91ce7770b5"
+  },
+  "atlas/avia_forecast/vintage.py": {
+   "bytes": 2214,
+   "sha256": "a984f2c89fabd897a2d8a48fe7419f31cd832f05459be5d18dbfd4e2a1fed625"
+  },
+  "atlas/config/airports/bristol.yaml": {
+   "bytes": 1356,
+   "sha256": "642990c9cd94d5811e1ecfae3ae9db843910f0332a4e92948e00dc1cb981e63c"
+  },
+  "atlas/config/airports/zagreb.yaml": {
+   "bytes": 6741,
+   "sha256": "523aa4182bd14b424ffe2c3d9f513bf70c3c75af6f4860f2ff7b1b6acd1cdc1c"
+  },
+  "atlas/config/assumptions_book.yaml": {
+   "bytes": 24834,
+   "sha256": "bbf4770d3393f6fc551ae8d5740522e19abaea4e682be702a6ac7b309641797c"
+  },
+  "atlas/config/assumptions_book.yaml.bak-20260803-192540": {
+   "bytes": 14904,
+   "sha256": "821702a4aa336c489bed5f0d53686b2ddee736bf829c8e62a0549c3981b1a099"
+  },
+  "atlas/config/country_region.yaml": {
+   "bytes": 3852,
+   "sha256": "12568ea75aa34bedefebf0f9059f17895189b9ff3bf1088ceb83c0ffb6ad2740"
+  },
+  "atlas/config/oef_gdp.yaml": {
+   "bytes": 1779,
+   "sha256": "cd209e0ee930124e539e2820bebefc208fe8fb7e4c80c4bc030977e76d9e93bf"
+  },
+  "atlas/config/regions.yaml": {
+   "bytes": 451,
+   "sha256": "23039a04d6a918bf0a2fd50b6344490ded3cd945bfe711daccb4122a58edc82d"
+  },
+  "atlas/config/sources.yaml": {
+   "bytes": 6172,
+   "sha256": "5579a7e3875124ec37c7e91b9813db02f9a199479a1932334ae046ef1456ba14"
+  },
+  "atlas/config/sources.yaml.bak-20260803-192540": {
+   "bytes": 2577,
+   "sha256": "94ca63adc261368afb708d18d6d6d809f63a58b47cbeba28be317c9b02d37838"
+  },
+  "atlas/config/sources.yaml.bak-20260803-193316": {
+   "bytes": 4356,
+   "sha256": "9df05874d49435592e885f4144f31a431caaf94f9e0212a19a9f7238b34a8c4a"
+  },
+  "atlas/config/sources.yaml.bak-20260803-203608": {
+   "bytes": 4551,
+   "sha256": "45bde5d4bce104070fb5f5b53cdb96e3c97f1f9357496bb59c5138398e39670f"
+  },
+  "atlas/config/sources.yaml.bak-20260803-210910": {
+   "bytes": 6164,
+   "sha256": "ca6cf43cbe3c7023b2635662664363f0990e91e499582eaff6b64fb688618171"
+  },
+  "atlas/config/sources.yaml.bak-20260803-223218": {
+   "bytes": 6166,
+   "sha256": "5c5ad15793df5d8d9c9a7c6fa6322daf65cc57081919fc4253de9d92ccd96fab"
+  },
+  "atlas/config/sources.yaml.bak-20260803-232322": {
+   "bytes": 6168,
+   "sha256": "28ee3738d1d2396a6aba63fa7a9c40215f3fd355555805854a79e8dd5ae2ec6f"
+  },
+  "atlas/config/sources.yaml.bak-20260804-091050": {
+   "bytes": 6170,
+   "sha256": "8821073862b27a5850296e4f3f69533fa2c0f456ab0deba76a26a3ee4304f466"
+  },
+  "atlas/data/airport_regress.json": {
+   "bytes": 3436377,
+   "semantic": {
+    "keys": 1624,
+    "type": "dict"
+   },
+   "sha256": "eb8f8ce85b097520e73f7a8a8d0bd0f2990c623837ed3a3050585c871469f9ac"
+  },
+  "atlas/data/archive/backtest_horizon_2015_5_2026-07-29.json": {
+   "bytes": 665,
+   "semantic": {
+    "keys": 6,
+    "type": "dict"
+   },
+   "sha256": "619282b592a95f265b48886110168e659c2a7050753bb2562cf89999cf1e3db5"
+  },
+  "atlas/data/archive/backtest_horizon_2019_5_BLIND_2026-08-06.json": {
+   "bytes": 914,
+   "semantic": {
+    "keys": 6,
+    "type": "dict"
+   },
+   "sha256": "48e09900a6266527d973c3fbcd19c4c487dbae8636afb09f768ca1536f0e4ff2"
+  },
+  "atlas/data/archive/backtest_horizon_2023_5_MODERN_2026-08-06.json": {
+   "bytes": 264,
+   "semantic": {
+    "keys": 6,
+    "type": "dict"
+   },
+   "sha256": "78890cbaaceff631b40a9adcfaf1d215fdd34f4e31e295f8f55f05e604f7d18c"
+  },
+  "atlas/data/archive/backtest_seats_exhibit_2026-07-29.json": {
+   "bytes": 1295,
+   "semantic": {
+    "keys": 2,
+    "type": "dict"
+   },
+   "sha256": "5d9491bd2ec1b23c79242e964b7f9da30a2f2b0ac52f3151336a2b9351a935af"
+  },
+  "atlas/data/archive/backtest_seats_exhibit_2026-08-06_final.json": {
+   "bytes": 2537,
+   "semantic": {
+    "keys": 2,
+    "type": "dict"
+   },
+   "sha256": "0b0be724adfdb34d229adccb3730727f8dab6cea289f580818b584e06f8c7e1a"
+  },
+  "atlas/data/backtest_exhibit.json": {
+   "bytes": 787,
+   "semantic": {
+    "keys": 4,
+    "type": "dict"
+   },
+   "sha256": "7750bfb5c002f62fbacc962f927ed0006fee2aa5316c34d53f2e603912f7a392"
+  },
+  "atlas/data/backtest_full_engine_exhibit.json": {
+   "bytes": 403,
+   "semantic": {
+    "keys": 3,
+    "type": "dict"
+   },
+   "sha256": "21593cb8c30fd83419bffdfac3fc94b5bc94d43100e93438652d3c94b274951e"
+  },
+  "atlas/data/backtest_horizon_2015_3.json": {
+   "bytes": 528,
+   "semantic": {
+    "keys": 6,
+    "type": "dict"
+   },
+   "sha256": "540af076bbc7e75c0558ff935e4f901fe1f5072f35dc6cfb76e8986868ad9fba"
+  },
+  "atlas/data/backtest_horizon_2015_4.json": {
+   "bytes": 528,
+   "semantic": {
+    "keys": 6,
+    "type": "dict"
+   },
+   "sha256": "640902cb0968e27ea537130f1393eb2089505fb74a7e7a0c4e2de7990d15d1da"
+  },
+  "atlas/data/backtest_horizon_2015_5.json": {
+   "bytes": 664,
+   "semantic": {
+    "keys": 6,
+    "type": "dict"
+   },
+   "sha256": "666aed8b9f77830d80143fcad2195d378f5e6f3baa11d4ccbc9f7c8183a44be1"
+  },
+  "atlas/data/backtest_horizon_2015_6.json": {
+   "bytes": 527,
+   "semantic": {
+    "keys": 6,
+    "type": "dict"
+   },
+   "sha256": "97dde0fa87f0f2279582c5eb83433bdf9f0ecf329033d75d82519f8cd026e287"
+  },
+  "atlas/data/backtest_horizon_2016_5.json": {
+   "bytes": 430,
+   "semantic": {
+    "keys": 6,
+    "type": "dict"
+   },
+   "sha256": "9df470e8c38063396e51d6ecb63fe37f104c4f7153a6530fc453e2d4716e5230"
+  },
+  "atlas/data/backtest_horizon_2017_5.json": {
+   "bytes": 327,
+   "semantic": {
+    "keys": 6,
+    "type": "dict"
+   },
+   "sha256": "3d6ba15c784e8d9b54d97a6f07062fadb2c2aa8dd79489ab278d97d6fc95544a"
+  },
+  "atlas/data/backtest_horizon_2019_5.json": {
+   "bytes": 914,
+   "semantic": {
+    "keys": 6,
+    "type": "dict"
+   },
+   "sha256": "48e09900a6266527d973c3fbcd19c4c487dbae8636afb09f768ca1536f0e4ff2"
+  },
+  "atlas/data/backtest_horizon_2023_5.json": {
+   "bytes": 264,
+   "semantic": {
+    "keys": 6,
+    "type": "dict"
+   },
+   "sha256": "78890cbaaceff631b40a9adcfaf1d215fdd34f4e31e295f8f55f05e604f7d18c"
+  },
+  "atlas/data/backtest_horizon_segments_2015_5.json": {
+   "bytes": 3192,
+   "semantic": {
+    "keys": 7,
+    "type": "dict"
+   },
+   "sha256": "52ccceb1a6a78edc7738a7a46066942f7265fecef267a9b9d37ab02c57080b3e"
+  },
+  "atlas/data/backtest_seats_exhibit.json": {
+   "bytes": 2537,
+   "semantic": {
+    "keys": 2,
+    "type": "dict"
+   },
+   "sha256": "0b0be724adfdb34d229adccb3730727f8dab6cea289f580818b584e06f8c7e1a"
+  },
+  "atlas/data/bt2_model.pkl": {
+   "bytes": 5848053,
+   "sha256": "7426031c9661d5bf0f4462998739da0f432fc729dc60cf0cd4a839f96fc7b5fe"
+  },
+  "atlas/data/bt2_model_v1_2.pkl": {
+   "bytes": 6481957,
+   "sha256": "27b665dcfce91b3a1623f5c72b28f215bc26bd937c523d1cafc82716f6503d3b"
+  },
+  "atlas/data/capacity_layer_extract.json": {
+   "bytes": 2480073,
+   "semantic": {
+    "keys": 9,
+    "n_airports": 1744,
+    "type": "dict"
+   },
+   "sha256": "7cf4293472051d0f2963d6172a2ac3ceaa51fa707d1e877037f06f33e0268834"
+  },
+  "atlas/data/capacity_observations_france.csv": {
+   "bytes": 6597,
+   "semantic": {
+    "rows": 17
+   },
+   "sha256": "c9b444470ef5a00d0ff39f21cd6e1056e44fb0bca2c50aa36e006af679e9a07c"
+  },
+  "atlas/data/capacity_observations_france_harvest.csv": {
+   "bytes": 19398,
+   "semantic": {
+    "rows": 36
+   },
+   "sha256": "fc827a7574ab9b23244e14a7440ed2627320e642b9b49169e8ee4d51a6c59413"
+  },
+  "atlas/data/capacity_register_seed.csv": {
+   "bytes": 2844,
+   "semantic": {
+    "rows": 21
+   },
+   "sha256": "cb43e212727276f70c73dabb15c46456b912c48a5ece3066b53823d3b1f5beaf"
+  },
+  "atlas/data/capacity_screen.csv": {
+   "bytes": 375133,
+   "semantic": {
+    "rows": 3133
+   },
+   "sha256": "0cd8cac183f5b5e67288ac12893b52c6190788e59de637575cb1027b6feb7b0b"
+  },
+  "atlas/data/connecting_sabre_2024.json": {
+   "bytes": 38337,
+   "semantic": {
+    "keys": 2990,
+    "type": "dict"
+   },
+   "sha256": "9bc5da8aa149e44b10c186c0b5da7d30e7df5b6f998c74b0f8478fca9af683e5"
+  },
+  "atlas/data/fare_index_constructed.json": {
+   "bytes": 2619,
+   "semantic": {
+    "keys": 3,
+    "type": "dict"
+   },
+   "sha256": "62460786453d714c7520313786d619c26208ca868f3e9b9ce4191e84033c4d97"
+  },
+  "atlas/data/gaf_screen_list_2026-08-07.csv": {
+   "bytes": 112265,
+   "semantic": {
+    "rows": 3303
+   },
+   "sha256": "d47b8fcc9b23d329a30779932488d8819c81aede046dd7918f79e7aab8890e78"
+  },
+  "atlas/data/global_airport_meta_2025.json": {
+   "bytes": 235276,
+   "semantic": {
+    "keys": 3233,
+    "type": "dict"
+   },
+   "sha256": "0a0cc35861c9322d2da11b97dabdcc6d1b85226a9bc0ce148b7e1e0e87104144"
+  },
+  "atlas/data/global_base_od_2025.json": {
+   "bytes": 195526,
+   "semantic": {
+    "keys": 3207,
+    "type": "dict"
+   },
+   "sha256": "6edd5705a1e5faac40a74f15655938b2d4ec95d15211d6432d418a9c28528f1b"
+  },
+  "atlas/data/global_catchments_2025.json": {
+   "bytes": 12443,
+   "semantic": {
+    "keys": 642,
+    "type": "dict"
+   },
+   "sha256": "1ef342f23b136fb26d0659747cbb42949256b47237000425fb2588f73c5ef849"
+  },
+  "atlas/data/global_forecast_2025_2050.json": {
+   "bytes": 1659,
+   "semantic": {
+    "keys": 9,
+    "type": "dict"
+   },
+   "sha256": "16f0c28ad756f621edaa43cd740a5b48a18577611b443b9f860639ce79c170e3"
+  },
+  "atlas/data/global_scope_summary_2025.json": {
+   "bytes": 378,
+   "semantic": {
+    "keys": 13,
+    "type": "dict"
+   },
+   "sha256": "e94de848bf0dd22787e84bfd590af1e40b9d2c23bdb0d5c3cc9537444720d1de"
+  },
+  "atlas/data/jet_fuel_eia.json": {
+   "bytes": 757,
+   "semantic": {
+    "keys": 51,
+    "type": "dict"
+   },
+   "sha256": "ab42d187591c17e7e76d8e220246071efd755cc9312174ba694d8dce2c33e83c"
+  },
+  "atlas/data/oag_airport_names.json": {
+   "bytes": 222752,
+   "semantic": {
+    "keys": 4950,
+    "type": "dict"
+   },
+   "sha256": "168f4c94b7dcb778446a118b7b8255cee93a4494716512318669576de25392ef"
+  },
+  "atlas/data/peak_panel.json": {
+   "bytes": 4282570,
+   "semantic": {
+    "n": 13767,
+    "type": "list"
+   },
+   "sha256": "714b832099a39f96a47f7829e0cf449b892e8422126f4bf2c7a4b4e93b781fd9"
+  },
+  "atlas/data/peak_panel_2025_442_airports.csv": {
+   "bytes": 187511,
+   "semantic": {
+    "rows": 442
+   },
+   "sha256": "460c039f40fcabbc2e5cf13db04aae16c96d581ce4b40072bb6c9b82bd960be3"
+  },
+  "atlas/data/peak_panel_2025_absolute_peak.csv": {
+   "bytes": 188353,
+   "semantic": {
+    "rows": 442
+   },
+   "sha256": "06888879a1b1e91ea838076365a0b6c072486659eed6375b95eb63955edc2ffd"
+  },
+  "atlas/data/peak_panel_2025_busy30.csv": {
+   "bytes": 187511,
+   "semantic": {
+    "rows": 442
+   },
+   "sha256": "460c039f40fcabbc2e5cf13db04aae16c96d581ce4b40072bb6c9b82bd960be3"
+  },
+  "atlas/data/peak_share_backtest.json": {
+   "bytes": 683698,
+   "semantic": {
+    "keys": 8,
+    "type": "dict"
+   },
+   "sha256": "01cc008e57fd1814a1f5a0ea3c0bd835f43dc417f70bd9bb147710bbd214c985"
+  },
+  "atlas/data/peak_share_fit.json": {
+   "bytes": 431,
+   "semantic": {
+    "keys": 14,
+    "type": "dict"
+   },
+   "sha256": "8cc331b8ccdd4ea98fef1c908cbb9660e9aa1af3d69f00eb5ac507a2e3cfa876"
+  },
+  "atlas/data/propensity_curve_fit.json": {
+   "bytes": 135,
+   "semantic": {
+    "keys": 4,
+    "type": "dict"
+   },
+   "sha256": "0238ac229093b99a796b43990dce07c86084252bde704216cb2381befb77ec7f"
+  },
+  "atlas/data/propensity_world_2025.csv": {
+   "bytes": 704,
+   "semantic": {
+    "rows": 30
+   },
+   "sha256": "20affe76d19234c65239e049345877b94e25826278989f6ebba8834578eb3507"
+  },
+  "atlas/data/qsi_capture_uplift.json": {
+   "bytes": 1106,
+   "semantic": {
+    "keys": 3,
+    "type": "dict"
+   },
+   "sha256": "416b3af2bc03ee3e6a73cbf5d7dfc489c77a25085cab50c76613201af2f94101"
+  },
+  "atlas/data/service_curve_skytrax.json": {
+   "bytes": 2286,
+   "semantic": {
+    "keys": 9,
+    "type": "dict"
+   },
+   "sha256": "43835417e0e21fdc0a726a14b6e5a140581d126098b45f03a76d7fd8d702dd66"
+  },
+  "atlas/data/service_quality_screen_test.json": {
+   "bytes": 892,
+   "semantic": {
+    "keys": 3,
+    "type": "dict"
+   },
+   "sha256": "aefc2462ce1566662342c9e8ec6fe773c1a919898c2e0af9500ad5a4a93e034f"
+  },
+  "atlas/data/skytrax_airport_stars_2026.csv": {
+   "bytes": 2591,
+   "semantic": {
+    "rows": 430
+   },
+   "sha256": "80e25da16721f2164b9e207307164f90559d5f72929ad2491367723792a56c88"
+  },
+  "atlas/data/uk_estimated_bF.json": {
+   "bytes": 75,
+   "semantic": {
+    "keys": 3,
+    "type": "dict"
+   },
+   "sha256": "bbc0e53bfba75b7c28f0f043e986497f3b53e8192a4c906708e7a94651aa5c9c"
+  },
+  "atlas/data/uk_estimated_bG.json": {
+   "bytes": 214,
+   "semantic": {
+    "keys": 8,
+    "type": "dict"
+   },
+   "sha256": "4c53a494e0f7715f29c71522348e388f84bfacafef7b548fd6d3d63a92116bf0"
+  },
+  "atlas/data/uk_real_gdp_oef.json": {
+   "bytes": 221,
+   "semantic": {
+    "keys": 13,
+    "type": "dict"
+   },
+   "sha256": "7a65198c4b8b2458589fd8614f0437d2b951f3fd83da8518dd06f7e4cadfa514"
+  },
+  "atlas/data/un_wpp_population.json": {
+   "bytes": 14948,
+   "semantic": {
+    "keys": 30,
+    "type": "dict"
+   },
+   "sha256": "88a2a45e2a97264bf125dd9098332b6da0128b4fbddd7abdb5653a61421a0b32"
+  },
+  "atlas/data/worldbank_pop_gdppc.json": {
+   "bytes": 1692,
+   "semantic": {
+    "keys": 3,
+    "type": "dict"
+   },
+   "sha256": "3505ae5be9d12bb5ae375b404725877d39468ec333cee05260d1f393098a2dc6"
+  },
+  "atlas/githooks/pre-commit": {
+   "bytes": 241,
+   "sha256": "28d62aaf21bd7a9411563ebfceacb6361e292f140a5dfdbea0d54692b19a2f40"
+  },
+  "atlas/scripts/apply_overrun_postpass.py": {
+   "bytes": 5452,
+   "sha256": "759eb9afcaef3a3a2e5679a25688157af92eed49817ed2f850710c5ee8da829f"
+  },
+  "atlas/scripts/backtest_at_scale.py": {
+   "bytes": 1309,
+   "sha256": "1af1307ff116cde5a2370bc025812cb97e0bfedfeb4cbd6b725a31739c4b50e3"
+  },
+  "atlas/scripts/backtest_full_engine.py": {
+   "bytes": 1119,
+   "sha256": "b2d0d197f2334c984fd164ea3721662b4a3178f0ac9a18a39e141c43736710b1"
+  },
+  "atlas/scripts/backtest_horizon.py": {
+   "bytes": 5249,
+   "sha256": "848de341c906dbbfbd72a6bb8f124f9c3c011c7e021c8bfd0c44a58c01b4ae7a"
+  },
+  "atlas/scripts/backtest_horizon_by_segment.py": {
+   "bytes": 4672,
+   "sha256": "1c13ed5f3de516fe70edb62a811073463861d41ecf38dae4b9ec50aea4c4bc3c"
+  },
+  "atlas/scripts/backtest_peak_share.py": {
+   "bytes": 7413,
+   "sha256": "e0145d4005829ea62e92a0b3947a3f947a44df44b08d3876f2d8b89118b1c0a7"
+  },
+  "atlas/scripts/backtest_seats_anchor.py": {
+   "bytes": 10055,
+   "sha256": "92909dcf2d78f57cd50cf409ed81cfb8eabe976616a248dfd7858deb82794965"
+  },
+  "atlas/scripts/bt2/README.md": {
+   "bytes": 1947,
+   "sha256": "3e7a30b42177c39ccd91c7ea9cd2747ea9ed3baaf34d4fb7ce9b518b7ec2fb6c"
+  },
+  "atlas/scripts/bt2/_cpn_worker.py": {
+   "bytes": 2130,
+   "sha256": "af756e4ae4545e830863ab36e6dec7be746c0680703428e3cb0b4b4b84b4d84b"
+  },
+  "atlas/scripts/bt2/_db1b_worker.py": {
+   "bytes": 1553,
+   "sha256": "547b4f6bb89a6174258dfb10fb01c1d038c0d66736fe0c83180ba4c6f58fe2e8"
+  },
+  "atlas/scripts/bt2/bt2_airport_chart.py": {
+   "bytes": 3282,
+   "sha256": "3626872e95f3a8fe9861deed8a63bc11a0b0e35f7e6e217b475d5bf935ea437c"
+  },
+  "atlas/scripts/bt2/bt2_base.py": {
+   "bytes": 1617,
+   "sha256": "14e7bd297f0ad83e426173578cb8d420c91b4c3cf2b36f76e88205a1826a92bc"
+  },
+  "atlas/scripts/bt2/bt2_capture.py": {
+   "bytes": 7181,
+   "sha256": "e9e835b89e7a48d1296338b61a39e02887bdc538105da551c3dd26a920bc1365"
+  },
+  "atlas/scripts/bt2/bt2_claims.py": {
+   "bytes": 3515,
+   "sha256": "26eef8d210b299f41b0878d55f279a366d4e4b3cee27f20e83b87db87422b16a"
+  },
+  "atlas/scripts/bt2/bt2_coupon.py": {
+   "bytes": 3634,
+   "sha256": "99bc0ebf6a326ae32d775ce6a312a81dde5ae290f59e405b11575384a9ef04bc"
+  },
+  "atlas/scripts/bt2/bt2_db1b.py": {
+   "bytes": 4149,
+   "sha256": "df1499ccff98db4f64c34b2673938f33f88e61ccbb63f2084990e4a7df81212a"
+  },
+  "atlas/scripts/bt2/bt2_discover.py": {
+   "bytes": 3831,
+   "sha256": "8b23f52af984dd8f6fbfb30c8b6d0c2cc4e45e5eac5da4d2f69506f6376c0d7d"
+  },
+  "atlas/scripts/bt2/bt2_exp.py": {
+   "bytes": 2733,
+   "sha256": "5f79efef128926a3408923381360660946aa9820c10e7d9d0f2dadfa23f5e0e4"
+  },
+  "atlas/scripts/bt2/bt2_gbm.py": {
+   "bytes": 4738,
+   "sha256": "0eff7afc7d5c6871bb49c8ea12561f3478d830b7abe54bbdc068e032cde2088e"
+  },
+  "atlas/scripts/bt2/bt2_growth.py": {
+   "bytes": 1175,
+   "sha256": "77e23958aab0d288b889c6d7412476bdfd38e2ca28369d0991225f852a60adf9"
+  },
+  "atlas/scripts/bt2/bt2_lib.py": {
+   "bytes": 5406,
+   "sha256": "ca1121515bc3e55242a930240c3bc0eece718820ea347f8a939416aa0e13dc6b"
+  },
+  "atlas/scripts/bt2/bt2_metro.py": {
+   "bytes": 4544,
+   "sha256": "5e1e60414ddae1c18cec0176ab78d8b5ad699bb6e09a3ef3f822a6e4cba0af5b"
+  },
+  "atlas/scripts/bt2/bt2_months.py": {
+   "bytes": 2568,
+   "sha256": "b52b339e089a6ab14032b26e567c007dac3dbc87ee5a13462b3541b6fd1e23d2"
+  },
+  "atlas/scripts/bt2/bt2_profile.py": {
+   "bytes": 3526,
+   "sha256": "d7c618490193d2152e5cba3489a6474851dc5cecd1a7eadd30c52cb88d2d2bfc"
+  },
+  "atlas/scripts/bt2/bt2_reg.py": {
+   "bytes": 3002,
+   "sha256": "d74b85beee4a88a357fb7d67e4195767cfa093100c3be6931b565dc59f6a120d"
+  },
+  "atlas/scripts/bt2/bt2_tier.py": {
+   "bytes": 4666,
+   "sha256": "d83d389fd49268d6f221b718e171207738d515025d1662a8155fbb8b19f34444"
+  },
+  "atlas/scripts/bt2_features.py": {
+   "bytes": 10074,
+   "sha256": "6301f7fc6f190f027d897daca6cc1b9b5627d3b19b75b344fae53d3fa0b3082e"
+  },
+  "atlas/scripts/bt2_model.py": {
+   "bytes": 6777,
+   "sha256": "2eb6a7011aaadfde6e7eb019fe7762f32d8c6fb81738d29a86f5d2dd0e6c33b3"
+  },
+  "atlas/scripts/build_aci_long_panel.py": {
+   "bytes": 4086,
+   "sha256": "e0564a5f4c8dd437680dbeb8bf5827bdccd55251d3deefc6e6ce076503de44a6"
+  },
+  "atlas/scripts/build_bum_candidates.py": {
+   "bytes": 10881,
+   "sha256": "28be1891a62192ef5c83dbb9cbaaf332ae7850b0192398912ad2832e04afaf1f"
+  },
+  "atlas/scripts/build_capacity_webapp_data.py": {
+   "bytes": 10500,
+   "sha256": "3d01d1b4b680b09ba5f768e6a375ab859648d6e61af57434cced96670780c1f2"
+  },
+  "atlas/scripts/build_cockpit_data.py": {
+   "bytes": 5393,
+   "sha256": "08f8d1c6f820f6c07e2c8b1df2643d8502580a1119bbb6b552e5fca47125c323"
+  },
+  "atlas/scripts/build_connecting_sabre.py": {
+   "bytes": 1984,
+   "sha256": "be802a34231913184b628da106fb7bb48b53e8a72efba22a78ed031811b02dd6"
+  },
+  "atlas/scripts/build_dashboard_data.py": {
+   "bytes": 19018,
+   "sha256": "8d3d9d38e021847b0a37f66c45230fd925214692b0f5d11fbd59ffdcc7ca83d5"
+  },
+  "atlas/scripts/build_od_panel.py": {
+   "bytes": 1279,
+   "sha256": "d4e726e954bf1b0aedca0d8013cdab7fa9a7b6dbb547e21aa034b95a5ab58392"
+  },
+  "atlas/scripts/build_peak_panel.py": {
+   "bytes": 11154,
+   "sha256": "6503a870938c73329b8286e37eb2d692da310c2ec16ab85599ad9ba42b6703de"
+  },
+  "atlas/scripts/build_webapp_data.py": {
+   "bytes": 3042,
+   "sha256": "c17d281e9987c9cc3e75e5141998405d0b2b241782f80865ed0c5788c71659a9"
+  },
+  "atlas/scripts/capacity_demand_feed.py": {
+   "bytes": 2322,
+   "sha256": "36066c13dae1162d8bc6e52547145678b60c770797721518ca5266b49f369dff"
+  },
+  "atlas/scripts/compare_peakhour_benchmark.py": {
+   "bytes": 3524,
+   "sha256": "d4208546097bd232b59e6adff0923adbbaa9d58405c056e6082c53f5e3ba41e1"
+  },
+  "atlas/scripts/compare_reliability_change.py": {
+   "bytes": 4535,
+   "sha256": "5fce2bbc307032a484a1069f756d77317456da6dec0a374a513fb34d7548671c"
+  },
+  "atlas/scripts/dataops/back_test.py": {
+   "bytes": 8859,
+   "sha256": "53c1b7e544825c8b9239865d7681e32e7006ee715f7ab08d63d1b39cc1fc5bb8"
+  },
+  "atlas/scripts/dataops/back_test_cohort.py": {
+   "bytes": 15919,
+   "sha256": "dedc9376af1aa176bb7ec528b245cfcfd4bac36201d60c3a6c4a3d830f5851eb"
+  },
+  "atlas/scripts/dataops/back_test_v2.py": {
+   "bytes": 10920,
+   "sha256": "3e330115b464f0841c94e04c7d5080a6a586d015a3821c4a08b23631d5fd8dd0"
+  },
+  "atlas/scripts/dataops/check_oag_truncation.py": {
+   "bytes": 1988,
+   "sha256": "44b8e5d33df922ca77937b420edde505475749a2da48a5424af6bd928b77b578"
+  },
+  "atlas/scripts/dataops/check_oag_weeks.py": {
+   "bytes": 1198,
+   "sha256": "fd5657af1b36f4218847fe4415c7194a979c7c29cf26343463fe51bff425ec21"
+  },
+  "atlas/scripts/dataops/comparator_extract.py": {
+   "bytes": 10207,
+   "sha256": "dd8c1d667b2cffe0707cbe67c5837a43cf374eef620d4638cafe9a3a26266ea6"
+  },
+  "atlas/scripts/dataops/dedupe_oag_periods.py": {
+   "bytes": 2791,
+   "sha256": "d8c70efed19c14b916d9f07888ea2c78c4a33378611ab033319de9f45caebd1a"
+  },
+  "atlas/scripts/dataops/genoa_extract.py": {
+   "bytes": 5571,
+   "sha256": "04d16359a08ce64f743eb190e38656e55feb5aaa56001893a1ebc896e211603f"
+  },
+  "atlas/scripts/dataops/goa_nyc_forecast.py": {
+   "bytes": 6792,
+   "sha256": "5abefc4f2f4c171e5105f7ffa4cd995e3091c043fb18c70bd5d45c8fcba1bc10"
+  },
+  "atlas/scripts/dataops/goa_qsi_test.py": {
+   "bytes": 7096,
+   "sha256": "770f2f027b243cdece4cc33765828149d0b4a8391849243fefb1d605cb4ef149"
+  },
+  "atlas/scripts/dataops/ingest_all_oag.py": {
+   "bytes": 3345,
+   "sha256": "eea25950dc333681d0b40746ff1b3c8f4cfb54f793b84419438346768c0baa5d"
+  },
+  "atlas/scripts/dataops/ingest_all_years.py": {
+   "bytes": 2411,
+   "sha256": "cec85c517b39d73f5a9947f9a97ea5cfccd37e15e17d1d1eec4cd74dbc0c25b1"
+  },
+  "atlas/scripts/dataops/oag_ingest.py": {
+   "bytes": 8639,
+   "sha256": "d6e1321aabafd41aed706186445a96c80994b3ef1cd4eae9ee5c3b00124c6ff7"
+  },
+  "atlas/scripts/dataops/qsi_market.py": {
+   "bytes": 7962,
+   "sha256": "4a9cd3a5944a7d0cc854ab11df3fb4f79c28e6dc700ca4d25402fd9470c708f5"
+  },
+  "atlas/scripts/dataops/reingest_multisheet.py": {
+   "bytes": 1983,
+   "sha256": "ed382aab686af10cbe0a83e4daf957cfb6eddd399a417fea9d3f22b904895335"
+  },
+  "atlas/scripts/dataops/run_forecast.py": {
+   "bytes": 3164,
+   "sha256": "deaf6432e434524c689e874cf7e1c7b2bd547dc5e80e960afb280b82d8ba80c7"
+  },
+  "atlas/scripts/dataops/run_multihub_qsi.py": {
+   "bytes": 5593,
+   "sha256": "5dbd6da0b908dee04076be772c4f280835ed7ff9f853691b9e83de74b51ef476"
+  },
+  "atlas/scripts/dataops/sabre_2023_control.py": {
+   "bytes": 2605,
+   "sha256": "faba9f62461cff6ef351c2c8223813e88856bd92fdc49efb4e20d54fb383caec"
+  },
+  "atlas/scripts/dataops/sabre_cabin_diff.py": {
+   "bytes": 1955,
+   "sha256": "77598ab6766fe69e1be976cb58f38316f4365d9a5a7b7a37be88ca4cb7ca9557"
+  },
+  "atlas/scripts/dataops/sabre_carrier_diff.py": {
+   "bytes": 2092,
+   "sha256": "79fc7a4a57a48be5e777c4d4b33bf631081ca79ea2b2d41128f76e7db996f3a6"
+  },
+  "atlas/scripts/dataops/sabre_check_2025.py": {
+   "bytes": 2135,
+   "sha256": "2bd90dd5f3f0ee9747c56cbe52982786a4befe658902db82298ec8f39e60d322"
+  },
+  "atlas/scripts/dataops/sabre_compare_analyst.py": {
+   "bytes": 2088,
+   "sha256": "01c99de3ea4f928539f50964fc80610844de06f80e9d158d8f08742ee2eeacf6"
+  },
+  "atlas/scripts/dataops/sabre_compare_exact.py": {
+   "bytes": 2905,
+   "sha256": "da47c137830d737b95221419eb3918f3e715db53ede65b03c201d00dde607f2b"
+  },
+  "atlas/scripts/dataops/sabre_compare_refined.py": {
+   "bytes": 3922,
+   "sha256": "d8ad6417c6e6058d8276822b90cadcdb612338a7d814c0458c505111d768db1b"
+  },
+  "atlas/scripts/dataops/sabre_direction_check.py": {
+   "bytes": 1843,
+   "sha256": "54dc32614647ad691b4249a4096cf154ca07f95f63bd194f16b013c7c26fa96f"
+  },
+  "atlas/scripts/dataops/sabre_factor_check.py": {
+   "bytes": 1686,
+   "sha256": "68c811dc712c5adb64333754b5148c017e69a848f44d47310c65c433c0231197"
+  },
+  "atlas/scripts/dataops/sabre_generate_demand.py": {
+   "bytes": 5948,
+   "sha256": "6a076c5468b4f093f6143facdd9899ba3efb547595ad253668ea2083ae3705d9"
+  },
+  "atlas/scripts/dataops/sabre_generate_extract.py": {
+   "bytes": 5182,
+   "sha256": "8f083b5d48d01751bc5519c8f4df9c425741901ad4e5ce18f286b27891754b40"
+  },
+  "atlas/scripts/dataops/sabre_ingest.py": {
+   "bytes": 6909,
+   "sha256": "db9bca29b9d8f5eb2cc23837aba8e3f57353a337e4316a8c9048e0d4547c4c6c"
+  },
+  "atlas/scripts/dataops/sabre_query_lhrsjc.py": {
+   "bytes": 2912,
+   "sha256": "3d28e3c7fb5d8c724dc53163c6ae8c968d77f96250a49a0551eb19371a1e75bf"
+  },
+  "atlas/scripts/dataops/validate_oag_store.py": {
+   "bytes": 3576,
+   "sha256": "76ae3e0b87c87bea25d86cc143acaba100ff455b6af6a68be034f009455fd50c"
+  },
+  "atlas/scripts/estimate_airport_diagnostics.py": {
+   "bytes": 9358,
+   "sha256": "04cb75b9cacf3174d34fcc7bc0c80f0f36b2095a24170927f2df06535c7178d9"
+  },
+  "atlas/scripts/estimate_country_bG.py": {
+   "bytes": 2995,
+   "sha256": "8649f19330e1a90e109c3a1fcd8e69416492cf1e0e95baeaf327751afc14248b"
+  },
+  "atlas/scripts/extract_peakhour_outputs.py": {
+   "bytes": 4915,
+   "sha256": "d0ee2fb587e6cd55eabd76279aef9a756df4f7b5b0a88a21d003e77d82be5235"
+  },
+  "atlas/scripts/golden_baseline.py": {
+   "bytes": 5944,
+   "sha256": "bd13ba128ac90ce27c737dbe79637782e0f69577a15200187357778feca817cf"
+  },
+  "atlas/scripts/ingest_aci.py": {
+   "bytes": 5372,
+   "sha256": "d6f8af6b251146387cf0d9e3a2a2a57366f889f6ee9f3713a23c3f46bee79ac9"
+  },
+  "atlas/scripts/ingest_eiu_vintage.py": {
+   "bytes": 2751,
+   "sha256": "3c0fcab4c7b31c081bfe2f16d0aec07c1f185b841d82b811e318c3a051534853"
+  },
+  "atlas/scripts/ingest_global_base.py": {
+   "bytes": 3897,
+   "sha256": "51646ae02202f78c12f95917ad9ad90e3ca7191fabc02df693224e274bc5bde6"
+  },
+  "atlas/scripts/ingest_imf_weo.py": {
+   "bytes": 2522,
+   "sha256": "72b1fa82fbce3deef5e694b9b624bb21e77638c0294f31ca82f0059b8e64ab62"
+  },
+  "atlas/scripts/ingest_oag_annual.py": {
+   "bytes": 7910,
+   "sha256": "076b3004aab9126e103080984d0792f4142cfc43fdba88004d818b30d6be4a39"
+  },
+  "atlas/scripts/ingest_oef_gdp.py": {
+   "bytes": 4583,
+   "sha256": "f0c166f181999a81d7e427b6e5061345da8af3c7d53766fdf6b6a5fe626340d2"
+  },
+  "atlas/scripts/ingest_oef_vintage.py": {
+   "bytes": 2729,
+   "sha256": "617b4179b72ffbf25ba22c6a0f8597d621be17c17bc7d97af45c11b9c5e01258"
+  },
+  "atlas/scripts/ingest_uk_real.py": {
+   "bytes": 4829,
+   "sha256": "50bfcf78e7832d2c3d122e349f6b1c58e7340e3890fa51f501269804dd050122"
+  },
+  "atlas/scripts/inspect_oag_store.py": {
+   "bytes": 9475,
+   "sha256": "9fc1cd1a1b8a236b3e8eb2940d9ccf847486dfa312cfd1461c772e3d57fccc73"
+  },
+  "atlas/scripts/patch_config_capacity_v04.py": {
+   "bytes": 12496,
+   "sha256": "4811dd4281a3167810b3f9f5a6cd94656eb876004e654933e7a08b2564e129aa"
+  },
+  "atlas/scripts/peakhour_workbook_addsheet.py": {
+   "bytes": 16385,
+   "sha256": "eec6fb682c498f43e8c30be6503fb2e1b6826de5ea60c809cb854968d53374ec"
+  },
+  "atlas/scripts/peakhour_workbook_checksheet.py": {
+   "bytes": 13629,
+   "sha256": "3bb13d9a0dbb7594bb9843771e030b6169b177ffe1241dd2f5c24a8fd1e82bfe"
+  },
+  "atlas/scripts/peakhour_workbook_decache.py": {
+   "bytes": 2142,
+   "sha256": "979a7c0f52fd93859ef5f764eb77464edf8ad494933213b6301c625904d8a9d4"
+  },
+  "atlas/scripts/peakhour_workbook_fill.py": {
+   "bytes": 10763,
+   "sha256": "1ba4eb58d518535d7d6ee29daf29cd2980e2af0d9c9c3777356fb6be98973646"
+  },
+  "atlas/scripts/peakhour_workbook_refilter.py": {
+   "bytes": 3727,
+   "sha256": "ee14163f0d109387955d9127c52b0aaf424e58d108aacad84c7c6718fddd8482"
+  },
+  "atlas/scripts/qsi_calibration.py": {
+   "bytes": 951,
+   "sha256": "0c2f58b929bf61d4ac5c4cc840b1748ad426d0bab5281c20f703f0d2649202a5"
+  },
+  "atlas/scripts/run_capacity_layer.py": {
+   "bytes": 9791,
+   "sha256": "9522147acef547dbc466036c334cb57428e7bbf79bb9dfb078b6eaaa8d34df08"
+  },
+  "atlas/scripts/run_full_estimation.py": {
+   "bytes": 1992,
+   "sha256": "a2b82cc498123c67002f846a81b3631f06873e64d19c3e1dfd0fa554a7e174fa"
+  },
+  "atlas/scripts/run_global_demand.py": {
+   "bytes": 2370,
+   "sha256": "85a235065c1761e5356d9148bf2a60ee39109ed5a5beee8aa3c4363a6b1d4343"
+  },
+  "atlas/scripts/run_global_terminal.py": {
+   "bytes": 2045,
+   "sha256": "c9da9e759a86e0c2892b0b7dc966881c5bbdf6d5f48714fc46484dd220db3b73"
+  },
+  "atlas/scripts/run_qsi_bum.py": {
+   "bytes": 13551,
+   "sha256": "58d91f5c82036ad12038a8e99ea16cad8b574d64dca7568cf4e3be4caff15747"
+  },
+  "atlas/scripts/scope_global.py": {
+   "bytes": 3582,
+   "sha256": "a2158332fbb7852991c2ac803086f9351349c8090015671113256dcb83fa673b"
+  },
+  "atlas/scripts/service_curve_skytrax.py": {
+   "bytes": 4568,
+   "sha256": "99f73349cbd3ad3400712a6cf8ceb9c715eecbc111d259008dfd32c2060d558b"
+  },
+  "atlas/scripts/service_quality_screen_test.py": {
+   "bytes": 3848,
+   "sha256": "b19a8af87fcd32c9a49a8d8d73296210a37f31168e2284a3c6c754cc83c88d46"
+  },
+  "atlas/scripts/validate_bt2_integration.py": {
+   "bytes": 5986,
+   "sha256": "f03edc55e97cb2343764c152dd32d8154cb8e9a8d9045b979716dae0c2142396"
+  },
+  "atlas/scripts/validate_repo.py": {
+   "bytes": 1437,
+   "sha256": "c1d3dd043e49b99ac1a41b2ebe3428808358706b569f153293e00f4e4bde3ac5"
+  },
+  "atlas/webapp/DEPLOY_cloudflare.md": {
+   "bytes": 3601,
+   "sha256": "9bd74067bf6defd8423af49191d499fb99e7ee9652db6d1133ce2c91bbd75ab2"
+  },
+  "atlas/webapp/README.md": {
+   "bytes": 1625,
+   "sha256": "5a86c88f24e1373bedcf4862c5e58b5fa5489c175a2e766413c87da055293d4e"
+  },
+  "atlas/webapp/Run Avia Forecast (with QSI service).bat": {
+   "bytes": 202,
+   "sha256": "5244f0eaa54327815c58a09298bcb6314ec09f77fb6fb2770b704aa500b58e85"
+  },
+  "atlas/webapp/Run Avia Forecast.bat": {
+   "bytes": 210,
+   "sha256": "98045f8eecd59f55fa0b59203f97c9676af7a84e312094213378236c0e09e95d"
+  },
+  "atlas/webapp/TEAM_ACCESS_cortex_tunnel.md": {
+   "bytes": 4457,
+   "sha256": "2359fd491f0f4fdc4472a9f4b89ded8374b50ca5cfcc7554887aa065b7e9fdee"
+  },
+  "atlas/webapp/TEAM_ACCESS_password.md": {
+   "bytes": 3133,
+   "sha256": "3a4849eef1eac56131ef6abf5c5933e3eecb0a458822376080ee328dd9796bef"
+  },
+  "atlas/webapp/TEAM_ACCESS_step_by_step.md": {
+   "bytes": 7462,
+   "sha256": "57d2a57a94edacb6f703d00d749836f024f453a53fb2d79c2a36c4730ef90e7d"
+  },
+  "atlas/webapp/access_password.txt": {
+   "bytes": 291,
+   "sha256": "643493443f20714b2cfae33bdf9f9d5775fb2ce782ea8f8d0c1c7fe69a30f0ef"
+  },
+  "atlas/webapp/assets/photos/field-runway-dusk.png": {
+   "bytes": 2153953,
+   "sha256": "e234043a0a2efa229922e2f1a4d5b094e452a63064f62a2e01bdbefdbc8e40cc"
+  },
+  "atlas/webapp/assets/photos/globe-europe-wide.png": {
+   "bytes": 2599657,
+   "sha256": "f07c5557e29303454ccb013c54c56b7853dc9cd8b2384104ebf307f8f7ec64e8"
+  },
+  "atlas/webapp/assets/photos/ops-radar.png": {
+   "bytes": 2054720,
+   "sha256": "8dbba721e617393439002191d66a5fe0a179f0f81ea452b9e4b6237ea1729c64"
+  },
+  "atlas/webapp/assets/photos/ops-tower.png": {
+   "bytes": 2199943,
+   "sha256": "3462ecd738fdc3736474449d62485d3e2cfd71a3bc662797c6b195592e8a8f26"
+  },
+  "atlas/webapp/build_history.py": {
+   "bytes": 13835,
+   "sha256": "108ca91ab6d50d75245f9f47c3371c081ec024ee9ff1dad3e981f843922b4b2e"
+  },
+  "atlas/webapp/capacity.html": {
+   "bytes": 8657,
+   "sha256": "9fd32b4a942e5b48f36e4e859ca476c4de6fdc205772f49c76a5d2a0e80843de"
+  },
+  "atlas/webapp/cockpit.html": {
+   "bytes": 108729,
+   "sha256": "09f3f08c092aacef6dd37fe9d56e7d9356377ed3bec6f8fead6083217b41dc4b"
+  },
+  "atlas/webapp/dashboard.html": {
+   "bytes": 124120,
+   "sha256": "534dbff28a9d17bcb24a3211bb95eafd799678163ae7bfb96426478a9ffdb357"
+  },
+  "atlas/webapp/data/airports.json": {
+   "bytes": 4497703,
+   "semantic": {
+    "n": 2430,
+    "type": "list"
+   },
+   "sha256": "b8fc36072b356fed97644fd8d3a75847407225224d82ad476c593b7f8e6b68f7"
+  },
+  "atlas/webapp/data/bum_candidates.json": {
+   "bytes": 47406,
+   "semantic": {
+    "keys": 14,
+    "type": "dict"
+   },
+   "sha256": "4af6f6e19f37626067189c92eba40fe1293fb4a9ed05801a911db509b9e98672"
+  },
+  "atlas/webapp/data/capacity.json": {
+   "bytes": 1035917,
+   "semantic": {
+    "keys": 6,
+    "n_airports": 3303,
+    "type": "dict"
+   },
+   "sha256": "4ca79833f3eca583276be5892dca26203a160f0fa643d5e1d35903935921784d"
+  },
+  "atlas/webapp/data/cockpit.json": {
+   "bytes": 5554450,
+   "semantic": {
+    "keys": 7,
+    "n_airports": 2430,
+    "n_years": 42,
+    "type": "dict"
+   },
+   "sha256": "574c8d07c521db68191f04e132a50b80405cc3290b878a9e38eee336ca4bbe2c"
+  },
+  "atlas/webapp/data/dashboard.json": {
+   "bytes": 3927085,
+   "semantic": {
+    "keys": 12,
+    "n_airports": 2430,
+    "n_flows": 21,
+    "n_years": 46,
+    "type": "dict"
+   },
+   "sha256": "7f8579a8aebbbbae84471136da8de5096c4f4f4178f4665f9d4c4fd02ff5c46b"
+  },
+  "atlas/webapp/data/history.json": {
+   "bytes": 12543,
+   "semantic": {
+    "keys": 12,
+    "n_years": 10,
+    "type": "dict"
+   },
+   "sha256": "95c5206571ff3d13156f0a474e217290c9aa2dd5bb03206ad59d5c411e3c15a6"
+  },
+  "atlas/webapp/data/meta.json": {
+   "bytes": 348,
+   "semantic": {
+    "keys": 6,
+    "n_years": 36,
+    "type": "dict"
+   },
+   "sha256": "caf94f29595c9facd9df25652d8a680071eccfcd4dc547be826083f8b31a15a6"
+  },
+  "atlas/webapp/data/world.json": {
+   "bytes": 14395,
+   "semantic": {
+    "keys": 4,
+    "n_years": 36,
+    "type": "dict"
+   },
+   "sha256": "190b31473054ac92a9ec6792661fa77713490554ecb8bb84ed5e98e6b7a27558"
+  },
+  "atlas/webapp/entry.html": {
+   "bytes": 352025,
+   "sha256": "b338fefa027f5531ada1364d11e8db5705522800f232154c6c43b5058313ca90"
+  },
+  "atlas/webapp/hub.html": {
+   "bytes": 368,
+   "sha256": "389cf56eed0ba2053e03d4afc7550b04d9896eb23a3011a6644cf78c385a75ba"
+  },
+  "atlas/webapp/index.html": {
+   "bytes": 2772,
+   "sha256": "1c2f6f6288a7a5b6d66dce140f5fb46aa07c1db6b9120cf569d205b176b792ce"
+  },
+  "atlas/webapp/qsi_service.py": {
+   "bytes": 12116,
+   "sha256": "095c4b9b2c67dcca264a7da92cfb472e58a73ab1f066892a1e2fb913a4a4dc1e"
+  },
+  "atlas/webapp/serve.py": {
+   "bytes": 1100,
+   "sha256": "c2f27ac68b270df7fe1e9ccb0333fcd0d3a2606aeb62eb3b3f625c910ff9fa52"
+  },
+  "atlas/webapp/viewer-simple.html": {
+   "bytes": 9514,
+   "sha256": "e9863f3d8205c3ed18a3e324e1f811263a78f0e8104cbed21ef8b8f43e8d26d4"
+  },
+  "atlas/webapp/zagreb.html": {
+   "bytes": 37591,
+   "sha256": "281456a8b1a0d364dc565748e6461c592f4ad76d2442a45884eec22bc875e8a5"
+  },
+  "atlas/webapp/zagreb_write_excel.py": {
+   "bytes": 13261,
+   "sha256": "6cd62609f5e763207ea626ab647870e2b1ed14bea58ac6bd8c1fdef7d5ea1edb"
+  },
+  "atlas/webapp/zagreb_write_report.py": {
+   "bytes": 16682,
+   "sha256": "94b2fb48809661dc027365cd1eda37e28159072c2102f87929ea64f48d563c7a"
+  }
+ },
+ "n_files": 436,
+ "purpose": "pre-Git-migration golden baseline; verify after every move"
+}
