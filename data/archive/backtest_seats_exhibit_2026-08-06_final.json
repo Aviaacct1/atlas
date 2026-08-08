@@ -1,0 +1,105 @@
+{
+ "db": "C:\\Avia\\oag.duckdb",
+ "summary": {
+  "annual 2015->2019": {
+   "n": 1730,
+   "wmape_seats": 0.0497,
+   "wmape_naive_gdp": 0.1353,
+   "median_ape_seats": 0.0688,
+   "median_ape_naive": 0.1738,
+   "within_20pct": 0.7884,
+   "within_10pct": 0.6145,
+   "beats_naive": true
+  },
+  "annual 2015->2018": {
+   "n": 1735,
+   "wmape_seats": 0.0546,
+   "wmape_naive_gdp": 0.1248,
+   "median_ape_seats": 0.0663,
+   "median_ape_naive": 0.1457,
+   "within_20pct": 0.8012,
+   "within_10pct": 0.6282,
+   "beats_naive": true
+  },
+  "annual 2019->2023": {
+   "n": 1823,
+   "wmape_seats": 0.0558,
+   "wmape_naive_gdp": 0.1999,
+   "median_ape_seats": 0.0682,
+   "median_ape_naive": 0.1946,
+   "within_20pct": 0.7954,
+   "within_10pct": 0.6111,
+   "beats_naive": true
+  },
+  "annual 2019->2024": {
+   "n": 1844,
+   "wmape_seats": 0.044,
+   "wmape_naive_gdp": 0.1658,
+   "median_ape_seats": 0.0633,
+   "median_ape_naive": 0.1925,
+   "within_20pct": 0.795,
+   "within_10pct": 0.6258,
+   "beats_naive": true
+  },
+  "annual 2023->2024": {
+   "n": 2024,
+   "wmape_seats": 0.0324,
+   "wmape_naive_gdp": 0.0752,
+   "median_ape_seats": 0.0454,
+   "median_ape_naive": 0.0753,
+   "within_20pct": 0.872,
+   "within_10pct": 0.7391,
+   "beats_naive": true
+  },
+  "weekly 2015->2019": {
+   "n": 1692,
+   "wmape_seats": 0.06,
+   "wmape_naive_gdp": 0.1351,
+   "median_ape_seats": 0.0872,
+   "median_ape_naive": 0.1709,
+   "within_20pct": 0.7636,
+   "within_10pct": 0.5467,
+   "beats_naive": true
+  },
+  "weekly 2015->2018": {
+   "n": 1699,
+   "wmape_seats": 0.0663,
+   "wmape_naive_gdp": 0.1247,
+   "median_ape_seats": 0.0875,
+   "median_ape_naive": 0.1434,
+   "within_20pct": 0.7552,
+   "within_10pct": 0.5397,
+   "beats_naive": true
+  },
+  "weekly 2019->2023": {
+   "n": 1791,
+   "wmape_seats": 0.0698,
+   "wmape_naive_gdp": 0.1998,
+   "median_ape_seats": 0.0906,
+   "median_ape_naive": 0.1925,
+   "within_20pct": 0.7521,
+   "within_10pct": 0.531,
+   "beats_naive": true
+  },
+  "weekly 2019->2024": {
+   "n": 1809,
+   "wmape_seats": 0.0555,
+   "wmape_naive_gdp": 0.1657,
+   "median_ape_seats": 0.0878,
+   "median_ape_naive": 0.1909,
+   "within_20pct": 0.7474,
+   "within_10pct": 0.5395,
+   "beats_naive": true
+  },
+  "weekly 2023->2024": {
+   "n": 1981,
+   "wmape_seats": 0.0522,
+   "wmape_naive_gdp": 0.075,
+   "median_ape_seats": 0.0741,
+   "median_ape_naive": 0.0735,
+   "within_20pct": 0.8031,
+   "within_10pct": 0.6017,
+   "beats_naive": true
+  }
+ }
+}

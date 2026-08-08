@@ -1,0 +1,55 @@
+{
+ "db": "C:\\Avia\\oag.duckdb",
+ "summary": {
+  "annual 2015->2019": {
+   "n": 1594,
+   "wmape_seats": 0.0484,
+   "wmape_naive_gdp": 0.135,
+   "median_ape_seats": 0.0645,
+   "median_ape_naive": 0.171,
+   "within_20pct": 0.8024,
+   "within_10pct": 0.6317,
+   "beats_naive": true
+  },
+  "annual 2015->2018": {
+   "n": 1735,
+   "wmape_seats": 0.0546,
+   "wmape_naive_gdp": 0.1248,
+   "median_ape_seats": 0.0663,
+   "median_ape_naive": 0.1457,
+   "within_20pct": 0.8012,
+   "within_10pct": 0.6282,
+   "beats_naive": true
+  },
+  "weekly 2015->2019": {
+   "n": 1692,
+   "wmape_seats": 0.06,
+   "wmape_naive_gdp": 0.1351,
+   "median_ape_seats": 0.0872,
+   "median_ape_naive": 0.1709,
+   "within_20pct": 0.7636,
+   "within_10pct": 0.5467,
+   "beats_naive": true
+  },
+  "weekly 2015->2018": {
+   "n": 1699,
+   "wmape_seats": 0.0663,
+   "wmape_naive_gdp": 0.1247,
+   "median_ape_seats": 0.0875,
+   "median_ape_naive": 0.1434,
+   "within_20pct": 0.7552,
+   "within_10pct": 0.5397,
+   "beats_naive": true
+  },
+  "weekly 2019->2024": {
+   "n": 1809,
+   "wmape_seats": 0.0555,
+   "wmape_naive_gdp": 0.1657,
+   "median_ape_seats": 0.0878,
+   "median_ape_naive": 0.1909,
+   "within_20pct": 0.7474,
+   "within_10pct": 0.5395,
+   "beats_naive": true
+  }
+ }
+}

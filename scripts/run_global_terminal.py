@@ -2,6 +2,7 @@
 extract + a coherence read against the ACI World Airport Traffic Forecast. Author: Avia Solutions."""
 from __future__ import annotations
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+from avia_forecast.io_safe import dump_atomic
 from avia_forecast.paths import DATA, OEF_DIR, ACI_DIR, ACI_DECRYPT, SABRE_DB, OAG_DB, QSI_REF, PREAGG, QSI_APP, OEF_GDP_XLSX
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -23,7 +24,7 @@ def run(scenario="Baseline"):
         "note": "terminal pax incl transfers; connecting grown on ACI 2024 base split (terminal-vs-Sabre O&D); "
                 "region-based connecting v1, per-hub M matrix is the next refinement",
     }
-    json.dump(extract, open(os.path.join(DATA, "global_terminal_2024_2050.json"), "w"), indent=2)
+    dump_atomic(extract, os.path.join(DATA, "global_terminal_2024_2050.json"), indent=2)
     div = co.external_divergence(r.world, ACI_FORECAST_CAGR, goal_band_pp=0.5)
     print(f"WORLD TERMINAL  base {r.world[r.years[0]]:,.0f}m -> 2050 {r.world[2050]:,.0f}m  CAGR {r.world_cagr*100:.2f}%")
     print(f"vs ACI forecast {ACI_FORECAST_CAGR*100:.1f}%: gap {div.gap_pp:+.2f}pp (within goal band {div.within_goal})")

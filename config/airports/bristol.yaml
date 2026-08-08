@@ -1,0 +1,65 @@
+meta:
+  airport: BRS
+  icao: EGGD
+  operator: Bristol Airport
+  currency: GBP
+  base_year: 2013
+  horizon: 2030
+  author: Avia Solutions
+  note: Second configured instance, built config-only from ACI history + OEF UK GDP.
+    LCC-capacity-driven (grew far faster than GDP); the carrier block carries the
+    capacity-led growth. Calibrated to reproduce clean pre-COVID ACI actuals (2016,
+    2019).
+markets:
+  uk:
+    elasticity: 1.2
+    base_weight: 6125149.0
+gdp_index:
+  uk:
+    '2013': 1.0
+    '2014': 1.031958
+    '2015': 1.05487
+    '2016': 1.075135
+    '2017': 1.10368
+    '2018': 1.119174
+    '2019': 1.137546
+    '2020': 1.019698
+    '2021': 1.108156
+    '2022': 1.156307
+    '2023': 1.15751
+    '2024': 1.170368
+    '2025': 1.194039
+    '2026': 1.217229
+    '2027': 1.23736
+    '2028': 1.258013
+    '2029': 1.278054
+    '2030': 1.297526
+base:
+  total: 6125149.0
+  international: 6125149.0
+  domestic: 0
+  transit: 0
+  charter: 0
+  ga: 0
+  non_lcc: 6125149.0
+  lcc: 0
+  commercial_atm: 60050.0
+  landed_tonnage: 0
+conversions:
+  upgauge_pa: 0.003
+  charter_share: 0.0
+  ga_share: 0.0
+  transit_share: 0.0
+lcc_net_path:
+  '2014': 461190.6
+  '2016': 922381.3
+  '2019': 1809579.7
+  '2024': 3274421.9
+  '2030': 6671184.3
+carrier_blocks:
+- name: lcc_capacity
+  basis: net_pax
+  path_ref: lcc_net_path
+benchmark:
+  '2016': 7603854.0
+  '2019': 8959144.0

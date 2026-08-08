@@ -64,3 +64,29 @@ def assert_adds_up(rec, tol=TOL):
     if hard:
         raise AssertionError(f"coverage issues break grossing: {hard}")
     return True
+
+
+def reconcile_connecting(od_base, conn_raw, *, neg_tol=0.02, max_share=0.65):
+    """The connecting figure is a RESIDUAL (ACI terminal minus Sabre O&D both-ends). It goes negative
+    or absurd wherever ACI and Sabre disagree (freighter/GA-heavy, coverage-thin airports). Policy:
+    floor at zero and classify, so the build reconciles by construction and flags the noise rather
+    than stopping. Returns (conn_floored, flag_or_None).
+      negative_residual        - ACI < Sabre O&D by more than neg_tol of O&D (definition/coverage gap)
+      implausible_conx_share   - connecting share above max_share (residual swept up a mismatch)
+    """
+    conn = max(0.0, conn_raw)
+    total = od_base + conn
+    share = (conn / total) if total > 0 else 0.0
+    if conn_raw < -neg_tol * (od_base or 1.0):
+        return conn, "negative_residual"
+    if share > max_share:
+        return conn, "implausible_conx_share"
+    return conn, None
+
+
+def tb_check(term_base, od_base, conn_base, tol=1e-6):
+    """Identity T-B at base year: terminal = O&D + connecting. Returns True within tolerance."""
+    lhs = od_base + conn_base
+    if term_base <= 0:
+        return term_base == 0 and lhs == 0
+    return abs(term_base - lhs) / term_base <= tol

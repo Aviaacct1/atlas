@@ -1,0 +1,6 @@
+# Development and test only. The workstation installs requirements.txt and nothing
+# from here. Keeping the two apart is deliberate: on Meridian a package listed for a
+# tool nobody runs resolved starlette down from 1.6.0 to 1.3.1, and starlette is what
+# the live portal server runs on. Install only what the host runs.
+-r requirements.txt
+pytest

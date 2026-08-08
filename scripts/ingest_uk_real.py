@@ -5,8 +5,10 @@ Region distances <- OAG schedules (qsi_wave_cache.duckdb boards; block-time appr
 Capacities are illustrative pending Jess's capacity register.
 
 Usage:
-    python scripts/ingest_uk_real.py --qsi "C:/Users/.../Avia QSI Tool/app" --out extract.json
-Author: Avia Solutions.
+    python scripts/ingest_uk_real.py --out extract.json
+
+Every path resolves through avia_forecast/paths.py; --qsi remains for a one-off run
+against another location. Author: Avia Solutions.
 """
 from __future__ import annotations
 import argparse, json, sys
@@ -14,7 +16,7 @@ from pathlib import Path
 import duckdb
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from avia_forecast import fixtures, pipeline
+from avia_forecast import fixtures, pipeline, paths
 from avia_forecast.outputs import extract as ox
 from avia_forecast.config import _load
 
@@ -31,7 +33,7 @@ def _hours(ft):
 
 
 def build_base_od(qsi: Path, c2r: dict, year=2025):
-    con = duckdb.connect(str(qsi / "preagg.duckdb"), read_only=True)
+    con = duckdb.connect(paths.PREAGG, read_only=True)
     con.execute(f"CREATE TEMP TABLE ac AS SELECT * FROM read_csv_auto('{qsi/'reference_tables'/'airport_city_country.csv'}')")
     inlist = ",".join(f"'{a}'" for a in UK)
     rows = con.execute(f"""SELECT p.o, ac.country_name, SUM(p.pax) FROM od_p2p p JOIN ac ON p.d=ac.airport_code
@@ -75,7 +77,7 @@ def main():
     qsi = Path(args.qsi)
     c2r = _load("country_region.yaml")["map"]
     # ISO2 -> region via the airport reference joined to the country map
-    con = duckdb.connect(str(qsi / "preagg.duckdb"), read_only=True)
+    con = duckdb.connect(paths.PREAGG, read_only=True)
     ac = con.execute(f"SELECT DISTINCT country_code, country_name FROM read_csv_auto('{qsi/'reference_tables'/'airport_city_country.csv'}')").fetchall()
     con.close()
     c2r_iso = {code: c2r[name] for code, name in ac if name in c2r}

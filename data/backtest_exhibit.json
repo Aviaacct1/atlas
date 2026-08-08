@@ -1,0 +1,29 @@
+{
+ "base_year": 2014,
+ "naive_mult": 1.5,
+ "summary": {
+  "2019": {
+   "n": 791,
+   "wmape_model": 0.1425542167788716,
+   "wmape_naive": 0.138134953294084,
+   "median_ape_model": 0.16428945920306548,
+   "median_ape_naive": 0.16742113123501434,
+   "mean_mape_model": 0.442665281055831,
+   "wbias_model": -0.050962588454051966,
+   "model_beats_naive_share": 0.49557522123893805,
+   "beats_naive_wmape": false
+  },
+  "2024": {
+   "n": 778,
+   "wmape_model": 0.25851142828752127,
+   "wmape_naive": 0.2587033892320097,
+   "median_ape_model": 0.26727449406156273,
+   "median_ape_naive": 0.26946285755245775,
+   "mean_mape_model": 6.530735984796271,
+   "wbias_model": 0.0988379326834792,
+   "model_beats_naive_share": 0.5218508997429306,
+   "beats_naive_wmape": true
+  }
+ },
+ "n_scored": 1569
+}

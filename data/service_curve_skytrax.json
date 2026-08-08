@@ -1,0 +1,121 @@
+{
+ "n": 296,
+ "x_axis": "absorption (peak-hour growth / annual growth)",
+ "bands": {
+  "<0 (peak shrinking)": {
+   "all": {
+    "n": 69,
+    "mean_stars": 3.28
+   },
+   "<5m": {
+    "n": 14,
+    "mean_stars": 3.14
+   },
+   "5-20m": {
+    "n": 30,
+    "mean_stars": 3.2
+   },
+   ">20m": {
+    "n": 25,
+    "mean_stars": 3.44
+   }
+  },
+  "0-0.35 (tight)": {
+   "all": {
+    "n": 42,
+    "mean_stars": 3.29
+   },
+   "<5m": {
+    "n": 1,
+    "mean_stars": null
+   },
+   "5-20m": {
+    "n": 23,
+    "mean_stars": 3.04
+   },
+   ">20m": {
+    "n": 18,
+    "mean_stars": 3.56
+   }
+  },
+  "0.35-0.7 (absorbing)": {
+   "all": {
+    "n": 66,
+    "mean_stars": 3.38
+   },
+   "<5m": {
+    "n": 8,
+    "mean_stars": 3.0
+   },
+   "5-20m": {
+    "n": 34,
+    "mean_stars": 3.24
+   },
+   ">20m": {
+    "n": 24,
+    "mean_stars": 3.71
+   }
+  },
+  "0.7-1.1 (in step)": {
+   "all": {
+    "n": 53,
+    "mean_stars": 3.17
+   },
+   "<5m": {
+    "n": 10,
+    "mean_stars": 2.8
+   },
+   "5-20m": {
+    "n": 19,
+    "mean_stars": 3.21
+   },
+   ">20m": {
+    "n": 24,
+    "mean_stars": 3.29
+   }
+  },
+  ">1.1 (peak leading)": {
+   "all": {
+    "n": 66,
+    "mean_stars": 3.41
+   },
+   "<5m": {
+    "n": 9,
+    "mean_stars": 3.44
+   },
+   "5-20m": {
+    "n": 37,
+    "mean_stars": 3.27
+   },
+   ">20m": {
+    "n": 20,
+    "mean_stars": 3.65
+   }
+  }
+ },
+ "result": "NULL - no threshold shape on the absorption proxy, overall or within size bands",
+ "tight_vs_instep": [
+  3.29,
+  3.17
+ ],
+ "rule_of_thumb": "STATE-BASED (the operative interim rule), from the corrected size run: tightening rates below headroom in every size band (<5m: 2.82 vs 3.3 mean stars, 4-5 star share 0% vs 38%); settled at-ceiling airports rate highest. The service cost shows while capacity tightens, which is the window to plan.",
+ "state_means": {
+  "headroom": {
+   "mean": 3.35,
+   "n": 238,
+   "share_45": 0.332
+  },
+  "tightening": {
+   "mean": 3.15,
+   "n": 73,
+   "share_45": 0.219
+  },
+  "at_ceiling": {
+   "mean": 3.58,
+   "n": 12,
+   "share_45": 0.5
+  }
+ },
+ "status": "Absorption-based continuous curve: recorded null, do not publish a threshold from it. Utilisation-of-rated-capacity curve replaces this as the register harvest extends; ASQ sample size and licence cost under review meanwhile.",
+ "author": "Avia Solutions"
+}

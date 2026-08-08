@@ -5,6 +5,7 @@ backfilled by IATA from the modern panel (+ QSI reference). Author: Avia Solutio
 """
 from __future__ import annotations
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+from avia_forecast.io_safe import dump_atomic
 from avia_forecast.paths import DATA, OEF_DIR, ACI_DIR, ACI_DECRYPT, SABRE_DB, OAG_DB, QSI_REF, PREAGG, QSI_APP, OEF_GDP_XLSX
 import csv, json, os, re
 import openpyxl
@@ -90,7 +91,7 @@ def run():
 
     panel = [{"iata": i, "year": y, "terminal_pax": t, "country_code": iata_country.get(i)}
              for i, y, t in long]
-    json.dump(panel, open(os.path.join(DATA, "aci_panel_long.json"), "w"))
+    dump_atomic(panel, os.path.join(DATA, "aci_panel_long.json"))
     yrs = sorted({y for _, y, _ in long})
     from collections import Counter
     c = Counter(y for _, y, _ in long)

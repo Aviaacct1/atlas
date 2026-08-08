@@ -1,0 +1,3304 @@
+iata,name,country,size_m_pax_2025,screen_state,listed
+AAE,Annaba,DZ,0.55,not_assessed,True
+AAL,Aalborg,DK,1.62,not_assessed,True
+AAN,Al Ain,AE,,too_short,True
+AAP,,,,too_short,False
+AAQ,,,,not_assessed,False
+AAR,Aarhus,DK,0.51,not_assessed,True
+AAT,,CN,,not_assessed,False
+ABA,Abakan,RU,0.37,not_assessed,True
+ABB,,NG,,not_assessed,False
+ABD,Abadan,IR,0.31,not_assessed,True
+ABE,Allentown/Bethlehem/Easton,US,0.9,not_assessed,True
+ABI,Abilene,US,0.21,not_assessed,True
+ABJ,Abidjan,CI,3.08,headroom,True
+ABL,,US,,not_assessed,False
+ABM,Bamaga,AU,0.03,too_short,True
+ABQ,Albuquerque,US,5.81,tightening,True
+ABR,,US,,not_assessed,False
+ABS,Abu Simbel,EG,,not_assessed,True
+ABT,Al Baha,SA,0.5,not_assessed,True
+ABU,,,,not_assessed,False
+ABV,Abuja,NG,5.22,headroom,True
+ABX,Albury,AU,0.26,not_assessed,True
+ABY,Albany,US,0.12,not_assessed,True
+ABZ,Aberdeen,GB,2.26,headroom,True
+ACA,Acapulco,MX,0.68,not_assessed,True
+ACC,Accra,GH,4.24,tightening,True
+ACE,Lanzarote,ES,7.98,headroom,True
+ACF,,,,too_short,False
+ACH,Altenrhein,CH,,not_assessed,True
+ACI,Alderney,GB,0.07,not_assessed,True
+ACK,,US,,headroom,False
+ACO,,,,too_short,False
+ACT,,US,,not_assessed,False
+ACU,,,,not_assessed,False
+ACV,,US,,not_assessed,False
+ACX,Xingyi,CN,1.72,not_assessed,True
+ACY,Atlantic City,US,0.79,not_assessed,True
+ADA,Adana,TR,,headroom,True
+ADB,Izmir,TR,11.69,headroom,True
+ADD,Addis Ababa,ET,21.36,headroom,True
+ADE,,YE,,not_assessed,False
+ADF,Adiyaman,TR,0.36,not_assessed,True
+ADL,Adelaide,AU,8.81,headroom,True
+ADQ,,US,,not_assessed,False
+ADU,Ardabil,IR,0.19,not_assessed,True
+ADZ,San Andres Island,CO,2.46,not_assessed,True
+AEB,,CN,,not_assessed,False
+AEG,,,,not_assessed,False
+AEP,Buenos Aires,AR,17.85,headroom,True
+AER,Sochi,RU,9.67,headroom,True
+AES,Alesund,NO,1.09,not_assessed,True
+AET,,US,,not_assessed,False
+AEX,Alexandria,US,0.24,not_assessed,True
+AEY,Akureyri,IS,0.22,not_assessed,True
+AFA,San Rafael,AR,,not_assessed,True
+AFL,Alta Floresta,BR,,not_assessed,True
+AGA,Agadir,MA,3.32,headroom,True
+AGH,Angelholm/Helsingborg,SE,0.18,not_assessed,True
+AGN,,US,,not_assessed,False
+AGP,Malaga,ES,24.48,tightening,True
+AGR,AGR,,0.23,too_short,True
+AGS,Augusta,US,0.64,not_assessed,True
+AGT,Ciudad del Este,PY,,not_assessed,True
+AGU,Aguascalientes,MX,0.93,not_assessed,True
+AGX,Agatti Island,IN,0.14,not_assessed,True
+AHB,Abha,SA,4.96,tightening,True
+AHO,Alghero,IT,1.78,not_assessed,True
+AHU,Al Hoceima,MA,0.13,not_assessed,True
+AIA,,US,,not_assessed,False
+AIN,,US,,not_assessed,False
+AIP,AIP,,0.1,not_assessed,True
+AIT,Aitutaki Island,CK,0.09,not_assessed,True
+AJA,Ajaccio,FR,1.57,not_assessed,True
+AJF,Jouf,SA,0.81,not_assessed,True
+AJI,Agri,TR,0.35,not_assessed,True
+AJL,Aizawl,IN,0.45,not_assessed,True
+AJN,,KM,,not_assessed,False
+AJR,Arvidsjaur,SE,,too_short,True
+AJU,Aracaju,BR,1.29,not_assessed,True
+AKA,,,,too_short,False
+AKI,,US,,not_assessed,False
+AKJ,Asahikawa,JP,1.24,not_assessed,True
+AKL,Auckland,NZ,18.57,tightening,True
+AKN,,US,,not_assessed,False
+AKP,,US,,not_assessed,False
+AKR,AKR,,0.09,too_short,True
+AKS,,,,not_assessed,False
+AKU,,CN,,headroom,False
+AKV,,CA,,not_assessed,False
+AKX,,KZ,,not_assessed,False
+AKY,,MM,,not_assessed,False
+ALA,Almaty,KZ,10.66,headroom,True
+ALB,Albany,US,3.19,headroom,True
+ALC,Alicante,ES,18.15,tightening,True
+ALF,Alta,NO,0.48,not_assessed,True
+ALG,Algiers,DZ,10.16,headroom,True
+ALH,Albany,AU,0.07,not_assessed,True
+ALO,Waterloo,US,0.07,not_assessed,True
+ALS,,US,,not_assessed,False
+ALW,Walla Walla,US,0.08,not_assessed,True
+AMA,,US,,not_assessed,False
+AMD,Ahmedabad,IN,13.57,headroom,True
+AMH,,ET,,not_assessed,False
+AMM,Amman,JO,10.56,headroom,True
+AMQ,Ambon,ID,1.19,not_assessed,True
+AMS,Amsterdam,NL,67.04,tightening,True
+ANA,,,,not_assessed,False
+ANC,Anchorage,US,5.9,headroom,True
+ANF,Antofagasta,CL,2.8,not_assessed,True
+ANI,,US,,not_assessed,False
+ANM,,,,too_short,False
+ANR,Antwerp,BE,0.2,not_assessed,True
+ANS,Andahuaylas,PE,,too_short,True
+ANU,,AG,,not_assessed,False
+ANX,Andenes,NO,0.13,not_assessed,True
+AOG,,,,not_assessed,False
+AOI,Ancona,IT,0.56,not_assessed,True
+AOJ,Aomori,JP,1.43,not_assessed,True
+AOK,Karpathos,GR,0.2,not_assessed,True
+AOO,,US,,not_assessed,False
+AOR,Alor Setar,MY,0.63,not_assessed,True
+APL,Nampula,MZ,0.22,not_assessed,True
+APN,,US,,not_assessed,False
+APO,Apartado,CO,0.26,not_assessed,True
+APW,Apia,WS,0.45,not_assessed,True
+AQA,,,,too_short,False
+AQG,,CN,,not_assessed,False
+AQI,Qaisumah,SA,0.34,not_assessed,True
+AQJ,,JO,,not_assessed,False
+AQP,Arequipa,PE,2.26,not_assessed,True
+ARC,,US,,not_assessed,False
+ARD,,,,not_assessed,False
+ARH,,RU,,not_assessed,False
+ARI,Arica,CL,0.58,not_assessed,True
+ARK,Arusha,TZ,0.78,tightening,True
+ARM,Armidale,AU,0.14,not_assessed,True
+ARN,Stockholm,SE,24.27,headroom,True
+ART,,US,,not_assessed,False
+ARU,Aracatuba,BR,0.1,not_assessed,True
+ASB,,TM,,not_assessed,False
+ASE,Aspen,US,0.86,not_assessed,True
+ASF,Astrakhan,RU,0.4,not_assessed,True
+ASJ,Amami O Shima,JP,1.2,not_assessed,True
+ASM,,ER,,not_assessed,False
+ASO,,ET,,not_assessed,False
+ASP,Alice Springs,AU,0.46,not_assessed,True
+ASR,Kayseri,TR,2.46,not_assessed,True
+ASS,,,,not_assessed,False
+ASU,Asuncion,PY,1.3,not_assessed,True
+ASV,,KE,,not_assessed,False
+ASW,Aswan,EG,0.8,not_assessed,True
+ATA,Anta,PE,0.08,too_short,True
+ATC,,,,not_assessed,False
+ATH,Athens,GR,33.68,headroom,True
+ATJ,,,,too_short,False
+ATK,,US,,not_assessed,False
+ATL,Atlanta,US,103.18,headroom,True
+ATM,Altamira,BR,0.1,not_assessed,True
+ATQ,Amritsar,IN,3.27,tightening,True
+ATT,,US,,not_assessed,False
+ATW,Appleton,US,1.22,not_assessed,True
+ATY,,US,,not_assessed,False
+ATZ,Asyut,EG,0.76,not_assessed,True
+AUA,Aruba,AW,3.22,headroom,True
+AUC,Arauca,CO,0.2,not_assessed,True
+AUG,,US,,not_assessed,False
+AUH,Abu Dhabi,AE,30.81,headroom,True
+AUK,,US,,too_short,False
+AUQ,Atuona,PF,0.06,not_assessed,True
+AUS,Austin,US,22.9,headroom,True
+AUX,Araguaina,BR,,not_assessed,True
+AVA,Anshun,CN,,not_assessed,True
+AVL,Asheville,US,2.22,headroom,True
+AVP,,US,,not_assessed,False
+AVV,,AU,,not_assessed,False
+AWA,,,,not_assessed,False
+AWZ,Ahwaz,IR,1.21,not_assessed,True
+AXA,,AI,,not_assessed,False
+AXD,Alexandroupolis,GR,0.32,not_assessed,True
+AXF,,,,not_assessed,False
+AXJ,AXJ,,0.11,not_assessed,True
+AXM,Armenia,CO,0.7,not_assessed,True
+AXT,Akita,JP,1.39,not_assessed,True
+AXU,,ET,,not_assessed,False
+AYJ,AYJ,,1.02,too_short,True
+AYM,,,,not_assessed,False
+AYP,Ayacucho,PE,0.48,not_assessed,True
+AYQ,Ayers Rock,AU,0.36,not_assessed,True
+AYT,Antalya,TR,27.54,headroom,True
+AZA,Phoenix,US,1.92,not_assessed,True
+AZD,Yazd,IR,0.26,not_assessed,True
+AZO,,US,,not_assessed,False
+AZR,Adrar,DZ,0.26,not_assessed,True
+BAH,Bahrain,BH,10.91,headroom,True
+BAL,Batman,TR,0.63,not_assessed,True
+BAQ,Barranquilla,CO,3.37,tightening,True
+BAR,,,,not_assessed,False
+BAV,,CN,,not_assessed,False
+BAX,Barnaul,RU,0.59,not_assessed,True
+BBA,,CL,,not_assessed,False
+BBI,Bhubaneswar,IN,5.19,headroom,True
+BBK,Kasane,BW,0.1,not_assessed,True
+BBN,Bario,MY,0.05,not_assessed,True
+BBU,BBU,,0.65,too_short,True
+BCD,Bacolod,PH,2.1,not_assessed,True
+BCM,Bacau,RO,0.44,not_assessed,True
+BCN,Barcelona,ES,54.25,tightening,True
+BCV,,,,not_assessed,False
+BDA,Bermuda,BM,0.91,not_assessed,True
+BDB,Bundaberg,AU,0.18,not_assessed,True
+BDJ,Banjarmasin,ID,3.6,headroom,True
+BDL,Hartford,US,6.64,headroom,True
+BDO,Bandung,ID,,headroom,True
+BDP,,NP,,not_assessed,False
+BDQ,Vadodara,IN,1.26,not_assessed,True
+BDS,Brindisi,IT,3.15,tightening,True
+BDU,Bardufoss,NO,,not_assessed,True
+BEB,Benbecula,GB,0.05,not_assessed,True
+BEF,,,,not_assessed,False
+BEG,Belgrade,RS,8.81,headroom,True
+BEJ,,ID,,not_assessed,False
+BEK,BEK,,0.11,too_short,True
+BEL,Belem,BR,4.09,headroom,True
+BEN,,LY,,not_assessed,False
+BER,Berlin,DE,25.46,too_short,True
+BES,Brest,FR,0.92,not_assessed,True
+BET,Bethel,US,,headroom,True
+BEW,Beira,MZ,0.17,not_assessed,True
+BEY,Beirut,LB,7.14,headroom,True
+BFD,,US,,not_assessed,False
+BFF,,US,,not_assessed,False
+BFI,Seattle,US,0.03,not_assessed,True
+BFJ,BFJ,,,not_assessed,True
+BFL,Bakersfield,US,0.45,not_assessed,True
+BFN,Bloemfontein,ZA,0.47,not_assessed,True
+BFS,Belfast,GB,6.52,tightening,True
+BFV,BFV,,0.24,not_assessed,True
+BGA,Bucaramanga,CO,2.19,not_assessed,True
+BGF,Bangui,CF,0.25,not_assessed,True
+BGG,BGG,,0.18,not_assessed,True
+BGI,Barbados,BB,2.47,headroom,True
+BGM,,US,,not_assessed,False
+BGO,Bergen,NO,6.97,tightening,True
+BGR,Bangor,US,0.9,not_assessed,True
+BGW,Baghdad,IQ,,headroom,True
+BGY,Milan,IT,15.36,tightening,True
+BHB,,US,,not_assessed,False
+BHD,Belfast,GB,2.41,headroom,True
+BHE,,NZ,,not_assessed,False
+BHH,Bisha,SA,0.39,not_assessed,True
+BHI,Bahia Blanca,AR,0.22,not_assessed,True
+BHJ,Bhuj,IN,0.28,not_assessed,True
+BHK,Bukhara,UZ,0.51,not_assessed,True
+BHM,Birmingham,US,3.62,headroom,True
+BHO,Bhopal,IN,1.52,not_assessed,True
+BHQ,Broken Hill,AU,0.09,not_assessed,True
+BHR,,NP,,not_assessed,False
+BHS,,AU,,not_assessed,False
+BHU,Bhavnagar,IN,,too_short,True
+BHV,,,,not_assessed,False
+BHX,Birmingham,GB,12.31,headroom,True
+BHY,,CN,,headroom,False
+BIA,Bastia,FR,1.58,not_assessed,True
+BID,,US,,too_short,False
+BIK,Biak,ID,0.5,not_assessed,True
+BIL,Billings,US,1.05,tightening,True
+BIM,,BS,,not_assessed,False
+BIO,Bilbao,ES,6.69,headroom,True
+BIQ,Biarritz,FR,0.99,not_assessed,True
+BIR,,NP,,not_assessed,False
+BIS,Bismarck,US,0.62,not_assessed,True
+BJA,Bejaia,DZ,0.47,not_assessed,True
+BJF,Batsfjord,NO,,not_assessed,True
+BJI,,US,,not_assessed,False
+BJL,Banjul,GM,0.4,not_assessed,True
+BJM,Bujumbura,BI,0.28,not_assessed,True
+BJR,,ET,,not_assessed,False
+BJT,,,,not_assessed,False
+BJV,Bodrum,TR,3.53,tightening,True
+BJW,,,,not_assessed,False
+BJX,Leon/Guanajuato,MX,3.41,tightening,True
+BJZ,Badajoz,ES,0.14,too_short,True
+BKB,BKB,,0.06,too_short,True
+BKC,,US,,not_assessed,False
+BKI,Kota Kinabalu,MY,8.93,headroom,True
+BKK,Bangkok,TH,62.74,headroom,True
+BKO,Bamako,ML,1.31,not_assessed,True
+BKS,Bengkulu,ID,0.78,not_assessed,True
+BKW,,US,,not_assessed,False
+BKY,,,,too_short,False
+BKZ,Bukoba,TZ,0.05,not_assessed,True
+BLA,,VE,,not_assessed,False
+BLB,,,,not_assessed,False
+BLD,,US,,not_assessed,False
+BLI,Bellingham,US,0.44,not_assessed,True
+BLJ,Batna,DZ,0.11,not_assessed,True
+BLK,Blackpool,,,too_short,False
+BLL,Billund,DK,2.43,headroom,True
+BLQ,Bologna,IT,10.62,tightening,True
+BLR,Bengaluru,IN,41.73,headroom,True
+BLV,,,,not_assessed,False
+BLZ,,MW,,not_assessed,False
+BMA,Stockholm,SE,,headroom,True
+BME,Broome,AU,0.55,not_assessed,True
+BMI,Bloomington-Normal,US,0.33,not_assessed,True
+BMO,,,,too_short,False
+BMU,,ID,,not_assessed,False
+BMV,Ban Me Thuot,VN,0.94,not_assessed,True
+BMW,Bordj Mokhtar,DZ,0.07,too_short,True
+BNA,Nashville,US,27.16,headroom,True
+BND,Bandar Abbas,IR,0.67,not_assessed,True
+BNE,Brisbane,AU,24.87,at_ceiling,True
+BNI,Benin City,NG,0.38,not_assessed,True
+BNK,Ballina,AU,0.55,not_assessed,True
+BNN,Bronnoysund,NO,0.16,not_assessed,True
+BNX,Banja Luka,BA,0.48,too_short,True
+BOB,Bora Bora,PF,0.55,not_assessed,True
+BOC,,PA,,not_assessed,False
+BOD,Bordeaux,FR,5.8,headroom,True
+BOG,Bogota,CO,46.61,headroom,True
+BOH,Bournemouth,GB,1.16,not_assessed,True
+BOI,Boise,US,5.23,headroom,True
+BOJ,Burgas,BG,,not_assessed,True
+BOM,Mumbai,IN,53.14,tightening,True
+BON,Bonaire,BQ,0.55,not_assessed,True
+BOO,Bodo,NO,2.24,headroom,True
+BOR,,,,too_short,False
+BOS,Boston,US,42.68,headroom,True
+BOY,Bobo Dioulasso,BF,,too_short,True
+BPE,,,,not_assessed,False
+BPL,,CN,,not_assessed,False
+BPN,Balikpapan,ID,6.3,headroom,True
+BPS,Porto Seguro,BR,2.23,not_assessed,True
+BPT,,,,not_assessed,False
+BPX,Qamdo/Changdu,CN,0.6,not_assessed,True
+BQB,Busselton,AU,0.1,too_short,True
+BQK,Brunswick,US,0.12,not_assessed,True
+BQN,Aguadilla,PR,0.63,not_assessed,True
+BQS,Blagoveschensk,RU,0.92,not_assessed,True
+BRA,Barreiras,BR,0.07,not_assessed,True
+BRC,San Carlos de Bariloche,AR,2.35,not_assessed,True
+BRD,,US,,not_assessed,False
+BRE,Bremen,DE,1.98,headroom,True
+BRI,Bari,IT,7.27,tightening,True
+BRL,Burlington,US,0.02,not_assessed,True
+BRM,,VE,,not_assessed,False
+BRN,Berne,CH,,not_assessed,True
+BRO,Brownsville,US,0.32,not_assessed,True
+BRQ,Brno,CZ,0.4,not_assessed,True
+BRR,Barra,GB,0.02,not_assessed,True
+BRS,Bristol,GB,10.0,headroom,True
+BRU,Brussels,BE,24.5,headroom,True
+BRW,,US,,not_assessed,False
+BSA,,SO,,not_assessed,False
+BSB,Brasilia,BR,16.25,headroom,True
+BSC,Bahia Solano,CO,0.07,too_short,True
+BSD,Baoshan,CN,0.49,not_assessed,True
+BSG,,GQ,,not_assessed,False
+BSK,Biskra,DZ,0.16,not_assessed,True
+BSL,Basel/Mulhouse,CH,8.81,headroom,True
+BSO,Basco,PH,0.09,not_assessed,True
+BSR,,IQ,,not_assessed,False
+BTC,,,,not_assessed,False
+BTH,Batam,ID,,headroom,True
+BTJ,Banda Aceh,ID,0.87,not_assessed,True
+BTK,,RU,,not_assessed,False
+BTM,,US,,not_assessed,False
+BTR,Baton Rouge,US,0.85,not_assessed,True
+BTS,Bratislava,SK,1.68,not_assessed,True
+BTT,,US,,not_assessed,False
+BTU,Bintulu,MY,1.17,not_assessed,True
+BTV,Burlington,US,1.45,headroom,True
+BTW,,,,not_assessed,False
+BUA,,PG,,not_assessed,False
+BUD,Budapest,HU,18.13,tightening,True
+BUF,Buffalo,US,5.2,headroom,True
+BUP,BUP,,0.04,too_short,True
+BUQ,Bulawayo,ZW,0.29,not_assessed,True
+BUR,Burbank,US,7.47,tightening,True
+BUS,Batumi,GE,1.11,not_assessed,True
+BUT,,,,too_short,False
+BUU,,,,not_assessed,False
+BUW,,ID,,not_assessed,False
+BUZ,Bushehr,IR,0.26,not_assessed,True
+BVA,Paris,FR,6.29,tightening,True
+BVB,Boa Vista,BR,0.36,not_assessed,True
+BVC,Boa Vista Island,CV,0.55,not_assessed,True
+BVE,Brive-La-Gaillarde,FR,0.13,not_assessed,True
+BVG,Berlevag,NO,,too_short,True
+BVH,Vilhena,BR,,not_assessed,True
+BWA,,NP,,not_assessed,False
+BWI,Baltimore,US,27.0,headroom,True
+BWN,,BN,,not_assessed,False
+BWT,Burnie,AU,0.14,not_assessed,True
+BWX,BWX,,0.12,not_assessed,True
+BXB,,,,too_short,False
+BXG,BXG,,0.03,too_short,True
+BXU,Butuan,PH,0.99,not_assessed,True
+BYK,,,,too_short,False
+BZA,,,,not_assessed,False
+BZE,Belize City,BZ,1.46,headroom,True
+BZG,Bydgoszcz,PL,0.34,not_assessed,True
+BZL,,,,too_short,False
+BZN,Bozeman,US,2.83,headroom,True
+BZO,Bolzano/Bozen,IT,0.2,too_short,True
+BZV,Brazzaville,CG,0.81,not_assessed,True
+BZX,BZX,,0.74,too_short,True
+CAB,Cabinda,AO,0.24,not_assessed,True
+CAC,Cascavel,BR,0.47,not_assessed,True
+CAE,Columbia,US,1.32,headroom,True
+CAG,Cagliari,IT,5.11,headroom,True
+CAH,Ca Mau,VN,,not_assessed,True
+CAI,Cairo,EG,30.73,headroom,True
+CAK,Akron/Canton,US,0.97,headroom,True
+CAN,Guangzhou,CN,81.1,headroom,True
+CAP,,HT,,not_assessed,False
+CAW,Campos,BR,,not_assessed,True
+CAY,Cayenne,GF,0.53,not_assessed,True
+CBB,,BO,,headroom,False
+CBH,Bechar,DZ,0.13,not_assessed,True
+CBO,Cotabato,PH,0.22,not_assessed,True
+CBQ,Calabar,NG,0.17,not_assessed,True
+CBR,Canberra,AU,3.2,headroom,True
+CBT,Catumbela,AO,0.06,not_assessed,True
+CCC,Cayo Coco,CU,0.37,not_assessed,True
+CCF,Carcassonne,FR,,not_assessed,True
+CCJ,Kozhikode,IN,3.82,headroom,True
+CCM,,,,not_assessed,False
+CCP,Concepcion,CL,2.16,not_assessed,True
+CCS,Caracas,VE,3.99,headroom,True
+CCU,Kolkata,IN,20.55,tightening,True
+CDC,,US,,not_assessed,False
+CDE,,,,not_assessed,False
+CDG,Paris,FR,70.52,headroom,True
+CDP,CDP,,0.09,not_assessed,True
+CDR,,US,,not_assessed,False
+CDT,CDT,,0.31,not_assessed,True
+CDV,,US,,not_assessed,False
+CEB,Cebu,PH,12.16,headroom,True
+CEC,,US,,not_assessed,False
+CED,Ceduna,AU,,not_assessed,True
+CEE,,RU,,not_assessed,False
+CEH,,,,too_short,False
+CEI,Chiang Rai,TH,1.94,not_assessed,True
+CEK,Chelyabinsk,RU,1.28,not_assessed,True
+CEN,Ciudad Obregon,MX,0.55,not_assessed,True
+CEZ,,US,,not_assessed,False
+CFE,Clermont-Ferrand,FR,0.26,not_assessed,True
+CFG,Cienfuegos,CU,,too_short,True
+CFN,Donegal,IE,0.1,not_assessed,True
+CFR,Caen,FR,0.29,not_assessed,True
+CFS,Coffs Harbour,AU,0.3,not_assessed,True
+CFU,Kerkyra,GR,3.78,tightening,True
+CGB,Cuiaba,BR,2.48,headroom,True
+CGD,,CN,,not_assessed,False
+CGH,Sao Paulo,BR,25.24,headroom,True
+CGI,,US,,not_assessed,False
+CGK,Jakarta,ID,60.46,headroom,True
+CGM,CGM,,0.07,not_assessed,True
+CGN,Cologne/Bonn,DE,9.57,headroom,True
+CGO,Zhengzhou,CN,,headroom,True
+CGP,,BD,,not_assessed,False
+CGQ,Changchun,CN,,headroom,True
+CGR,Campo Grande,BR,1.53,not_assessed,True
+CGY,Cagayan de Oro,PH,2.29,not_assessed,True
+CHA,Chattanooga,US,1.29,headroom,True
+CHC,Christchurch,NZ,6.67,tightening,True
+CHG,,CN,,not_assessed,False
+CHO,Charlottesville,US,0.7,not_assessed,True
+CHQ,Chania,GR,2.93,not_assessed,True
+CHS,Charleston,US,6.69,headroom,True
+CHT,,NZ,,not_assessed,False
+CHX,,PA,,not_assessed,False
+CIA,Rome,IT,3.56,headroom,True
+CID,Cedar Rapids,US,1.57,headroom,True
+CIF,,CN,,headroom,False
+CIH,,CN,,not_assessed,False
+CIJ,,BO,,not_assessed,False
+CIK,,US,,not_assessed,False
+CIT,,KZ,,not_assessed,False
+CIU,,US,,not_assessed,False
+CIX,Chiclayo,PE,0.96,not_assessed,True
+CIY,CIY,,,not_assessed,True
+CJA,Cajamarca,PE,0.65,not_assessed,True
+CJB,Coimbatore,IN,3.43,headroom,True
+CJC,,CL,,not_assessed,False
+CJJ,Cheongju,KR,3.96,tightening,True
+CJM,CJM,,0.21,not_assessed,True
+CJS,Ciudad Juarez,MX,2.12,not_assessed,True
+CJU,Jeju,KR,22.65,headroom,True
+CKB,,US,,not_assessed,False
+CKG,Chongqing,CN,43.72,headroom,True
+CKS,Carajas,BR,0.26,not_assessed,True
+CKY,Conakry,GN,0.98,not_assessed,True
+CKZ,CKZ,,0.11,not_assessed,True
+CLD,,US,,too_short,False
+CLE,Cleveland,US,10.5,headroom,True
+CLJ,Cluj-Napoca,RO,3.22,headroom,True
+CLL,,US,,not_assessed,False
+CLO,Cali,CO,7.14,headroom,True
+CLQ,Colima,MX,0.24,not_assessed,True
+CLT,Charlotte,US,53.85,tightening,True
+CLY,Calvi,FR,0.38,not_assessed,True
+CMB,Colombo,LK,10.28,tightening,True
+CME,Ciudad del Carmen,MX,0.18,not_assessed,True
+CMH,Columbus,US,9.6,headroom,True
+CMI,,US,,not_assessed,False
+CMK,,,,not_assessed,False
+CMN,Casablanca,MA,11.99,headroom,True
+CMW,Camaguey,CU,0.11,not_assessed,True
+CMX,,US,,not_assessed,False
+CNF,Belo Horizonte,BR,12.7,headroom,True
+CNM,,US,,not_assessed,False
+CNN,CNN,,1.62,not_assessed,True
+CNQ,,AR,,not_assessed,False
+CNS,Cairns,AU,4.85,tightening,True
+CNX,Chiang Mai,TH,9.54,headroom,True
+CNY,,US,,not_assessed,False
+COD,,US,,not_assessed,False
+COH,COH,,0.01,too_short,True
+COK,Kochi,IN,10.96,headroom,True
+COO,Cotonou,BJ,0.85,not_assessed,True
+COR,Cordoba,AR,3.22,headroom,True
+COS,Colorado Springs,US,2.6,headroom,True
+COU,,US,,not_assessed,False
+COV,COV,,4.98,too_short,True
+CPC,,AR,,not_assessed,False
+CPD,,AU,,not_assessed,False
+CPE,Campeche,MX,0.15,not_assessed,True
+CPH,Copenhagen,DK,32.32,headroom,True
+CPO,,CL,,not_assessed,False
+CPR,Casper,US,0.2,not_assessed,True
+CPT,Cape Town,ZA,10.8,headroom,True
+CPV,Campina Grande,BR,0.17,not_assessed,True
+CPX,CPX,,0.08,not_assessed,True
+CRA,Craiova,RO,0.49,not_assessed,True
+CRD,Comodoro Rivadavia,AR,0.58,not_assessed,True
+CRK,Luzon Island,PH,3.02,headroom,True
+CRL,Brussels,BE,10.62,headroom,True
+CRM,Catarman,PH,0.05,not_assessed,True
+CRP,Corpus Christi,US,0.78,not_assessed,True
+CRV,Crotone,IT,0.32,not_assessed,True
+CRW,Charleston,US,0.46,not_assessed,True
+CRZ,,,,not_assessed,False
+CSG,,US,,not_assessed,False
+CSK,CSK,,0.09,too_short,True
+CSX,Changsha,CN,,headroom,True
+CSY,Cheboksary,RU,0.17,not_assessed,True
+CTA,Catania,IT,11.32,tightening,True
+CTC,Catamarca,AR,0.1,not_assessed,True
+CTD,,,,not_assessed,False
+CTG,Cartagena,CO,7.58,headroom,True
+CTL,Charleville,AU,,not_assessed,True
+CTM,Chetumal,MX,0.43,not_assessed,True
+CTN,CTN,,0.02,not_assessed,True
+CTS,Sapporo,JP,25.26,headroom,True
+CTU,Chengdu,CN,32.66,headroom,True
+CUC,Cucuta,CO,1.63,not_assessed,True
+CUE,Cuenca,EC,0.63,not_assessed,True
+CUK,,BZ,,headroom,False
+CUL,Culiacan,MX,2.28,not_assessed,True
+CUM,,,,not_assessed,False
+CUN,Cancun,MX,27.65,headroom,True
+CUR,Curacao,CW,2.24,headroom,True
+CUU,Chihuahua,MX,1.84,not_assessed,True
+CUZ,Cuzco,PE,4.73,tightening,True
+CVG,Cincinnati,US,9.09,headroom,True
+CVM,Ciudad Victoria,MX,,not_assessed,True
+CVN,,US,,not_assessed,False
+CVQ,CVQ,,0.04,not_assessed,True
+CWA,Wausau,US,0.19,not_assessed,True
+CWB,Curitiba,BR,6.22,headroom,True
+CWC,,,,not_assessed,False
+CWJ,CWJ,,0.16,not_assessed,True
+CWL,Cardiff,GB,0.5,not_assessed,True
+CXB,,BD,,not_assessed,False
+CXH,,CA,,headroom,False
+CXJ,Caxias do Sul,BR,0.31,not_assessed,True
+CXR,Nha Trang,VN,5.43,headroom,True
+CYA,,,,too_short,False
+CYB,Cayman Brac,KY,0.14,not_assessed,True
+CYD,,,,not_assessed,False
+CYF,,US,,not_assessed,False
+CYI,Chiayi,TW,0.08,not_assessed,True
+CYO,Cayo Largo del Sur,CU,,not_assessed,True
+CYP,Calbayog,PH,0.08,not_assessed,True
+CYS,,US,,not_assessed,False
+CYZ,Cauayan,PH,0.26,not_assessed,True
+CZH,,BZ,,not_assessed,False
+CZL,Constantine,DZ,1.33,not_assessed,True
+CZM,Cozumel,MX,0.64,not_assessed,True
+CZR,,,,too_short,False
+CZS,Cruzeiro do Sul,BR,,not_assessed,True
+CZU,Corozal,CO,0.08,not_assessed,True
+CZX,Changzhou,CN,,headroom,True
+DAB,Daytona Beach,US,0.75,not_assessed,True
+DAC,Dhaka,BD,,tightening,True
+DAD,Da Nang,VN,14.17,headroom,True
+DAL,Dallas/Fort Worth,US,18.84,headroom,True
+DAM,,SY,,not_assessed,False
+DAR,Dar Es Salaam,TZ,3.68,tightening,True
+DAT,,CN,,not_assessed,False
+DAU,,PG,,not_assessed,False
+DAV,,PA,,not_assessed,False
+DAX,,,,not_assessed,False
+DAY,Dayton,US,1.3,headroom,True
+DBC,,,,not_assessed,False
+DBO,Dubbo,AU,0.27,not_assessed,True
+DBQ,Dubuque,US,0.03,not_assessed,True
+DBR,DBR,,0.72,too_short,True
+DBV,Dubrovnik,HR,3.17,headroom,True
+DCA,Washington,US,26.75,tightening,True
+DCG,,,,not_assessed,False
+DCM,Castres,FR,,not_assessed,True
+DCY,,,,not_assessed,False
+DDC,Dodge City,US,0.05,not_assessed,True
+DDD,,,,not_assessed,False
+DDG,,CN,,not_assessed,False
+DEB,Debrecen,HU,0.16,not_assessed,True
+DEC,,US,,not_assessed,False
+DED,Dehra Dun,IN,1.92,not_assessed,True
+DEE,,RU,,not_assessed,False
+DEF,Dezful,IR,0.15,not_assessed,True
+DEL,Delhi,IN,74.72,headroom,True
+DEN,Denver,US,80.55,headroom,True
+DEX,,,,not_assessed,False
+DFW,Dallas/Fort Worth,US,83.75,tightening,True
+DGA,,BZ,,headroom,False
+DGH,,,,too_short,False
+DGO,Durango,MX,0.54,not_assessed,True
+DGT,Dumaguete,PH,0.85,not_assessed,True
+DHB,,US,,too_short,False
+DHG,,,,not_assessed,False
+DHI,,NP,,not_assessed,False
+DHM,Dharamsala,IN,0.23,not_assessed,True
+DHN,Dothan,US,0.12,not_assessed,True
+DIB,Dibrugarh,IN,0.88,not_assessed,True
+DIE,,MG,,not_assessed,False
+DIG,Deqen,CN,0.47,not_assessed,True
+DIK,,US,,not_assessed,False
+DIL,,TL,,not_assessed,False
+DIN,Dien Bien Phu,VN,0.17,not_assessed,True
+DIQ,,,,too_short,False
+DIR,,ET,,not_assessed,False
+DIU,Diu,IN,0.18,not_assessed,True
+DIW,,,,not_assessed,False
+DIY,Diyarbakir,TR,1.98,not_assessed,True
+DJB,Jambi,ID,1.27,not_assessed,True
+DJE,Djerba,TN,1.72,not_assessed,True
+DJG,,DZ,,too_short,False
+DJH,,,,not_assessed,False
+DJJ,Jayapura,ID,2.6,headroom,True
+DKR,Dakar,SN,,not_assessed,True
+DLA,Douala,CM,1.47,not_assessed,True
+DLC,Dalian,CN,,headroom,True
+DLG,,US,,not_assessed,False
+DLH,,US,,not_assessed,False
+DLI,Dalat,VN,1.92,not_assessed,True
+DLM,Dalaman,TR,4.86,tightening,True
+DLU,Dali,CN,3.54,headroom,True
+DMB,,,,not_assessed,False
+DME,Moscow,RU,12.6,headroom,True
+DMK,Bangkok,TH,32.58,headroom,True
+DMM,Dammam,SA,13.83,headroom,True
+DMU,Dimapur,IN,0.44,not_assessed,True
+DNH,,CN,,not_assessed,False
+DNK,,UA,,not_assessed,False
+DNZ,Denizli,TR,0.44,not_assessed,True
+DOB,,,,not_assessed,False
+DOD,DOD,,0.13,not_assessed,True
+DOH,Doha,QA,53.48,headroom,True
+DOM,,DM,,not_assessed,False
+DOU,,BR,,not_assessed,False
+DOY,,CN,,not_assessed,False
+DPL,Dipolog,PH,0.35,not_assessed,True
+DPO,Devonport,AU,0.17,not_assessed,True
+DPS,Denpasar Bali,ID,24.67,headroom,True
+DQA,,CN,,not_assessed,False
+DRG,,US,,not_assessed,False
+DRK,,CR,,not_assessed,False
+DRO,Durango,US,0.56,not_assessed,True
+DRP,DRP,,1.1,too_short,True
+DRS,Dresden,DE,0.84,not_assessed,True
+DRT,,,,too_short,False
+DRV,,,,not_assessed,False
+DRW,Darwin,AU,2.19,headroom,True
+DSA,,GB,,not_assessed,False
+DSE,,,,not_assessed,False
+DSI,,,,too_short,False
+DSM,Des Moines,US,3.3,tightening,True
+DSN,Ordos,CN,,tightening,True
+DSS,DSS,,3.25,headroom,True
+DTB,DTB,,0.49,not_assessed,True
+DTM,Dortmund,DE,3.02,not_assessed,True
+DTU,,,,not_assessed,False
+DTW,Detroit,US,33.81,headroom,True
+DUB,Dublin,IE,34.93,headroom,True
+DUD,Dunedin,NZ,0.89,not_assessed,True
+DUJ,,US,,not_assessed,False
+DUM,,,,not_assessed,False
+DUR,Durban,ZA,5.39,headroom,True
+DUS,Duesseldorf,DE,21.03,headroom,True
+DUT,,US,,too_short,False
+DVL,,US,,not_assessed,False
+DVO,Davao,PH,4.49,headroom,True
+DWC,DWC,,1.17,not_assessed,True
+DWO,,,,not_assessed,False
+DXB,Dubai,AE,101.58,headroom,True
+DXJ,,,,too_short,False
+DYG,,CN,,not_assessed,False
+DYU,,TJ,,not_assessed,False
+DZA,Dzaoudzi,YT,0.42,not_assessed,True
+DZH,DZH,,1.52,too_short,True
+EAM,Nejran,SA,1.35,too_short,True
+EAR,,US,,not_assessed,False
+EAS,San Sebastian,ES,0.46,not_assessed,True
+EAT,,US,,not_assessed,False
+EAU,,US,,not_assessed,False
+EBB,Entebbe,UG,2.66,headroom,True
+EBD,,,,not_assessed,False
+EBL,Erbil,IQ,2.25,not_assessed,True
+EBU,St-etienne,FR,,too_short,True
+ECI,,,,too_short,False
+ECN,,CY,,headroom,False
+ECP,Panama City,US,2.01,headroom,True
+EDI,Edinburgh,GB,16.35,headroom,True
+EDL,Eldoret,KE,0.29,not_assessed,True
+EDO,Edremit,TR,0.28,not_assessed,True
+EEK,,US,,not_assessed,False
+EFL,Kefallinia,GR,0.66,not_assessed,True
+EGC,Bergerac,FR,,not_assessed,True
+EGE,Vail,US,0.76,not_assessed,True
+EGM,,SB,,not_assessed,False
+EGN,,,,not_assessed,False
+EGO,,,,not_assessed,False
+EGS,Egilsstadir,IS,0.1,not_assessed,True
+EHU,EHU,,0.36,too_short,True
+EIN,Eindhoven,NL,6.39,tightening,True
+EIS,,VG,,headroom,False
+EJA,Barrancabermeja,CO,0.18,not_assessed,True
+EJH,Wedjh,,,not_assessed,True
+EJN,,,,not_assessed,False
+EKO,,US,,not_assessed,False
+ELD,,US,,not_assessed,False
+ELF,,,,not_assessed,False
+ELH,,BS,,not_assessed,False
+ELI,,US,,not_assessed,False
+ELM,,US,,not_assessed,False
+ELP,El Paso,US,4.2,tightening,True
+ELQ,Gassim,SA,1.79,not_assessed,True
+ELS,East London,ZA,0.85,not_assessed,True
+ELU,,DZ,,not_assessed,False
+EMA,Nottingham,GB,3.12,headroom,True
+EMD,Emerald,AU,0.25,not_assessed,True
+EMK,,US,,too_short,False
+EMR,,,,not_assessed,False
+ENA,,US,,not_assessed,False
+ENE,,ID,,not_assessed,False
+ENH,Enshi,CN,2.24,not_assessed,True
+ENI,,,,not_assessed,False
+ENO,,,,too_short,False
+ENU,Enugu,NG,0.44,not_assessed,True
+ENY,,CN,,not_assessed,False
+EOH,Medellin,CO,1.74,headroom,True
+EPA,,,,too_short,False
+EPR,Esperance,AU,0.06,not_assessed,True
+EQS,Esquel,AR,,not_assessed,True
+ERC,Erzincan,TR,0.44,not_assessed,True
+ERF,Erfurt,DE,,not_assessed,True
+ERH,ERH,,0.1,not_assessed,True
+ERI,Erie,US,0.13,not_assessed,True
+ERL,,CN,,not_assessed,False
+ERS,Windhoek,NA,,not_assessed,True
+ERZ,Erzurum,TR,1.13,not_assessed,True
+ESB,Ankara,TR,13.39,headroom,True
+ESC,,US,,not_assessed,False
+ESD,,US,,not_assessed,False
+ESL,,RU,,too_short,False
+ESM,,EC,,not_assessed,False
+ESU,Essaouira,MA,0.35,not_assessed,True
+ETH,,,,not_assessed,False
+ETM,ETM,,0.34,not_assessed,True
+ETR,,EC,,not_assessed,False
+ETZ,Metz/Nancy,FR,,not_assessed,True
+EUG,Eugene,US,1.8,not_assessed,True
+EUN,Laayoune,MA,0.33,not_assessed,True
+EUX,,BQ,,not_assessed,False
+EVE,Harstad-Narvik,NO,0.97,not_assessed,True
+EVN,Yerevan,AM,5.46,headroom,True
+EVV,Evansville,US,0.5,not_assessed,True
+EWB,,US,,not_assessed,False
+EWN,,US,,not_assessed,False
+EWR,New York,US,47.34,at_ceiling,True
+EXT,Exeter,GB,0.36,not_assessed,True
+EYK,,RU,,not_assessed,False
+EYP,El Yopal,CO,0.46,not_assessed,True
+EYW,Key West,US,1.58,not_assessed,True
+EZE,Buenos Aires,AR,11.21,headroom,True
+EZS,Elazig,TR,0.98,not_assessed,True
+EZV,,RU,,too_short,False
+FAE,Faroe Islands,FO,0.53,not_assessed,True
+FAI,Fairbanks,US,1.27,headroom,True
+FAO,Faro,PT,9.62,tightening,True
+FAR,Fargo,US,1.12,not_assessed,True
+FAT,Fresno,US,2.78,tightening,True
+FAV,Fakarava,PF,0.06,not_assessed,True
+FAY,,US,,not_assessed,False
+FBM,,CD,,not_assessed,False
+FBS,,US,,not_assessed,False
+FCA,Kalispell,US,1.06,not_assessed,True
+FCO,Rome,IT,49.49,at_ceiling,True
+FDE,Forde,NO,0.1,not_assessed,True
+FDF,Fort de France,MQ,2.04,not_assessed,True
+FDH,Friedrichshafen,DE,,not_assessed,True
+FEG,Fergana,UZ,0.53,not_assessed,True
+FEN,Fernando de Noronha,BR,0.36,not_assessed,True
+FEZ,Fes,MA,1.88,not_assessed,True
+FGI,Apia,WS,0.05,not_assessed,True
+FIH,,CD,,not_assessed,False
+FKB,Karlsruhe/Baden-Baden,DE,2.03,not_assessed,True
+FKI,,CD,,too_short,False
+FKL,,,,not_assessed,False
+FKQ,,ID,,not_assessed,False
+FKS,Fukushima,JP,0.3,not_assessed,True
+FLA,Florencia,CO,0.14,not_assessed,True
+FLG,,US,,not_assessed,False
+FLL,Fort Lauderdale,US,32.94,headroom,True
+FLN,Florianopolis,BR,5.0,headroom,True
+FLO,,US,,not_assessed,False
+FLR,Florence,IT,3.94,tightening,True
+FLS,FLS,,0.03,not_assessed,True
+FLW,Flores Island,PT,0.13,not_assessed,True
+FLZ,,,,not_assessed,False
+FMA,Formosa,AR,0.09,not_assessed,True
+FMI,,,,not_assessed,False
+FMM,Memmingen,DE,3.42,tightening,True
+FMN,,US,,too_short,False
+FMO,Muenster/osnabrueck,DE,1.09,not_assessed,True
+FNA,Freetown,SL,0.59,not_assessed,True
+FNC,Funchal,PT,4.81,tightening,True
+FNI,Nimes,FR,0.24,not_assessed,True
+FNJ,,KP,,not_assessed,False
+FNT,,US,,not_assessed,False
+FOC,Fuzhou,CN,,headroom,True
+FOD,,,,not_assessed,False
+FOG,Foggia,IT,0.17,not_assessed,True
+FON,,,,not_assessed,False
+FOR,Fortaleza,BR,5.73,headroom,True
+FPO,,BS,,not_assessed,False
+FRA,Frankfurt,DE,66.41,headroom,True
+FRD,,US,,not_assessed,False
+FRO,Floro,NO,0.16,not_assessed,True
+FRS,Flores,GT,0.44,not_assessed,True
+FRU,Bishkek,KG,,not_assessed,True
+FRW,Francistown,BW,,not_assessed,True
+FSC,Figari,FR,0.89,not_assessed,True
+FSD,Sioux Falls,US,1.41,not_assessed,True
+FSM,Fort Smith,US,0.13,not_assessed,True
+FSP,St Pierre,PM,,too_short,True
+FSZ,Shizuoka,JP,0.78,not_assessed,True
+FTE,El Calafate,AR,0.88,not_assessed,True
+FTU,,MG,,not_assessed,False
+FUE,Fuerteventura,ES,5.86,tightening,True
+FUG,,CN,,not_assessed,False
+FUJ,Fukue,JP,0.21,not_assessed,True
+FUK,Fukuoka,JP,28.17,headroom,True
+FUO,,CN,,not_assessed,False
+FUT,Futuna,WF,,not_assessed,True
+FVM,,,,not_assessed,False
+FWA,Fort Wayne,US,0.98,not_assessed,True
+FYJ,,,,not_assessed,False
+FYN,,,,not_assessed,False
+FYU,,US,,not_assessed,False
+GAJ,Yamagata,JP,0.4,not_assessed,True
+GAL,,US,,not_assessed,False
+GAM,,US,,not_assessed,False
+GAN,,MV,,not_assessed,False
+GAO,,,,too_short,False
+GAU,Guwahati,IN,6.73,headroom,True
+GAY,GAY,,0.37,not_assessed,True
+GBD,,,,too_short,False
+GBE,Gaborone,BW,0.66,not_assessed,True
+GBT,Gorgan,IR,0.11,not_assessed,True
+GCC,,US,,not_assessed,False
+GCI,Guernsey,GB,0.82,headroom,True
+GCK,Garden City,US,0.08,not_assessed,True
+GCM,,KY,,not_assessed,False
+GCW,,US,,not_assessed,False
+GDE,,ET,,not_assessed,False
+GDL,Guadalajara,MX,18.59,tightening,True
+GDN,Gdansk,PL,6.64,headroom,True
+GDQ,,ET,,not_assessed,False
+GDT,,TC,,not_assessed,False
+GDV,,US,,not_assessed,False
+GDX,Magadan,RU,0.54,not_assessed,True
+GEA,Noumea,NC,0.23,not_assessed,True
+GEG,Spokane,US,4.27,headroom,True
+GEL,Santo Angelo,BR,0.07,too_short,True
+GEO,Georgetown,GY,1.26,not_assessed,True
+GER,,CU,,not_assessed,False
+GES,General Santos,PH,1.27,not_assessed,True
+GET,Geraldton,AU,0.2,not_assessed,True
+GEV,Gallivare,SE,,not_assessed,True
+GFF,Griffith,AU,0.09,not_assessed,True
+GFK,Grand Forks,US,0.19,not_assessed,True
+GFN,,,,not_assessed,False
+GGG,,US,,not_assessed,False
+GGM,,,,not_assessed,False
+GGR,,,,too_short,False
+GGT,,BS,,not_assessed,False
+GGW,,US,,not_assessed,False
+GHA,Ghardaia,DZ,0.16,not_assessed,True
+GHB,,BS,,not_assessed,False
+GHS,,,,too_short,False
+GHV,GHV,,0.27,too_short,True
+GIB,Gibraltar,GI,0.42,not_assessed,True
+GIG,Rio de Janeiro,BR,17.26,headroom,True
+GIL,Gilgit,PK,0.05,not_assessed,True
+GIS,,NZ,,not_assessed,False
+GIU,,,,not_assessed,False
+GIZ,Jazan,SA,2.67,tightening,True
+GJL,Jijel,DZ,0.08,not_assessed,True
+GJT,Grand Junction,US,0.62,not_assessed,True
+GKA,,PG,,not_assessed,False
+GKK,,,,not_assessed,False
+GLA,Glasgow,GB,7.72,headroom,True
+GLF,,CR,,not_assessed,False
+GLH,,US,,not_assessed,False
+GLK,,SO,,not_assessed,False
+GLN,GLN,,0.05,too_short,True
+GLO,,GB,,too_short,False
+GLT,Gladstone,AU,0.27,not_assessed,True
+GLV,,US,,not_assessed,False
+GMB,,ET,,not_assessed,False
+GMO,,NG,,not_assessed,False
+GMP,Seoul,KR,18.08,headroom,True
+GMQ,,,,not_assessed,False
+GMZ,San Sebastian/Gomera,ES,0.17,not_assessed,True
+GND,Grenada,GD,0.62,not_assessed,True
+GNJ,,,,too_short,False
+GNM,GNM,,0.05,too_short,True
+GNS,,ID,,not_assessed,False
+GNU,,US,,not_assessed,False
+GNV,Gainesville,US,0.55,not_assessed,True
+GNY,Sanliurfa,TR,0.94,not_assessed,True
+GOA,Genoa,IT,1.49,not_assessed,True
+GOB,,,,too_short,False
+GOH,,GL,,not_assessed,False
+GOI,Goa,IN,6.36,tightening,True
+GOJ,Nizhny Novgorod,RU,1.17,not_assessed,True
+GOM,,CD,,not_assessed,False
+GOP,Gorakhpur,IN,1.09,not_assessed,True
+GOQ,,CN,,not_assessed,False
+GOT,Goteborg,SE,5.0,headroom,True
+GOU,Garoua,CM,,too_short,True
+GOV,Nhulunbuy,AU,0.13,not_assessed,True
+GOX,GOX,,4.99,too_short,True
+GPI,Guapi,CO,0.1,not_assessed,True
+GPS,Baltra Island,EC,0.55,not_assessed,True
+GPT,Gulfport/Biloxi,US,0.65,not_assessed,True
+GRB,Green Bay,US,0.7,not_assessed,True
+GRI,,US,,not_assessed,False
+GRJ,George,ZA,0.93,not_assessed,True
+GRK,,US,,not_assessed,False
+GRO,Girona,ES,2.01,not_assessed,True
+GRQ,Groningen,NL,,not_assessed,True
+GRR,Grand Rapids,US,4.27,headroom,True
+GRU,Sao Paulo,BR,45.68,headroom,True
+GRV,,RU,,not_assessed,False
+GRW,Graciosa Island,PT,0.09,not_assessed,True
+GRX,Granada,ES,1.11,not_assessed,True
+GRZ,Graz,AT,0.97,not_assessed,True
+GSM,Gheshm Island,IR,0.27,not_assessed,True
+GSO,Greensboro/High Point,US,2.14,headroom,True
+GSP,Greenville,US,3.08,tightening,True
+GST,,US,,not_assessed,False
+GSV,,,,too_short,False
+GTE,Groote Eylandt,AU,0.03,not_assessed,True
+GTF,,US,,not_assessed,False
+GTO,,ID,,not_assessed,False
+GTR,,US,,not_assessed,False
+GTZ,,,,not_assessed,False
+GUA,Guatemala City,GT,5.31,tightening,True
+GUC,Gunnison,US,0.16,not_assessed,True
+GUM,Guam,GU,2.41,headroom,True
+GUP,,,,too_short,False
+GUR,,PG,,not_assessed,False
+GUW,,KZ,,not_assessed,False
+GVA,Geneva,CH,19.1,headroom,True
+GVR,Governador Valadares,BR,0.1,not_assessed,True
+GWD,Gwadar,PK,,not_assessed,True
+GWL,Gwalior,IN,0.31,too_short,True
+GWT,Westerland,DE,,not_assessed,True
+GXH,,,,not_assessed,False
+GYA,,BO,,not_assessed,False
+GYD,Baku,AZ,6.9,headroom,True
+GYE,Guayaquil,EC,4.56,headroom,True
+GYN,Goiania,BR,3.75,headroom,True
+GYS,Guangyuan,CN,0.75,not_assessed,True
+GYU,,CN,,not_assessed,False
+GZG,GZG,,0.08,too_short,True
+GZO,,SB,,not_assessed,False
+GZP,Gazipasa,TR,0.68,not_assessed,True
+GZT,Gaziantep,TR,2.7,not_assessed,True
+HAC,Hachijo Jima,JP,0.29,not_assessed,True
+HAD,Halmstad,SE,,not_assessed,True
+HAH,Moroni,KM,0.27,not_assessed,True
+HAJ,Hannover,DE,5.11,headroom,True
+HAK,Haikou,CN,27.23,headroom,True
+HAM,Hamburg,DE,15.03,headroom,True
+HAN,Hanoi,VN,33.04,headroom,True
+HAQ,,MV,,not_assessed,False
+HAS,Hail,SA,1.04,not_assessed,True
+HAU,Haugesund,NO,0.65,not_assessed,True
+HAV,Havana,CU,3.08,headroom,True
+HBA,Hobart,AU,2.76,tightening,True
+HBE,Alexandria,EG,2.08,headroom,True
+HBX,Hubli,IN,0.37,not_assessed,True
+HCJ,,,,not_assessed,False
+HCR,,US,,not_assessed,False
+HCZ,,,,too_short,False
+HDG,,CN,,not_assessed,False
+HDK,,,,too_short,False
+HDN,Hayden,US,0.51,not_assessed,True
+HDO,,,,too_short,False
+HDS,,ZA,,not_assessed,False
+HDY,Hat Yai,TH,3.23,headroom,True
+HEA,,AF,,not_assessed,False
+HEH,,MM,,not_assessed,False
+HEK,,CN,,not_assessed,False
+HEL,Helsinki,FI,18.65,headroom,True
+HER,Irakleion,GR,7.47,tightening,True
+HET,Hohhot,CN,12.94,tightening,True
+HFA,,,,not_assessed,False
+HFE,Hefei,CN,,headroom,True
+HFT,Hammerfest,NO,0.27,not_assessed,True
+HGA,,SO,,not_assessed,False
+HGH,Hangzhou,CN,46.62,headroom,True
+HGI,HGI,,0.2,too_short,True
+HGN,Mae Hong Son,TH,,not_assessed,True
+HGO,,,,not_assessed,False
+HGR,,US,,not_assessed,False
+HGU,,PG,,not_assessed,False
+HHH,,US,,not_assessed,False
+HHN,Frankfurt,DE,2.07,not_assessed,True
+HHP,,,,not_assessed,False
+HHR,,,,too_short,False
+HIA,,CN,,not_assessed,False
+HIB,,US,,not_assessed,False
+HID,,AU,,not_assessed,False
+HIJ,Hiroshima,JP,3.04,headroom,True
+HIN,Jinju,KR,0.3,not_assessed,True
+HIR,,SB,,not_assessed,False
+HJJ,,CN,,not_assessed,False
+HKD,Hakodate,JP,1.97,not_assessed,True
+HKG,Hong Kong,HK,62.87,headroom,True
+HKK,,NZ,,not_assessed,False
+HKN,,PG,,not_assessed,False
+HKR,,,,not_assessed,False
+HKT,Phuket,TH,16.31,headroom,True
+HLA,,ZA,,not_assessed,False
+HLD,,CN,,headroom,False
+HLH,,CN,,not_assessed,False
+HLN,Helena,US,0.21,not_assessed,True
+HLP,Jakarta,ID,2.77,tightening,True
+HLZ,,NZ,,not_assessed,False
+HMA,Khanty-Mansiysk,RU,0.5,not_assessed,True
+HMB,Sohag,EG,,not_assessed,True
+HME,Hassi Messaoud,DZ,,not_assessed,True
+HMI,,CN,,not_assessed,False
+HMO,Hermosillo,MX,2.19,not_assessed,True
+HMS,,,,too_short,False
+HNA,Hanamaki,JP,0.54,not_assessed,True
+HND,Tokyo,JP,90.6,headroom,True
+HNH,,US,,not_assessed,False
+HNL,Honolulu,US,21.53,headroom,True
+HNM,Hana,US,0.01,not_assessed,True
+HNS,,US,,not_assessed,False
+HNY,,,,not_assessed,False
+HOB,,US,,not_assessed,False
+HOD,,,,too_short,False
+HOE,,,,not_assessed,False
+HOF,Hofuf,SA,,not_assessed,True
+HOG,Holguin,CU,0.37,not_assessed,True
+HOM,,US,,not_assessed,False
+HON,,,,too_short,False
+HOR,Horta,PT,0.36,not_assessed,True
+HOT,,US,,not_assessed,False
+HOU,Houston,US,15.19,headroom,True
+HOV,Orsta/Volda,NO,0.19,not_assessed,True
+HPB,,US,,not_assessed,False
+HPG,HPG,,,not_assessed,True
+HPH,Haiphong,VN,2.42,not_assessed,True
+HPN,Westchester County,US,2.66,tightening,True
+HQQ,,,,too_short,False
+HRB,Harbin,CN,,headroom,True
+HRE,Harare,ZW,1.98,headroom,True
+HRG,Hurghada,EG,6.61,headroom,True
+HRI,,,,not_assessed,False
+HRK,,,,not_assessed,False
+HRL,,US,,not_assessed,False
+HRO,,US,,not_assessed,False
+HSA,,,,too_short,False
+HSC,,,,too_short,False
+HSG,Saga,JP,0.68,not_assessed,True
+HSL,,US,,not_assessed,False
+HSN,,CN,,headroom,False
+HSR,HSR,,1.16,too_short,True
+HSV,Huntsville,US,1.76,tightening,True
+HTA,Chita,RU,0.78,not_assessed,True
+HTI,Hamilton Island,AU,0.5,not_assessed,True
+HTN,,CN,,not_assessed,False
+HTS,Huntington,US,0.24,not_assessed,True
+HTY,Hatay,TR,0.45,not_assessed,True
+HUH,Huahine,PF,0.23,not_assessed,True
+HUI,Hue,VN,2.11,not_assessed,True
+HUN,Hualien,TW,0.15,not_assessed,True
+HUO,,,,not_assessed,False
+HUS,,US,,not_assessed,False
+HUU,Huanuco,PE,0.16,not_assessed,True
+HUX,Huatulco,MX,0.78,not_assessed,True
+HUY,Humberside,GB,0.19,not_assessed,True
+HUZ,Huizhou,,,tightening,True
+HVB,Hervey Bay,AU,0.24,not_assessed,True
+HVD,,MN,,not_assessed,False
+HVG,Honningsvag,NO,,not_assessed,True
+HVN,New Haven,US,1.63,not_assessed,True
+HVR,,US,,not_assessed,False
+HXD,,,,not_assessed,False
+HYA,,US,,not_assessed,False
+HYD,Hyderabad,IN,30.72,tightening,True
+HYN,,,,not_assessed,False
+HYS,,US,,not_assessed,False
+HZA,,,,too_short,False
+HZG,,CN,,not_assessed,False
+HZH,,,,not_assessed,False
+HZK,HZK,,,too_short,True
+IAD,Washington,US,28.33,tightening,True
+IAG,Niagara Falls,US,,not_assessed,True
+IAH,Houston,US,47.61,headroom,True
+IAN,,US,,not_assessed,False
+IAO,Del Carmen,PH,0.77,not_assessed,True
+IAS,Iasi,RO,2.04,not_assessed,True
+IBA,Ibadan,NG,,not_assessed,True
+IBB,,,,too_short,False
+IBE,Ibague,CO,0.36,not_assessed,True
+IBR,Ibaraki,JP,0.92,not_assessed,True
+IBZ,Ibiza,ES,8.45,tightening,True
+ICN,Seoul,KR,69.94,headroom,True
+ICT,Wichita,US,1.95,headroom,True
+IDA,Idaho Falls,US,0.67,not_assessed,True
+IDR,Indore,IN,4.48,headroom,True
+IEG,IEG,,,not_assessed,True
+IEV,,UA,,not_assessed,False
+IFJ,Isafjordur,IS,0.04,not_assessed,True
+IFN,Esfahan,IR,0.48,not_assessed,True
+IFO,,,,not_assessed,False
+IFP,,,,too_short,False
+IFU,,,,not_assessed,False
+IGD,IGD,,0.35,not_assessed,True
+IGR,Iguazu,AR,1.77,not_assessed,True
+IGT,,RU,,not_assessed,False
+IGU,Foz do Iguacu,BR,2.06,not_assessed,True
+IIL,Ilam,IR,,not_assessed,True
+IJK,,RU,,not_assessed,False
+IKA,Tehran,IR,5.31,headroom,True
+IKI,Iki,JP,0.05,not_assessed,True
+IKT,Irkutsk,RU,3.44,headroom,True
+ILG,,,,too_short,False
+ILI,,US,,not_assessed,False
+ILM,Wilmington,US,1.93,tightening,True
+ILO,Ilo-ilo,PH,3.22,tightening,True
+ILP,Ile des Pins,NC,,not_assessed,True
+ILR,Ilorin,NG,0.18,not_assessed,True
+ILY,Islay,GB,0.05,not_assessed,True
+IMF,Imphal,IN,1.25,not_assessed,True
+IMP,Imperatriz,BR,0.39,not_assessed,True
+IMT,,US,,not_assessed,False
+INB,,BZ,,not_assessed,False
+INC,Yinchuan,CN,,headroom,True
+IND,Indianapolis,US,11.05,tightening,True
+INH,Inhambane,MZ,,not_assessed,True
+INI,Nis,RS,0.4,not_assessed,True
+INL,,US,,not_assessed,False
+INN,Innsbruck,AT,0.84,not_assessed,True
+INU,,NR,,too_short,False
+INV,Inverness,GB,0.87,not_assessed,True
+IOA,Ioannina,GR,0.09,not_assessed,True
+IOM,Isle of Man,GB,0.75,not_assessed,True
+IOS,Ilheus,BR,0.57,not_assessed,True
+IPC,Easter Island,CL,0.26,not_assessed,True
+IPH,Ipoh,MY,0.51,not_assessed,True
+IPI,Ipiales,CO,0.23,not_assessed,True
+IPL,,US,,not_assessed,False
+IPN,Ipatinga,BR,0.16,not_assessed,True
+IPT,,US,,not_assessed,False
+IQM,,,,not_assessed,False
+IQN,,,,not_assessed,False
+IQQ,Iquique,CL,1.5,not_assessed,True
+IQT,Iquitos,PE,1.02,not_assessed,True
+IRI,,TZ,,not_assessed,False
+IRJ,La Rioja,AR,0.09,not_assessed,True
+IRK,,US,,not_assessed,False
+ISA,Mount Isa,AU,0.32,not_assessed,True
+ISB,Islamabad,PK,6.91,headroom,True
+ISE,ISE,,,not_assessed,True
+ISG,Ishigaki,JP,3.09,headroom,True
+ISK,ISK,,0.39,not_assessed,True
+ISN,,,,not_assessed,False
+ISP,,US,,not_assessed,False
+IST,Istanbul,TR,83.23,headroom,True
+ISU,,IQ,,not_assessed,False
+ITH,,US,,not_assessed,False
+ITM,Osaka,JP,15.78,tightening,True
+ITO,Hilo,US,1.54,not_assessed,True
+ITU,,,,not_assessed,False
+IVC,,NZ,,not_assessed,False
+IVL,Ivalo,FI,0.28,not_assessed,True
+IWA,,,,not_assessed,False
+IWD,,US,,not_assessed,False
+IWJ,Iwami,JP,0.18,not_assessed,True
+IWK,IWK,,0.59,not_assessed,True
+IXA,Agartala,IN,1.58,not_assessed,True
+IXB,Bagdogra,IN,3.42,tightening,True
+IXC,Chandigarh,IN,3.99,tightening,True
+IXD,Allahabad,IN,0.88,not_assessed,True
+IXE,Mangalore,IN,2.54,not_assessed,True
+IXG,IXG,,0.31,not_assessed,True
+IXJ,Jammu,IN,1.62,not_assessed,True
+IXL,Leh,IN,1.14,not_assessed,True
+IXM,Madurai,IN,1.37,not_assessed,True
+IXR,Ranchi,IN,2.65,not_assessed,True
+IXS,Silchar,IN,0.44,not_assessed,True
+IXU,Aurangabad,IN,0.64,not_assessed,True
+IXW,IXW,,0.02,too_short,True
+IXY,Kandla,IN,,not_assessed,True
+IXZ,Port Blair,IN,1.79,not_assessed,True
+IZA,Juiz de Fora,BR,0.15,not_assessed,True
+IZO,Izumo,JP,1.2,not_assessed,True
+IZT,IZT,,,not_assessed,True
+JAC,,US,,not_assessed,False
+JAE,JAE,,,not_assessed,True
+JAF,,,,too_short,False
+JAI,Jaipur,IN,5.6,headroom,True
+JAN,Jackson,US,1.3,not_assessed,True
+JAU,Jauja,PE,,not_assessed,True
+JAV,,GL,,not_assessed,False
+JAX,Jacksonville,US,7.65,tightening,True
+JBB,,,,not_assessed,False
+JBK,,,,too_short,False
+JBQ,Higuero,DO,0.09,not_assessed,True
+JBR,,US,,not_assessed,False
+JDH,Jodhpur,IN,1.0,not_assessed,True
+JDO,Juazeiro do Norte,BR,0.45,not_assessed,True
+JDZ,,CN,,not_assessed,False
+JED,Jeddah,SA,50.84,headroom,True
+JEG,,GL,,not_assessed,False
+JEK,,,,not_assessed,False
+JER,Jersey,GB,1.62,headroom,True
+JFK,New York,US,62.99,tightening,True
+JGA,Jamnagar,IN,0.13,not_assessed,True
+JGB,JGB,,0.06,too_short,True
+JGD,,,,not_assessed,False
+JGN,,CN,,not_assessed,False
+JGS,,CN,,not_assessed,False
+JHB,Johor Bahru,MY,3.94,headroom,True
+JHG,Jinghong,CN,7.15,tightening,True
+JHM,Kapalua,US,0.01,not_assessed,True
+JHS,,GL,,not_assessed,False
+JHW,,,,not_assessed,False
+JIB,Djibouti,DJ,0.6,not_assessed,True
+JIC,,CN,,not_assessed,False
+JIJ,,ET,,not_assessed,False
+JIK,Ikaria Island,GR,0.08,not_assessed,True
+JIM,,ET,,not_assessed,False
+JIO,,,,too_short,False
+JIQ,Qianjiang,CN,,not_assessed,True
+JIU,,CN,,too_short,False
+JJD,JJD,,0.24,too_short,True
+JJG,JJG,,0.13,not_assessed,True
+JJM,,KE,,not_assessed,False
+JJN,Quanzhou,CN,,headroom,True
+JKG,Jonkoping,SE,,not_assessed,True
+JKH,Chios,GR,0.33,not_assessed,True
+JKL,Kalymnos Island,GR,,too_short,True
+JKR,,NP,,not_assessed,False
+JLG,JLG,,0.18,too_short,True
+JLN,,US,,not_assessed,False
+JLR,Jabalpur,IN,0.51,not_assessed,True
+JMJ,JMJ,,0.17,not_assessed,True
+JMK,Mykonos,GR,1.5,not_assessed,True
+JMO,,NP,,not_assessed,False
+JMS,,US,,not_assessed,False
+JMU,,CN,,not_assessed,False
+JNB,Johannesburg,ZA,21.13,headroom,True
+JNG,,CN,,not_assessed,False
+JNU,Juneau,US,,tightening,True
+JNX,Naxos Is,GR,0.25,not_assessed,True
+JNZ,,CN,,not_assessed,False
+JOE,Joensuu,FI,0.06,not_assessed,True
+JOG,Yogyakarta,ID,0.15,headroom,True
+JOI,Joinville,BR,0.57,not_assessed,True
+JOS,Jos,NG,0.05,not_assessed,True
+JPA,Joao Pessoa,BR,1.68,not_assessed,True
+JPR,Ji-Parana,BR,,not_assessed,True
+JRG,JRG,,0.45,too_short,True
+JRH,Jorhat,IN,0.16,not_assessed,True
+JRO,Kilimanjaro,TZ,1.26,headroom,True
+JSA,JSA,,,not_assessed,True
+JSH,Siteia,GR,0.07,not_assessed,True
+JSJ,,,,not_assessed,False
+JSR,,BD,,not_assessed,False
+JST,,US,,not_assessed,False
+JSY,Syros Island,GR,,too_short,True
+JTC,Bauru,BR,0.07,not_assessed,True
+JTR,Thira,GR,2.22,not_assessed,True
+JUB,,SS,,not_assessed,False
+JUH,,,,not_assessed,False
+JUJ,Jujuy,AR,0.51,not_assessed,True
+JUL,Juliaca,PE,0.62,not_assessed,True
+JUZ,,CN,,not_assessed,False
+JXA,,CN,,not_assessed,False
+JYV,Jyvaskyla,FI,0.06,not_assessed,True
+JZH,Jiuzhaigou,CN,,not_assessed,True
+KAC,,,,not_assessed,False
+KAD,Kaduna,NG,,not_assessed,True
+KAE,,US,,not_assessed,False
+KAJ,Kajaani,FI,0.06,not_assessed,True
+KAL,,US,,not_assessed,False
+KAN,Kano,NG,0.73,not_assessed,True
+KAO,Kuusamo,FI,0.09,not_assessed,True
+KAW,,MM,,not_assessed,False
+KAZ,,ID,,not_assessed,False
+KBL,,AF,,not_assessed,False
+KBP,Kyiv,UA,,headroom,True
+KBR,Kota Bharu,MY,1.67,headroom,True
+KBU,,ID,,not_assessed,False
+KBV,Krabi,TH,3.21,headroom,True
+KCA,,CN,,not_assessed,False
+KCH,Kuching,MY,5.92,headroom,True
+KCM,Kahramanmaras,TR,0.31,not_assessed,True
+KCT,,LK,,not_assessed,False
+KCY,,,,too_short,False
+KCZ,Kochi,JP,1.67,not_assessed,True
+KDH,,AF,,not_assessed,False
+KDI,Kendari,ID,1.58,not_assessed,True
+KDL,,EE,,not_assessed,False
+KDM,,MV,,not_assessed,False
+KDO,,MV,,not_assessed,False
+KDU,Skardu,PK,0.26,not_assessed,True
+KDZ,,,,not_assessed,False
+KEA,,,,too_short,False
+KEB,,US,,not_assessed,False
+KEF,Reykjavik,IS,7.82,tightening,True
+KEH,,US,,too_short,False
+KEI,,,,too_short,False
+KEJ,Kemerovo,RU,0.43,not_assessed,True
+KEM,Kemi/Tornio,FI,,not_assessed,True
+KEP,,NP,,not_assessed,False
+KER,Kerman,IR,0.54,not_assessed,True
+KET,,MM,,not_assessed,False
+KEU,,,,not_assessed,False
+KEW,,CA,,not_assessed,False
+KFS,Kastamonu,TR,,not_assessed,True
+KGC,Kingscote,AU,0.06,not_assessed,True
+KGD,Kaliningrad,RU,3.26,headroom,True
+KGF,,KZ,,not_assessed,False
+KGI,Kalgoorlie-Boulder,AU,0.61,not_assessed,True
+KGL,Kigali,RW,1.89,not_assessed,True
+KGS,Kos,GR,2.3,not_assessed,True
+KGT,Kangding,CN,,not_assessed,True
+KHD,Khorramabad,IR,,not_assessed,True
+KHE,,,,not_assessed,False
+KHG,,CN,,headroom,False
+KHH,Kaohsiung,TW,7.09,headroom,True
+KHI,Karachi,PK,7.14,headroom,True
+KHN,Nanchang,CN,11.68,tightening,True
+KHS,,OM,,not_assessed,False
+KHV,Khabarovsk,RU,2.31,not_assessed,True
+KHX,,,,not_assessed,False
+KID,KID,,,too_short,True
+KIE,,,,not_assessed,False
+KIF,,CA,,too_short,False
+KIH,Kish Island,IR,0.65,not_assessed,True
+KIJ,Niigata,JP,1.3,not_assessed,True
+KIM,Kimberley,ZA,0.21,not_assessed,True
+KIN,Kingston,JM,1.97,not_assessed,True
+KIR,Kerry,IE,0.55,not_assessed,True
+KIS,,KE,,not_assessed,False
+KIT,Kythira,GR,,not_assessed,True
+KIV,Chisinau,MD,,tightening,True
+KIX,Osaka,JP,33.29,tightening,True
+KIY,,,,not_assessed,False
+KJA,Krasnoyarsk,RU,2.09,headroom,True
+KJH,KJH,,,too_short,True
+KJT,KJT,,,too_short,True
+KKA,,US,,not_assessed,False
+KKC,Khon Kaen,TH,1.73,not_assessed,True
+KKE,,NZ,,not_assessed,False
+KKH,,US,,not_assessed,False
+KKI,,US,,not_assessed,False
+KKJ,Kita Kyushu,JP,1.33,not_assessed,True
+KKN,Kirkenes,NO,0.4,not_assessed,True
+KKX,KKX,,0.23,not_assessed,True
+KLG,,US,,not_assessed,False
+KLH,KLH,,0.18,too_short,True
+KLN,,US,,not_assessed,False
+KLO,Kalibo,PH,0.62,not_assessed,True
+KLR,Kalmar,SE,,not_assessed,True
+KLU,Klagenfurt,AT,0.19,not_assessed,True
+KLW,,US,,not_assessed,False
+KME,,RW,,not_assessed,False
+KMG,Kunming,CN,47.28,headroom,True
+KMI,Miyazaki,JP,3.51,headroom,True
+KMJ,Kumamoto,JP,3.96,headroom,True
+KMQ,Komatsu,JP,1.61,not_assessed,True
+KMS,,GH,,not_assessed,False
+KMV,,MM,,not_assessed,False
+KNG,,ID,,not_assessed,False
+KNH,Kinmen,TW,1.94,tightening,True
+KNO,KNO,,7.59,headroom,True
+KNS,King Island,AU,0.07,not_assessed,True
+KNU,Kanpur,IN,0.35,not_assessed,True
+KNX,Kununurra,AU,0.23,not_assessed,True
+KOA,Kona,US,4.26,headroom,True
+KOE,Kupang,ID,1.49,not_assessed,True
+KOI,Kirkwall,GB,0.25,not_assessed,True
+KOJ,Kagoshima,JP,6.63,tightening,True
+KOK,KOK,,,not_assessed,True
+KOP,Nakhon Phanom,TH,0.5,not_assessed,True
+KOS,Sihanoukville,KH,0.22,not_assessed,True
+KOT,,US,,not_assessed,False
+KOW,,CN,,not_assessed,False
+KOZ,,US,,not_assessed,False
+KPN,,US,,not_assessed,False
+KPO,Pohang,KR,0.33,not_assessed,True
+KQH,KQH,,0.17,not_assessed,True
+KRK,Krakow,PL,12.33,headroom,True
+KRL,,CN,,headroom,False
+KRN,Kiruna,SE,0.27,not_assessed,True
+KRO,,RU,,not_assessed,False
+KRP,Karup,DK,,not_assessed,True
+KRR,Krasnodar,RU,,headroom,True
+KRS,Kristiansand,NO,0.87,not_assessed,True
+KRT,Khartoum,,,headroom,True
+KRW,,,,not_assessed,False
+KRY,,CN,,not_assessed,False
+KSC,Kosice,SK,0.63,not_assessed,True
+KSD,Karlstad,SE,,not_assessed,True
+KSE,,,,not_assessed,False
+KSH,Kermanshah,IR,0.21,not_assessed,True
+KSM,,US,,not_assessed,False
+KSN,,KZ,,not_assessed,False
+KSQ,Karshi,UZ,0.2,not_assessed,True
+KSR,,US,,too_short,False
+KSU,Kristiansund,NO,0.36,not_assessed,True
+KSY,Kars,TR,0.55,not_assessed,True
+KTA,Karratha,AU,0.84,not_assessed,True
+KTD,KTD,,,not_assessed,False
+KTG,,ID,,not_assessed,False
+KTJ,,,,not_assessed,False
+KTL,,KE,,not_assessed,False
+KTM,Kathmandu,NP,9.98,headroom,True
+KTN,,US,,not_assessed,False
+KTS,,US,,not_assessed,False
+KTT,Kittila,FI,0.4,not_assessed,True
+KTW,Katowice,PL,3.54,headroom,True
+KUA,Kuantan,MY,0.2,not_assessed,True
+KUF,Samara,RU,2.49,headroom,True
+KUH,Kushiro,JP,0.85,not_assessed,True
+KUK,,US,,not_assessed,False
+KUL,Kuala Lumpur,MY,63.9,headroom,True
+KUM,KUM,,0.38,not_assessed,True
+KUN,Kaunas,LT,1.43,not_assessed,True
+KUO,Kuopio,FI,0.15,not_assessed,True
+KUT,Kutaisi,GE,1.76,not_assessed,True
+KUU,Kulu,IN,0.07,not_assessed,True
+KUV,Gunsan,KR,0.28,not_assessed,True
+KVA,Kavala,GR,0.21,not_assessed,True
+KVD,Ganja,,,not_assessed,False
+KVG,,PG,,not_assessed,False
+KVK,,,,not_assessed,False
+KVL,,US,,not_assessed,False
+KVR,,,,not_assessed,False
+KVX,Kirov,RU,,not_assessed,True
+KWA,,MH,,too_short,False
+KWE,Guiyang,CN,,headroom,True
+KWI,Kuwait,KW,17.83,headroom,True
+KWJ,Gwangju,KR,1.47,not_assessed,True
+KWK,,US,,not_assessed,False
+KWL,Guilin,CN,,headroom,True
+KWN,,US,,not_assessed,False
+KWT,,US,,not_assessed,False
+KWZ,,CD,,too_short,False
+KXB,,,,too_short,False
+KXO,,,,too_short,False
+KYA,Konya,TR,0.83,not_assessed,True
+KYP,,,,not_assessed,False
+KYU,,US,,not_assessed,False
+KYZ,KYZ,,0.14,not_assessed,True
+KZN,Kazan,RU,4.19,headroom,True
+KZO,,KZ,,not_assessed,False
+KZR,KZR,,,not_assessed,True
+LAD,Luanda,AO,1.55,not_assessed,True
+LAE,,PG,,not_assessed,False
+LAF,,,,too_short,False
+LAH,,,,not_assessed,False
+LAK,,CA,,too_short,False
+LAN,Lansing,US,0.27,not_assessed,True
+LAO,Laoag,PH,0.32,not_assessed,True
+LAP,La Paz,MX,1.26,not_assessed,True
+LAQ,,,,not_assessed,False
+LAR,,US,,not_assessed,False
+LAS,Las Vegas,US,55.92,headroom,True
+LAU,,KE,,not_assessed,False
+LAW,,US,,not_assessed,False
+LAX,Los Angeles,US,73.23,headroom,True
+LBA,Leeds Bradford,GB,4.29,headroom,True
+LBB,,US,,not_assessed,False
+LBD,,TJ,,not_assessed,False
+LBE,,US,,not_assessed,False
+LBF,North Platte,US,0.05,not_assessed,True
+LBJ,,ID,,not_assessed,False
+LBL,,US,,not_assessed,False
+LBS,,FJ,,not_assessed,False
+LBU,Labuan,MY,0.62,not_assessed,True
+LBV,Libreville,GA,1.37,not_assessed,True
+LCA,Larnaca,CY,9.11,tightening,True
+LCE,La Ceiba,HN,0.2,not_assessed,True
+LCG,A Coruna,ES,1.26,not_assessed,True
+LCH,,US,,not_assessed,False
+LCJ,Lodz,PL,0.35,not_assessed,True
+LCK,Columbus,US,0.33,not_assessed,True
+LCX,,,,not_assessed,False
+LCY,London,GB,4.14,headroom,True
+LDB,Londrina,BR,0.67,not_assessed,True
+LDE,Lourdes/Tarbes,FR,0.49,not_assessed,True
+LDH,Lord Howe Island,AU,0.04,not_assessed,True
+LDS,,CN,,not_assessed,False
+LDU,Lahad Datu,MY,0.21,not_assessed,True
+LDY,Derry,GB,0.24,not_assessed,True
+LDZ,,,,not_assessed,False
+LEA,Learmonth,AU,0.13,not_assessed,True
+LEB,,US,,not_assessed,False
+LED,St Petersburg,RU,13.68,headroom,True
+LEI,Almeria,ES,0.72,not_assessed,True
+LEJ,Leipzig/Halle,DE,1.62,not_assessed,True
+LET,Leticia,CO,0.36,not_assessed,True
+LEX,Lexington,US,1.56,headroom,True
+LFQ,,,,not_assessed,False
+LFR,,,,not_assessed,False
+LFT,Lafayette,US,0.6,not_assessed,True
+LFW,Lome,TG,1.89,not_assessed,True
+LGA,New York,US,33.96,headroom,True
+LGB,Long Beach,US,4.33,headroom,True
+LGG,Liege,BE,,not_assessed,True
+LGI,,BS,,not_assessed,False
+LGK,Langkawi,MY,2.87,headroom,True
+LGP,,,,not_assessed,False
+LGQ,,EC,,not_assessed,False
+LGW,London,GB,39.35,headroom,True
+LHE,Lahore,PK,6.3,headroom,True
+LHR,London,GB,85.41,at_ceiling,True
+LHW,Lanzhou,CN,,tightening,True
+LIF,Lifou,NC,0.09,not_assessed,True
+LIG,Limoges,FR,0.31,not_assessed,True
+LIH,Kauai Island,US,3.94,headroom,True
+LIL,Lille,FR,1.56,not_assessed,True
+LIM,Lima,PE,26.45,tightening,True
+LIN,Milan,IT,11.81,headroom,True
+LIO,,,,not_assessed,False
+LIR,Liberia,CR,1.89,headroom,True
+LIS,Lisbon,PT,34.12,tightening,True
+LIT,Little Rock,US,2.38,tightening,True
+LIW,,,,too_short,False
+LIX,,,,not_assessed,False
+LJG,Lijiang,CN,8.19,headroom,True
+LJU,Ljubljana,SI,1.5,not_assessed,True
+LKA,,,,not_assessed,False
+LKE,,US,,not_assessed,False
+LKL,Lakselv,NO,0.11,not_assessed,True
+LKN,Leknes,NO,0.2,not_assessed,True
+LKO,Lucknow,IN,6.2,headroom,True
+LKY,LKY,,0.28,headroom,True
+LLA,Lulea,SE,1.15,not_assessed,True
+LLB,LLB,,,not_assessed,True
+LLF,,CN,,not_assessed,False
+LLI,,ET,,not_assessed,False
+LLJ,,,,not_assessed,False
+LLO,,,,not_assessed,False
+LLV,,,,not_assessed,False
+LLW,,MW,,not_assessed,False
+LMM,Los Mochis,MX,0.66,not_assessed,True
+LMN,Limbang,MY,0.15,not_assessed,True
+LMP,Lampedusa,IT,0.32,not_assessed,True
+LNJ,Lincang,CN,0.24,not_assessed,True
+LNK,Lincoln,US,0.25,not_assessed,True
+LNL,,,,not_assessed,False
+LNS,,US,,not_assessed,False
+LNV,,PG,,not_assessed,False
+LNY,Lanai City,US,0.06,not_assessed,True
+LNZ,Linz,AT,0.2,not_assessed,True
+LOE,Loei,TH,0.21,not_assessed,True
+LOH,,EC,,not_assessed,False
+LOK,,KE,,not_assessed,False
+LOP,Praya,ID,2.56,headroom,True
+LOS,Lagos,NG,7.75,headroom,True
+LOY,,,,not_assessed,False
+LPA,Gran Canaria,ES,13.53,tightening,True
+LPB,La Paz,BO,,headroom,True
+LPF,LPF,,,not_assessed,True
+LPI,Linkoping,SE,0.11,not_assessed,True
+LPK,,,,not_assessed,False
+LPL,Liverpool,GB,5.59,tightening,True
+LPQ,,LA,,not_assessed,False
+LPS,,US,,too_short,False
+LPT,Lampang,TH,0.19,not_assessed,True
+LPX,,,,too_short,False
+LRD,,US,,not_assessed,False
+LRE,Longreach,AU,0.05,not_assessed,True
+LRH,La Rochelle,FR,0.3,too_short,True
+LRM,La Romana,DO,0.4,not_assessed,True
+LRR,Lar,IR,0.25,not_assessed,True
+LRS,Leros,GR,,not_assessed,True
+LRT,Lorient,FR,,not_assessed,True
+LRV,,,,not_assessed,False
+LSC,,CL,,not_assessed,False
+LSE,,US,,not_assessed,False
+LSH,,MM,,not_assessed,False
+LSI,Shetland Islands,GB,0.24,not_assessed,True
+LSP,,VE,,not_assessed,False
+LST,Launceston,AU,1.41,not_assessed,True
+LSW,,ID,,not_assessed,False
+LSY,,,,not_assessed,False
+LTM,,,,too_short,False
+LTN,London,GB,16.61,tightening,True
+LTO,Loreto,MX,0.18,not_assessed,True
+LUA,,,,not_assessed,False
+LUD,Luderitz,NA,,too_short,True
+LUG,,CH,,not_assessed,False
+LUM,Mangshi,CN,2.91,headroom,True
+LUN,Lusaka,ZM,2.16,tightening,True
+LUO,Luena,AO,,not_assessed,True
+LUP,Kalaupapa,US,0.02,not_assessed,True
+LUQ,San Luis,AR,0.06,not_assessed,True
+LUV,,ID,,not_assessed,False
+LUW,,ID,,not_assessed,False
+LUX,Luxembourg,LU,5.45,headroom,True
+LUZ,LUZ,,0.41,not_assessed,True
+LVI,Livingstone,ZM,0.23,not_assessed,True
+LWB,Lewisburg,US,0.03,not_assessed,True
+LWE,,,,not_assessed,False
+LWN,Gyumri,AM,,not_assessed,True
+LWO,,,,not_assessed,False
+LWS,Lewiston,US,0.09,not_assessed,True
+LWY,Lawas,MY,0.07,not_assessed,True
+LXA,Lhasa,CN,,headroom,True
+LXG,,LA,,not_assessed,False
+LXR,Luxor,EG,1.02,not_assessed,True
+LXS,Limnos,GR,0.18,not_assessed,True
+LYA,,CN,,not_assessed,False
+LYB,,KY,,not_assessed,False
+LYC,Lycksele,SE,,not_assessed,True
+LYG,,CN,,not_assessed,False
+LYH,,US,,not_assessed,False
+LYI,,CN,,not_assessed,False
+LYP,Faisalabad,PK,0.46,not_assessed,True
+LYR,Longyearbyen,NO,0.21,not_assessed,True
+LYS,Lyon,FR,10.82,headroom,True
+LZC,,,,not_assessed,False
+LZG,LZG,,0.25,too_short,True
+LZH,,CN,,not_assessed,False
+LZN,Nangan,TW,0.3,not_assessed,True
+LZO,Luzhou,CN,2.7,headroom,True
+LZR,,,,too_short,False
+LZY,Nyingchi/Linzhi,CN,1.05,not_assessed,True
+MAA,Chennai,IN,23.09,headroom,True
+MAB,Maraba,BR,0.43,not_assessed,True
+MAD,Madrid,ES,62.66,tightening,True
+MAF,Midland,US,,tightening,True
+MAG,,PG,,not_assessed,False
+MAH,Menorca,ES,3.83,tightening,True
+MAJ,,MH,,not_assessed,False
+MAM,Matamoros,MX,0.13,not_assessed,True
+MAN,Manchester,GB,29.28,tightening,True
+MAO,Manaus,BR,3.09,headroom,True
+MAQ,Mae Sot,TH,0.14,not_assessed,True
+MAR,,VE,,not_assessed,False
+MAS,,PG,,not_assessed,False
+MAZ,Mayaguez,PR,0.02,not_assessed,True
+MBA,Mombasa,KE,1.83,tightening,True
+MBE,Monbetsu,JP,0.1,not_assessed,True
+MBI,,TZ,,not_assessed,False
+MBJ,Montego Bay,JM,4.28,tightening,True
+MBL,,US,,not_assessed,False
+MBS,,US,,not_assessed,False
+MBT,Masbate,PH,0.06,not_assessed,True
+MCE,,US,,not_assessed,False
+MCG,,US,,too_short,False
+MCI,Kansas City,US,12.07,headroom,True
+MCK,,US,,not_assessed,False
+MCM,Monaco,MC,0.08,headroom,True
+MCN,,US,,not_assessed,False
+MCO,Orlando,US,56.78,headroom,True
+MCP,Macapa,BR,0.55,not_assessed,True
+MCT,Muscat,OM,13.3,headroom,True
+MCW,,US,,not_assessed,False
+MCX,Makhachkala,RU,1.46,not_assessed,True
+MCY,Sunshine Coast,AU,1.65,not_assessed,True
+MCZ,Maceio,BR,2.51,not_assessed,True
+MDC,Manado,ID,2.38,headroom,True
+MDE,Medellin,CO,14.65,headroom,True
+MDG,,CN,,not_assessed,False
+MDL,Mandalay,MM,0.79,headroom,True
+MDQ,Mar del Plata,AR,0.27,not_assessed,True
+MDR,,,,not_assessed,False
+MDT,Harrisburg,US,1.54,headroom,True
+MDW,Chicago,US,20.38,at_ceiling,True
+MDZ,Mendoza,AR,2.72,tightening,True
+MEB,MEB,,,not_assessed,True
+MEC,Manta,EC,0.4,not_assessed,True
+MED,Madinah,SA,9.98,headroom,True
+MEE,Mare,NC,0.06,not_assessed,True
+MEH,Mehamn,NO,,not_assessed,True
+MEI,,US,,not_assessed,False
+MEL,Melbourne,AU,36.42,tightening,True
+MEM,Memphis,US,5.19,headroom,True
+MEQ,,ID,,not_assessed,False
+MEX,Mexico City,MX,42.66,headroom,True
+MFA,MFA,,0.04,not_assessed,True
+MFE,Mcallen,US,1.14,not_assessed,True
+MFK,Matsu,TW,0.11,not_assessed,True
+MFM,Macau,MO,7.42,headroom,True
+MFR,Medford,US,1.12,not_assessed,True
+MFU,Mfuwe,ZM,0.03,not_assessed,True
+MGA,Managua,NI,1.46,not_assessed,True
+MGB,Mount Gambier,AU,0.1,not_assessed,True
+MGF,Maringa,BR,0.86,not_assessed,True
+MGH,,,,not_assessed,False
+MGM,,US,,not_assessed,False
+MGQ,,SO,,not_assessed,False
+MGW,,US,,not_assessed,False
+MGZ,,MM,,not_assessed,False
+MHC,,,,too_short,False
+MHD,Mashhad,IR,3.49,headroom,True
+MHG,,,,too_short,False
+MHH,,BS,,not_assessed,False
+MHK,,US,,not_assessed,False
+MHQ,Mariehamn,FI,,not_assessed,True
+MHT,Manchester,US,1.48,headroom,True
+MIA,Miami,US,53.58,headroom,True
+MID,Merida,MX,3.76,tightening,True
+MIG,Mianyang,CN,3.43,headroom,True
+MII,Marilia,BR,0.04,not_assessed,True
+MIM,Merimbula,AU,0.1,not_assessed,True
+MIR,Monastir,TN,1.13,not_assessed,True
+MIU,Maiduguri,NG,0.09,not_assessed,True
+MJF,Mosjoen,NO,0.1,not_assessed,True
+MJI,,LY,,not_assessed,False
+MJK,,,,not_assessed,False
+MJM,,CD,,too_short,False
+MJN,Mahajanga,MG,0.07,not_assessed,True
+MJT,Mytilini,GR,0.46,not_assessed,True
+MJU,,ID,,not_assessed,False
+MJV,,ES,,not_assessed,False
+MJZ,,RU,,not_assessed,False
+MKE,Milwaukee,US,6.14,headroom,True
+MKG,,US,,not_assessed,False
+MKK,Hoolehua,US,0.18,headroom,True
+MKL,,US,,not_assessed,False
+MKM,Mukah,MY,0.11,not_assessed,True
+MKQ,,ID,,not_assessed,False
+MKW,,ID,,not_assessed,False
+MKY,Mackay,AU,1.06,not_assessed,True
+MKZ,Malacca,MY,,not_assessed,True
+MLA,Malta,MT,9.49,headroom,True
+MLB,Melbourne,US,0.52,not_assessed,True
+MLE,Male,MV,7.45,headroom,True
+MLG,,ID,,not_assessed,False
+MLH,,FR,,not_assessed,False
+MLI,Moline,US,0.7,not_assessed,True
+MLL,,US,,not_assessed,False
+MLM,Morelia,MX,1.56,not_assessed,True
+MLN,Melilla,ES,0.65,not_assessed,True
+MLO,Milos,GR,0.14,not_assessed,True
+MLU,Monroe,US,0.25,not_assessed,True
+MLX,Malatya,TR,0.76,not_assessed,True
+MMB,Memambetsu,JP,0.88,not_assessed,True
+MMD,MMD,,,not_assessed,False
+MME,Durham,GB,0.28,not_assessed,True
+MMH,,US,,not_assessed,False
+MMJ,Matsumoto,JP,0.28,not_assessed,True
+MMK,Murmansk,RU,1.16,not_assessed,True
+MMX,Malmo,SE,0.75,not_assessed,True
+MMY,Miyako Jima,JP,2.16,not_assessed,True
+MNA,,ID,,not_assessed,False
+MNG,Maningrida,AU,0.03,not_assessed,True
+MNI,,MS,,not_assessed,False
+MNL,Manila,PH,52.32,tightening,True
+MOB,Mobile,US,0.66,not_assessed,True
+MOC,Montes Claros,BR,0.36,not_assessed,True
+MOF,,ID,,not_assessed,False
+MOH,,,,not_assessed,False
+MOL,Molde,NO,0.4,not_assessed,True
+MOQ,,MG,,too_short,False
+MOT,,US,,not_assessed,False
+MOU,,US,,not_assessed,False
+MOV,Moranbah,AU,0.17,not_assessed,True
+MOZ,Moorea,PF,0.13,not_assessed,True
+MPH,Caticlan,PH,3.27,tightening,True
+MPL,Montpellier,FR,1.81,not_assessed,True
+MPM,Maputo,MZ,1.08,not_assessed,True
+MQF,Magnitogorsk,RU,0.25,not_assessed,True
+MQL,Mildura,AU,0.22,not_assessed,True
+MQM,Mardin,TR,0.73,not_assessed,True
+MQN,Mo I Rana,NO,0.13,not_assessed,True
+MQP,Nelspruit,ZA,0.39,not_assessed,True
+MQS,,,,too_short,False
+MQT,,US,,not_assessed,False
+MQX,,ET,,not_assessed,False
+MRA,,LY,,not_assessed,False
+MRE,,KE,,not_assessed,False
+MRS,Marseille,FR,11.44,tightening,True
+MRU,Mauritius,MU,3.91,headroom,True
+MRV,Mineralnye Vody,RU,3.41,headroom,True
+MRX,Bandar Mahshahr,,,not_assessed,False
+MRY,Monterey,US,0.71,not_assessed,True
+MRZ,Moree,AU,0.05,not_assessed,True
+MSA,,CA,,not_assessed,False
+MSJ,Misawa,JP,0.41,not_assessed,True
+MSL,,US,,not_assessed,False
+MSN,Madison,US,2.38,headroom,True
+MSO,,US,,not_assessed,False
+MSP,Minneapolis/St Paul,US,35.21,headroom,True
+MSQ,Minsk,BY,2.25,headroom,True
+MSR,Mus,TR,0.56,not_assessed,True
+MSS,,US,,not_assessed,False
+MSU,,LS,,not_assessed,False
+MSY,New Orleans,US,14.0,headroom,True
+MTJ,Montrose,US,0.53,not_assessed,True
+MTR,Monteria,CO,1.49,not_assessed,True
+MTT,Minatitlan,MX,0.17,not_assessed,True
+MTY,Monterrey,MX,15.98,headroom,True
+MUA,,SB,,not_assessed,False
+MUB,Maun,BW,0.27,not_assessed,True
+MUC,Munich,DE,45.78,headroom,True
+MUE,Kamuela,US,0.02,not_assessed,True
+MUN,,VE,,not_assessed,False
+MUR,Marudi,MY,0.05,not_assessed,True
+MUX,Multan,PK,1.41,not_assessed,True
+MUZ,,,,not_assessed,False
+MVB,,,,not_assessed,False
+MVD,Montevideo,UY,2.13,not_assessed,True
+MVR,Maroua,CM,,too_short,True
+MVY,,US,,not_assessed,False
+MWA,,US,,not_assessed,False
+MWX,Muan,KR,,not_assessed,True
+MWZ,Mwanza,TZ,0.46,not_assessed,True
+MXL,Mexicali,MX,1.2,not_assessed,True
+MXP,Milan,IT,31.02,headroom,True
+MXQ,MXQ,,0.01,too_short,True
+MXZ,,CN,,not_assessed,False
+MYA,Moruya,AU,0.07,not_assessed,True
+MYD,,KE,,not_assessed,False
+MYJ,Matsuyama,JP,3.35,headroom,True
+MYP,,,,not_assessed,False
+MYQ,MYQ,,0.09,not_assessed,True
+MYR,Myrtle Beach,US,3.85,headroom,True
+MYT,,MM,,not_assessed,False
+MYU,,US,,not_assessed,False
+MYW,Mtwara,TZ,,not_assessed,True
+MYY,Miri,MY,2.67,headroom,True
+MZG,Makung,TW,2.31,headroom,True
+MZH,Amasya,TR,0.12,not_assessed,True
+MZL,Manizales,CO,0.11,not_assessed,True
+MZO,Manzanillo,,,not_assessed,True
+MZR,,AF,,not_assessed,False
+MZT,Mazatlan,MX,1.63,not_assessed,True
+MZV,Mulu,MY,0.16,not_assessed,True
+NAG,Nagpur,IN,2.91,tightening,True
+NAH,,ID,,not_assessed,False
+NAL,,RU,,not_assessed,False
+NAM,,,,not_assessed,False
+NAN,Nadi,FJ,3.28,tightening,True
+NAO,Nanchong,CN,1.13,not_assessed,True
+NAP,Naples,IT,12.32,tightening,True
+NAS,Nassau,BS,4.59,headroom,True
+NAT,Natal,BR,2.19,not_assessed,True
+NAV,Nevsehir,TR,0.7,not_assessed,True
+NAW,Narathiwat,TH,0.22,not_assessed,True
+NAY,,,,headroom,False
+NBC,Nizhnekamsk,RU,0.36,not_assessed,True
+NBE,Enfidha,TN,0.72,not_assessed,True
+NBJ,,,,too_short,False
+NBO,Nairobi,KE,9.05,headroom,True
+NBS,,CN,,not_assessed,False
+NBX,,ID,,not_assessed,False
+NCE,Nice,FR,15.32,headroom,True
+NCL,Newcastle,GB,4.78,headroom,True
+NCU,Nukus,UZ,0.31,not_assessed,True
+NDB,,MR,,not_assessed,False
+NDC,Nanded,IN,0.18,not_assessed,True
+NDG,,CN,,not_assessed,False
+NDJ,N'djamena,TD,0.44,not_assessed,True
+NDR,Nador,MA,1.22,not_assessed,True
+NDY,,GB,,not_assessed,False
+NEI,,,,not_assessed,False
+NER,,RU,,not_assessed,False
+NEU,,,,not_assessed,False
+NEV,,KN,,not_assessed,False
+NGB,Ningbo,CN,,headroom,True
+NGD,,,,not_assessed,False
+NGL,,,,not_assessed,False
+NGO,Nagoya,JP,12.16,headroom,True
+NGQ,Shiquande,CN,0.25,not_assessed,True
+NGS,Nagasaki,JP,3.4,headroom,True
+NHV,Nuku Hiva,PF,0.07,not_assessed,True
+NIM,Niamey,NE,0.55,not_assessed,True
+NJC,,RU,,not_assessed,False
+NJF,,IQ,,not_assessed,False
+NKC,Nouakchott,MR,0.66,not_assessed,True
+NKG,Nanjing,CN,30.4,headroom,True
+NKM,Nagoya,JP,0.97,not_assessed,True
+NKT,NKT,,0.38,not_assessed,True
+NLA,Ndola,ZM,0.44,not_assessed,True
+NLD,Nuevo Laredo,MX,0.16,not_assessed,True
+NLH,NLH,,,not_assessed,True
+NLI,,,,not_assessed,False
+NLT,,CN,,not_assessed,False
+NLU,NLU,,7.35,too_short,True
+NMA,Namangan,UZ,0.72,not_assessed,True
+NME,,US,,not_assessed,False
+NMF,,,,too_short,False
+NNG,Nanning,CN,,tightening,True
+NNM,,RU,,not_assessed,False
+NNT,Nan,TH,0.42,not_assessed,True
+NNX,,,,too_short,False
+NNY,,CN,,not_assessed,False
+NOB,,CR,,not_assessed,False
+NOC,Knock,IE,0.97,not_assessed,True
+NOJ,,RU,,not_assessed,False
+NOP,Sinop,TR,0.12,not_assessed,True
+NOS,Nosy-Be,MG,0.27,not_assessed,True
+NOU,Noumea,NC,0.38,not_assessed,True
+NOV,,AO,,not_assessed,False
+NOZ,Novokuznetsk,RU,0.48,not_assessed,True
+NPE,,NZ,,not_assessed,False
+NPL,,NZ,,not_assessed,False
+NQN,Neuquen,AR,1.38,not_assessed,True
+NQU,Nuqui,CO,0.09,too_short,True
+NQY,Newquay,GB,0.43,not_assessed,True
+NQZ,NQZ,,7.94,too_short,True
+NRA,Narrandera,AU,0.04,not_assessed,True
+NRE,,,,not_assessed,False
+NRK,Norrkoping,SE,,too_short,True
+NRL,,GB,,not_assessed,False
+NRN,Duesseldorf,DE,2.08,not_assessed,True
+NRR,NRR,,0.1,not_assessed,True
+NRT,Tokyo,JP,40.27,tightening,True
+NSB,,,,too_short,False
+NSH,Now Shahr,IR,,not_assessed,True
+NSI,Yaounde,CM,1.02,not_assessed,True
+NSK,,RU,,not_assessed,False
+NSN,Nelson,NZ,,tightening,True
+NST,Nakhon Si Thammarat,TH,1.17,not_assessed,True
+NTE,Nantes,FR,6.97,tightening,True
+NTG,,CN,,headroom,False
+NTL,Newcastle,AU,1.23,not_assessed,True
+NTQ,Wajima,JP,0.2,not_assessed,True
+NTX,,ID,,too_short,False
+NUE,Nuremberg,DE,3.87,headroom,True
+NUF,,,,not_assessed,False
+NUI,,US,,not_assessed,False
+NUL,,US,,not_assessed,False
+NUM,NUM,,0.43,too_short,True
+NUP,,US,,not_assessed,False
+NUS,,VU,,not_assessed,False
+NUX,Novy Urengoy,RU,0.91,not_assessed,True
+NVA,Neiva,CO,0.45,not_assessed,True
+NVI,Navoi,UZ,,too_short,True
+NVK,,,,not_assessed,False
+NVT,Navegantes,BR,2.22,not_assessed,True
+NWA,,,,not_assessed,False
+NWI,Norwich,GB,0.32,not_assessed,True
+NYI,,GH,,too_short,False
+NYK,,KE,,not_assessed,False
+NYM,,RU,,not_assessed,False
+NYO,Stockholm,SE,0.32,not_assessed,True
+NYT,NYT,,,not_assessed,True
+NYU,,MM,,not_assessed,False
+NZH,,CN,,not_assessed,False
+NZL,,,,not_assessed,False
+OAG,Orange,AU,0.18,not_assessed,True
+OAJ,,US,,not_assessed,False
+OAK,Oakland,US,10.14,headroom,True
+OAX,Oaxaca,MX,1.85,not_assessed,True
+OBO,Obihiro,JP,0.7,not_assessed,True
+OBU,,US,,not_assessed,False
+OCC,,EC,,not_assessed,False
+ODS,,UA,,not_assessed,False
+ODY,,LA,,not_assessed,False
+OER,Ornskoldsvik,SE,,not_assessed,True
+OGG,Kahului,US,7.29,headroom,True
+OGL,,,,not_assessed,False
+OGN,Yonaguni Jima,,,not_assessed,False
+OGS,,US,,not_assessed,False
+OGU,OGU,,1.1,not_assessed,True
+OGX,,DZ,,not_assessed,False
+OGZ,Vladikavkaz,RU,0.29,not_assessed,True
+OHD,Ohrid,MK,,too_short,True
+OHE,,CN,,not_assessed,False
+OHH,Okha,,0.05,not_assessed,True
+OHO,,,,too_short,False
+OHS,OHS,,,not_assessed,True
+OIR,OIR,,0.03,not_assessed,True
+OIT,Oita,JP,2.01,not_assessed,True
+OKA,Okinawa,JP,22.85,headroom,True
+OKC,Oklahoma City,US,4.73,tightening,True
+OKD,OKD,,0.69,not_assessed,True
+OKE,OKE,,0.25,not_assessed,True
+OKI,OKI,,0.08,not_assessed,True
+OKJ,Okayama,JP,1.51,not_assessed,True
+OKL,,,,not_assessed,False
+OLB,Olbia,IT,4.03,tightening,True
+OLF,,US,,not_assessed,False
+OLG,,,,not_assessed,False
+OLH,,US,,not_assessed,False
+OLP,Olympic Dam,AU,0.09,not_assessed,True
+OLX,,,,not_assessed,False
+OMA,Omaha,US,5.38,headroom,True
+OMC,,,,too_short,False
+OMD,,,,not_assessed,False
+OME,,US,,not_assessed,False
+OMH,Urumiyeh,IR,0.13,not_assessed,True
+OMR,Oradea,RO,0.28,not_assessed,True
+OMS,Omsk,RU,1.29,not_assessed,True
+OND,Ondangwa,NA,,not_assessed,True
+ONJ,Odate Noshiro,JP,0.27,not_assessed,True
+ONS,ONS,,,not_assessed,True
+ONT,Ontario,US,7.55,tightening,True
+OOK,,US,,not_assessed,False
+OOL,Gold Coast,AU,5.91,headroom,True
+OPF,,,,too_short,False
+OPO,Porto,PT,15.46,headroom,True
+OPS,Sinop,BR,0.45,not_assessed,True
+ORD,Chicago,US,82.41,headroom,True
+ORF,Norfolk,US,5.26,tightening,True
+ORG,,,,not_assessed,False
+ORH,,,,not_assessed,False
+ORI,,US,,not_assessed,False
+ORK,Cork,IE,3.37,headroom,True
+ORN,Oran,DZ,2.46,headroom,True
+ORU,,,,not_assessed,False
+ORV,,US,,not_assessed,False
+ORY,Paris,FR,34.72,at_ceiling,True
+ORZ,,,,not_assessed,False
+OSD,Are/ostersund,SE,0.28,not_assessed,True
+OSJ,,,,not_assessed,False
+OSL,Oslo,NO,27.8,at_ceiling,True
+OSR,Ostrava,CZ,0.31,not_assessed,True
+OSS,Osh,KG,1.97,not_assessed,True
+OST,Oostende/Brugge,BE,0.34,not_assessed,True
+OSW,,RU,,not_assessed,False
+OSY,Namsos,NO,0.06,not_assessed,True
+OTD,,PA,,not_assessed,False
+OTH,,US,,not_assessed,False
+OTI,,,,not_assessed,False
+OTP,Bucharest,RO,16.24,headroom,True
+OTR,,,,too_short,False
+OTS,,,,too_short,False
+OTZ,,US,,not_assessed,False
+OUA,Ouagadougou,BF,1.03,not_assessed,True
+OUD,Oujda,MA,1.12,not_assessed,True
+OUL,Oulu,FI,0.64,not_assessed,True
+OVB,Novosibirsk,RU,8.14,headroom,True
+OVD,Asturias,ES,1.89,not_assessed,True
+OVS,,RU,,too_short,False
+OWB,,US,,not_assessed,False
+OXB,Bissau,GW,0.2,not_assessed,True
+OZC,Ozamis,PH,0.38,not_assessed,True
+OZH,,,,not_assessed,False
+OZZ,Ouarzazate,MA,0.17,not_assessed,True
+PAB,PAB,,0.06,too_short,True
+PAC,,PA,,not_assessed,False
+PAD,Paderborn/Lippstadt,DE,0.56,not_assessed,True
+PAE,,,,too_short,False
+PAF,,,,too_short,False
+PAG,Pagadian,PH,0.32,not_assessed,True
+PAH,Paducah,US,0.03,not_assessed,True
+PAP,,HT,,not_assessed,False
+PAS,Paros,GR,0.35,not_assessed,True
+PAT,Patna,IN,4.37,tightening,True
+PAZ,Poza Rica,MX,,not_assessed,True
+PBC,Puebla,MX,1.16,not_assessed,True
+PBD,Porbandar,IN,,not_assessed,True
+PBG,,US,,not_assessed,False
+PBH,Paro,BT,0.44,not_assessed,True
+PBI,West Palm Beach,US,8.89,tightening,True
+PBM,Paramaribo,SR,0.57,not_assessed,True
+PBO,Paraburdoo,AU,0.32,not_assessed,True
+PBU,,,,not_assessed,False
+PBZ,,,,not_assessed,False
+PCL,Pucallpa,PE,0.71,not_assessed,True
+PCN,,,,not_assessed,False
+PCP,PCP,,0.04,not_assessed,True
+PCQ,,,,not_assessed,False
+PCR,Puerto Carreno,CO,0.05,not_assessed,True
+PDA,Puerto Inirida,CO,0.05,not_assessed,True
+PDG,Padang,ID,2.57,headroom,True
+PDL,Ponta Delgada,PT,2.69,headroom,True
+PDP,Punta del Este,UY,,not_assessed,True
+PDS,,MX,,not_assessed,False
+PDT,,US,,not_assessed,False
+PDX,Portland,US,17.95,at_ceiling,True
+PEC,,US,,not_assessed,False
+PEE,Perm,RU,1.2,not_assessed,True
+PEG,Perugia,IT,0.59,not_assessed,True
+PEI,Pereira,CO,2.64,headroom,True
+PEK,Beijing,CN,74.18,headroom,True
+PEM,Puerto Maldonado,PE,0.57,not_assessed,True
+PEN,Penang,MY,8.26,headroom,True
+PER,Perth,AU,15.73,tightening,True
+PES,,RU,,not_assessed,False
+PET,Pelotas,BR,0.1,not_assessed,True
+PEW,Peshawar,PK,1.26,not_assessed,True
+PEZ,,RU,,not_assessed,False
+PFB,Passo Fundo,BR,0.25,not_assessed,True
+PFO,Paphos,CY,3.09,not_assessed,True
+PGA,,US,,not_assessed,False
+PGD,Punta Gorda,US,2.21,not_assessed,True
+PGF,Perpignan,FR,0.53,not_assessed,True
+PGH,PGH,,0.08,too_short,True
+PGK,Pangkalpinang,ID,1.38,not_assessed,True
+PGM,,US,,too_short,False
+PGU,Asaloyeh,IR,0.33,not_assessed,True
+PGV,,US,,not_assessed,False
+PHC,Port Harcourt,NG,1.05,not_assessed,True
+PHE,Port Hedland,AU,0.68,not_assessed,True
+PHF,Newport News,US,0.12,not_assessed,True
+PHL,Philadelphia,US,30.26,headroom,True
+PHO,,US,,not_assessed,False
+PHS,Phitsanulok,TH,0.55,not_assessed,True
+PHW,,,,not_assessed,False
+PHX,Phoenix,US,52.23,at_ceiling,True
+PIA,Peoria,US,0.82,not_assessed,True
+PIB,,US,,not_assessed,False
+PIE,Tampa,US,2.75,not_assessed,True
+PIH,Pocatello,US,0.06,not_assessed,True
+PIK,Glasgow,GB,0.59,not_assessed,True
+PIN,Parintins,BR,,not_assessed,True
+PIR,,US,,not_assessed,False
+PIS,Poitiers,FR,,not_assessed,True
+PIT,Pittsburgh,US,10.42,headroom,True
+PIU,Piura,PE,1.01,not_assessed,True
+PIX,Pico Island,PT,0.23,not_assessed,True
+PIZ,,US,,not_assessed,False
+PJM,,CR,,not_assessed,False
+PKA,,US,,not_assessed,False
+PKB,,US,,not_assessed,False
+PKC,Petropavlovsk,RU,0.78,not_assessed,True
+PKE,Parkes,AU,0.04,not_assessed,True
+PKN,,ID,,not_assessed,False
+PKR,,NP,,not_assessed,False
+PKU,Pekanbaru,ID,3.16,headroom,True
+PKV,,,,too_short,False
+PKX,,,,too_short,False
+PKY,Palangkaraya,ID,1.01,not_assessed,True
+PKZ,,LA,,not_assessed,False
+PLJ,,BZ,,headroom,False
+PLM,Palembang,ID,3.11,headroom,True
+PLN,,US,,not_assessed,False
+PLO,Port Lincoln,AU,0.24,not_assessed,True
+PLQ,Klaipeda/Palanga,LT,0.44,not_assessed,True
+PLS,,TC,,headroom,False
+PLU,Belo Horizonte,,,not_assessed,False
+PLW,,ID,,not_assessed,False
+PLX,,KZ,,not_assessed,False
+PLZ,Port Elizabeth,ZA,1.47,headroom,True
+PMA,,,,not_assessed,False
+PMC,Puerto Montt,CL,2.52,not_assessed,True
+PMF,Milan,IT,,too_short,True
+PMI,Palma de Mallorca,ES,29.87,at_ceiling,True
+PMO,Palermo,IT,8.55,headroom,True
+PMR,Palmerston North,NZ,0.53,not_assessed,True
+PMV,,VE,,not_assessed,False
+PMW,Palmas,BR,0.74,not_assessed,True
+PMZ,,,,not_assessed,False
+PNA,Pamplona,ES,0.22,not_assessed,True
+PND,,BZ,,not_assessed,False
+PNH,Phnom Penh,KH,,headroom,True
+PNI,,FM,,not_assessed,False
+PNK,Pontianak,ID,2.73,headroom,True
+PNL,Pantelleria,IT,0.24,not_assessed,True
+PNP,,PG,,not_assessed,False
+PNQ,Pune,IN,10.65,tightening,True
+PNR,Pointe-Noire,CG,0.71,not_assessed,True
+PNS,Pensacola,US,3.24,tightening,True
+PNT,,,,too_short,False
+PNY,PNY,,0.09,not_assessed,True
+PNZ,Petrolina,BR,0.46,not_assessed,True
+POA,Porto Alegre,BR,7.61,headroom,True
+POG,,GA,,not_assessed,False
+POI,,,,not_assessed,False
+POL,Pemba,MZ,0.09,not_assessed,True
+POM,Port Moresby,PG,,headroom,True
+POP,Puerto Plata,DO,0.75,not_assessed,True
+POS,Port of Spain,TT,2.63,headroom,True
+POZ,Poznan,PL,2.87,headroom,True
+PPB,President Prudente,BR,0.26,not_assessed,True
+PPG,Pago Pago,AS,0.13,not_assessed,True
+PPK,,,,too_short,False
+PPN,Popayan,CO,0.27,not_assessed,True
+PPP,Proserpine,AU,0.52,not_assessed,True
+PPQ,,NZ,,not_assessed,False
+PPS,Puerto Princesa,PH,2.07,not_assessed,True
+PPT,Papeete,PF,1.88,headroom,True
+PPW,,GB,,not_assessed,False
+PQC,Phuquoc,VN,5.59,headroom,True
+PQI,,US,,not_assessed,False
+PQQ,Port Macquarie,AU,0.22,not_assessed,True
+PQS,,US,,not_assessed,False
+PRA,PRA,,,too_short,True
+PRC,,US,,not_assessed,False
+PRG,Prague,CZ,16.12,tightening,True
+PRH,,,,not_assessed,False
+PRI,,SC,,not_assessed,False
+PRN,Pristina,RS,3.01,not_assessed,True
+PRY,,,,not_assessed,False
+PSA,Pisa,IT,5.51,headroom,True
+PSC,Pasco,US,1.04,not_assessed,True
+PSE,Ponce,PR,0.18,not_assessed,True
+PSG,,US,,not_assessed,False
+PSJ,,,,not_assessed,False
+PSM,,,,too_short,False
+PSO,Pasto,CO,0.74,not_assessed,True
+PSP,Palm Springs,US,3.64,headroom,True
+PSR,Pescara,IT,1.07,not_assessed,True
+PSS,Posadas,AR,0.34,not_assessed,True
+PSU,,ID,,not_assessed,False
+PTG,,ZA,,not_assessed,False
+PTJ,,,,too_short,False
+PTO,PTO,,0.04,too_short,True
+PTP,Pointe-a-Pitre,GP,2.4,tightening,True
+PTU,,US,,not_assessed,False
+PTX,PTX,,0.06,too_short,True
+PTY,Panama City,PA,20.17,headroom,True
+PUB,,US,,not_assessed,False
+PUE,,,,too_short,False
+PUF,Pau,FR,0.25,not_assessed,True
+PUJ,Punta Cana,DO,10.49,headroom,True
+PUM,,,,not_assessed,False
+PUQ,Punta Arenas,CL,0.85,not_assessed,True
+PUS,Busan,KR,13.34,headroom,True
+PUU,Puerto Asis,CO,0.16,not_assessed,True
+PUW,,US,,not_assessed,False
+PUY,Pula,HR,0.54,not_assessed,True
+PUZ,,,,not_assessed,False
+PVA,Providencia,CO,0.09,not_assessed,True
+PVC,,US,,not_assessed,False
+PVD,Providence,US,4.42,headroom,True
+PVG,Shanghai,CN,82.71,headroom,True
+PVH,Porto Velho,BR,0.59,not_assessed,True
+PVK,Preveza/Lefkada,GR,,too_short,True
+PVR,Puerto Vallarta,MX,6.84,headroom,True
+PVU,,US,,not_assessed,False
+PWM,Portland,US,2.56,headroom,True
+PWQ,,KZ,,not_assessed,False
+PXA,,,,not_assessed,False
+PXM,Puerto Escondido,MX,0.95,not_assessed,True
+PXO,Porto Santo,PT,0.2,not_assessed,True
+PXU,Pleiku,VN,0.67,not_assessed,True
+PYB,PYB,,0.02,too_short,True
+PYC,,,,not_assessed,False
+PZB,,ZA,,not_assessed,False
+PZI,PZI,,0.22,not_assessed,True
+PZL,,,,not_assessed,False
+PZO,,VE,,not_assessed,False
+PZU,,SD,,not_assessed,False
+QBC,,CA,,not_assessed,False
+QOW,Owerri,NG,0.47,not_assessed,True
+QRO,Queretaro,MX,2.38,not_assessed,True
+QRW,Warri,NG,0.11,not_assessed,True
+QSF,Setif,DZ,0.29,not_assessed,True
+QSR,Salerno,IT,0.37,too_short,True
+QSZ,,,,not_assessed,False
+QUO,,NG,,not_assessed,False
+RAB,,PG,,not_assessed,False
+RAE,Arar,SA,0.49,not_assessed,True
+RAH,Rafha,SA,0.11,not_assessed,True
+RAI,Praia,CV,0.8,not_assessed,True
+RAJ,,,,not_assessed,False
+RAK,Marrakech,MA,9.7,tightening,True
+RAO,Ribeirao Preto,BR,0.73,not_assessed,True
+RAP,,US,,not_assessed,False
+RAQ,,,,not_assessed,False
+RAR,Rarotonga Island,CK,0.51,not_assessed,True
+RAS,Rasht,IR,0.13,not_assessed,True
+RBA,Rabat,MA,2.1,not_assessed,True
+RBQ,,BO,,not_assessed,False
+RBR,Rio Branco,BR,0.5,not_assessed,True
+RBY,,US,,not_assessed,False
+RCB,,ZA,,not_assessed,False
+RCE,,US,,not_assessed,False
+RCH,Riohacha,CO,0.62,not_assessed,True
+RCU,RCU,,,not_assessed,True
+RDD,Redding,US,0.18,not_assessed,True
+RDM,,US,,not_assessed,False
+RDP,RDP,,0.6,not_assessed,True
+RDU,Raleigh/Durham,US,16.4,tightening,True
+RDZ,Rodez,FR,0.24,not_assessed,True
+REC,Recife,BR,9.37,headroom,True
+REG,Reggio Di Calabria,IT,1.02,not_assessed,True
+REL,Trelew,AR,0.3,not_assessed,True
+REN,Orenburg,RU,0.79,not_assessed,True
+REP,Siem Reap,,,headroom,True
+RES,Resistencia,AR,0.21,not_assessed,True
+RET,Rost,NO,0.04,not_assessed,True
+REU,Reus,ES,,too_short,True
+REX,Reynosa,MX,0.46,not_assessed,True
+RFD,Chicago,US,0.27,not_assessed,True
+RFP,Raiatea Island,PF,0.41,not_assessed,True
+RGA,Rio Grande,AR,0.14,not_assessed,True
+RGI,Rangiroa Island,PF,0.17,not_assessed,True
+RGK,,RU,,too_short,False
+RGL,Rio Gallegos,AR,,not_assessed,True
+RGN,Yangon,MM,3.21,headroom,True
+RHI,,US,,not_assessed,False
+RHO,Rhodes,GR,5.06,headroom,True
+RHR,,,,not_assessed,False
+RHT,,,,not_assessed,False
+RIA,Santa Maria,BR,,not_assessed,True
+RIB,,BO,,not_assessed,False
+RIC,Richmond,US,5.14,headroom,True
+RIS,Rishiri,JP,0.07,not_assessed,True
+RIW,,US,,not_assessed,False
+RIX,Riga,LV,6.95,headroom,True
+RIY,,YE,,too_short,False
+RIZ,,,,not_assessed,False
+RJA,Rajahmundry,IN,0.6,not_assessed,True
+RJB,,,,too_short,False
+RJH,,BD,,not_assessed,False
+RJL,Logrono,ES,,not_assessed,True
+RJM,,,,not_assessed,False
+RKD,,US,,not_assessed,False
+RKS,Rock Springs,US,0.06,not_assessed,True
+RKT,Ras al Khaimah,AE,0.9,not_assessed,True
+RKV,Reykjavik,IS,0.34,not_assessed,True
+RKZ,Xigaze/rikaze,CN,0.16,not_assessed,True
+RLG,Rostock,DE,,not_assessed,True
+RLK,,CN,,not_assessed,False
+RMA,Roma,AU,0.08,not_assessed,True
+RMF,Marsa Alam,EG,1.2,not_assessed,True
+RMI,Rimini,IT,0.39,too_short,True
+RMO,,,,too_short,False
+RMQ,Taichung,TW,2.61,headroom,True
+RMU,RMU,,0.88,not_assessed,True
+RNB,Ronneby/Karlskrona,SE,,not_assessed,True
+RNI,,,,not_assessed,False
+RNJ,RNJ,,0.12,not_assessed,True
+RNN,Bornholm,DK,0.22,not_assessed,True
+RNO,Reno,US,5.16,tightening,True
+RNS,Rennes,FR,0.51,not_assessed,True
+ROA,Roanoke,US,0.83,not_assessed,True
+ROB,,LR,,not_assessed,False
+ROC,Rochester,US,2.8,headroom,True
+ROI,Roi Et,TH,0.4,not_assessed,True
+ROK,Rockhampton,AU,0.69,not_assessed,True
+ROO,Rondonopolis,BR,,not_assessed,True
+ROP,Rota,MP,0.02,not_assessed,True
+ROR,,PW,,not_assessed,False
+ROS,Rosario,AR,,not_assessed,True
+ROT,,NZ,,not_assessed,False
+ROV,Rostov-on-Don,,,tightening,True
+ROW,,US,,not_assessed,False
+RPR,Raipur,IN,2.81,tightening,True
+RQA,,,,not_assessed,False
+RQY,,,,too_short,False
+RRG,Rodrigues Island,MU,0.28,not_assessed,True
+RRJ,RRJ,,0.03,too_short,True
+RSA,Santa Rosa,AR,,not_assessed,True
+RSD,,BS,,not_assessed,False
+RSH,,US,,not_assessed,False
+RST,,US,,not_assessed,False
+RSU,Yeosu,KR,0.72,not_assessed,True
+RSW,Fort Myers,US,11.49,tightening,True
+RTB,Roatan,HN,0.64,not_assessed,True
+RTG,,,,not_assessed,False
+RTI,,,,not_assessed,False
+RTM,Rotterdam,NL,2.34,not_assessed,True
+RTW,Saratov,RU,,not_assessed,True
+RUH,Riyadh,SA,42.05,headroom,True
+RUL,,,,too_short,False
+RUN,St-denis,RE,2.71,not_assessed,True
+RUP,RUP,,,not_assessed,True
+RUT,,US,,not_assessed,False
+RVE,Saravena,CO,0.06,too_short,True
+RVK,Rorvik,NO,0.06,not_assessed,True
+RVN,Rovaniemi,FI,1.11,not_assessed,True
+RXS,Roxas,PH,0.37,not_assessed,True
+RYG,,,,too_short,False
+RYK,,,,not_assessed,False
+RYL,,,,not_assessed,False
+RZE,Rzeszow,PL,0.84,not_assessed,True
+RZR,Ramsar,IR,,not_assessed,True
+RZV,RZV,,1.09,too_short,True
+SAB,,BQ,,not_assessed,False
+SAF,,US,,not_assessed,False
+SAG,SAG,,0.68,not_assessed,True
+SAH,,YE,,not_assessed,False
+SAI,,,,too_short,False
+SAL,San Salvador,SV,6.92,tightening,True
+SAN,San Diego,US,26.29,at_ceiling,True
+SAP,San Pedro Sula,HN,1.69,not_assessed,True
+SAQ,,,,not_assessed,False
+SAT,San Antonio,US,11.54,headroom,True
+SAV,Savannah,US,4.37,tightening,True
+SAW,Istanbul,TR,46.04,tightening,True
+SBA,Santa Barbara,US,1.68,not_assessed,True
+SBH,St Barthelemy,BL,0.44,headroom,True
+SBN,South Bend,US,1.12,not_assessed,True
+SBP,San Luis Obispo,US,0.83,not_assessed,True
+SBW,Sibu,MY,1.86,not_assessed,True
+SBY,,US,,not_assessed,False
+SBZ,Sibiu,RO,0.6,not_assessed,True
+SCC,,US,,not_assessed,False
+SCE,,US,,not_assessed,False
+SCF,,,,too_short,False
+SCK,Sacramento,US,,not_assessed,True
+SCL,Santiago,CL,25.79,tightening,True
+SCM,,US,,not_assessed,False
+SCN,Saarbrucken,DE,0.22,not_assessed,True
+SCO,,KZ,,not_assessed,False
+SCQ,Santiago de Compostela,ES,2.84,tightening,True
+SCU,Santiago,CU,0.19,not_assessed,True
+SCV,Suceava,RO,0.64,not_assessed,True
+SCW,,RU,,not_assessed,False
+SCY,,EC,,not_assessed,False
+SDD,Lubango,AO,0.06,not_assessed,True
+SDE,Santiago del Estero,AR,0.21,not_assessed,True
+SDF,Louisville,US,4.87,headroom,True
+SDG,Sanandaj,IR,,too_short,True
+SDJ,Sendai,JP,4.13,tightening,True
+SDK,Sandakan,MY,1.24,not_assessed,True
+SDL,Sundsvall/Harnosand,SE,,not_assessed,True
+SDN,Sandane,NO,0.08,not_assessed,True
+SDQ,Santo Domingo,DO,5.37,tightening,True
+SDR,Santander,ES,1.02,not_assessed,True
+SDU,Rio de Janeiro,BR,6.87,headroom,True
+SDV,,,,not_assessed,False
+SDY,,US,,not_assessed,False
+SEA,Seattle,US,50.78,tightening,True
+SEB,,LY,,too_short,False
+SEN,Southend,GB,0.73,not_assessed,True
+SEU,,,,not_assessed,False
+SEZ,Mahe Island,SC,1.51,headroom,True
+SFA,Sfax,TN,0.18,not_assessed,True
+SFB,Orlando,US,3.07,tightening,True
+SFG,St Martin,MF,0.31,not_assessed,True
+SFL,Sao Filipe,CV,0.08,not_assessed,True
+SFN,,AR,,not_assessed,False
+SFO,San Francisco,US,52.53,headroom,True
+SFS,SFS,,,too_short,False
+SFT,Skelleftea,SE,0.36,not_assessed,True
+SGC,Surgut,RU,1.73,not_assessed,True
+SGD,SGD,,0.08,not_assessed,True
+SGF,Springfield,US,1.47,tightening,True
+SGN,Ho Chi Minh City,VN,42.62,headroom,True
+SGU,,US,,not_assessed,False
+SGY,,US,,not_assessed,False
+SHA,Shanghai,CN,48.47,headroom,True
+SHB,Nakashibetsu,JP,0.29,not_assessed,True
+SHC,,ET,,not_assessed,False
+SHD,,US,,not_assessed,False
+SHE,Shenyang,CN,23.23,headroom,True
+SHF,,,,not_assessed,False
+SHG,,US,,not_assessed,False
+SHH,,US,,not_assessed,False
+SHI,SHI,,0.57,too_short,True
+SHJ,Sharjah,AE,16.11,headroom,True
+SHL,Shillong,IN,0.12,not_assessed,True
+SHM,Nanki Shirahama,JP,0.29,not_assessed,True
+SHO,SHO,,0.17,not_assessed,True
+SHP,,,,too_short,False
+SHR,,US,,not_assessed,False
+SHS,SHS,,1.55,too_short,True
+SHV,Shreveport,US,0.81,not_assessed,True
+SHW,Sharurah,SA,0.18,not_assessed,True
+SHX,,US,,not_assessed,False
+SIC,,,,not_assessed,False
+SID,Sal Island,CV,1.22,not_assessed,True
+SIF,,NP,,not_assessed,False
+SIG,SIG,,0.06,not_assessed,True
+SIN,Singapore,SG,69.58,headroom,True
+SIP,Simferopol,,,headroom,True
+SIT,,US,,not_assessed,False
+SIU,,,,not_assessed,False
+SJC,San Jose,US,11.63,headroom,True
+SJD,San Jose Cabo,MX,7.57,tightening,True
+SJI,San Jose,PH,,too_short,True
+SJJ,Sarajevo,BA,2.28,not_assessed,True
+SJO,San Jose,CR,7.47,headroom,True
+SJP,Sao Jose do Rio Preto,BR,0.89,not_assessed,True
+SJT,,US,,not_assessed,False
+SJU,San Juan,PR,13.07,headroom,True
+SJW,Shijiazhuang,CN,11.76,headroom,True
+SJZ,Sao Jorge Island,PT,0.12,not_assessed,True
+SKB,,KN,,not_assessed,False
+SKD,Samarkand,UZ,1.3,not_assessed,True
+SKG,Thessaloniki,GR,7.65,tightening,True
+SKH,,,,not_assessed,False
+SKK,,US,,not_assessed,False
+SKN,Stokmarknes,NO,0.15,not_assessed,True
+SKO,Sokoto,NG,0.16,not_assessed,True
+SKP,Skopje,MK,3.05,tightening,True
+SKT,Sialkot,PK,1.03,not_assessed,True
+SKX,,,,not_assessed,False
+SKZ,Sukkur,PK,0.03,not_assessed,True
+SLA,Salta,AR,1.45,not_assessed,True
+SLC,Salt Lake City,US,27.07,headroom,True
+SLI,,ZM,,not_assessed,False
+SLK,,US,,not_assessed,False
+SLL,Salalah,OM,1.38,not_assessed,True
+SLN,,US,,not_assessed,False
+SLP,San Luis Potosi,MX,0.86,not_assessed,True
+SLU,St Lucia,LC,0.23,not_assessed,True
+SLV,Simla,IN,0.06,too_short,True
+SLW,,MX,,not_assessed,False
+SLY,,RU,,not_assessed,False
+SLZ,Sao Luiz,BR,1.77,not_assessed,True
+SMA,Santa Maria Island,PT,0.13,not_assessed,True
+SMF,Sacramento,US,14.54,headroom,True
+SMI,Samos,GR,0.35,not_assessed,True
+SMK,,US,,not_assessed,False
+SML,,BS,,not_assessed,False
+SMQ,,ID,,not_assessed,False
+SMR,Santa Marta,CO,3.65,headroom,True
+SMS,,MG,,not_assessed,False
+SMT,SMT,,0.07,not_assessed,True
+SMX,Santa Maria,US,,not_assessed,True
+SNA,Santa Ana,US,11.45,tightening,True
+SNE,Sao Nicolau Island,CV,,too_short,True
+SNN,Shannon,IE,2.18,not_assessed,True
+SNO,Sakon Nakhon,TH,0.37,not_assessed,True
+SNU,Santa Clara,CU,0.35,not_assessed,True
+SNW,,MM,,not_assessed,False
+SOC,Solo City,ID,0.98,not_assessed,True
+SOF,Sofia,BG,7.87,headroom,True
+SOG,Sogndal,NO,0.16,not_assessed,True
+SOJ,Sorkjosen,NO,,not_assessed,True
+SOM,,,,too_short,False
+SON,,VU,,not_assessed,False
+SOQ,,ID,,not_assessed,False
+SOU,Southampton,GB,1.0,headroom,True
+SOV,,US,,not_assessed,False
+SOW,,US,,not_assessed,False
+SOY,,GB,,not_assessed,False
+SPB,,VI,,not_assessed,False
+SPC,Santa Cruz de la Palma,ES,1.49,tightening,True
+SPD,,BD,,not_assessed,False
+SPI,Springfield,US,0.12,not_assessed,True
+SPN,Saipan,MP,0.41,not_assessed,True
+SPR,San Pedro,BZ,,headroom,True
+SPS,,US,,not_assessed,False
+SPU,Split,HR,3.75,tightening,True
+SPX,SPX,,1.27,too_short,True
+SPY,,,,not_assessed,False
+SQD,,,,not_assessed,False
+SQG,,ID,,not_assessed,False
+SQJ,,,,not_assessed,False
+SRE,,BO,,not_assessed,False
+SRG,Semarang,ID,2.61,headroom,True
+SRI,,,,not_assessed,False
+SRQ,Sarasota/Bradenton,US,4.76,tightening,True
+SRY,Sari,IR,,not_assessed,True
+SSA,Salvador,BR,7.45,headroom,True
+SSB,,VI,,not_assessed,False
+SSG,Malabo,GQ,0.45,not_assessed,True
+SSH,Sharm El-Sheikh,EG,4.86,tightening,True
+SSJ,Sandnessjoen,NO,0.11,not_assessed,True
+STD,,VE,,not_assessed,False
+STI,Santiago,DO,2.15,not_assessed,True
+STL,St Louis,US,16.67,headroom,True
+STM,Santarem,BR,0.51,not_assessed,True
+STN,London,GB,27.97,tightening,True
+STR,Stuttgart,DE,9.66,headroom,True
+STS,Santa Rosa,US,0.85,not_assessed,True
+STT,St Thomas Island,VI,1.57,headroom,True
+STV,Surat,IN,1.85,not_assessed,True
+STW,,RU,,not_assessed,False
+STX,St Croix Island,VI,0.51,not_assessed,True
+SUB,Surabaya,ID,16.53,headroom,True
+SUF,Lamezia Terme,IT,2.79,not_assessed,True
+SUG,Surigao,PH,0.07,not_assessed,True
+SUN,Sun Valley,US,0.33,not_assessed,True
+SUP,,,,not_assessed,False
+SUR,,CA,,not_assessed,False
+SUV,Suva,FJ,0.37,not_assessed,True
+SUX,Sioux City,US,0.06,not_assessed,True
+SVA,,US,,not_assessed,False
+SVB,,MG,,not_assessed,False
+SVC,,US,,not_assessed,False
+SVD,,VC,,not_assessed,False
+SVG,Stavanger,NO,4.17,headroom,True
+SVJ,Svolvaer,NO,0.14,not_assessed,True
+SVK,,,,not_assessed,False
+SVO,Moscow,RU,32.28,headroom,True
+SVQ,Sevilla,ES,8.86,tightening,True
+SVU,,FJ,,not_assessed,False
+SVX,Yekaterinburg,RU,7.26,headroom,True
+SVZ,,,,too_short,False
+SWA,Jieyang (Shantou),CN,,headroom,True
+SWF,Newburgh,US,0.3,not_assessed,True
+SWO,SWO,,0.08,not_assessed,True
+SWQ,,,,not_assessed,False
+SWT,,,,too_short,False
+SXB,Strasbourg,FR,1.32,not_assessed,True
+SXF,,DE,,headroom,False
+SXK,,,,not_assessed,False
+SXM,St Maarten,SX,2.1,headroom,True
+SXP,,US,,not_assessed,False
+SXR,Srinagar,IN,3.58,tightening,True
+SXV,SXV,,0.18,not_assessed,True
+SXZ,SXZ,,,too_short,True
+SYD,Sydney,AU,42.98,headroom,True
+SYJ,SYJ,,,not_assessed,True
+SYM,Simao,CN,0.2,not_assessed,True
+SYO,Shonai,JP,0.45,not_assessed,True
+SYQ,,,,not_assessed,False
+SYR,Syracuse,US,2.82,headroom,True
+SYX,Sanya,CN,21.78,headroom,True
+SYY,Stornoway,GB,0.15,not_assessed,True
+SYZ,Shiraz,IR,1.39,not_assessed,True
+SZA,Soyo,AO,,not_assessed,True
+SZB,Kuala Lumpur,MY,2.04,headroom,True
+SZE,,,,not_assessed,False
+SZF,Carsamba,TR,1.52,not_assessed,True
+SZG,Salzburg,AT,1.71,not_assessed,True
+SZH,,,,too_short,False
+SZK,,,,not_assessed,False
+SZX,Shenzhen,CN,65.05,headroom,True
+SZZ,Szczecin,PL,0.44,not_assessed,True
+TAB,Tobago,TT,0.69,not_assessed,True
+TAC,Tacloban,PH,1.68,not_assessed,True
+TAE,Daegu,KR,2.58,not_assessed,True
+TAG,Tagbilaran,PH,2.29,not_assessed,True
+TAH,,VU,,not_assessed,False
+TAK,Takamatsu,JP,2.26,not_assessed,True
+TAL,,US,,not_assessed,False
+TAM,Tampico,MX,0.63,not_assessed,True
+TAO,Qingdao,CN,26.72,headroom,True
+TAP,Tapachula,MX,0.49,not_assessed,True
+TAS,Tashkent,UZ,9.06,tightening,True
+TAY,,EE,,not_assessed,False
+TAZ,,,,not_assessed,False
+TBB,Tuyhoa,VN,0.3,not_assessed,True
+TBG,,PG,,not_assessed,False
+TBI,,BS,,not_assessed,False
+TBN,,US,,not_assessed,False
+TBO,,TZ,,too_short,False
+TBP,Tumbes,PE,0.41,not_assessed,True
+TBS,Tbilisi,GE,5.19,tightening,True
+TBT,Tabatinga,BR,0.08,not_assessed,True
+TBW,,RU,,not_assessed,False
+TBZ,Tabriz,IR,0.66,not_assessed,True
+TCB,,BS,,not_assessed,False
+TCG,,CN,,not_assessed,False
+TCO,Tumaco,CO,0.15,not_assessed,True
+TCQ,Tacna,PE,0.54,not_assessed,True
+TCR,Tuticorin,IN,0.29,not_assessed,True
+TCZ,Tengchong,CN,0.97,not_assessed,True
+TDD,,BO,,not_assessed,False
+TDK,,,,not_assessed,False
+TDX,Trat,TH,0.09,not_assessed,True
+TEE,Tebessa,DZ,0.05,not_assessed,True
+TEN,Tongren,CN,0.72,not_assessed,True
+TEQ,Tekirdag,TR,,not_assessed,True
+TER,Terceira,PT,1.05,not_assessed,True
+TET,Tete,MZ,0.1,not_assessed,True
+TEX,,US,,not_assessed,False
+TFF,Tefe,BR,,too_short,True
+TFN,Tenerife,ES,7.08,headroom,True
+TFS,Tenerife,ES,11.51,headroom,True
+TFU,TFU,,54.67,too_short,True
+TGC,,MY,,not_assessed,False
+TGD,Podgorica,ME,1.71,not_assessed,True
+TGG,Kuala Terengganu,MY,0.7,not_assessed,True
+TGI,TGI,,,not_assessed,True
+TGM,Tirgu Mures,RO,,not_assessed,True
+TGO,,CN,,not_assessed,False
+TGT,Tanga,TZ,0.04,not_assessed,True
+TGU,,HN,,not_assessed,False
+TGZ,Tuxtla Gutierrez,MX,1.62,not_assessed,True
+THD,THD,,1.36,not_assessed,True
+THE,Teresina,BR,1.06,not_assessed,True
+THL,,MM,,not_assessed,False
+THQ,,CN,,not_assessed,False
+THR,Tehran,IR,6.99,headroom,True
+THS,Sukhothai,TH,0.09,not_assessed,True
+TIA,Tirana,AL,10.71,headroom,True
+TIF,Taif,SA,1.53,not_assessed,True
+TIH,Tikehau Atoll,PF,0.06,not_assessed,True
+TIJ,Tijuana,MX,12.82,headroom,True
+TIM,,ID,,not_assessed,False
+TIN,Tindouf,DZ,0.21,not_assessed,True
+TIP,,,,not_assessed,False
+TIR,Tirupati,IN,1.25,not_assessed,True
+TIU,,NZ,,not_assessed,False
+TIV,Tivat,ME,1.19,not_assessed,True
+TIZ,,PG,,not_assessed,False
+TJA,,BO,,not_assessed,False
+TJH,TJH,,0.06,not_assessed,True
+TJK,TJK,,0.15,not_assessed,True
+TJL,TJL,,,not_assessed,True
+TJM,Tyumen,RU,2.19,tightening,True
+TJQ,Tanjung Pandan,ID,0.64,not_assessed,True
+TJS,,,,not_assessed,False
+TJU,,TJ,,not_assessed,False
+TKD,,GH,,not_assessed,False
+TKE,,US,,not_assessed,False
+TKG,Bandar Lampung,ID,1.23,not_assessed,True
+TKK,,FM,,not_assessed,False
+TKN,TKN,,0.37,not_assessed,True
+TKQ,Kigoma,TZ,0.05,not_assessed,True
+TKS,Tokushima,JP,1.2,not_assessed,True
+TKU,Turku,FI,0.3,not_assessed,True
+TLA,,US,,not_assessed,False
+TLC,,MX,,not_assessed,False
+TLE,,MG,,not_assessed,False
+TLH,Tallahassee,US,0.89,not_assessed,True
+TLI,,,,not_assessed,False
+TLK,,,,not_assessed,False
+TLL,Tallinn,EE,3.4,tightening,True
+TLM,Tlemcen,DZ,0.31,not_assessed,True
+TLN,Toulon/Hyeres,FR,0.31,not_assessed,True
+TLQ,,,,not_assessed,False
+TLS,Toulouse,FR,7.76,headroom,True
+TLT,,US,,not_assessed,False
+TLU,TLU,,0.1,too_short,True
+TLV,Tel Aviv-yafo,IL,19.17,headroom,True
+TMC,,ID,,not_assessed,False
+TMF,,,,too_short,False
+TMH,,,,not_assessed,False
+TMI,,NP,,not_assessed,False
+TMJ,Termez,UZ,0.24,not_assessed,True
+TML,,GH,,not_assessed,False
+TMM,Toamasina,MG,0.06,not_assessed,True
+TMP,Tampere,FI,0.16,not_assessed,True
+TMR,Tamanrasset,DZ,0.34,not_assessed,True
+TMS,Sao Tome,ST,0.21,not_assessed,True
+TMU,,,,not_assessed,False
+TMW,Tamworth,AU,0.17,not_assessed,True
+TMX,Timimoun,DZ,0.07,too_short,True
+TNA,Jinan,CN,,headroom,True
+TNE,TNE,,0.25,not_assessed,True
+TNG,Tangier,MA,2.82,not_assessed,True
+TNH,,,,not_assessed,False
+TNJ,Tanjung Pinang,ID,0.17,not_assessed,True
+TNK,,US,,not_assessed,False
+TNN,Tainan,TW,0.24,not_assessed,True
+TNO,,CR,,not_assessed,False
+TNR,Antananarivo,MG,1.3,not_assessed,True
+TOE,Tozeur,TN,,not_assessed,True
+TOF,Tomsk,RU,0.56,not_assessed,True
+TOL,Toledo,US,,not_assessed,True
+TOS,Tromso,NO,3.3,tightening,True
+TOY,Toyama,JP,0.43,not_assessed,True
+TPA,Tampa,US,25.48,at_ceiling,True
+TPE,Taipei,TW,48.61,headroom,True
+TPP,Tarapoto,PE,1.2,not_assessed,True
+TPQ,Tepic,MX,0.24,not_assessed,True
+TPS,Trapani,IT,0.98,not_assessed,True
+TQO,TQO,,1.32,too_short,True
+TQR,,IT,,not_assessed,False
+TRA,TRA,,,not_assessed,False
+TRC,Torreon,MX,0.81,not_assessed,True
+TRD,Trondheim,NO,4.27,headroom,True
+TRE,Tiree,GB,0.02,not_assessed,True
+TRF,Oslo,NO,1.85,not_assessed,True
+TRG,,NZ,,not_assessed,False
+TRI,Tri-Cities Regional,US,0.52,not_assessed,True
+TRK,,ID,,not_assessed,False
+TRN,Turin,IT,4.69,headroom,True
+TRO,,,,not_assessed,False
+TRR,,,,not_assessed,False
+TRS,Trieste,IT,1.67,not_assessed,True
+TRU,Trujillo,PE,0.88,not_assessed,True
+TRV,Thiruvananthapuram,IN,4.51,headroom,True
+TRW,,KI,,not_assessed,False
+TRZ,Tiruchirapally,IN,2.29,not_assessed,True
+TSA,Taipei,TW,5.36,headroom,True
+TSE,Astana,KZ,,headroom,False
+TSF,Venice,IT,2.99,not_assessed,True
+TSJ,Tsushima,JP,0.32,not_assessed,True
+TSN,Tianjin,CN,19.13,headroom,True
+TSR,Timisoara,RO,1.37,not_assessed,True
+TST,Trang,TH,0.54,not_assessed,True
+TSV,Townsville,AU,1.76,headroom,True
+TSY,,,,not_assessed,False
+TTE,,ID,,not_assessed,False
+TTJ,Tottori,JP,0.48,not_assessed,True
+TTN,,US,,not_assessed,False
+TTQ,,,,not_assessed,False
+TTT,Taitung,TW,0.22,not_assessed,True
+TTU,Tetouan,MA,0.41,too_short,True
+TUC,Tucuman,AR,0.85,not_assessed,True
+TUF,Tours,FR,0.17,too_short,True
+TUG,Tuguegarao,PH,0.38,not_assessed,True
+TUI,Turaif,SA,0.09,not_assessed,True
+TUL,Tulsa,US,3.71,tightening,True
+TUN,Tunis,TN,7.63,tightening,True
+TUO,,NZ,,not_assessed,False
+TUP,,US,,not_assessed,False
+TUS,Tucson,US,4.04,tightening,True
+TUU,Tabuk,SA,2.87,headroom,True
+TVC,,US,,not_assessed,False
+TVF,,US,,not_assessed,False
+TVS,,CN,,not_assessed,False
+TVU,,FJ,,not_assessed,False
+TVY,,MM,,not_assessed,False
+TWC,,,,not_assessed,False
+TWF,Twin Falls,US,0.08,not_assessed,True
+TWT,Tawitawi,PH,0.18,not_assessed,True
+TWU,Tawau,MY,2.32,not_assessed,True
+TXE,,,,not_assessed,False
+TXF,TXF,,,too_short,True
+TXK,Texarkana,US,0.08,not_assessed,True
+TXL,,DE,,tightening,False
+TXN,,CN,,not_assessed,False
+TYL,Talara,PE,0.25,not_assessed,True
+TYN,Taiyuan,CN,,headroom,True
+TYR,,US,,not_assessed,False
+TYS,Knoxville,US,3.51,headroom,True
+TZA,Belize City,BZ,,headroom,True
+TZL,TZL,,0.3,not_assessed,True
+TZN,,,,not_assessed,False
+TZX,Trabzon,TR,3.58,headroom,True
+UAK,,GL,,not_assessed,False
+UAQ,San Juan,AR,0.18,not_assessed,True
+UAS,,KE,,not_assessed,False
+UBA,Uberaba,BR,0.08,not_assessed,True
+UBJ,Ube,JP,0.92,not_assessed,True
+UBN,UBN,,2.06,too_short,True
+UBP,Ubon Ratchathani,TH,1.26,not_assessed,True
+UCB,,,,not_assessed,False
+UCT,,RU,,not_assessed,False
+UDI,Uberlandia,BR,1.01,not_assessed,True
+UDJ,,,,too_short,False
+UDR,Udaipur,IN,1.61,not_assessed,True
+UEL,Quelimane,MZ,0.05,not_assessed,True
+UEO,Kume Jima,JP,0.11,not_assessed,True
+UET,Quetta,PK,0.54,not_assessed,True
+UFA,Ufa,RU,3.6,headroom,True
+UGC,Urgench,UZ,0.83,not_assessed,True
+UHS,,,,too_short,False
+UIB,Quibdo,CO,0.43,not_assessed,True
+UIH,Quinhon,VN,1.24,not_assessed,True
+UII,,,,not_assessed,False
+UIN,Quincy,US,0.03,not_assessed,True
+UIO,Quito,EC,6.04,headroom,True
+UIP,Quimper,FR,,not_assessed,True
+UKA,,KE,,not_assessed,False
+UKB,Osaka,JP,4.2,headroom,True
+UKK,,KZ,,not_assessed,False
+UKX,,RU,,not_assessed,False
+ULG,,MN,,not_assessed,False
+ULH,Al Ula,SA,0.32,too_short,True
+ULN,Ulaanbaatar,MN,,not_assessed,True
+ULO,,MN,,too_short,False
+ULV,,RU,,not_assessed,False
+ULX,,,,not_assessed,False
+ULY,,RU,,too_short,False
+UMB,,,,too_short,False
+UME,Umea,SE,0.79,not_assessed,True
+UNG,,PG,,not_assessed,False
+UNK,,US,,not_assessed,False
+UNN,Ranong,TH,0.13,not_assessed,True
+UOL,,,,not_assessed,False
+UPG,Ujung Pandang,ID,18.36,headroom,True
+UPN,Uruapan,MX,0.17,not_assessed,True
+URA,,KZ,,not_assessed,False
+URC,Urumqi,CN,,headroom,True
+URE,,EE,,not_assessed,False
+URO,URO,,,too_short,False
+URS,,,,not_assessed,False
+URT,Surat Thani,TH,1.6,not_assessed,True
+URY,Gurayat,SA,0.38,not_assessed,True
+USA,USA,,0.42,not_assessed,True
+USH,Ushuaia,AR,0.97,not_assessed,True
+USK,,RU,,not_assessed,False
+USM,Koh Samui,TH,2.61,headroom,True
+USN,Ulsan,KR,0.58,not_assessed,True
+USU,Busuanga,PH,0.78,not_assessed,True
+UTH,Udon Thani,TH,2.09,not_assessed,True
+UTN,Upington,ZA,0.07,not_assessed,True
+UTP,Utapao,TH,0.34,not_assessed,True
+UTT,,ZA,,not_assessed,False
+UUA,,RU,,not_assessed,False
+UUD,Ulan-Ude,RU,0.8,not_assessed,True
+UUS,Yuzhno-Sakhalinsk,RU,1.35,not_assessed,True
+UVE,Ouvea,NC,0.04,not_assessed,True
+UVF,St Lucia,LC,1.04,not_assessed,True
+UYL,,,,not_assessed,False
+UYN,,CN,,headroom,False
+UYU,,BO,,not_assessed,False
+VAA,Vaasa,FI,0.17,not_assessed,True
+VAI,,PG,,not_assessed,False
+VAK,,US,,not_assessed,False
+VAM,,MV,,not_assessed,False
+VAN,Van,TR,,not_assessed,True
+VAO,,SB,,not_assessed,False
+VAR,Varna,BG,1.45,not_assessed,True
+VAS,Sivas,TR,0.47,not_assessed,True
+VBY,Visby,SE,0.32,not_assessed,True
+VCA,Cantho,VN,1.09,not_assessed,True
+VCE,Venice,IT,11.46,tightening,True
+VCL,Tamky,VN,0.75,not_assessed,True
+VCP,Sao Paulo,BR,12.55,headroom,True
+VCS,Con Dao,VN,0.64,not_assessed,True
+VCT,,,,not_assessed,False
+VDC,Vitoria Da Conquista,BR,0.38,not_assessed,True
+VDE,Valverde,ES,0.33,not_assessed,True
+VDH,Dong Hoi,VN,0.52,not_assessed,True
+VDM,Viedma,AR,,not_assessed,True
+VDO,,,,too_short,False
+VDS,Vadso,NO,0.15,not_assessed,True
+VDY,VDY,,,not_assessed,True
+VDZ,,US,,not_assessed,False
+VEE,,US,,not_assessed,False
+VEL,,US,,not_assessed,False
+VER,Veracruz,MX,1.85,not_assessed,True
+VEY,VEY,,,not_assessed,True
+VFA,Victoria Falls,ZW,0.79,not_assessed,True
+VGA,Vijayawada,IN,1.51,not_assessed,True
+VGD,,,,too_short,False
+VGO,Vigo,ES,1.12,not_assessed,True
+VGZ,Mocoa,CO,,not_assessed,True
+VHC,Saurimo,AO,0.04,too_short,True
+VIE,Vienna,AT,33.18,tightening,True
+VIG,,VE,,not_assessed,False
+VII,Vinh City,VN,1.13,not_assessed,True
+VIJ,,VG,,not_assessed,False
+VIL,Dakhla,MA,0.38,not_assessed,True
+VIN,,,,too_short,False
+VIS,,,,too_short,False
+VIT,Vitoria,ES,0.27,too_short,True
+VIX,Vitoria,BR,3.62,headroom,True
+VKG,Rachgia,VN,,not_assessed,True
+VKO,Moscow,RU,10.18,headroom,True
+VLC,Valencia,ES,11.05,headroom,True
+VLD,,US,,not_assessed,False
+VLI,,VU,,not_assessed,False
+VLL,Valladolid,ES,,not_assessed,True
+VLN,,VE,,not_assessed,False
+VNO,Vilnius,LT,4.2,headroom,True
+VNS,Varanasi,IN,4.21,headroom,True
+VNX,Vilankulos,MZ,0.09,not_assessed,True
+VOG,Volgograd,RU,0.91,not_assessed,True
+VOZ,,,,not_assessed,False
+VPE,Ondjiva,AO,,not_assessed,True
+VPG,,KE,,not_assessed,False
+VPS,,US,,headroom,False
+VPY,Chimoio,MZ,0.04,not_assessed,True
+VQS,Vieques,PR,0.15,headroom,True
+VRA,Varadero,CU,0.78,not_assessed,True
+VRB,,,,too_short,False
+VRC,Virac,PH,0.11,too_short,True
+VRN,Verona,IT,3.61,headroom,True
+VRY,VRY,,0.02,not_assessed,True
+VSA,Villahermosa,MX,1.38,not_assessed,True
+VTE,Vientiane,LA,,headroom,True
+VTZ,Vishakhapatnam,IN,3.14,tightening,True
+VUP,Valledupar,CO,0.47,not_assessed,True
+VUU,,,,not_assessed,False
+VVC,Villavicencio,CO,0.28,not_assessed,True
+VVI,Santa Cruz,BO,,headroom,True
+VVO,Vladivostok,RU,2.97,headroom,True
+VVZ,,DZ,,too_short,False
+VXE,Sao Vicente Island,CV,0.36,not_assessed,True
+VXO,Vaxjo,SE,,not_assessed,True
+WAA,,US,,not_assessed,False
+WAE,Wadi al Dawaser,SA,0.13,not_assessed,True
+WAG,,NZ,,not_assessed,False
+WAW,Warsaw,PL,20.94,headroom,True
+WBB,,US,,not_assessed,False
+WBM,,PG,,not_assessed,False
+WDH,Windhoek,NA,1.15,not_assessed,True
+WDS,,,,not_assessed,False
+WEF,,CN,,not_assessed,False
+WEH,Weihai,CN,,tightening,True
+WEI,Weipa,AU,0.11,not_assessed,True
+WFI,,,,too_short,False
+WGA,Wagga Wagga,AU,0.27,not_assessed,True
+WGN,,,,not_assessed,False
+WGP,,ID,,not_assessed,False
+WHA,,,,too_short,False
+WHK,,NZ,,not_assessed,False
+WIL,Nairobi,KE,1.38,headroom,True
+WJR,,KE,,not_assessed,False
+WJU,Won-ju,KR,0.23,not_assessed,True
+WKJ,Wakkanai,JP,0.23,not_assessed,True
+WLG,Wellington,NZ,5.26,headroom,True
+WLK,,US,,not_assessed,False
+WLS,Wallis Island,WF,,not_assessed,True
+WMB,,,,too_short,False
+WMI,WMI,,1.54,not_assessed,True
+WMN,,MG,,too_short,False
+WMO,,US,,not_assessed,False
+WMT,WMT,,1.55,not_assessed,True
+WMX,,ID,,not_assessed,False
+WNA,,US,,not_assessed,False
+WNH,Wenshan,CN,0.24,not_assessed,True
+WNI,,,,too_short,False
+WNN,,CA,,not_assessed,False
+WNP,Naga,PH,0.08,not_assessed,True
+WNZ,Wenzhou,CN,,tightening,True
+WRE,,NZ,,not_assessed,False
+WRG,,US,,not_assessed,False
+WRO,Wroclaw,PL,3.61,headroom,True
+WRY,,GB,,not_assessed,False
+WRZ,,,,too_short,False
+WST,,US,,too_short,False
+WSX,,US,,too_short,False
+WSZ,,NZ,,not_assessed,False
+WTB,WTB,,,not_assessed,True
+WTK,,US,,not_assessed,False
+WTL,,US,,not_assessed,False
+WUA,,CN,,not_assessed,False
+WUH,Wuhan,CN,30.35,headroom,True
+WUS,,CN,,not_assessed,False
+WUT,,,,not_assessed,False
+WUX,Wuxi,CN,,headroom,True
+WUZ,,CN,,not_assessed,False
+WVB,Walvis Bay,NA,0.13,not_assessed,True
+WWK,,PG,,not_assessed,False
+WWT,,US,,not_assessed,False
+WXN,Wanzhou,CN,0.96,not_assessed,True
+WYA,,AU,,not_assessed,False
+XAI,,,,not_assessed,False
+XAP,Chapeco,BR,0.72,not_assessed,True
+XBE,,CA,,not_assessed,False
+XBJ,Birjand,IR,,not_assessed,True
+XCR,Paris,FR,,too_short,True
+XFN,Xiangyang,CN,2.37,not_assessed,True
+XGR,,CA,,not_assessed,False
+XIC,Xichang,CN,1.12,not_assessed,True
+XIL,,CN,,not_assessed,False
+XIY,Xi'an,CN,46.23,headroom,True
+XKH,,LA,,not_assessed,False
+XKS,,CA,,too_short,False
+XLB,,,,not_assessed,False
+XMN,Xiamen,CN,28.25,headroom,True
+XNA,Fayetteville,US,2.53,tightening,True
+XNN,Xining,CN,,headroom,True
+XNT,,,,too_short,False
+XPL,,,,too_short,False
+XQP,,CR,,not_assessed,False
+XQU,,,,not_assessed,False
+XRY,Jerez,ES,0.8,not_assessed,True
+XSC,,TC,,not_assessed,False
+XSP,,,,not_assessed,False
+XTL,,,,not_assessed,False
+XUZ,Xuzhou,CN,,tightening,True
+XWA,,,,too_short,False
+XZM,,,,not_assessed,False
+YAB,,CA,,not_assessed,False
+YAK,,US,,not_assessed,False
+YAM,Sault Ste Marie,CA,0.22,not_assessed,True
+YAT,,CA,,not_assessed,False
+YAX,,CA,,not_assessed,False
+YAY,,CA,,not_assessed,False
+YAZ,,,,not_assessed,False
+YBB,,CA,,not_assessed,False
+YBC,,CA,,not_assessed,False
+YBG,,CA,,not_assessed,False
+YBK,,CA,,not_assessed,False
+YBL,,CA,,not_assessed,False
+YBP,Yibin,CN,2.25,not_assessed,True
+YBR,,,,not_assessed,False
+YBT,,,,not_assessed,False
+YCB,,CA,,not_assessed,False
+YCD,Nanaimo,CA,0.37,not_assessed,True
+YCG,,CA,,not_assessed,False
+YCO,,CA,,not_assessed,False
+YCR,,,,not_assessed,False
+YCS,,CA,,not_assessed,False
+YCU,,CN,,headroom,False
+YCY,,CA,,too_short,False
+YDA,,CA,,not_assessed,False
+YDF,Deer Lake,CA,0.44,not_assessed,True
+YDP,,CA,,not_assessed,False
+YDT,,,,too_short,False
+YEG,Edmonton,CA,7.56,headroom,True
+YEI,Bursa,TR,,not_assessed,True
+YEK,,CA,,not_assessed,False
+YER,,CA,,not_assessed,False
+YES,Yasouj,IR,,not_assessed,True
+YEV,,CA,,not_assessed,False
+YFA,,CA,,not_assessed,False
+YFB,,CA,,not_assessed,False
+YFC,Fredericton,CA,0.43,not_assessed,True
+YFH,,CA,,not_assessed,False
+YFO,,CA,,not_assessed,False
+YFS,,CA,,not_assessed,False
+YGB,,,,not_assessed,False
+YGG,,CA,,too_short,False
+YGJ,Yonago,JP,0.81,not_assessed,True
+YGK,,CA,,not_assessed,False
+YGL,,CA,,not_assessed,False
+YGO,,,,not_assessed,False
+YGP,,CA,,not_assessed,False
+YGR,,CA,,not_assessed,False
+YGT,,CA,,not_assessed,False
+YGW,,CA,,not_assessed,False
+YGX,,CA,,not_assessed,False
+YHD,,CA,,not_assessed,False
+YHK,,CA,,not_assessed,False
+YHM,Toronto,CA,0.31,not_assessed,True
+YHO,,CA,,not_assessed,False
+YHP,,,,too_short,False
+YHS,,,,too_short,False
+YHU,,CA,,not_assessed,False
+YHY,,CA,,not_assessed,False
+YHZ,Halifax,CA,4.21,headroom,True
+YIA,YIA,,4.42,too_short,True
+YIC,,,,not_assessed,False
+YIE,,,,not_assessed,False
+YIH,,CN,,headroom,False
+YIK,,CA,,not_assessed,False
+YIN,,CN,,headroom,False
+YIO,,CA,,not_assessed,False
+YIV,,,,not_assessed,False
+YIW,Yiwu,CN,,tightening,True
+YKA,Kamloops,CA,0.3,not_assessed,True
+YKF,Kitchener/Waterloo,CA,0.37,not_assessed,True
+YKG,,CA,,not_assessed,False
+YKH,,,,not_assessed,False
+YKL,,CA,,not_assessed,False
+YKM,,US,,not_assessed,False
+YKO,YKO,,0.16,not_assessed,True
+YKQ,,CA,,not_assessed,False
+YKS,Yakutsk,RU,1.02,not_assessed,True
+YKU,,CA,,not_assessed,False
+YLE,,CA,,too_short,False
+YLH,,CA,,not_assessed,False
+YLL,,,,too_short,False
+YLW,Kelowna,CA,2.44,headroom,True
+YLX,,,,too_short,False
+YMM,Fort Mcmurray,CA,0.39,not_assessed,True
+YMN,,CA,,not_assessed,False
+YMO,,CA,,not_assessed,False
+YNB,Yanbu al Bahr,SA,0.57,not_assessed,True
+YNC,,CA,,not_assessed,False
+YNE,,,,not_assessed,False
+YNJ,,CN,,not_assessed,False
+YNO,,CA,,too_short,False
+YNP,,CA,,not_assessed,False
+YNT,Yantai,CN,,headroom,True
+YNY,YNY,,,too_short,True
+YNZ,,CN,,not_assessed,False
+YOC,,CA,,not_assessed,False
+YOH,,,,not_assessed,False
+YOL,Yola,NG,0.11,not_assessed,True
+YOW,Ottawa,CA,5.45,headroom,True
+YPH,,CA,,not_assessed,False
+YPJ,,CA,,not_assessed,False
+YPL,,CA,,not_assessed,False
+YPM,,CA,,not_assessed,False
+YPR,,CA,,not_assessed,False
+YPW,,CA,,not_assessed,False
+YPX,,CA,,not_assessed,False
+YQB,Quebec,CA,2.05,headroom,True
+YQC,,CA,,not_assessed,False
+YQD,,CA,,not_assessed,False
+YQF,,,,not_assessed,False
+YQG,,CA,,not_assessed,False
+YQK,,CA,,too_short,False
+YQL,,CA,,not_assessed,False
+YQM,Moncton,CA,0.66,not_assessed,True
+YQQ,Comox,CA,0.49,not_assessed,True
+YQR,Regina,CA,1.2,headroom,True
+YQT,Thunder Bay,CA,0.82,not_assessed,True
+YQU,,CA,,not_assessed,False
+YQX,Gander,CA,0.16,not_assessed,True
+YQY,,CA,,not_assessed,False
+YQZ,,CA,,not_assessed,False
+YRB,,CA,,not_assessed,False
+YRG,,CA,,not_assessed,False
+YRL,,CA,,not_assessed,False
+YRS,,,,not_assessed,False
+YRT,,CA,,not_assessed,False
+YSB,,CA,,not_assessed,False
+YSG,,CA,,not_assessed,False
+YSJ,St John,CA,0.22,not_assessed,True
+YSO,,CA,,not_assessed,False
+YSQ,,,,not_assessed,False
+YST,,,,not_assessed,False
+YTE,,CA,,not_assessed,False
+YTH,,CA,,not_assessed,False
+YTL,,CA,,not_assessed,False
+YTQ,,CA,,not_assessed,False
+YTS,,CA,,not_assessed,False
+YTW,,,,too_short,False
+YTY,Yangzhou,CN,,tightening,True
+YTZ,Toronto,CA,2.4,headroom,True
+YUB,,,,not_assessed,False
+YUD,,CA,,not_assessed,False
+YUL,Montreal,CA,22.51,headroom,True
+YUM,Yuma,US,0.19,not_assessed,True
+YUS,,CN,,not_assessed,False
+YUT,,CA,,not_assessed,False
+YUX,,CA,,not_assessed,False
+YUY,,CA,,not_assessed,False
+YVB,,CA,,not_assessed,False
+YVM,,CA,,too_short,False
+YVO,,CA,,not_assessed,False
+YVP,,CA,,not_assessed,False
+YVQ,,CA,,not_assessed,False
+YVR,Vancouver,CA,26.73,headroom,True
+YVZ,,CA,,not_assessed,False
+YWB,,CA,,not_assessed,False
+YWG,Winnipeg,CA,4.35,headroom,True
+YWH,,CA,,headroom,False
+YWK,,CA,,not_assessed,False
+YWL,,CA,,not_assessed,False
+YWP,,CA,,not_assessed,False
+YXC,Cranbrook,CA,0.19,not_assessed,True
+YXE,Saskatoon,CA,1.55,headroom,True
+YXH,Medicine Hat,CA,0.05,not_assessed,True
+YXJ,,CA,,not_assessed,False
+YXL,,CA,,not_assessed,False
+YXN,,CA,,not_assessed,False
+YXP,,CA,,not_assessed,False
+YXS,Prince George,CA,0.51,not_assessed,True
+YXT,,CA,,not_assessed,False
+YXU,YXU,,0.33,not_assessed,True
+YXX,Abbotsford,CA,1.11,not_assessed,True
+YXY,Whitehorse,CA,0.55,not_assessed,True
+YYA,,,,not_assessed,False
+YYB,,CA,,not_assessed,False
+YYC,Calgary,CA,18.62,headroom,True
+YYD,,CA,,not_assessed,False
+YYF,,CA,,not_assessed,False
+YYG,Charlottetown,CA,0.41,not_assessed,True
+YYH,,CA,,not_assessed,False
+YYJ,Victoria,CA,2.11,headroom,True
+YYQ,,CA,,too_short,False
+YYR,,CA,,not_assessed,False
+YYT,St Johns,CA,1.44,headroom,True
+YYY,,CA,,not_assessed,False
+YYZ,Toronto,CA,45.99,headroom,True
+YZF,,CA,,not_assessed,False
+YZG,,CA,,not_assessed,False
+YZP,,CA,,not_assessed,False
+YZR,,CA,,not_assessed,False
+YZS,,CA,,not_assessed,False
+YZT,,CA,,not_assessed,False
+YZV,,CA,,not_assessed,False
+YZY,,CN,,not_assessed,False
+YZZ,,CA,,not_assessed,False
+ZAD,Zadar,HR,1.6,not_assessed,True
+ZAG,Zagreb,HR,5.09,headroom,True
+ZAH,Zahedan,IR,0.38,not_assessed,True
+ZAL,,CL,,not_assessed,False
+ZAM,Zamboanga,PH,1.35,not_assessed,True
+ZAT,Zhaotong,CN,0.6,not_assessed,True
+ZAZ,Zaragoza,ES,0.66,not_assessed,True
+ZBF,,CA,,not_assessed,False
+ZBR,Chah Bahar,IR,0.33,not_assessed,True
+ZBY,,,,too_short,False
+ZCL,Zacatecas,MX,0.45,not_assessed,True
+ZCO,,CL,,not_assessed,False
+ZEL,,CA,,not_assessed,False
+ZEM,,CA,,not_assessed,False
+ZFL,,,,too_short,False
+ZFN,,CA,,too_short,False
+ZGI,,,,not_assessed,False
+ZHA,,CN,,headroom,False
+ZHY,,,,not_assessed,False
+ZIA,ZIA,,1.75,not_assessed,True
+ZIG,,,,not_assessed,False
+ZIH,Ixtapa/zihuatanejo,MX,0.74,not_assessed,True
+ZKE,,CA,,not_assessed,False
+ZLO,Manzanillo,MX,0.25,not_assessed,True
+ZMT,,CA,,not_assessed,False
+ZNA,,CA,,not_assessed,False
+ZNE,Newman,AU,0.59,not_assessed,True
+ZNZ,Zanzibar,TZ,2.84,headroom,True
+ZOS,,CL,,not_assessed,False
+ZPB,,CA,,not_assessed,False
+ZQN,Queenstown,NZ,2.68,not_assessed,True
+ZQZ,,,,not_assessed,False
+ZRH,Zurich,CH,31.2,headroom,True
+ZRI,,,,not_assessed,False
+ZRJ,,CA,,not_assessed,False
+ZSA,,BS,,not_assessed,False
+ZSE,St-Pierre,RE,,not_assessed,True
+ZSJ,,CA,,not_assessed,False
+ZTH,Zakinthos Island,GR,1.39,not_assessed,True
+ZTM,,,,not_assessed,False
+ZUH,Zhuhai,CN,12.88,headroom,True
+ZVK,,LA,,not_assessed,False
+ZYI,ZYI,,1.54,not_assessed,True
+ZYL,,BD,,not_assessed,False

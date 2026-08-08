@@ -14,6 +14,7 @@ data/aci_decrypted/aci_<year>.xlsx.
 """
 from __future__ import annotations
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+from avia_forecast.io_safe import dump_atomic
 from avia_forecast.paths import DATA, OEF_DIR, ACI_DIR, ACI_DECRYPT, SABRE_DB, OAG_DB, QSI_REF, PREAGG, QSI_APP, OEF_GDP_XLSX
 import json, os, re, sys
 
@@ -134,7 +135,7 @@ def run():
         per_year[y] = (len(rows), world)
         print(f"  {y}: {len(rows):>5} airports, world terminal pax {world/1e9:5.2f}bn")
     os.makedirs(DATA, exist_ok=True)
-    json.dump(panel, open(os.path.join(DATA, "aci_panel_2013_2024.json"), "w"))
+    dump_atomic(panel, os.path.join(DATA, "aci_panel_2013_2024.json"))
     print(f"\npanel rows: {len(panel):,}  ->  {DATA}/aci_panel_2013_2024.json")
     return panel, per_year
 

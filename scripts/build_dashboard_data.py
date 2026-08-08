@@ -55,7 +55,7 @@ def aci_names_and_history():
 
 
 def region_pair_flows():
-    con = duckdb.connect(os.path.join(QSI, "preagg.duckdb"), read_only=True)
+    con = duckdb.connect(paths.PREAGG, read_only=True)
     rows = con.execute("select o,d,pax from od_p2p where year=2024").fetchall(); con.close()
     apc = {}
     for row in csv.DictReader(open(os.path.join(QSI, "reference_tables", "airport_city_country.csv"), encoding="utf-8-sig")):
@@ -91,7 +91,7 @@ def region_pair_flows():
 def per_airport_dests(topn=14):
     """For each origin airport, its real destination MARKETS (countries) from Sabre O&D 2024,
     with base-year demand (m pax). Domestic collapsed to one 'Domestic <country>' market."""
-    con = duckdb.connect(os.path.join(QSI, "preagg.duckdb"), read_only=True)
+    con = duckdb.connect(paths.PREAGG, read_only=True)
     rows = con.execute("select o,d,pax from od_p2p where year=2024").fetchall(); con.close()
     apc, name = {}, {}
     for row in csv.DictReader(open(os.path.join(QSI, "reference_tables", "airport_city_country.csv"), encoding="utf-8-sig")):
@@ -127,12 +127,26 @@ def run():
     # engine forecast per airport per scenario
     fc = {}
     fyears = None
+    _tmeta = {}
     for sc in SCEN:
         r = gt.run_terminal(scenario=sc)
         fyears = r.years
+        _tmeta = r.meta
         for iata, a in r.by_airport.items():
             fc.setdefault(iata, {"a": a})["a"] = a
             fc[iata].setdefault("scen", {})[sc] = dict(zip((int(y) for y in fyears), a["series"]))
+    _nairp = _tmeta.get("n_airports", 0)
+    print("connecting: %d leg-measured (Sabre), %d ACI-residual; %d flagged of %d; T-B base pass=%s"
+          % (_tmeta.get("connecting_measured", 0), _tmeta.get("connecting_residual", 0), _tmeta.get("connecting_flagged", 0), _nairp, _tmeta.get("tb_base_pass")))
+    if not _tmeta.get("tb_base_pass", True):                          # identity T-B is now build-stopping
+        raise SystemExit("BUILD STOPPED: base-year identity T-B failed at %d airports" % _tmeta.get("tb_fail", 0))
+    _flag_traffic = _tmeta.get("connecting_flagged_traffic_share", 0.0)
+    _pub_ok = _flag_traffic <= 0.10           # weighted by traffic, not airport count (small thin-Sabre airports do not trip it)
+    if not _pub_ok:
+        print("PUBLICATION WATCHPOINT: flagged connecting airports carry %.1f%% of world traffic (>10%%) - review before publication"
+              % (100 * _flag_traffic))
+    else:
+        print("connecting flagged airports carry %.1f%% of world traffic (within band)" % (100 * _flag_traffic))
 
     # domestic share + gdppc/pop from ACI + OEF/WB
     panel24 = [r for r in json.load(open(os.path.join(E, "aci_panel_2013_2024.json"))) if r["year"] == 2024]
@@ -145,6 +159,14 @@ def run():
     oefp = json.load(open(os.path.join(E, "oef_gdp_pop_by_iso2.json")))["pop"]
 
     DESTS = per_airport_dests()
+    # capacity layer join (CHANGELOG 95): register + screen replace the cap=0 placeholder feed
+    _CAPX, _CAPSCR = {}, {}
+    _cxp = os.path.join(os.path.dirname(OUT), "..", "data", "capacity_layer_extract.json")
+    _cxp = os.path.normpath(_cxp)
+    if os.path.exists(_cxp):
+        _cx = json.load(open(_cxp))
+        _CAPX = _cx.get("airports", {})
+        _CAPSCR = _cx.get("screen_unregistered", {})
     perAirport, CTY = {}, {}
     for iata, d in fc.items():
         a = d["a"]; iso = a["country"]; reg = R6.get(a["region"])
@@ -167,9 +189,40 @@ def run():
             first = next((v for v in s if v is not None), None)
             s = [first if v is None else v for v in s]
             scen[sc] = s
-        cap = 0
+        # capacity: register K where evidenced AND not in overrun review; screen state always
+        cap, capsrc, capst, capnote = 0, "illustrative", None, None
+        _c = _CAPX.get(iata)
+        if _c:
+            _scr = _c.get("screen") or {}
+            capst = _scr.get("state") if isinstance(_scr, dict) else _scr
+            _ks = _c.get("knowledge_state")
+            if _ks == "constraint_overrun_observed":
+                _ov = _c.get("overrun") or {}
+                capsrc = "register_overrun"
+                capnote = (f"Handles {_ov.get('overrun_base_m', 0):.1f}m more passengers a year than its "
+                           f"terminal was built for (built for {_ov.get('rated_m', 0):.1f}m). The rated level "
+                           "is a service line, not a wall: some growth above today's level spills "
+                           "(provisional rule), the rest squeezes through at a service cost")
+                _ks = None  # handled
+            _b25 = scen["Baseline"][YRS.index(BASE)] or 0
+            if _ks == "constrained_evidenced":
+                _km = (_c.get("capacity_m") or {}).get(str(BASE))
+                if _km and _km >= _b25:
+                    cap, capsrc = round(float(_km), 2), "register"
+                    capnote = f"Register: {_c.get('binding_test')} {_km}m ({BASE}); binding range "                               + "-".join(str(x) for x in (_c.get("binding_range") or [])[:2])
+                elif _km:
+                    capsrc = "register_overrun_review"
+                    capnote = (f"Handles {(_b25 - _km):.1f}m more passengers a year than its "
+                               f"terminal was built for (built for {_km}m). How to count this "
+                               "is being decided; shown without a cap for now")
+            elif _ks == "constraint_known_not_quantified":
+                capsrc = "register_flagged"
+                capnote = "A limit is on record but no usable number yet; shown without a cap for now"
+        elif iata in _CAPSCR:
+            capst = _CAPSCR[iata].get("state")
         perAirport[iata] = {"iata": iata, "name": names.get(iata, city or iata),
                             "country": ctry, "region": reg, "cap": cap,
+                            "capsrc": capsrc, "capst": capst, "capnote": capnote,
                             "hub": ("Alliance hub" if (a.get("connecting_share") or 0) > 0.30 else ""),
                             "cnx": a.get("connecting_share"), "scen": scen,
                             "dests": DESTS.get(iata, [])}
@@ -218,9 +271,16 @@ def run():
             if str(r.get("year")) == str(_latest) and r.get("country_code") and r.get("terminal_pax"):
                 _ctry_aci[r["country_code"]] += float(r["terminal_pax"]) / 1e6
         coverage_country = {}
+        _fallback = 0
         for c in CTY:
-            m, tot = _modelled_c.get(c, 0.0), _ctry_aci.get(c, 0.0)
-            coverage_country[c] = round(max(1.0, min(3.0, tot / m)), 3) if (m > 0 and tot > 0) else 1.08
+            m, tot = _modelled_c.get(c, 0.0), _ctry_aci.get(CTY[c].get("iso"), 0.0)   # ACI keyed by ISO2, not name
+            if m > 0 and tot > 0:
+                coverage_country[c] = round(max(1.0, min(3.0, tot / m)), 3)
+            else:
+                coverage_country[c] = 1.08; _fallback += 1
+        _disp = len(set(round(v, 2) for v in coverage_country.values()))
+        print("coverage_country: %d countries, %d distinct values, %d on fallback"
+              % (len(coverage_country), _disp, _fallback))
         _reg_aci = defaultdict(float)
         for c, tot in _ctry_aci.items():
             rr = R6.get(region_for_iso2(c) or "", None)
@@ -235,7 +295,9 @@ def run():
         for rr in set(list(_reg_aci) + list(_modelled_r)):
             mr, tr = _modelled_r.get(rr, 0.0), _reg_aci.get(rr, 0.0)
             coverage_region[rr] = round(max(1.0, min(4.0, tr / mr)), 3) if (mr > 0 and tr > 0) else 1.1
-        _cov_source = "ACI-based (country/region total over modelled)"
+        _cov_source = ("ACI-based (country/region total over modelled)"
+                       if (_disp > 5 and _fallback < 0.5 * len(coverage_country))
+                       else "ACI-based but LOW DISPERSION - check panel/key grain")
     except Exception as _e:
         coverage_region = {"Europe": 2.6, "Asia Pacific": 2.2, "North America": 1.35,
                            "South America": 2.2, "Middle East": 1.9, "Africa": 3.4}
@@ -246,18 +308,23 @@ def run():
     try:
         assert_adds_up(_rec); _ok = True
     except AssertionError as _e:
-        _ok = False; print("ADDING-UP CHECK FAILED:", _e)
+        raise SystemExit("BUILD STOPPED: adding-up identity failed: %s" % _e)
     print("adding-up: world base-year %.0fm, %d issues, ok=%s" % (_rec["world"], len(_rec["issues"]), _ok))
     dump_atomic({"years": YRS, "base": BASE, "scenarios": SCEN,
                "airports": list(perAirport.values()), "cty": CTY,
                "flows": region_pair_flows(), "rg": RG,
                "coverage_country": coverage_country, "coverage_region": coverage_region,
-               "checks": {"adds_up": _ok, "world_base_m": round(_rec["world"], 1), "issues": _rec["issues"][:20], "coverage_source": _cov_source},
+               "checks": {"adds_up": _ok, "world_base_m": round(_rec["world"], 1), "issues": _rec["issues"][:20],
+                          "coverage_source": _cov_source, "tb_base_pass": _tmeta.get("tb_base_pass"),
+                          "connecting_measured": _tmeta.get("connecting_measured"), "connecting_residual": _tmeta.get("connecting_residual"),
+                          "connecting_floored": _tmeta.get("connecting_floored"), "connecting_flagged": _tmeta.get("connecting_flagged"),
+                          "publication_ok": _pub_ok, "connecting_flagged_traffic_share": _flag_traffic,
+                          "connecting_discrepancies": _tmeta.get("connecting_discrepancies", [])},
                "note": f"Avia engine: ACI history to 2024 + forecast to {HORIZON}; Sabre O&D, OAG routing, OEF GDP. Licensed data, internal.",
                "fixtures": [
                    "Shared v1 cost-driven fare index (fare_index_constructed.json) [P1]",
                    "Applied income elasticities clamped to the book bound; country estimates not yet re-estimated on O&D [P1]",
-                   "Illustrative grade-C airport capacity (front-end tiered placeholder; capacity register pending)",
+                   "Airport capacity: register-derived where held (France pilot; rated-terminal overrun treatment under review), schedule screen state everywhere assessed; illustrative grade-C tiers remain the labelled fallback ceiling",
                    "Interregional RPK matrix uses representative region-pair stage lengths [P1]",
                    "Hard-coded UK catchment populations in the pilot [P1]",
                    "Comparator CAGRs illustrative pending R14 published values",

@@ -1,6 +1,7 @@
 """Run the Phase 3a global unconstrained demand forecast and write the extract +
 a coherence read against an external OEM reference. Author: Avia Solutions."""
 from __future__ import annotations
+from avia_forecast.io_safe import dump_atomic
 import json, os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -26,7 +27,7 @@ def run(scenario="Baseline"):
         "assumptions": "regional GDP growth [P1]; shared segment fare index [P1]; "
                        "propensity where population known; O&D only (no connecting/constraint)",
     }
-    json.dump(extract, open(os.path.join(DATA, "global_forecast_2025_2050.json"), "w"), indent=2)
+    dump_atomic(extract, os.path.join(DATA, "global_forecast_2025_2050.json"), indent=2)
 
     div = co.external_divergence(r.world, OEM_PAX_CAGR, goal_band_pp=0.5)
     coh = co.check_rolling_cagr(r.world)

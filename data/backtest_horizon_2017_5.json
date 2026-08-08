@@ -1,0 +1,21 @@
+{
+ "base": 2017,
+ "last": 2019,
+ "span": 5,
+ "n_airports": 1912,
+ "thin_schedule_airports": 209,
+ "wmape_by_horizon": {
+  "t+1": {
+   "blend": 0.0342,
+   "seats": 0.0342,
+   "econ": 0.05,
+   "naive": 0.0501
+  },
+  "t+2": {
+   "blend": 0.0359,
+   "seats": 0.032,
+   "econ": 0.0768,
+   "naive": 0.076
+  }
+ }
+}

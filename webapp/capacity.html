@@ -1,0 +1,104 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Capacity Screen - Avia Cortex</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f6f5f2;color:#222}
+header{background:#156082;color:#fff;padding:18px 28px}
+header h1{margin:0;font-size:22px}header p{margin:4px 0 0;font-size:12px;opacity:.85}
+.wrap{max-width:1100px;margin:20px auto;padding:0 20px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.chip{background:#fff;border-radius:8px;padding:10px 16px;box-shadow:0 1px 3px rgba(0,0,0,.08);font-size:13px}
+.chip b{display:block;font-size:20px}
+.ctx{background:#fff;border-left:4px solid #156082;border-radius:6px;padding:12px 16px;font-size:13px;margin-bottom:14px;line-height:1.5}
+.ctx small{color:#777}
+input{width:100%;padding:10px;font-size:14px;border:1px solid #ccc;border-radius:6px;margin-bottom:10px;box-sizing:border-box}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+th{background:#156082;color:#fff;text-align:left;padding:8px 10px;font-size:12px}
+td{padding:7px 10px;font-size:13px;border-top:1px solid #eee}
+.s-at_ceiling{color:#B3452B;font-weight:bold}.s-tightening{color:#E97132;font-weight:bold}
+.s-headroom{color:#196B24;font-weight:bold}.s-not_assessed,.s-too_short{color:#888}
+footer{padding:14px 28px;font-size:11px;color:#777}
+.note{font-size:11px;color:#999}
+</style></head><body>
+<header><h1>Capacity screen</h1>
+<p>Our forecast says how many people will want to fly. This page says where airports have room for them, and where they are running out. The difference is the investment gap: the capacity the world has to build for the forecast to come true.</p></header>
+<div class="wrap">
+<div class="chips" id="chips"></div>
+<div class="ctx" id="ctx"></div>
+<div class="ctx" id="gsum"></div>
+<div id="capchart" style="background:#fff;border-radius:8px;padding:14px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.08)"></div>
+<h3 style="font-size:15px;margin:18px 0 8px">How it works</h3>
+<div id="meth" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px"></div>
+<h3 style="font-size:15px;margin:18px 0 8px">What passengers feel as airports fill up</h3>
+<table style="margin-bottom:8px"><thead><tr><th>Airport size</th><th>Room to grow</th><th>Filling up</th><th>Full</th></tr></thead><tbody id="sq"></tbody></table>
+<p class="note" id="sqread" style="margin-bottom:16px"></p>
+<h3 style="font-size:15px;margin:18px 0 8px">Every airport we assessed</h3>
+<input id="q" placeholder="Search airport code, name or country..." oninput="render()">
+<table><thead><tr><th>Airport</th><th>Name</th><th>Country</th><th>Size (m pax)</th><th>Capacity state</th><th>Official figures</th></tr></thead>
+<tbody id="tb"></tbody></table>
+<p class="note" id="src"></p>
+</div>
+<footer>COMMERCIAL IN CONFIDENCE - Avia Cortex</footer>
+<script>
+function capChart(d){
+  const g=d.service_exhibit.growth_by_state, o=d.service_exhibit.overall;
+  const ST=[["headroom","Room to grow","#3E6B44"],["tightening","Filling up","#B07A2A"],["at_ceiling","Full","#8A3B2B"]];
+  const W=900,H=345,X=[190,450,710],BARW=110,BASE=258,GS=26;
+  const SY=v=>216-(v-2.6)*140;
+  let bars="",dots="",labs="";
+  const pts=ST.map((s,i)=>[X[i],SY(o[s[0]].mean)]);
+  ST.forEach((s,i)=>{
+    const gv=g[s[0]]?g[s[0]].median_pct:0, bh=gv*GS, bt=BASE-bh, x=X[i], st=o[s[0]], y=SY(st.mean);
+    bars+=`<rect x="${x-BARW/2}" y="${bt}" width="${BARW}" height="${bh}" fill="#C9A227" opacity=".28"/>
+      <text x="${x}" y="${bt-7}" text-anchor="middle" font-family="Arial" font-size="12" fill="#8A8577">+${gv.toFixed(1)}%/yr</text>`;
+    const above=y<bt-26;
+    dots+=`<circle cx="${x}" cy="${y}" r="5.5" fill="${s[2]}"/>`+(above
+      ?`<text x="${x}" y="${y-13}" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="${s[2]}">${st.mean.toFixed(2)} stars</text>`
+      :`<text x="${x}" y="${y+26}" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="${s[2]}">${st.mean.toFixed(2)} stars</text>`);
+    labs+=`<text x="${x}" y="${BASE+24}" text-anchor="middle" font-family="Arial" font-size="11.5" font-weight="600" letter-spacing=".08em" fill="${s[2]}">${s[1].toUpperCase()}</text>
+      <text x="${x}" y="${BASE+40}" text-anchor="middle" font-family="Arial" font-size="10" fill="#8A8577">${(d.meta.counts[s[0]]||0).toLocaleString()} airports</text>`;
+  });
+  const line=`<path d="M${pts[0][0]},${pts[0][1]} C${(pts[0][0]+pts[1][0])/2},${pts[0][1]} ${(pts[0][0]+pts[1][0])/2},${pts[1][1]} ${pts[1][0]},${pts[1][1]} C${(pts[1][0]+pts[2][0])/2},${pts[1][1]} ${(pts[1][0]+pts[2][0])/2},${pts[2][1]} ${pts[2][0]},${pts[2][1]}" fill="none" stroke="#0F1B28" stroke-width="2.5"/>`;
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:940px">
+    <text x="${W/2}" y="28" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="14.5" fill="#0F1B28">Airports grow fastest while filling up - and that is when ratings dip. The window to plan.</text>
+    ${bars}${line}${dots}${labs}
+    <line x1="90" y1="${BASE}" x2="${W-90}" y2="${BASE}" stroke="#0F1B28" stroke-width="1"/>
+    <text x="${X[2]+22}" y="${pts[2][1]+26}" font-family="Georgia,serif" font-style="italic" font-size="12" fill="#8A8577">ratings recover,</text>
+    <text x="${X[2]+22}" y="${pts[2][1]+42}" font-family="Georgia,serif" font-style="italic" font-size="12" fill="#8A8577">growth stops</text>
+    <text x="90" y="${H-6}" font-family="Arial" font-size="10" fill="#8A8577">Bars: median traffic growth a year in each state. Line: average passenger rating (Skytrax, stars out of 5).</text>
+  </svg>`;
+}
+var D=null, ORDER={"at_ceiling":0,"tightening":1,"headroom":2,"too_short":3,"not_assessed":4};
+var LABEL={"at_ceiling":"Full","tightening":"Filling up","headroom":"Room to grow","too_short":"Too little history","not_assessed":"Not assessed"};
+function render(){
+  if(!D)return;
+  var q=(document.getElementById('q').value||'').toLowerCase();
+  var rows=Object.keys(D.airports).map(function(k){var r=D.airports[k];r.iata=k;return r;}).filter(function(r){return r.listed;});
+  rows=rows.filter(function(r){return !q || r.iata.toLowerCase().indexOf(q)>=0 || (r.name||'').toLowerCase().indexOf(q)>=0 || (r.country||'').toLowerCase().indexOf(q)>=0;});
+  rows.sort(function(a,b){var o=ORDER[a.state]-ORDER[b.state]; if(o)return o; return (b.size_m||0)-(a.size_m||0);});
+  var tb=document.getElementById('tb'), h='';
+  rows.slice(0,400).forEach(function(r){
+    h+='<tr><td><b>'+r.iata+'</b></td><td>'+(r.name||'')+'</td><td>'+(r.country||'')+'</td><td>'+(r.size_m?r.size_m.toFixed(1):'')+'</td>'
+      +'<td class="s-'+r.state+'" title="'+(r.state_text||'')+'">'+LABEL[r.state]+'</td><td>'+(r.register||'')+'</td></tr>';
+  });
+  if(rows.length>400) h+='<tr><td colspan="6" class="note">Showing first 400 of '+rows.length+' - refine the search</td></tr>';
+  tb.innerHTML=h;
+}
+fetch('data/capacity.json').then(function(r){return r.json();}).then(function(d){
+  D=d;
+  var c=d.meta.counts, order=["at_ceiling","tightening","headroom","too_short","not_assessed"], ch='';
+  order.forEach(function(s){ch+='<div class="chip"><b class="s-'+s+'">'+(c[s]||0)+'</b>'+LABEL[s]+'</div>';});
+  document.getElementById('chips').innerHTML=ch;
+  document.getElementById('ctx').innerHTML=d.service_quality_context.text+'<br><small>'+d.service_quality_context.basis+' | '+d.meta.presentation_rule+'</small>';
+  document.getElementById('gsum').innerHTML='<b>'+d.global_summary.headline+'</b><br><small>'+d.global_summary.investment_gap_status+'</small>';
+  var mh='';d.methodology.forEach(function(m){mh+='<div class="chip" style="font-size:12px;line-height:1.45"><b style="font-size:13px">'+m[0]+'</b>'+m[1]+'</div>';});
+  document.getElementById('meth').innerHTML=mh;
+  var sq='',ord=[['<5m','Under 5m pax'],['5-20m','5-20m pax'],['>20m','Over 20m pax'],['__all','All sizes (n='+d.service_exhibit.n+')']];
+  ord.forEach(function(b){var r=b[0]==='__all'?d.service_exhibit.overall:d.service_exhibit.bands[b[0]];if(!r)return;
+    sq+='<tr><td>'+b[1]+'</td>';['headroom','tightening','at_ceiling'].forEach(function(s){
+      var c=r[s];sq+='<td class="s-'+s+'">'+((!c||c.mean==null)?'-':c.mean.toFixed(2)+' stars (n='+c.n+')')+'</td>';});sq+='</tr>';});
+  document.getElementById('sq').innerHTML=sq;
+  document.getElementById('capchart').innerHTML=capChart(d);
+  document.getElementById('sqread').innerHTML='<b>Rule of thumb: </b>'+d.service_exhibit.rule_of_thumb+'<br>'+d.service_exhibit.reading;
+  document.getElementById('src').textContent=d.meta.source+' | '+d.meta.n_airports+' airports';
+  render();
+});
+</script></body></html>

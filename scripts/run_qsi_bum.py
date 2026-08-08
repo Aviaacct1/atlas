@@ -8,8 +8,10 @@ _status line). The cockpit polls that file, shows the first ~5 immediately, and 
 they land. Runs on the machine with the QSI tool and its databases (the 16GB Sabre DB), in the
 background, with no time limit:
 
-    python scripts/run_qsi_bum.py --airports SOU --qsi "C:\\Avia QSI Tool\\app" ^
-        --oag "C:\\Avia\\oag.duckdb" --sabre "C:\\Avia\\sabre.duckdb" &
+    python scripts/run_qsi_bum.py --airports SOU
+
+Every path resolves through avia_forecast/paths.py, so there is nothing to pass. The
+--qsi, --oag and --sabre arguments remain for a one-off run against another location.
 
 Candidate routes = each airport's largest UNSERVED O&D markets (real new-route opportunities).
 Each result carries the QSI tool's optimised route demand and QSI share.
@@ -17,22 +19,14 @@ Each result carries the QSI tool's optimised route demand and QSI share.
 from __future__ import annotations
 import argparse, csv, json, os, sys, time, tempfile
 from collections import defaultdict
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from avia_forecast.io_safe import dump_atomic
+from avia_forecast import paths
 
 def _atomic_write(path, obj):
-    """Write JSON atomically so a concurrent reader (the cockpit poll) never sees a half file."""
-    d = os.path.dirname(path)
-    fd, tmp = tempfile.mkstemp(dir=d, suffix=".tmp")
-    try:
-        with os.fdopen(fd, "w") as f:
-            json.dump(obj, f, indent=1)
-            f.flush(); os.fsync(f.fileno())
-        with open(tmp) as f:
-            json.load(f)                       # parse-back before publishing
-        os.replace(tmp, path)
-    except Exception:
-        try: os.unlink(tmp)
-        except OSError: pass
-        raise
+    """Write JSON atomically (delegates to io_safe.dump_atomic: same-dir temp, fsync, parse-back,
+    os.replace) so a concurrent reader (the cockpit poll) never sees a half file."""
+    dump_atomic(obj, path, indent=1)
 
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "webapp", "data", "bum_candidates.json")
@@ -48,7 +42,7 @@ def _ref(qsi):
 
 def candidates_for(origin, apc, name, qsi, oag_db, n):
     import duckdb
-    con = duckdb.connect(os.path.join(qsi, "preagg.duckdb"), read_only=True)
+    con = duckdb.connect(paths.PREAGG, read_only=True)
     od = {d: p for d, p in con.execute("select d, sum(pax) p from od_p2p where year=2024 and o=? group by d order by p desc", [origin]).fetchall()}
     con.close()
     served = set()
@@ -57,7 +51,7 @@ def candidates_for(origin, apc, name, qsi, oag_db, n):
         served.add(arr)
     oc = apc.get(origin)
     comp_by_dest = {}
-    w2 = duckdb.connect(os.path.join(qsi, "preagg.duckdb"), read_only=True)
+    w2 = duckdb.connect(paths.PREAGG, read_only=True)
     out = []
     for d, p in od.items():
         if d == origin or d not in apc or d in served or apc.get(d) == oc:
@@ -94,6 +88,20 @@ def _qsi(res):
             if res.get(k) is not None:
                 return round(float(res[k]), 3)
     return None
+
+
+STIM = 1.15   # demand stimulation vs the pre-existing service (visible parameter, carried on each row)
+
+
+def _route_block_min(RF, o, dst, default=540):
+    """Block time from the great-circle sector (~800 km/h cruise + 35 min taxi/climb), so a short
+    candidate is not costed as a nine-hour sector. Falls back to the default if coords are missing."""
+    try:
+        olat, olon, _ = RF._origin_geo(o); dlat, dlon, _ = RF._origin_geo(dst)
+        km = RF._gc_km(olat, olon, dlat, dlon)
+        return int(max(60, km / 13.0 + 35))
+    except Exception:
+        return default
 
 
 def _optimise_route(RF, o, dst, comp, sabre_db, oag_db, week, res0):
@@ -141,7 +149,8 @@ def _optimise_route(RF, o, dst, comp, sabre_db, oag_db, week, res0):
     freq = max(1, min(int(math.ceil(demand_ew / (seats * 52 * plan_lf))), 21))   # size to clear the spill, cap 3x daily
     try:
         res2 = RF.forecast(sabre_db, oag_db, week, o, [dst], comp,
-                           aircraft=best_ac, freq=freq, block_min=540, stimulation=1.15)
+                           aircraft=best_ac, freq=freq,
+                           block_min=int(max(60, dist_nm * 1.852 / 13.0 + 35)), stimulation=STIM)
         carried = res2.get("carried_forecast") or res2.get("total_demand") or demand_tw
     except Exception:
         carried = demand_tw
@@ -161,6 +170,37 @@ def run(airports, qsi, oag_db, sabre_db, n, week):
         all_out["_status"] = {"airport": o, "done": 0, "total": 0, "running": True, "phase": "finding candidate routes"}
         _atomic_write(OUT, all_out)                       # immediate: confirms the service received the request
         cands = candidates_for(o, apc, name, qsi, oag_db, n)
+        # ---- BT2 batch scoring for every candidate BEFORE the slow per-route loop ----
+        # Plan basis matches the engine call below: A21X (220 seats), 7x weekly.
+        _bt2 = {}
+        try:
+            import bt2_features as BF, duckdb as _dk, datetime as _dtm
+            _con = _dk.connect(oag_db, read_only=True)
+            _feats, _keys = [], []
+            for c in cands:
+                try:
+                    pm = BF.pair_metrics(_con, week, o, c["dst"], planned_freq=7)
+                    _ta = BF.endpoint_seats(_con, week, o)
+                    _tb = BF.endpoint_seats(_con, week, c["dst"])
+                    _sis = BF.sister_flag(_con, week, paths.PREAGG,
+                                          os.path.join(qsi, "reference_tables", "airport_city_country.csv"),
+                                          o, c["dst"])
+                    _feats.append({"seats_ly": 220 * 7 * 52 * 2, "base_mkt": float(c["market_pax_000"]) * 1000.0,
+                                   "capa": pm["capa"], "freq": 7, "legs_n": pm["legs_n"], "months": 12,
+                                   "gcd": pm["gcd"], "typ": "LCC", "dom": apc.get(o) == apc.get(c["dst"]),
+                                   "gauge": 220, "ncar": 1, "launch_mon": (_dtm.date.today().month % 12) + 1,
+                                   "qcx": pm["qcx"], "mkt_growth": 1.0, "carrier": "",
+                                   "base_seats_a": 0.0, "base_seats_b": 0.0,
+                                   "airport_seats_a": _ta, "airport_seats_b": _tb, "sister_flag": _sis})
+                    _keys.append(c["dst"])
+                except ValueError as _e:
+                    print(f"  BT2 feature unsourceable for {o}-{c['dst']}: {_e}", flush=True)
+            if _feats:
+                for k, s in zip(_keys, BF.batch_score(_feats)):
+                    _bt2[k] = s
+            _con.close()
+        except Exception as _e:
+            print(f"  BT2 scoring unavailable ({type(_e).__name__}: {_e}) - rows carry engine numbers only", flush=True)
         rows = []
         all_out[o] = rows
         all_out["_status"] = {"airport": o, "done": 0, "total": len(cands), "running": True}
@@ -169,8 +209,16 @@ def run(airports, qsi, oag_db, sabre_db, n, week):
             row = {"dst": c["dst"], "name": c["name"], "market_pax_000": c["market_pax_000"], "qsi": None, "est_pax_000": None}
             try:
                 t0 = time.time()
+                _bm = _route_block_min(RF, o, c["dst"])
                 res = RF.forecast(sabre_db, oag_db, week, o, [c["dst"]], c["comp"],
-                                  aircraft="A21X", freq=7, block_min=540, stimulation=1.15)
+                                  aircraft="A21X", freq=7, block_min=_bm, stimulation=STIM)
+                row["stimulation"] = STIM; row["block_min"] = _bm
+                _b = _bt2.get(c["dst"])                # BT2 batch result, scored before the slow loop
+                if _b:
+                    row["bt2_est_000"] = round(_b["pax"] / 1000.0, 1)
+                    row["bt2_lo_000"] = round(_b["lo"] / 1000.0, 1)
+                    row["bt2_hi_000"] = round(_b["hi"] / 1000.0, 1)
+                    row["tier"] = _b["tier"]
                 qs = _qsi(res)
                 if isinstance(res, dict):
                     for _sk, _dk in (("captured_demand","p2p_000"),("connecting_feed","conx_000"),
@@ -202,9 +250,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--airports", default=",".join(DEMO))
     ap.add_argument("--n", type=int, default=10)
-    ap.add_argument("--qsi", default=r"C:\Users\Carte\OneDrive\Documents\Claude\Projects\Avia QSI Tool\app")
-    ap.add_argument("--oag", default=r"C:\Avia\oag.duckdb")
-    ap.add_argument("--sabre", default=r"C:\Avia\sabre.duckdb")
+    # Defaults resolve through avia_forecast/paths.py. They were three Windows literals
+    # until 8 August 2026, so setting AVIA_QSI_APP repointed the service and not this
+    # runner, and the two ran against different trees without saying so.
+    ap.add_argument("--qsi", default=paths.QSI_APP)
+    ap.add_argument("--oag", default=(paths.serve_copy() or paths.OAG_DB))
+    ap.add_argument("--sabre", default=paths.SABRE_DB)
     ap.add_argument("--week", default=None)
     a = ap.parse_args()
     run([x.strip().upper() for x in a.airports.split(",") if x.strip()], a.qsi, a.oag, a.sabre, a.n, a.week)

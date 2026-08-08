@@ -3,3 +3,4 @@ pandas
 statsmodels
 duckdb
 openpyxl
+PyYAML

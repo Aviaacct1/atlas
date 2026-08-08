@@ -9,6 +9,7 @@ region/maturity default downstream. Writes data/estimated_bG_by_country.json.
 """
 from __future__ import annotations
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+from avia_forecast.io_safe import dump_atomic
 from avia_forecast.paths import DATA, OEF_DIR, ACI_DIR, ACI_DECRYPT, SABRE_DB, OAG_DB, QSI_REF, PREAGG, QSI_APP, OEF_GDP_XLSX
 import json, os
 from collections import defaultdict
@@ -50,7 +51,7 @@ def run():
         out[iso] = {"bG": round(float(bG), 3), "t": round(float(t), 2),
                     "r2": round(float(r2), 3), "n": len(yrs), "reliable": bool(ok)}
 
-    json.dump(out, open(os.path.join(DATA, "estimated_bG_by_country.json"), "w"), indent=1)
+    dump_atomic(out, os.path.join(DATA, "estimated_bG_by_country.json"), indent=1)
     rel = {k: v for k, v in out.items() if v["reliable"]}
     print(f"countries estimated: {len(out)}   reliable: {len(rel)}")
     print("sample (major markets):")

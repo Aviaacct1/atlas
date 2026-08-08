@@ -6,6 +6,7 @@ modelled set captures. Author: Avia Solutions.
 """
 from __future__ import annotations
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+from avia_forecast.io_safe import dump_atomic
 from avia_forecast.paths import DATA, OEF_DIR, ACI_DIR, ACI_DECRYPT, SABRE_DB, OAG_DB, QSI_REF, PREAGG, QSI_APP, OEF_GDP_XLSX
 import csv, json, os, sys
 from collections import defaultdict
@@ -52,8 +53,7 @@ def run(year=2025, qsi=DEF_QSI):
         catchments[f"{cc}_{meta[iata]['country']}"].append(iata)
     multi = {k: v for k, v in catchments.items() if len(v) > 1}
 
-    json.dump({k: sorted(v) for k, v in catchments.items()},
-              open(os.path.join(DATA, f"global_catchments_{year}.json"), "w"))
+    dump_atomic({k: sorted(v) for k, v in catchments.items()}, os.path.join(DATA, f"global_catchments_{year}.json"))
     summary = {
         "year": year,
         "airports_total": len(meta),
@@ -69,7 +69,7 @@ def run(year=2025, qsi=DEF_QSI):
         "inclusion_floor_pax": get("scope.inclusion_floor_pax"),
         "coverage_target": get("scope.national_coverage_target"),
     }
-    json.dump(summary, open(os.path.join(DATA, f"global_scope_summary_{year}.json"), "w"), indent=2)
+    dump_atomic(summary, os.path.join(DATA, f"global_scope_summary_{year}.json"), indent=2)
     for k, v in summary.items():
         print(f"  {k}: {v}")
     print("\nsample metropolitan catchments:")

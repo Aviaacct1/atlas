@@ -19,6 +19,12 @@ def _repo_json(fn):
     return json.load(open(fp)) if os.path.exists(fp) else {}
 UK_BG = _repo_json("uk_estimated_bG.json")                       # per-airport estimated income elasticity (pilot, bG only)
 FULL_REGRESS = _repo_json("airport_regress.json")               # full diagnostics (bG,r2,t,n,points) from estimate_airport_diagnostics.py
+from avia_forecast.config import get as _cfg
+MAX_CX = _cfg("global_drivers.airport_elasticity_max_cx", 0.25)          # apply airport-own elasticity only below this connecting share
+USE_AIR = _cfg("global_drivers.use_airport_elasticities", True)
+def _clamp_bg(v):
+    lo, hi = BG_BOUND
+    return round(max(lo, min(hi, v)), 3)
 UK_BF = {k: round(v, 3) for k, v in _repo_json("uk_estimated_bF.json").items()}   # segment fare terms
 BG_BOUND = [0.6, 2.2]                                            # from assumptions_book global_drivers.bG_applied_bounds
 
@@ -44,12 +50,19 @@ def run():
         b25 = a["scen"]["Baseline"][dyrs.index(BASE)]
         b60 = a["scen"]["Baseline"][-1]
         g = round((b60 / b25) ** (1 / (dyrs[-1] - BASE)) - 1, 4) if b25 > 0 else 0.03
-        ge = est.get(iso) if iso in est else None
+        _ar = FULL_REGRESS.get(a["iata"])
+        _cx = round(a.get("cnx") or 0.0, 3)
+        if USE_AIR and _ar and _ar.get("reliable") and _cx <= MAX_CX:
+            ge = _clamp_bg(_ar["bG_est"]); ge_src = "airport"          # airport's own estimate (O&D-dominant, reliable)
+        elif iso in est:
+            ge = est[iso]; ge_src = "country"                          # country estimate (hub, or airport not estimated)
+        else:
+            ge = None; ge_src = "default"                              # segment/literature default
         airports.append({
             "c": a["iata"], "n": a["name"], "cty": a["country"], "reg": a["region"],
             "base": round(b25, 3), "g": g, "cap": a.get("cap") or 0,
             "dom": (round(c.get("dom", 0.3), 3)), "cx": round(a.get("cnx") or 0.0, 3),
-            "ge": round(ge, 2) if ge else None,
+            "ge": round(ge, 2) if ge else None, "ge_src": ge_src,
             "dests": a.get("dests", [])[:10],
             "series": {"Baseline": slice_series(a, "Baseline"),
                        "High": slice_series(a, "High"), "Low": slice_series(a, "Low")},

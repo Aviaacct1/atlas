@@ -1,0 +1,20 @@
+{
+ "base_year": 2014,
+ "summary": {
+  "2019": {
+   "n": 140,
+   "wmape_model": 0.1641964539884478,
+   "wmape_naive": 0.11120591432321661,
+   "wbias_model": -0.1554003956233916,
+   "beats_naive_wmape": false
+  },
+  "2024": {
+   "n": 140,
+   "wmape_model": 0.16231303723259513,
+   "wmape_naive": 0.18808089535171668,
+   "wbias_model": -0.09091127974351042,
+   "beats_naive_wmape": true
+  }
+ },
+ "n": 280
+}

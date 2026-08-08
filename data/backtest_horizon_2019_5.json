@@ -1,0 +1,51 @@
+{
+ "base": 2019,
+ "last": 2025,
+ "span": 5,
+ "n_airports": 1979,
+ "thin_schedule_airports": 1993,
+ "wmape_by_horizon": {
+  "t+1": {
+   "blend": 1.5601,
+   "seats": null,
+   "econ": 1.5601,
+   "naive": 1.5536,
+   "blend_within_20pct": 0.0406
+  },
+  "t+2": {
+   "blend": 1.1118,
+   "seats": null,
+   "econ": 1.1118,
+   "naive": 1.0977,
+   "blend_within_20pct": 0.1496
+  },
+  "t+3": {
+   "blend": 0.464,
+   "seats": null,
+   "econ": 0.464,
+   "naive": 0.452,
+   "blend_within_20pct": 0.344
+  },
+  "t+4": {
+   "blend": 0.1655,
+   "seats": 0.0558,
+   "econ": 0.214,
+   "naive": 0.2004,
+   "blend_within_20pct": 0.5749
+  },
+  "t+5": {
+   "blend": 0.1818,
+   "seats": 0.044,
+   "econ": 0.1818,
+   "naive": 0.1661,
+   "blend_within_20pct": 0.4944
+  },
+  "t+6": {
+   "blend": null,
+   "seats": null,
+   "econ": null,
+   "naive": null,
+   "blend_within_20pct": null
+  }
+ }
+}

@@ -1,0 +1,36 @@
+{
+  "provenance": "SUPERSEDED FOR LAUNCH CANDIDATES by the BT2 capacity-anchored model (data/bt2_model.pkl, 29 Jul 2026, blind 51% within +-20%, tier-A 79.5%). Retained for reference and non-launch uses. Original: Cohort route backtest 28 Jul 2026 (C:\\Avia\\back_test_cohort.py --max 120): 360 discovered launches, cohorts 2018/2019/2025; uplift = actual launch-year pax / (qsi_capture x base_market x 1.30). FSC and LCC agree within bands so combined medians used. Adopted on John's instruction 29 Jul 2026; Jess to be informed (method change to candidate estimates).",
+  "stim_basis": 1.3,
+  "bands": [
+    {
+      "cap_lo": 0.0,
+      "cap_hi": 0.05,
+      "median_uplift": 13.64,
+      "n": 63
+    },
+    {
+      "cap_lo": 0.05,
+      "cap_hi": 0.15,
+      "median_uplift": 9.8,
+      "n": 103
+    },
+    {
+      "cap_lo": 0.15,
+      "cap_hi": 0.4,
+      "median_uplift": 6.29,
+      "n": 92
+    },
+    {
+      "cap_lo": 0.4,
+      "cap_hi": 0.8,
+      "median_uplift": 4.26,
+      "n": 50
+    },
+    {
+      "cap_lo": 0.8,
+      "cap_hi": 1.01,
+      "median_uplift": 2.15,
+      "n": 52
+    }
+  ]
+}

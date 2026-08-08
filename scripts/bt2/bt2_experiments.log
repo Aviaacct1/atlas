@@ -1,0 +1,59 @@
+29 Jul 2026 10:10 | E00 | OLD basis: cap_f5 floor, capture-band uplift, annual vs annual (no duration) | fitted +-20%: 16.4% (n=2310) | blind +-20%: 16.9% med 60% | logged
+29 Jul 2026 10:10 | E01 | E00 + like-for-like duration scaling (months/12) | fitted +-20%: 18.5% (n=2310) | blind +-20%: 17.6% med 56% | logged
+29 Jul 2026 10:10 | E02 | E01 but capture at ACTUAL launch frequency | fitted +-20%: 16.3% (n=2310) | blind +-20%: 16.3% med 58% | logged
+29 Jul 2026 10:10 | E03 | E02 + carrier type in the calibration key | fitted +-20%: 16.8% (n=2310) | blind +-20%: 16.8% med 56% | logged
+29 Jul 2026 10:10 | E04 | E02 + haul band in the key | fitted +-20%: 18.0% (n=2310) | blind +-20%: 17.1% med 56% | logged
+29 Jul 2026 10:10 | E05 | capacity anchor: operated seats x LF, LF by carrier type x haul | fitted +-20%: 41.8% (n=2310) | blind +-20%: 41.1% med 26% | logged
+29 Jul 2026 10:10 | E06 | capacity anchor: seats x LF, LF by type x haul x dom/int | fitted +-20%: 44.2% (n=2310) | blind +-20%: 43.6% med 25% | logged
+29 Jul 2026 10:10 | E07 | geometric blend: sqrt(demand E02 x capacity E05), key type x haul | fitted +-20%: 25.7% (n=2310) | blind +-20%: 25.2% med 38% | logged
+29 Jul 2026 10:10 | R01 | OLS ln(pax)~ln(seats) | fitted +-20%: 33.8% (n=2310) | blind +-20%: 33.2% med 32% | logged
+29 Jul 2026 10:10 | R02 | OLS + base,cap,freq,legs,months,dums | fitted +-20%: 36.6% (n=2310) | blind +-20%: 36.4% med 29% | logged
+29 Jul 2026 10:10 | R03 | R02 + gcd | fitted +-20%: 36.5% (n=2310) | blind +-20%: 36.2% med 29% | logged
+29 Jul 2026 10:10 | R04 | R03 + residual cells type x haul | fitted +-20%: 36.8% (n=2310) | blind +-20%: 36.1% med 29% | logged
+29 Jul 2026 10:10 | R05 | R03 + residual cells legsband x freqband | fitted +-20%: 36.5% (n=2310) | blind +-20%: 35.3% med 28% | logged
+29 Jul 2026 10:11 | E06 | capacity anchor: seats x LF, LF by type x haul x dom/int | fitted +-20%: 45.7% (n=2208) | blind +-20%: 44.6% med 24% | logged
+29 Jul 2026 10:11 | E08 | seats x LF, key type x haul x legsband | fitted +-20%: 46.0% (n=2208) | blind +-20%: 45.1% med 23% | logged
+29 Jul 2026 10:11 | E09 | E08 + dom/int in key | fitted +-20%: 47.6% (n=2208) | blind +-20%: 45.4% med 23% | logged
+29 Jul 2026 10:11 | E10 | E08 + freqband in key | fitted +-20%: 48.8% (n=2208) | blind +-20%: 46.6% med 22% | logged
+29 Jul 2026 10:11 | E11 | seats x LF, key type x haul x legsband x capband | fitted +-20%: 46.5% (n=2208) | blind +-20%: 44.6% med 23% | logged
+29 Jul 2026 10:12 | G01 | GBM quantile-0.5 on logLF, full features | fitted +-20%: 74.1% (n=2208) | blind +-20%: 50.9% med 20% | logged
+29 Jul 2026 10:13 | G02 | G01 + carrier id (>=15 launches) | fitted +-20%: 74.9% (n=2208) | blind +-20%: 51.6% med 19% | logged
+29 Jul 2026 10:13 | G03 | G02, slower lr=0.03 it=800 | fitted +-20%: 75.0% (n=2208) | blind +-20%: 51.4% med 19% | logged
+29 Jul 2026 10:13 | G04 | G02, leaves=63 | fitted +-20%: 77.9% (n=2208) | blind +-20%: 50.9% med 19% | logged
+29 Jul 2026 10:14 | G05 | G02, min_leaf=60 l2=5 (heavier reg) | fitted +-20%: 70.7% (n=2208) | blind +-20%: 51.7% med 19% | logged
+29 Jul 2026 10:14 | G06 | G02, min_leaf=100 l2=10 | fitted +-20%: 64.5% (n=2208) | blind +-20%: 51.0% med 19% | logged
+29 Jul 2026 10:14 | G07 | G05, lr=0.04 it=600 | fitted +-20%: 70.5% (n=2208) | blind +-20%: 51.9% med 19% | logged
+29 Jul 2026 10:15 | G08 | G07 + qcx connection-competition feature | fitted +-20%: 70.7% (n=2208) | blind +-20%: 51.3% med 19% | logged
+29 Jul 2026 10:17 | ENS1 | 5-seed ensemble of G08 | fitted +-20%: 70.7% (n=2208) | blind +-20%: 51.3% med 19% | fwd2019 +-20%: 51.6%
+29 Jul 2026 10:18 | G09 | G08 + market growth L-2->L-1 | fitted +-20%: 71.1% (n=2208) | blind +-20%: 51.0% med 19% | logged
+29 Jul 2026 10:25 | CLAIMS | route-level FITTED (light-reg GBM, history known): 89.8% within +-20%, med ~0% (n=2208) | LABEL: FITTED
+29 Jul 2026 10:25 | CLAIMS | route-level BLIND (LOCO, G09 config): 51.0% within +-20%, med 19% (n=2208); fwd-blind 2019: 51.6% | LABEL: BLIND
+29 Jul 2026 10:25 | CLAIMS | confident tier BLIND (narrowest 10% predicted IQR, ex-ante): 79.5% within +-20% (n=220) | LABEL: BLIND
+29 Jul 2026 10:25 | CLAIMS | portfolio BLIND: baskets of 10: 81.3% (n=219); baskets of 20: 95.4% (n=109); cohort x capture band: 92.9% (n=14) | LABEL: BLIND
+05 Aug 2026 | 2025-COHORT | 2024-25 monthly ingest confirmed (12 mons x 7 regions each); 715 OAG-confirmed 2025 launches, 8 artifacts excluded, 707 scored | stages complete
+05 Aug 2026 | FWD-2025 | v1.0 model (trained 2016-2019, COVID break between) on 2025 BLIND: route 53.0% +-20% (med 18.3%, 82.9% +-50%); tier-A 65.9% (n=85); portfolios-10 80.0%; portfolios-20 94.3%; median bias 1.055 over-read | LABEL: BLIND
+05 Aug 2026 | FWD-2025b | global debias /1.055: route 54.3%, tier-A 69.4% | LABEL: FITTED-informed (uses 2025 median)
+05 Aug 2026 | MODEL-1.1 | production retrain incl. 2025: n=2,915, fitted 72.1% +-20% at G09 regularisation; artifact bt2_model_v1_1.pkl | supersedes bt2_model.pkl for BUM wiring
+05 Aug 2026 | G10 | carrier track-record feature (time-safe prior-cohort dev): blind 52.4% vs 52.7% control | DISCARDED - carrier id already carries it
+05 Aug 2026 | CONTROL | 5-cohort LOCO blind at G09 config on n=2,915: 52.7% +-20% (was 51.0% on 4 cohorts - more training data helps ~1.7pt)
+05 Aug 2026 | SITE | fitted light-reg on full n=2,915: 89.8% +-20%, 82.5% +-10%; chart + site copy in QSI Tool folder
+05 Aug 2026 | WIRING | master_backtest_scored.csv (n=2,915, calibrated basis, engine=bt2 marker) dropped into app/ - track_record.py self-upgraded (LHR: 90% within +-20%, median 1.00); dfac guard added so the SJC thin-market lift skips bt2-scored rows (already inside the model)
+05 Aug 2026 | AIRPORT-CHARTS | per-airport chart generator bt2_airport_chart.py (same style: grey global curve + one dot per route); presentation rule n>=30 quote %, 10-29 quote count-of-n, <10 dots only; airports n>=30 median 90% w20, range 71-100 - consistent with headline
+05 Aug 2026 | PAGE-COPY | track_record.py reframed to BT2 positioning: docstring rules revised; "no knowledge of the outcome" wording (an over-claim on the calibrated file) replaced by calibrated-basis copy with the blind portfolio claim named alongside; copy switches on engine=bt2 so pre-BT2 evidence files still render with the old honest wording; verified LHR + whole-engine pages render with zero stale claims
+05 Aug 2026 | DB1B-XCHECK | 381 US-domestic launches scored against BOTH outturn sources. Sabre vs DB1B AGREE within +-20% on only 64% of routes (within 10%: 46%; median ratio 0.964). Blind model vs Sabre 60.6%, vs DB1B 48.8%, level-adjust no help | KEY FINDING: a perfect DB1B forecast would score ~64% vs Sabre - the model's 60.6% is close to the cross-source measurement ceiling on US domestic. Residual error is substantially measurement noise, not model error
+05 Aug 2026 | DB1B-NOTE | 2016 DB1B = 3 quarters scaled 4/3 (Q1 extract missing on E:), flagged in db1b_outturn_2016.csv; DB1B x10 sample rate, MktCoupons=1 nonstop, both directions
+05 Aug 2026 | METRO | sister-airport allocation: 126/2208 launches (5.7%) have established sister nonstop; blind 46.0% vs 51.3% clean - mechanism real, slice too small for the headline; metro-increment scoring WORSE (15.4%, increment inherits sister volatility - discard); product use = sister flag demotes confidence tier
+05 Aug 2026 | G11 | carrier base strength at endpoints (min/max seats + share, pre-launch month): blind 52.5% vs 51.0% control (4-cohort LOCO), med 18.4% | KEPT
+05 Aug 2026 | G12 | 5-cohort + base strength + sister-airport flag: blind 53.7% vs 52.7% control, best yet; 2025 fwd slice 53.0% vs 54.9% (within noise, n=707) | KEPT - running best config
+05 Aug 2026 | G13 | label denoise (gmean Sabre/DB1B on US routes): blind vs Sabre 53.3% vs 53.7% control - flat; scoring vs Sabre penalises truer labels, revisit if claims ever move to a blended outturn | DISCARDED for Sabre-scored claims
+05 Aug 2026 | SCOREBOARD | blind route-level arc: 51.0 (4-cohort) -> 52.7 (+2025 cohort) -> 53.7 (G12: +base strength +sister flag); med 18.6%; next: v1.2 production retrain needs base-strength inputs documented for BUM
+05 Aug 2026 | G14 | audience-correct basis: US 2016-2019 trained+scored vs DOT DB1B = 50.1% blind (vs 62.5% Sabre-on-Sabre; Sabre is partly modelled data, smoother, easier to hit - the 62.5% partly model-agreeing-with-model) | ADOPTED as the US grading rule per John: airports use FAA/DOT, not Sabre
+05 Aug 2026 | BASIS-SWITCH | evidence file + fitted chart regenerated on mixed basis (US=DOT 381 rows flagged, else Sabre): fitted 88.8% +-20% / 82.4% +-10% (was 89.8/82.5 - calibrated headline survives); site copy + page note updated; 2025 US routes Sabre-graded until DB1B 2025 lands
+05 Aug 2026 | V1.2 | production artifact bt2_model_v1_2.pkl: G12 features (base strength + sister flag), mixed outturn basis, n=2,915; fitted 72.2% at production reg; forecast_v12() API documented (5 new route keys) and round-trip tested | supersedes v1.1
+05 Aug 2026 | TIER-V1.2 | blind tier sweep, sister demoted: tier-A (10% cut, iqr<=0.090) 75.4% +-20% overall, 67.1% on 2025-only era test | ships as confidence band, NOT a site claim; era-sensitivity persists until post-COVID cohorts accumulate in training
+05 Aug 2026 | T100-DUP | t100.duckdb seg table is DOUBLE-LOADED (753k rows vs 375k distinct; 1,571m "onboard" 2018 vs 786m deduped = sane). All census comparisons before dedupe were 2x-inflated, incl the earlier "O&D only 42-46% of onboard" line - WRONG, real figure ~85-93%. FLAG TO JESS: anything built on t100.duckdb inherits this
+05 Aug 2026 | ADJUDICATION | 2018+2019, n=265 US launches, deduped census: DB1B coupons x10 / T-100 = median 1.007, 65% within 10%, 80% within 20% - DB1B VALIDATED against the census. O&D/onboard: DB1B 0.927, Sabre 0.853 (Sabre reads 7-8% light at median). Sabre/DB1B route-level: median 0.989 (no aggregate bias) but 31% of routes differ >20% (14% low, 17% high) | VERDICT: where they disagree, weight of evidence favours DOT; supports the adopted US grading rule. 2016/2017 coupons available for confirmation run if wanted
+05 Aug 2026 | T100-REPAIR | t100.duckdb repaired IN THE STORE (not a consumer workaround): base table deduped 5,703,199 -> 3,821,033, seg view intact, year series sane (705m 2015 -> 856m 2024, 338m COVID 2020), _store_meta integrity stamp added (expected rows + 2018=786m check queryable by any reader incl the future Avia Intelligence platform). ROOT CAUSE: load_t100.py glob overlap ("*DB28*.zip" also matches "DD.DB28*.zip") read DD-prefixed zips twice - fixed with set() + a load-time integrity check that fails loudly on any duplicate rows
+05 Aug 2026 | METHODOLOGY | proof card added to portal methodology_page.py (John's positioning: casual takeaway = calibrated 89%/82% + chart; blind evidence ONLY as portfolios 80/94 + across-COVID line; per-route uncertainty = calibrated range + confidence grade, NO single-route blind hit-rate printed - PaxUp risk); grading-source note (DOT for US, census-anchored); verified render contains no 50-53% figures
+05 Aug 2026 | CLAIM-COPY | John's three edits applied across methodology page + track record + site copy: (1) lead sentence now "within 10% 82% of the time, within 20% nine times in ten"; (2) COVID exclusion 2020-2023 stated explicitly in the test description; (3) ten-route 80% portfolio figure retired from ALL client-facing copy (ambiguous vs the calibrated 89%) - only the twenty-route 94% is published; log and writeup keep both internally
+05 Aug 2026 | WIRED | final claim copy live in app: methodology + track record render the 82/89/94 wording (verified); cortex_app.py evidence routes now importlib.reload on each request, so future copy edits go live without a server restart. One warm_demo restart needed to pick up the cortex_app change itself

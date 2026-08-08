@@ -8,6 +8,7 @@ never redistributed.
 """
 from __future__ import annotations
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+from avia_forecast.io_safe import dump_atomic
 from avia_forecast.paths import DATA, OEF_DIR, ACI_DIR, ACI_DECRYPT, SABRE_DB, OAG_DB, QSI_REF, PREAGG, QSI_APP, OEF_GDP_XLSX
 import json, os, re
 import openpyxl, pycountry
@@ -96,10 +97,9 @@ def run():
     wb.close()
 
     os.makedirs(DATA, exist_ok=True)
-    json.dump({"_source": "OEF 31Jul2024, GDP constant 2015 US$ + Population; internal only",
+    dump_atomic({"_source": "OEF 31Jul2024, GDP constant 2015 US$ + Population; internal only",
                "gdp": {k: {str(y): v for y, v in s.items()} for k, s in gdp.items()},
-               "pop": {k: {str(y): v for y, v in s.items()} for k, s in pop.items()}},
-              open(os.path.join(DATA, "oef_gdp_pop_by_iso2.json"), "w"))
+               "pop": {k: {str(y): v for y, v in s.items()} for k, s in pop.items()}}, os.path.join(DATA, "oef_gdp_pop_by_iso2.json"))
     print(f"GDP countries: {len(gdp)}   population countries: {len(pop)}   years {years[0]}-{years[-1]}")
     if unmatched:
         print("unmatched country-like locations:", sorted(set(unmatched))[:20])

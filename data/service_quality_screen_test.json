@@ -1,0 +1,65 @@
+{
+ "n": 323,
+ "overall": {
+  "headroom": {
+   "mean": 3.35,
+   "n": 238,
+   "share_45": 0.332
+  },
+  "tightening": {
+   "mean": 3.15,
+   "n": 73,
+   "share_45": 0.219
+  },
+  "at_ceiling": {
+   "mean": 3.58,
+   "n": 12,
+   "share_45": 0.5
+  }
+ },
+ "bands": {
+  "<5m": {
+   "headroom": {
+    "mean": 3.3,
+    "n": 37,
+    "share_45": 0.378
+   },
+   "tightening": {
+    "mean": 2.82,
+    "n": 11,
+    "share_45": 0.0
+   },
+   "at_ceiling": null
+  },
+  "5-20m": {
+   "headroom": {
+    "mean": 3.24,
+    "n": 112,
+    "share_45": 0.25
+   },
+   "tightening": {
+    "mean": 3.11,
+    "n": 38,
+    "share_45": 0.211
+   },
+   "at_ceiling": null
+  },
+  ">20m": {
+   "headroom": {
+    "mean": 3.52,
+    "n": 89,
+    "share_45": 0.416
+   },
+   "tightening": {
+    "mean": 3.38,
+    "n": 24,
+    "share_45": 0.333
+   },
+   "at_ceiling": {
+    "mean": 3.55,
+    "n": 11,
+    "share_45": 0.455
+   }
+  }
+ }
+}

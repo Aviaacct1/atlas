@@ -12,9 +12,10 @@ Regional GDP growth and a shared segment fare index are v1 [P1]; per-country OEF
 per-country population complete the picture as they are staged.
 """
 from __future__ import annotations
-from .paths import DATA, OEF_DIR, ACI_DIR, ACI_DECRYPT, SABRE_DB, OAG_DB, QSI_REF, PREAGG, QSI_APP, OEF_GDP_XLSX
+from . import paths
+from .paths import OEF_DIR, ACI_DIR, ACI_DECRYPT, SABRE_DB, OAG_DB, QSI_REF, PREAGG, QSI_APP, OEF_GDP_XLSX
 from dataclasses import dataclass, field
-import json, os
+import json, os, sys
 
 import numpy as np
 
@@ -22,42 +23,71 @@ from .config import get
 from .demand import core as demand
 from .estimate import propensity as pr
 
-DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
+# TWO data folders, named apart on purpose. This module imported DATA from paths (the
+# Global folder on E:) and then, eleven lines later, rebound the same name to the repo's
+# own data folder. E_DATA was set from the rebound name, so the three external files
+# below were looked for inside the repository, were not there, and each load caught the
+# error and returned an empty dictionary. Every country ran on the default income
+# elasticity and the regional GDP default while the code read as though it did not.
+# Found 8 August 2026. Do not collapse these two names back into one.
+REPO_DATA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
+E_DATA = paths.DATA          # E:\Avia\Global\data, or AVIA_GLOBAL_ROOT\data
+
 SEGMENT = {r: ("Domestic" if r == "Domestic" else
               ("International Short Haul" if r in ("EU+UK", "Other Europe") else "Long Haul"))
            for r in ["Domestic", "EU+UK", "Other Europe", "Africa", "Middle East",
                      "Asia Pacific", "North America", "South America"]}
 
+ALLOW_MISSING = os.environ.get("AVIA_ALLOW_MISSING_DATA") == "1"
+DEGRADED: list[str] = []
+
 
 def _load(name):
-    return json.load(open(os.path.join(DATA, name)))
+    """A file that ships with the code, from the repository's own data folder."""
+    return json.load(open(os.path.join(REPO_DATA, name)))
 
 
-E_DATA = DATA
+def _load_external(name, what):
+    """A staged data file from the Global folder. Missing means the run is not the run
+    the caller thinks it is, so say which file, where it was looked for and what is lost,
+    and stop. Set AVIA_ALLOW_MISSING_DATA=1 for a deliberate degraded run; it is recorded
+    in DEGRADED and printed, so no output leaves without it being visible."""
+    fp = os.path.join(E_DATA, name)
+    if os.path.isfile(fp):
+        return json.load(open(fp))
+    msg = (f"{name} not found at {fp}. Without it, {what}. "
+           f"The Global root resolved to {paths.GLOBAL}; set AVIA_GLOBAL_ROOT if that is "
+           f"not where the data is. Run check_env.py for the full list.")
+    if not ALLOW_MISSING:
+        raise FileNotFoundError(msg)
+    DEGRADED.append(f"{name}: {what}")
+    print("DEGRADED RUN: " + msg, file=sys.stderr)
+    return None
+
+
 _OEF_GDP = None
 _EST_BG = None
 
 
 def _est_bG():
-    """Per-country estimated income elasticity (reliable only), or {} if not staged."""
+    """Per-country estimated income elasticity, reliable countries only."""
     global _EST_BG
     if _EST_BG is None:
-        try:
-            raw = json.load(open(os.path.join(E_DATA, "estimated_bG_by_country.json")))
-            _EST_BG = {k: v["bG"] for k, v in raw.items() if v.get("reliable")}
-        except FileNotFoundError:
-            _EST_BG = {}
+        raw = _load_external("estimated_bG_by_country.json",
+                             "every country runs on the default income elasticity rather "
+                             "than its own estimate")
+        _EST_BG = {k: v["bG"] for k, v in raw.items() if v.get("reliable")} if raw else {}
     return _EST_BG
 
 
 def _oef_gdp():
-    """Per-country OEF GDP (constant prices) history+forecast, or {} if not staged."""
+    """Per-country OEF GDP, constant prices, history and forecast."""
     global _OEF_GDP
     if _OEF_GDP is None:
-        try:
-            _OEF_GDP = json.load(open(os.path.join(E_DATA, "oef_gdp_pop_by_iso2.json")))["gdp"]
-        except FileNotFoundError:
-            _OEF_GDP = {}
+        raw = _load_external("oef_gdp_pop_by_iso2.json",
+                             "the forecast runs on the regional GDP growth default rather "
+                             "than the Oxford Economics country forecast")
+        _OEF_GDP = raw["gdp"] if raw else {}
     return _OEF_GDP
 
 
@@ -132,6 +162,57 @@ def _clamp_bG(bG):
     return max(lo, min(hi, bG))
 
 
+_AIR_REG = None
+_AIR_CX = None
+
+
+def _airport_regress():
+    """Per-airport regression. This file is excluded from the repository by .gitignore,
+    so a fresh clone will not have it and the run must say so rather than proceed with
+    nothing."""
+    global _AIR_REG
+    if _AIR_REG is None:
+        fp = os.path.join(REPO_DATA, "airport_regress.json")
+        if os.path.isfile(fp):
+            _AIR_REG = json.load(open(fp))
+        else:
+            msg = (f"airport_regress.json not found at {fp}. Without it no airport uses "
+                   f"its own fitted elasticity. The file is gitignored, so a clone does "
+                   f"not carry it: regenerate it with scripts/estimate_airport_diagnostics.py "
+                   f"or copy it from a machine that has it.")
+            if not ALLOW_MISSING:
+                raise FileNotFoundError(msg)
+            DEGRADED.append("airport_regress.json: no airport uses its own fitted elasticity")
+            print("DEGRADED RUN: " + msg, file=sys.stderr)
+            _AIR_REG = {}
+    return _AIR_REG
+
+
+def _airport_cx():
+    global _AIR_CX
+    if _AIR_CX is None:
+        cal = _load_external("aci_hub_calibration_2024.json",
+                             "no airport carries a connecting share, so every airport is "
+                             "treated as pure origin and destination")
+        _AIR_CX = {k: v.get("connecting_share") for k, v in cal.items()} if cal else {}
+    return _AIR_CX
+
+
+def _airport_applied_bG(iata):
+    """An airport's OWN estimate is applied only when it passes reliability AND its connecting share
+    is low enough that terminal ~ O&D (so the terminal-panel fit is not hub-development contamination).
+    Hubby airports fall back to the country value until the O&D re-estimation lands [P1]."""
+    if not get("global_drivers.use_airport_elasticities", True):
+        return None
+    r = _airport_regress().get(iata)
+    if not r or not r.get("reliable"):
+        return None
+    cx = _airport_cx().get(iata)
+    if cx is not None and cx > get("global_drivers.airport_elasticity_max_cx", 0.25):
+        return None
+    return _clamp_bG(r["bG_est"])
+
+
 def _bF(segment):
     return get("level3_defaults")[segment]["bF"]
 
@@ -187,12 +268,22 @@ def run_global(scenario="Baseline", base_od=None, airport_meta=None, years=None,
     by_airport_index = {}       # iata -> total O&D growth index (base year = 1.0)
     by_airport_intl_index = {}  # iata -> international O&D growth index (base year = 1.0)
 
+    _RMAP = {"EU+UK": "Europe", "Other Europe": "Europe", "Africa": "Africa", "Middle East": "Middle East",
+             "Asia Pacific": "Asia Pacific", "North America": "North America", "South America": "South America"}
+    _both = get("global_drivers.both_ends_gdp", True)
+    _reg_cache = {}
+    def _reg_index(rr):
+        if rr not in _reg_cache:
+            _reg_cache[rr] = _gdp_index(_RMAP.get(rr, rr), years, None, scenario)
+        return _reg_cache[rr]
+
     for iata, regs in base_od.items():
         m = meta[iata]
         country, a_region = m["country"], m["region"]
         maturity = _maturity(country, a_region, wb)
         G = _gdp_index(a_region, years, country, scenario)
         bG_est = _est_bG().get(country) if get("global_drivers.use_estimated_elasticities", False) else None
+        air_bG = _airport_applied_bG(iata)   # airport-own elasticity where earned (reliable + low connecting share)
         head = country_headroom(country, a_region) if use_propensity else None
         term_last = 0.0
         ap_tot = [0.0] * len(years)
@@ -201,13 +292,17 @@ def run_global(scenario="Baseline", base_od=None, airport_meta=None, years=None,
             if od0 <= 0:
                 continue
             seg = SEGMENT[r]
-            bG = bG_est if bG_est is not None else _bG(seg, maturity)
+            bG = air_bG if air_bG is not None else (bG_est if bG_est is not None else _bG(seg, maturity))
             bG = _clamp_bG(bG)   # applied elasticity stays inside the book bound (Method Spec 4.3)
             bF, F = _bF(seg), fare[seg]
+            Gcell = G
+            if _both and r != "Domestic":                       # gravity: grow on BOTH ends' GDP (per-direction driver)
+                Gd = _reg_index(r)
+                Gcell = [(G[i] * Gd[i]) ** 0.5 for i in range(len(years))]
             if head is not None:
-                series = demand.od_recursion_damped(od0, G, F, bG, bF, head, term_log)
+                series = demand.od_recursion_damped(od0, Gcell, F, bG, bF, head, term_log)
             else:
-                series = demand.od_recursion(od0, G, F, bG, bF)
+                series = demand.od_recursion(od0, Gcell, F, bG, bF)
             br = by_region.setdefault(r, {y: 0.0 for y in years})
             for i, y in enumerate(years):
                 br[y] += series[i]

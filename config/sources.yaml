@@ -46,3 +46,58 @@ sabre_columns:
   passengers: od_passengers          # booked O&D passengers (base year)
   period: year                       # 2025
 sabre_default_direction: out         # extract is UK-origin O&D; inbound added later
+
+
+
+
+
+
+
+# OAG schedule store: the panel behind the peak hour share fit (Capacity Method v0.4,
+# section 11.1). The store is data, so it never lives in a repo (tool standard 3) and
+# the path is config, never a literal (standard 4). Resolution order: --store argument,
+# then AVIA_OAG_STORE, then store_path below.
+oag_schedules:
+  name: "OAG schedules (Avia store)"
+  licence_class: C
+  rights_summary: "Commercial licence. Estimation and parameter use; no reconstitutable extracts."
+  store_path: "C:/Avia/oag.duckdb"     # dev PC, per STATE OF PLAY 29 Jul 2026; override with AVIA_OAG_STORE
+  # Read directly against C:/Avia/oag.duckdb, 3 August 2026. The store is ONE ROW PER
+  # OPERATED FLIGHT. The presence of days_of_op, eff_from and eff_to made it look like
+  # service grain, which it is not: see the row grain note below.
+  columns:
+    row_grain: operation               # operation | service | operated (see the note below)
+    table: oag
+    airport: dep_airport
+    timestamp: ""                      # not applicable at service grain
+    seats: seats                       # seats per operation; seats_total is the period total
+    passengers: ""                     # blank => seats x book load factor, stated on the panel report
+    arr_country: arr_country
+    home_country: dep_country          # international = arr_country <> dep_country
+    movements: ""                      # blank => one expanded operating date is one movement
+    days_of_op: days_of_op
+    eff_from: eff_from
+    eff_to: eff_to
+    dep_time: local_dep_time           # local clock time, which is what a peak hour is
+  # Row filter. CORRECTED 3 August 2026 after reading the store directly.
+  # dup_marker is NOT a codeshare marker in this store and must not be filtered on:
+  # BA57 LHR-JNB, operated by BA with no operating-carrier override, carries dup_marker 'D',
+  # and 'D' is 84.7% of Heathrow's 2019 rows. Filtering to '0' would delete most of the real
+  # departures (49,117 against 322,063) and was wrong in the earlier version of this file.
+  # service_type 'J' is 99.1% of rows and is the scheduled passenger service.
+  filter: "service_type = 'J'"
+  # Row grain. The store is ONE ROW PER OPERATED FLIGHT, not per service: NZ1 LHR-LAX appears
+  # 30 times in the 2019-06 file, once per operating day, each row carrying frequency 1 and the
+  # full season window. So eff_from and eff_to are the SEASON window and must never be used to
+  # place a row on a date; the period comes from the week key. Nothing is expanded.
+  # The real duplication is cross-region: a flight spanning two regions is listed in both region
+  # files (NZ1 appears in North America and in Europe). Factor 1.38 at Heathrow. Deduplicate on
+  # carrier, flight_no, dep_airport, arr_airport and local_dep_time, taking the count from one
+  # region: that gives 678 departures a day at Heathrow in June 2019, inside the 630 to 720 that
+  # John Carter's 70 to 80 ATM/hr over an 05:00 to 23:00 day implies. Raw it reads 934.
+  # Movements must count ARRIVALS as well: the runway constraint is ATM, and arrivals and
+  # departures bank at different times, so the combined flow is built as one series and not as
+  # twice the departure peak. arr_airport, local_arr_time and local_arr_day carry the other side.
+  # Snapshot and period handling now live in ingest/oag_store.py, shared with the
+  # backtests: one preferred tiling per region-year, and each airport read from its
+  # home region file only. Nothing here to set.

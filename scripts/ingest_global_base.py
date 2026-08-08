@@ -9,6 +9,7 @@ Usage: python3 scripts/ingest_global_base.py --qsi "<QSI app path>" --year 2025
 """
 from __future__ import annotations
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+from avia_forecast.io_safe import dump_atomic
 from avia_forecast.paths import DATA, OEF_DIR, ACI_DIR, ACI_DECRYPT, SABRE_DB, OAG_DB, QSI_REF, PREAGG, QSI_APP, OEF_GDP_XLSX
 import argparse, csv, json, os, sys
 from collections import defaultdict
@@ -31,7 +32,7 @@ def load_airport_country(qsi):
 def run(qsi, year):
     import duckdb
     apc = load_airport_country(qsi)
-    con = duckdb.connect(os.path.join(qsi, "preagg.duckdb"), read_only=True)
+    con = duckdb.connect(paths.PREAGG, read_only=True)
     rows = con.execute("select o, d, pax from od_p2p where year=?", [year]).fetchall()
     con.close()
 
@@ -64,8 +65,8 @@ def run(qsi, year):
                  for iata, regs in base_od.items()}
 
     os.makedirs(OUT, exist_ok=True)
-    json.dump(base_od_m, open(os.path.join(OUT, f"global_base_od_{year}.json"), "w"))
-    json.dump(meta, open(os.path.join(OUT, f"global_airport_meta_{year}.json"), "w"))
+    dump_atomic(base_od_m, os.path.join(OUT, f"global_base_od_{year}.json"))
+    dump_atomic(meta, os.path.join(OUT, f"global_airport_meta_{year}.json"))
 
     # coverage report
     n_air = len(meta)

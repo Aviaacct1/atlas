@@ -1,0 +1,16 @@
+{
+ "base": 2023,
+ "last": 2024,
+ "span": 5,
+ "n_airports": 2046,
+ "thin_schedule_airports": 30,
+ "wmape_by_horizon": {
+  "t+1": {
+   "blend": 0.0325,
+   "seats": 0.0324,
+   "econ": 0.0735,
+   "naive": 0.0752,
+   "blend_within_20pct": 0.8671
+  }
+ }
+}

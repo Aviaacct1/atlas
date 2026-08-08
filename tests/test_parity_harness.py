@@ -3,11 +3,14 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
+from avia_forecast import paths
 from avia_forecast.parity import harness
 
-# Jess's frozen template sits one level above the build repo.
-WORKBOOK = Path(__file__).resolve().parents[2] / \
-    "01 Pax Forecast Top Down (JR) - Avia additions v0.1.xlsx"
+# Jess Rowden's frozen template lives in the shared project folder and resolves through
+# paths.py. It was addressed as parents[2] until 8 August 2026, which is C:\Avia on the
+# Dev PC and C:\src once the repository moves, and is where the workbook is in neither
+# case, so these three tests skipped silently from the day they were written.
+WORKBOOK = Path(paths.PILOT_WORKBOOK)
 
 
 @pytest.mark.skipif(not WORKBOOK.exists(), reason="pilot workbook not present")

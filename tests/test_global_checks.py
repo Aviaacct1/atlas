@@ -38,3 +38,19 @@ def test_flags_missing_region():
     c2r = dict(c2r); del c2r["FR"]
     rec = gc.reconcile_levels(airports, cov_c, cov_r, c2r)
     assert any(i[0] == "country_without_region" for i in rec["issues"])
+
+
+def test_reconcile_connecting_and_tb():
+    from avia_forecast import global_checks as gc
+    # modest connecting: kept, no flag
+    conn, flag = gc.reconcile_connecting(10.0, 3.0)
+    assert conn == 3.0 and flag is None
+    # negative residual: floored to zero and flagged
+    conn, flag = gc.reconcile_connecting(10.0, -2.0)
+    assert conn == 0.0 and flag == "negative_residual"
+    # implausibly high connecting share: kept but flagged
+    conn, flag = gc.reconcile_connecting(1.0, 5.0)
+    assert conn == 5.0 and flag == "implausible_conx_share"
+    # T-B holds after reconciliation (terminal = od + conn), fails when it doesn't
+    assert gc.tb_check(3.0, 1.0, 2.0)
+    assert not gc.tb_check(5.0, 1.0, 2.0)

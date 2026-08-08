@@ -1,0 +1,20 @@
+{
+ "convention": "busy_30th",
+ "ln_a": -3.7386563653145997,
+ "b": 0.696246179706457,
+ "c": 0.11307622492231516,
+ "d": 4.998269733617205,
+ "n_obs": 6671,
+ "n_airports": 1403,
+ "r2": 0.9356938416869347,
+ "resid_sd": 0.23829284065820477,
+ "fitted_ok": true,
+ "se_b": 0.0023368774365057667,
+ "fallback_used": false,
+ "excluded": {
+  "below_floor": 5884,
+  "constrained": 944,
+  "thin_airport": 268
+ },
+ "notes": ""
+}

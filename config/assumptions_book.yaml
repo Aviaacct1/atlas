@@ -9,8 +9,7 @@ meta:
   spec_version: "Method Specification v0.1"
   base_year: 2025
   history_from: 2000
-  horizon_years: 35        # forecast base_year+35 (2060 this year), rolls with the vintage; OEMs do 20, we do 30-35
-  horizon: 2060
+  horizon: 2055
   author: "Avia Solutions"
 
 # --- Elasticity estimation (Method Spec 4.3-4.4, Elasticity Design) ---
@@ -108,6 +107,155 @@ capacity_register:
   load_factor_default: 0.82                # [P1] fallback load factor
   ab_reconcile_tol: 0.15                   # [P1] where both A and B exist, flag if derived-A vs design-B differ > 15%
   atfm_delay_flag_min_per_arr: 0.5         # [P1] chronic arrival ATFM delay threshold, minutes/arrival (validation proxy)
+
+# --- Peak hour share (Capacity Method and Evidence Record v0.4, section 11.1) ---
+# The share is fitted as a relationship across the schedule panel, not read off one
+# year and held flat. Peak-constrained airports are excluded from the estimation
+# sample: their filed peak reports the declared parameter, not demand.
+peak_hour:
+  convention: busy_30th                    # model convention (v0.4 section 10); DDFS supplies the rate
+  basis: passengers                        # passenger basis, not movements
+  # WINDOW. clock_hour = the 8,760 fixed hours of the year. rolling_60_step_5 = the
+  # best 60-minute window starting on any 5-minute boundary, taken once per clock hour.
+  # Rolling on a FIVE-minute step is the Avia DEFAULT (John Carter, 4 August 2026),
+  # and clients often ask for something else, so this is a per-engagement setting and
+  # not a constant. Pass window= to build_panel to override without touching the book.
+  # The Zagreb letter of 18 May 2026 specifies "30th busiest hour, rolling".
+  # The first version used 10 minutes, taken from how COORDINATORS declare capacity
+  # (Nantes and Basel publish "per rolling 60 minutes with a step of 10 minutes").
+  # Those are different things: 10 minutes is how a limit is STATED, 5 minutes is how
+  # Avia MEASURES demand. rolling_60_step_10 is kept so a declared rate can be tested
+  # on the step it was declared on, which is the right comparison against a published
+  # coordinator figure. clock_hour is kept because older house work uses it, and
+  # because a comparison is only valid against a panel on the same basis.
+  # NOTE the divergence from Jess Rowden's panel that this was once thought to explain
+  # was a convention mismatch, not a window one. See the withdrawal note below.
+  window: rolling_60_step_5
+  # WITHDRAWN, 4 August 2026: peak_spreading_bias. It recorded a supposed defect in our
+  # peak, circa 8% low at the median and 13% at small airports, blamed on the fact that
+  # the store gives one row per operated flight without saying which date it flew.
+  # There is no such defect. The comparison behind it was against Jess Rowden's summary,
+  # which reports the ABSOLUTE PEAK hour (row 7 of each per-airport Output sheet,
+  # LARGE(...,1)) while being headed "30th BHR". We were comparing our 30th busiest
+  # against her peak. Confirmed from her BEG workbook on 4 August 2026.
+  #
+  # Like for like, across her 231 airports, there is no systematic bias at all:
+  #     annual movements  -0.4%      annual seats  -0.3%
+  #     peak movements    +0.5%      peak seats    -0.4%     median absolute circa 5%
+  # Belgrade, compared cell for cell against her own workbook: annual movements -0.5%,
+  # annual seats -0.7%, peak movements +2.3%, peak seats +1.3%, and the 30th busiest
+  # hour seats agreeing to 0.0%, 4,229 against 4,227.
+  #
+  # The 5% is scatter, not bias: a single hour out of 8,760 turns on which flights fall
+  # inside one clock hour, and two independent builds differ at that level. The lesson
+  # is the one that keeps recurring here: establish the other side's convention before
+  # attributing a difference to a fault in ours.
+  min_annual_pax_m: 0.25                   # [P1] below this the observed peak is erratic
+  min_obs_per_airport: 3                   # [P1] airport-years needed to enter the sample
+  min_obs_total: 30                        # [P1] below this the fit falls back, flagged
+  min_r2: 0.80                             # [P1] below this the level is flagged indicative, not rejected
+  # OPERATING CHOICE, settled by the 2025 blind test and RERUN on 4 August 2026 after
+  # the Asia 2025 period-overlap fix. Fitted 2015-2019, projected each airport's share
+  # to 2025 on its actual traffic growth, scored against the schedules.
+  # 2,096 airports, median absolute error:
+  #     flat 17.3%   single 14.4%   class 14.2%   curve 14.2%
+  #   (before the fix: flat 17.7%   single 15.1%   class 15.1%   curve 15.0%)
+  # The fitted elasticity itself did NOT move: the fit years are 2015-2019 and the
+  # overlap was in 2025, so the fix corrected the thing being scored, not the
+  # parameter. Every method improved by roughly 0.7 of a point.
+  # The rule set before the first run was to prefer the simplest method that beats
+  # flat, and it still says single: the curve now leads by 0.2 of a point, which is
+  # not the clear margin required to justify the harder explanation.
+  #
+  # WATCH THIS, it is the one thing the rerun changed qualitatively. Above 15m the
+  # modelled methods stop earning their keep, and above 40m holding the share flat
+  # BEATS them: flat 5.4% against single 6.0%, and flat is within 20% on 100% of
+  # those airports. The likely reason is the honest one: the largest airports are at
+  # or near a declared ceiling, so their share is pinned by the declaration and does
+  # not drift the way the elasticity predicts. That is the population the capacity
+  # work is aimed at, so the elasticity is doing least work exactly where the answer
+  # matters most. It is not wrong to apply it there, but a constrained airport should
+  # be resolved from its declared rate rather than from this projection.
+  # n = 37 above 40m, so this is a signal to test, not yet a finding.
+  elasticity: 0.696                        # single elasticity, full store, capped airports out
+  #
+  # RECONCILED against Avia's own prior work, 4 August 2026. There is an in-house fit
+  # that predates this engine: "100th Peak Hour Peer Analysis.xlsx" in
+  # /Private/nick.oldrini/Work/LAP - LIM/D&A/Peak Hour/. It fits y = c*x^m on the 100th
+  # peak hour across a peer set of large airports:
+  #     total seats m 0.8036 (R2 0.68)   total ATMs m 0.7618 (R2 0.61)
+  #     arriving seats 0.7962   departing seats 0.8318
+  #     arriving ATMs  0.7569   departing ATMs  0.7339
+  # Its mean, 0.781, sits between our 5m_to_15m (0.754) and 15m_to_40m (0.822) class
+  # values, so the peer analysis and our class table AGREE. Both differ materially from
+  # the operating single value of 0.696, which is fitted on the full store and is
+  # therefore dominated by small airports: 1,401 of the 2,096 backtest airports are
+  # under 1m passengers.
+  #
+  # WHAT THAT COSTS AT A LARGE AIRPORT. Over twenty years at 3% growth:
+  #     b 0.696 (operating)   share x0.836   implied annual capacity +19.7%   6.1 extra years
+  #     b 0.822 (our 15-40m)  share x0.900   implied annual capacity +11.1%   3.6 extra years
+  #     b 0.804 (peer, seats) share x0.890   implied annual capacity +12.3%   3.9 extra years
+  # So applying the single value to a large airport buys it roughly 2.4 years of
+  # headroom it has not got, and the error is in the OPTIMISTIC direction. On a
+  # concession case that is the difference between a terminal inside the term and one
+  # outside it.
+  #
+  # THREE INDEPENDENT LINES POINT THE SAME WAY: the backtest by size (nothing beats
+  # holding the share flat above 40m), our own class table (b rises monotonically with
+  # size from 0.664 to 0.917), and the peer analysis. All three say the single value
+  # over-adjusts at the top end.
+  #
+  # OPERATING RULE, therefore, until this is reviewed by someone outside the build:
+  # the single elasticity STANDS as the default, because the pre-agreed rule was to
+  # prefer the simplest method that beats flat and it still does on the full sample.
+  # But above circa 15m passengers a projected share must not be the basis of a client
+  # binding year where a declared rate exists. Resolve from the register instead. That
+  # is what capacity.evidence is for, and it is the honest use of the two together.
+  # Reference only, not used by the engine:
+  elasticity_by_class:
+    under_1m: 0.676
+    1m_to_5m: 0.664
+    5m_to_15m: 0.754
+    15m_to_40m: 0.822
+    40m_and_above: 0.917
+  # The in-house peer fit, recorded so the two numbers can never drift apart unnoticed
+  # again. Source: 100th Peak Hour Peer Analysis.xlsx, Egnyte, /Private/nick.oldrini/
+  # Work/LAP - LIM/D&A/Peak Hour/. Different rank (100th, not 30th) and a large-airport
+  # peer set, so it is not expected to equal our full-store value; it IS expected to
+  # sit near our large-airport class values, and it does.
+  elasticity_peer_analysis_100th:
+    total_seats: 0.8036
+    total_atms: 0.7618
+    arriving_seats: 0.7962
+    departing_seats: 0.8318
+    arriving_atms: 0.7569
+    departing_atms: 0.7339
+  # Blind-test accuracy of the share projection itself, to be carried into any output
+  # that depends on it. Rerun 4 August 2026 after the Asia 2025 overlap fix: median
+  # absolute error 14.4%, 37% of airports within 10%, 62% within 20%, on the operating
+  # single-elasticity method. A 14% error on the share is a 14% error on the implied
+  # annual capacity, which at 3% growth moves a binding year by about 4.5 years. This
+  # is the evidence behind reporting a binding-year RANGE rather than a point (Capacity
+  # Method v0.4, section 11.3), and it is a stronger reason than the convention
+  # argument was.
+  share_projection_median_error: 0.144
+  fallback_elasticity: 0.696               # same as the operating value
+  projection_floor_share: 0.00015          # [P1] floor on projected share over a long horizon
+  constrained_utilisation_flag: 0.95       # [P1] filed peak at/above this share of the declared rate = constrained
+  capped_growth_ratio: 0.35                # [P1] peak growth below this share of annual growth reads as capped
+  capped_static_growth: 0.02               # [P1] growth below this counts as static
+  capped_size_floor_mvts: 150000           # [P1] a large airport with a static peak is at its ceiling
+  screen_min_mvts: 20000                   # [P1] below this the busy hour is too small to read a trend
+
+# --- Capacity evidence record and resolution (Capacity Method v0.4, sections 2, 5, 11) ---
+# Observations are stored as published and never converted in place; the resolution
+# layer runs whichever tests the evidence supports and records the ones it could not.
+capacity_evidence:
+  stand_turnaround_hours: 1.0              # [P1] indicative occupancy for the stand test
+  range_trigger_years: 3                   # [P1] binding years further apart than this => report a range
+  range_trigger_k_rel: 0.10                # [P1] resolved K differing by more than this => report a range
+  actual_over_k_block_rel: 1.00            # [P1] actual traffic above this multiple of K blocks the entry
 
 # --- Aggregation and reconciliation (Method Spec 7) ---
 reconciliation:
@@ -263,7 +411,13 @@ global_drivers:
     "Asia Pacific": 0.037
   maturity_gdppc_threshold_usd: 25000      # >= this (PPP) => mature elasticity [P1]
   mature_regions_default: ["EU+UK", "North America"]   # maturity fallback where country GDPpc unknown
-  use_estimated_elasticities: false        # [P1 Jess] false = literature bG + propensity (ACI-aligned 3.05%);
-  bG_applied_bounds: [0.6, 2.2]           # applied income elasticity clamp (Method Spec 4.3); excludes hub-inflated country estimates pending O&D re-estimation [P1]
-                                           # true = long-trend ACI-estimated per-country bG + propensity (4.07%,
-                                           # empirical but embeds non-repeating structural gains)
+
+# --- Rated-terminal overrun (steer doc 7 Aug 2026; PROVISIONAL until the capacity
+# workstream supersedes the parameters). A rated terminal level is a service-level
+# line, not a wall: airports operate above it (NTE, BSL) at a service cost. K is
+# never floored at throughput; spill applies only to growth above the observed base
+# level, at a soft share. No hard cap is applied where none is held.
+capacity_overrun:
+  soft_spill_share: 0.30          # share of demand above the observed base that spills [PROVISIONAL]
+  hard_cap_default: none_held     # explicit: no invented hard caps
+  provisional: true               # capacity workstream's parameters supersede on arrival

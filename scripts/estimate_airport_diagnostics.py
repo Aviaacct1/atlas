@@ -23,10 +23,26 @@ import numpy as np
 import pandas as pd
 
 from avia_forecast.estimate.level1 import fit_cell_restricted
+from avia_forecast.estimate.reliability import run_tests
+from avia_forecast.config import get
 
 REPO_DATA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 OUT = os.path.join(REPO_DATA, "airport_regress.json")
 BG_BOUND = (0.6, 2.2)
+
+
+def _bF_prior(segment):
+    """Level 3 literature fare elasticity for the segment (Method Spec 4.5).
+
+    This is the correct prior for the restricted Level 1 fit. It must NOT be read from
+    uk_estimated_bF.json: that file records the Level 2 pooled estimates which FAILED the
+    reliability sign test on the short UK panel (ISH +0.293, LH +0.273), and the method's
+    own answer to that failure is to fall back to the Level 3 literature value.
+    """
+    try:
+        return float(get("level3_defaults")[segment]["bF"])
+    except Exception:
+        return {"Domestic": -0.7, "International Short Haul": -0.7, "Long Haul": -0.5}.get(segment, -0.7)
 
 
 def _repo(fn):
@@ -39,19 +55,50 @@ def _panel(fn):
     return json.load(open(fp)) if os.path.exists(fp) else {}
 
 
-def _diag(df, bF_segment):
-    """Run the engine's restricted fit and return the diagnostics + a GDP partial-regression scatter."""
+def _diag(df, bF_segment, avg_flow_mppa=None):
+    """Run the engine's restricted fit and return the diagnostics + a GDP partial-regression scatter.
+
+    Reliability is decided by the engine's own T1-T6 rule (estimate.reliability.run_tests,
+    Method Spec 4.4), with thresholds from the assumptions book, so the forecast, the cockpit
+    and the Method Specification all use ONE definition. The full test trail is recorded so any
+    airport's verdict is auditable and the Econometrics tab can show which test failed.
+
+    `avg_flow_mppa` is the airport's average annual traffic in millions, needed by T5. Where it is
+    not supplied (the per-capita income fit, and the self-test) the T5 flow leg cannot be evaluated
+    and the older three-condition heuristic is reported instead, flagged via `rule`.
+    """
     fit = fit_cell_restricted(df, bF_segment)
     lnG = np.log(df.sort_values("year")["G"].to_numpy(dtype=float))
     lnGc = lnG - lnG.mean()
     resid = np.asarray(fit.resid, dtype=float)
     y_partial = fit.bG * lnGc + resid          # GDP-explained part + residual (partial regression)
     pts = [[round(float(x), 4), round(float(y), 4)] for x, y in zip(lnGc, y_partial)]
-    reliable = (BG_BOUND[0] <= fit.bG <= BG_BOUND[1]) and abs(fit.t_bG) >= 1.7 and fit.r2 >= 0.5
-    return {"bG_est": round(float(fit.bG), 3), "r2": round(float(fit.r2), 3),
-            "t": round(float(fit.t_bG), 2), "n": int(fit.n_obs),
-            "window": f"{int(df['year'].min())}-{int(df['year'].max())}",
-            "reliable": bool(reliable), "points": pts}
+
+    # the pre-July-2026 heuristic, kept only so the change in the applied set is measurable
+    legacy = (BG_BOUND[0] <= fit.bG <= BG_BOUND[1]) and abs(fit.t_bG) >= 1.7 and fit.r2 >= 0.5
+
+    rec = {"bG_est": round(float(fit.bG), 3), "r2": round(float(fit.r2), 3),
+           "t": round(float(fit.t_bG), 2), "n": int(fit.n_obs),
+           "window": f"{int(df['year'].min())}-{int(df['year'].max())}",
+           "reliable_legacy": bool(legacy), "bF_prior": round(float(bF_segment), 3),
+           "points": pts}
+
+    if avg_flow_mppa is None:
+        rec["reliable"] = bool(legacy)
+        rec["rule"] = "legacy_heuristic_no_flow_data"
+        return rec
+
+    trail = run_tests(fit, df, bF_prior=bF_segment, avg_flow_mppa=float(avg_flow_mppa))
+    rec["reliable"] = bool(trail.all_pass)
+    rec["rule"] = "T1-T6"
+    rec["tests"] = {"T1_sign": bool(trail.T1), "T2_range": bool(trail.T2),
+                    "T3_significance": bool(trail.T3), "T4_fit": bool(trail.T4),
+                    "T5_history": bool(trail.T5), "T6_cagr_cross_check": bool(trail.T6),
+                    "bG_implied": (None if trail.bG_implied != trail.bG_implied
+                                   else round(float(trail.bG_implied), 3)),
+                    "t6_window": list(trail.t6_window) if trail.t6_window else None,
+                    "avg_flow_mppa": round(float(avg_flow_mppa), 2)}
+    return rec
 
 
 def selftest():
@@ -81,10 +128,11 @@ def run(airports=None):
     pop_all = (oef.get("pop") or oef.get("population") if isinstance(oef, dict) else None) or {}
     gdp_uk = _repo("uk_real_gdp_oef.json")
     fare = _repo("fare_index_constructed.json")
-    bF = _repo("uk_estimated_bF.json")
     seg = "International Short Haul"
     fseries = fare.get(seg) or {}
-    bF_seg = bF.get(seg, -0.3)
+    # Level 3 literature prior, not the rejected Level 2 UK estimates (see _bF_prior)
+    bF_seg = _bF_prior(seg)
+    print(f"fare prior for the restricted fit: bF({seg}) = {bF_seg}")
 
     sample = panel[0] if isinstance(panel, list) and panel else {}
     codekey = next((k for k in ("iata", "airport_code", "code", "airport", "apt") if k in sample), None)
@@ -117,7 +165,8 @@ def run(airports=None):
         if len(rows) < 12:
             continue
         try:
-            rec = _diag(pd.DataFrame(rows), bF_seg)                          # GDP elasticity (total GDP)
+            avg_flow_mppa = (sum(float(v) for v in hist.values()) / len(hist)) / 1e6
+            rec = _diag(pd.DataFrame(rows), bF_seg, avg_flow_mppa)           # GDP elasticity (total GDP)
             if len(rows_pc) >= 12:
                 inc = _diag(pd.DataFrame(rows_pc), bF_seg)                   # income elasticity (GDP per capita)
                 rec["income"] = {"bY": inc["bG_est"], "r2": inc["r2"], "t": inc["t"],
