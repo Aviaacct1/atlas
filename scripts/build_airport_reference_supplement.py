@@ -43,14 +43,19 @@ from avia_forecast import paths  # noqa: E402
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Where OAG's city grouping and the reference table's convention disagree, and why.
-# Each of these puts an airport into an EXISTING catchment rather than creating a new
-# one, which is a modelling decision and not a data lookup, so each carries a reason.
+# Where OAG's city grouping and the reference table's convention disagree.
+#
+# This started as a hand-written entry: Chengdu Tianfu into CTU, because the table
+# groups a metropolitan area under one code and OAG does not. That was me asserting a
+# fact about geography, which is the thing this estate is not supposed to do.
+# scripts/detect_colocated_airports.py now derives the same answer from the schedule,
+# putting Tianfu 57 km from Shuangliu against a threshold of 72 km read off the table's
+# own groupings, so the override below is kept only as a fallback for a host with no
+# detector output and every entry says which source decided it.
 OVERRIDES = {
-    "TFU": ("CTU", "Chengdu Tianfu serves Chengdu alongside Shuangliu. OAG gives it its "
-                   "own city code; the reference table groups a metropolitan area under "
-                   "one code, as it does for Beijing and Mexico City, and the catchment "
-                   "logic in scope_global groups on city_code"),
+    "TFU": ("CTU", "Chengdu Tianfu serves Chengdu alongside Shuangliu. Confirmed by "
+                   "scripts/detect_colocated_airports.py at 57 km separation over 74 "
+                   "shared destinations"),
 }
 
 
@@ -200,13 +205,36 @@ def main(argv=None):
                           for a, s, j in sorted(disagree)[:8])
               + (" ..." if len(disagree) > 8 else ""))
 
+    # Measured city assignments, where the detector has run. These take precedence over
+    # OAG's city code, because OAG's is a commercial metropolitan definition and the
+    # catchment logic needs a physical one. Each carries its measured separation, so a
+    # reader can see what decided it rather than taking it on trust.
+    coloc = {}
+    coloc_path = os.path.join(paths.DATA, "colocated_airports.json")
+    if os.path.exists(coloc_path):
+        with open(coloc_path, "r", encoding="utf-8") as fh:
+            cj = json.load(fh)
+        for p in cj.get("proposed", []):
+            coloc[p["airport"]] = (
+                p["city_code"],
+                f"measured {p['separation_km_lower_bound']:.0f} km from "
+                f"{p['nearest_in_table']} over {p['shared_destinations']} shared "
+                f"destinations, against a threshold of {cj['threshold_km']:.0f} km read "
+                "off the reference table's own city groupings")
+        print(f"\nscripts/detect_colocated_airports.py has run: {len(coloc)} city "
+              f"assignments come from measurement rather than from OAG's city code")
+    else:
+        print(f"\nno detector output at {coloc_path}. City codes follow OAG except for "
+              f"the {len(OVERRIDES)} hand-written override(s). Run "
+              "scripts/detect_colocated_airports.py first.")
+
     rows, unresolved, review, new_cities = [], [], [], set()
     for a in missing:
         cc = iso.get(a)
         if not cc:
             unresolved.append(a)
             continue
-        city, why = OVERRIDES.get(a, (None, None))
+        city, why = coloc.get(a) or OVERRIDES.get(a, (None, None))
         city = city or oag_city.get(a) or a
         joins = city in city_name
         if not joins:
@@ -258,7 +286,7 @@ def main(argv=None):
                 else "forms a new catchment of its own")
         print(f"{a:<6}{city:<6}{cc:<4}{pax:>8.3f}  {note}")
         if why:
-            print(f"        OVERRIDE, not OAG's city code: {why}")
+            print(f"        not OAG's city code: {why}")
 
     out = args.out or os.path.join(REPO, "data",
                                    f"airport_reference_supplement_{args.year}.csv")

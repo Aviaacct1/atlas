@@ -1756,3 +1756,41 @@ peak_panel_2025_busy30.csv, 442 airports each.
 
     The 6.4% understatement of the world base year is the larger finding and stands on
     its own: it is on the dashboard, in the OGF deck and in the comparator table.
+
+112. **Finding airports that share a city, from the schedule.** The replacement
+    detector in `build_airport_reference_supplement.py` spots an airport that took over
+    from a closed one, because the incumbent collapses. It is blind to the case that
+    caused all of this: a second airport at a city whose first airport keeps trading.
+    Beijing Daxing was caught only because OAG's city code puts it in BJS, and Chengdu
+    Tianfu only because somebody went looking. Neither was caught by a test, and
+    "somebody went looking" does not scale and is not a control.
+
+    `scripts/detect_colocated_airports.py` is the test, and it needs no coordinates and
+    no recall. For two airports A and B and any destination C both serve, the triangle
+    inequality gives |d(A,C) - d(B,C)| <= d(A,B), so the largest such difference over
+    every shared destination is a lower bound on their separation. A metropolitan pair
+    keeps it small; a national pair cannot, because some destination lies near one and
+    far from the other.
+
+    **The threshold is read off the reference table, not chosen.** On the 17 pairs the
+    table already groups under one city code the bound has a median of 39 km and a
+    maximum of 71 km; on the 9,624 pairs it separates within a country the median is
+    1,226 km. The cut is set at the 95th percentile of the same-city population, 72 km,
+    at which 34 of the 9,624, 0.35%, also pass and are the price of the method. The
+    calibration set is only 17 pairs and the different-city minimum is 20 km, below the
+    cut, so this proposes and a human confirms.
+
+    Eleven proposals from 61 airports tested, and it finds the two that started this
+    without being told: **Tianfu 57 km from Shuangliu over 74 shared destinations and
+    Daxing 66 km from Capital over 124.** Also Felipe Angeles to Mexico City, Mopa to
+    Goa, Zhukovsky to Moscow, Modlin to Warsaw, Techo to Phnom Penh, Sphinx to Cairo,
+    Al Maktoum to Dubai, Baneasa to Bucharest and Luanda's new field to Luanda. The
+    hand-written Tianfu override is now derived rather than asserted, which removes the
+    one place in this work where a fact came from somebody's head.
+
+    **The two detectors are complementary and neither is sufficient.** The distance test
+    needs the incumbent still flying, since a closed airport has no current profile, so
+    it misses Astana, Chisinau, Ulaanbaatar and Siem Reap. The handover test needs the
+    incumbent closed, so it misses Daxing and Tianfu. Where they overlap they disagree
+    usefully: the handover test paired Phnom Penh Techo with Siem Reap on nothing more
+    than both being Cambodian, and the distance test puts it 23 km from Phnom Penh.
