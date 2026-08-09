@@ -1643,3 +1643,55 @@ peak_panel_2025_busy30.csv, 442 airports each.
     (6) v2 behind-market journey penalty BEFORE the full run; pilot ships on the
     labelled proxy (shapes/weights unaffected). Pilot addition: NTE 2050 spill run
     end to end through pilot weights, published to both threads.
+
+108. **The fleet productivity wedge, and what it says about the Boeing gap.** Built for
+    OGF deck pages 24 and 25, against the OAG schedule store. Three new scripts, all
+    check-only, none of which changes a forecast number: `scripts/guard_oag_wedge.py`,
+    `scripts/build_fleet_wedge.py`, `scripts/gap_decomposition.py`, plus
+    `config/aircraft_body_types.yaml` mapping all 245 aircraft codes in the store to an
+    aisle count and a class, so Boeing's single aisle, regional jet and widebody
+    segments can each be cut from the same data.
+
+    The identity holds to zero residual: ASK = departures x seats per departure x stage
+    length. World single aisle, 2015-2019, ASK 6.9% a year = departures 5.0% x gauge
+    1.2% x stage length 0.6%. Gauge splits by shift-share into up-gauging 0.5% and
+    densification 0.6%. Over 2015-2025 the single aisle wedge is ASK 4.5% = departures
+    2.7% x gauge 0.9% x stage 0.8%. Boeing's window is 2004-2023 and ours cannot be,
+    because the store holds 2015-2019 and 2023-2025 with 2020-2022 excluded by policy;
+    the window difference is stated on the output and must be stated on the slide.
+    Boeing's fourth term, flights per aircraft per day, is not produced: it needs a
+    count of aircraft in service, and deriving it from the dashboard's PROD_NB = 330
+    and PROD_WB = 1,050 constants would return whatever was typed in.
+
+    **The finding that matters.** `compare_regions_boeing.py` states in its header that
+    a constant stage length cancels in a CAGR. It cancels between our RPK and our own
+    passengers, which is why our RPK CAGR equals our passenger CAGR to the decimal
+    place. It does NOT cancel against Boeing, whose RPK CAGR carries their stage length
+    growth inside it, and that comparison is the only thing the script is for. Measured
+    stage length growth from the schedule is 0.6% a year at world level over 2015-2025.
+    Applied as a test, the world gap against Boeing goes from -0.9pp to -0.2pp, Eurasia
+    from -1.1pp to -0.1pp, Southeast Asia from -1.4pp to -0.2pp and North America from
+    -0.8pp to -0.3pp, while China stays at -1.8pp, Africa -1.2pp and the Middle East
+    -1.1pp. Two thirds of the headline gap is a conversion convention; what is left
+    sits in the regions where affordability is the mechanism we do not model. Nothing
+    is changed: `gap_decomposition.py` measures, it does not write. A mechanical
+    extrapolation over-corrects Oceania and Northeast Asia, so the fix is a stated
+    stage length path per region, not a single historic rate. Owner: John.
+
+109. **Two defects the guard caught before any number was published.**
+    (a) The Heathrow 2019 anchor in `avia_forecast/ingest/oag_store.py` is a TWO-WAY
+    figure: 477,954 movements and 100.4m seats count arrivals and departures together,
+    as an airport publishes them. The store holds one row per departure, so a
+    departures-only query returns exactly half and reads as a store missing half its
+    data. The docstring did not say so and now does, with the one-way figures beside
+    it: 238,978 departures and 50.2m departing seats.
+    (b) **1,503 departure airports in the OAG store carry no record in
+    `data/global_airport_meta_2025.json`, and among them are Beijing Daxing and Chengdu
+    Tianfu.** PKX went from 1.85m departing seats in 2019 to 31.87m in 2025 and TFU
+    from nil to 33.34m, while PEK fell from 62.65m to 45.28m and CTU from 32.87m to
+    19.91m. The Beijing system grew 19.6% between 2019 and 2025 and the Chengdu system
+    62%; the forecast, seeing only PEK and CTU, reads them as -27.7% and -39.4%. China
+    is our largest gap against Boeing at -1.9pp and this is the first candidate for it.
+    Also absent: Mexico Felipe Angeles, Astana Nursultan Nazarbayev, Dakar Blaise
+    Diagne, Goa Mopa, Yogyakarta International, Medan Kualanamu, Warsaw Modlin. Sizing
+    the effect on the China forecast is the next measurement. Owner: John.

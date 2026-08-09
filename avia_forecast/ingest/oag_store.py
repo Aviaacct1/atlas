@@ -31,12 +31,23 @@ What the store is, established by reading it on 3 August 2026:
 
   * local_dep_time and local_arr_time are HHMM with NO leading zero: "700" is 07:00.
 
-Validation anchor, Heathrow 2019, home region only, service_type J:
+Validation anchor, Heathrow 2019, home region only, service_type J. Every figure here
+is TWO WAY, arrivals and departures together, because that is how an airport publishes
+its movements. The store holds one row per departure, so the query behind these numbers
+is `dep_airport = 'LHR' OR arr_airport = 'LHR'`. A departures-only query returns exactly
+half of each, and on 9 August 2026 that read as a store missing half its data until the
+two-way basis was found. Read the basis before concluding the store is wrong, and never
+double a figure that is already two way:
 
-    movements   477,954 against Heathrow's published "over 470,000"
-    seats       100.4m, which against the published 80.9m passengers implies an actual
-                load factor of 0.806
+    movements   477,954 two way against Heathrow's published "over 470,000".
+                One way, 238,978 departures, which is the basis for capacity, ASK and
+                anything that goes on a chart as departing seats
+    seats       100.3m two way, which against the published 80.9m passengers implies an
+                actual load factor of 0.806. One way, 50.2m departing seats
     passengers  82.3m on the assumptions-book load factor of 0.82, so 1.7% high
+
+scripts/guard_oag_wedge.py reproduces all four figures and fails if any moves by more
+than 1%.
 
 The seats extraction is therefore right and the 1.7% is the book load factor running
 1.4 points above Heathrow's actual. The peak hour SHARE is unaffected, because the load

@@ -1,0 +1,286 @@
+# Aircraft body type map for the OAG store.
+# Avia Solutions. Version 1.0, 9 August 2026.
+#
+# Every aircraft_code that appears in C:\Avia\oag.duckdb on service_type J, with the
+# aircraft_name the store itself carries and two classifications:
+#
+#   aisles         1 or 2, the physical cabin aisle count. 0 for aircraft with no
+#                  airliner cabin: helicopters, light aircraft, business jets,
+#                  freighters and the "equipment varies" placeholder.
+#   class          mainline_jet, regional_jet, turboprop or other.
+#
+# Two fields rather than one because Boeing's segments and the physical aisle count do
+# not agree. Boeing's "single aisle" segment excludes regional jets, which are a
+# separate segment in the Commercial Market Outlook, while an Embraer 190 and a CRJ900
+# both have one aisle. Holding both lets the same store produce either cut:
+#
+#   Boeing single aisle  =  aisles 1 and class mainline_jet
+#   Boeing regional jet  =  class regional_jet
+#   Boeing widebody      =  aisles 2
+#
+# The split between mainline_jet and regional_jet follows the aircraft family as the
+# manufacturer designates it, not a seat count: the CRJ, ERJ, E-Jet, Superjet, ARJ21,
+# Fokker 70, BAe 146 and Avro RJ families are regional jets whatever configuration a
+# carrier fits, and the 737, A320, A220, 717, MD-80 and MD-90 families are mainline
+# whatever configuration a carrier fits. A seat rule would move the Embraer 195 and the
+# Fokker 100 between segments as densification changes their seat count, which is the
+# very effect the fleet productivity wedge is measuring.
+#
+# Source for the code list and the names: the aircraft_code and aircraft_name columns of
+# the OAG store, read 9 August 2026, 245 distinct codes on service type J.
+# Source for the classification: the manufacturer type designation carried in the same
+# aircraft_name field.
+#
+# scripts/guard_oag_wedge.py reports the share of SEATS carried by codes absent from
+# this map, and fails above 2%. Add a row when the store gains a code.
+
+version: 1.0
+updated: 2026-08-09
+source: OAG store aircraft_code and aircraft_name, service type J, read 9 August 2026
+
+codes:
+  "320": {name: Airbus A320, aisles: 1, class: mainline_jet}
+  "738": {name: Boeing 737-800, aisles: 1, class: mainline_jet}
+  "73H": {name: Boeing 737-800 winglets, aisles: 1, class: mainline_jet}
+  "321": {name: Airbus A321, aisles: 1, class: mainline_jet}
+  "319": {name: Airbus A319, aisles: 1, class: mainline_jet}
+  "77W": {name: Boeing 777-300ER, aisles: 2, class: mainline_jet}
+  "333": {name: Airbus A330-300, aisles: 2, class: mainline_jet}
+  "73W": {name: Boeing 737-700 winglets, aisles: 1, class: mainline_jet}
+  "7M8": {name: Boeing 737 MAX 8, aisles: 1, class: mainline_jet}
+  "32N": {name: Airbus A320neo, aisles: 1, class: mainline_jet}
+  "32Q": {name: Airbus A321neo, aisles: 1, class: mainline_jet}
+  "739": {name: Boeing 737-900, aisles: 1, class: mainline_jet}
+  "737": {name: Boeing 737 unspecified, aisles: 1, class: mainline_jet}
+  "789": {name: Boeing 787-9, aisles: 2, class: mainline_jet}
+  "32A": {name: Airbus A320 sharklets, aisles: 1, class: mainline_jet}
+  "332": {name: Airbus A330-200, aisles: 2, class: mainline_jet}
+  "388": {name: Airbus A380-800, aisles: 2, class: mainline_jet}
+  "E90": {name: Embraer 190, aisles: 1, class: regional_jet}
+  "359": {name: Airbus A350-900, aisles: 2, class: mainline_jet}
+  "AT7": {name: ATR 72, aisles: 1, class: turboprop}
+  "788": {name: Boeing 787-8, aisles: 2, class: mainline_jet}
+  "330": {name: Airbus A330 unspecified, aisles: 2, class: mainline_jet}
+  "772": {name: Boeing 777-200 and 200ER, aisles: 2, class: mainline_jet}
+  "CR9": {name: Bombardier CRJ900, aisles: 1, class: regional_jet}
+  "773": {name: Boeing 777-300, aisles: 2, class: mainline_jet}
+  "DH4": {name: De Havilland Canada Dash 8-400, aisles: 1, class: turboprop}
+  "777": {name: Boeing 777 unspecified, aisles: 2, class: mainline_jet}
+  "E75": {name: Embraer 175, aisles: 1, class: regional_jet}
+  "32B": {name: Airbus A321 sharklets, aisles: 1, class: mainline_jet}
+  "763": {name: Boeing 767-300, aisles: 2, class: mainline_jet}
+  "73G": {name: Boeing 737-700, aisles: 1, class: mainline_jet}
+  "E95": {name: Embraer 195, aisles: 1, class: regional_jet}
+  "757": {name: Boeing 757 unspecified, aisles: 1, class: mainline_jet}
+  "787": {name: Boeing 787 unspecified, aisles: 2, class: mainline_jet}
+  "717": {name: Boeing 717-200, aisles: 1, class: mainline_jet}
+  "744": {name: Boeing 747-400, aisles: 2, class: mainline_jet}
+  "CRJ": {name: Bombardier CRJ unspecified, aisles: 1, class: regional_jet}
+  "CR7": {name: Bombardier CRJ700, aisles: 1, class: regional_jet}
+  "E7W": {name: Embraer 175 enhanced winglets, aisles: 1, class: regional_jet}
+  "73J": {name: Boeing 737-900 winglets, aisles: 1, class: mainline_jet}
+  "E70": {name: Embraer 170, aisles: 1, class: regional_jet}
+  "32S": {name: Airbus A318 A319 A320 A321, aisles: 1, class: mainline_jet}
+  "223": {name: Airbus A220-300, aisles: 1, class: mainline_jet}
+  "733": {name: Boeing 737-300, aisles: 1, class: mainline_jet}
+  "767": {name: Boeing 767 unspecified, aisles: 2, class: mainline_jet}
+  "7M9": {name: Boeing 737 MAX 9, aisles: 1, class: mainline_jet}
+  "M88": {name: McDonnell Douglas MD-88, aisles: 1, class: mainline_jet}
+  "ER4": {name: Embraer ERJ 145, aisles: 1, class: regional_jet}
+  "735": {name: Boeing 737-500, aisles: 1, class: mainline_jet}
+  "ATR": {name: ATR 42 and ATR 72, aisles: 1, class: turboprop}
+  "DH8": {name: De Havilland Canada Dash 8 unspecified, aisles: 1, class: turboprop}
+  "343": {name: Airbus A340-300, aisles: 2, class: mainline_jet}
+  "76W": {name: Boeing 767-300 winglets, aisles: 2, class: mainline_jet}
+  "77L": {name: Boeing 777-200LR, aisles: 2, class: mainline_jet}
+  "752": {name: Boeing 757-200, aisles: 1, class: mainline_jet}
+  "M80": {name: McDonnell Douglas MD-80 unspecified, aisles: 1, class: mainline_jet}
+  "339": {name: Airbus A330-900neo, aisles: 2, class: mainline_jet}
+  "73E": {name: Boeing 737-500 winglets, aisles: 1, class: mainline_jet}
+  "351": {name: Airbus A350-1000, aisles: 2, class: mainline_jet}
+  "ERJ": {name: Embraer ERJ 135 140 145, aisles: 1, class: regional_jet}
+  "781": {name: Boeing 787-10, aisles: 2, class: mainline_jet}
+  "734": {name: Boeing 737-400, aisles: 1, class: mainline_jet}
+  "346": {name: Airbus A340-600, aisles: 2, class: mainline_jet}
+  "7S8": {name: Boeing 737-800 scimitar winglets, aisles: 1, class: mainline_jet}
+  "SU9": {name: Sukhoi Superjet 100-95, aisles: 1, class: regional_jet}
+  "764": {name: Boeing 767-400, aisles: 2, class: mainline_jet}
+  "DH3": {name: De Havilland Canada Dash 8-300, aisles: 1, class: turboprop}
+  "74H": {name: Boeing 747-8, aisles: 2, class: mainline_jet}
+  "CRK": {name: Bombardier CRJ1000, aisles: 1, class: regional_jet}
+  "M90": {name: McDonnell Douglas MD-90, aisles: 1, class: mainline_jet}
+  "73C": {name: Boeing 737-300 winglets, aisles: 1, class: mainline_jet}
+  "753": {name: Boeing 757-300, aisles: 1, class: mainline_jet}
+  "100": {name: Fokker 100, aisles: 1, class: regional_jet}
+  "736": {name: Boeing 737-600, aisles: 1, class: mainline_jet}
+  "295": {name: Embraer 195-E2, aisles: 1, class: regional_jet}
+  "75W": {name: Boeing 757-200 winglets, aisles: 1, class: mainline_jet}
+  "AT4": {name: ATR 42-300 and 320, aisles: 1, class: turboprop}
+  "M83": {name: McDonnell Douglas MD-83, aisles: 1, class: mainline_jet}
+  "318": {name: Airbus A318, aisles: 1, class: mainline_jet}
+  "73L": {name: Boeing 737-200 mixed configuration, aisles: 1, class: mainline_jet}
+  "SF3": {name: Saab 340, aisles: 1, class: turboprop}
+  "350": {name: Airbus A350 unspecified, aisles: 2, class: mainline_jet}
+  "DH1": {name: De Havilland Canada Dash 8-100, aisles: 1, class: turboprop}
+  "73M": {name: Boeing 737 mixed configuration, aisles: 1, class: mainline_jet}
+  "M82": {name: McDonnell Douglas MD-82, aisles: 1, class: mainline_jet}
+  "CNC": {name: Cessna single turboprop light aircraft, aisles: 0, class: other}
+  "747": {name: Boeing 747 unspecified, aisles: 2, class: mainline_jet}
+  "CR2": {name: Bombardier CRJ200, aisles: 1, class: regional_jet}
+  "C27": {name: Comac ARJ21-700, aisles: 1, class: regional_jet}
+  "221": {name: Airbus A220-100, aisles: 1, class: mainline_jet}
+  "380": {name: Airbus A380 unspecified, aisles: 2, class: mainline_jet}
+  "DHT": {name: De Havilland Canada DHC-6 Twin Otter, aisles: 1, class: turboprop}
+  "AB6": {name: Airbus A300-600, aisles: 2, class: mainline_jet}
+  "EMJ": {name: Embraer 170 to 195 unspecified, aisles: 1, class: regional_jet}
+  "310": {name: Airbus A310 unspecified, aisles: 2, class: mainline_jet}
+  "75T": {name: Boeing 757-300 winglets, aisles: 1, class: mainline_jet}
+  "AR8": {name: Avro RJ85, aisles: 1, class: regional_jet}
+  "345": {name: Airbus A340-500, aisles: 2, class: mainline_jet}
+  "340": {name: Airbus A340 unspecified, aisles: 2, class: mainline_jet}
+  "AR1": {name: Avro RJ100, aisles: 1, class: regional_jet}
+  "CS3": {name: Bombardier CS300, aisles: 1, class: mainline_jet}
+  "313": {name: Airbus A310-300, aisles: 2, class: mainline_jet}
+  "ERD": {name: Embraer ERJ 140, aisles: 1, class: regional_jet}
+  "F70": {name: Fokker 70, aisles: 1, class: regional_jet}
+  "73Q": {name: Boeing 737-400 mixed configuration, aisles: 1, class: mainline_jet}
+  "DH2": {name: De Havilland Canada Dash 8-200, aisles: 1, class: turboprop}
+  "CNA": {name: Cessna light aircraft, aisles: 0, class: other}
+  "F50": {name: Fokker 50, aisles: 1, class: turboprop}
+  "ER3": {name: Embraer ERJ 135, aisles: 1, class: regional_jet}
+  "CR5": {name: Bombardier CRJ550, aisles: 1, class: regional_jet}
+  "AN4": {name: Antonov An-24, aisles: 1, class: turboprop}
+  "BEH": {name: Beechcraft 1900D, aisles: 1, class: turboprop}
+  "762": {name: Boeing 767-200, aisles: 2, class: mainline_jet}
+  "732": {name: Boeing 737-200, aisles: 1, class: mainline_jet}
+  "74E": {name: Boeing 747-400 mixed configuration, aisles: 2, class: mainline_jet}
+  "290": {name: Embraer 190-E2, aisles: 1, class: regional_jet}
+  "J41": {name: BAe Jetstream 41, aisles: 1, class: turboprop}
+  "MA6": {name: Xian MA60, aisles: 1, class: turboprop}
+  "BE1": {name: Beechcraft 1900, aisles: 1, class: turboprop}
+  "S20": {name: Saab 2000, aisles: 1, class: turboprop}
+  "73N": {name: Boeing 737-300 mixed configuration, aisles: 1, class: mainline_jet}
+  "EM2": {name: Embraer 120 Brasilia, aisles: 1, class: turboprop}
+  "73R": {name: Boeing 737-700 mixed configuration, aisles: 1, class: mainline_jet}
+  "CRA": {name: Bombardier CRJ705, aisles: 1, class: regional_jet}
+  "338": {name: Airbus A330-800neo, aisles: 2, class: mainline_jet}
+  "CS1": {name: Bombardier CS100, aisles: 1, class: mainline_jet}
+  "SWM": {name: Fairchild Swearingen Metro, aisles: 1, class: turboprop}
+  "31N": {name: Airbus A319neo, aisles: 1, class: mainline_jet}
+  "919": {name: Comac C919, aisles: 1, class: mainline_jet}
+  "143": {name: BAe 146-300, aisles: 1, class: regional_jet}
+  "CNF": {name: Cessna 208B Caravan, aisles: 0, class: other}
+  "C09": {name: Comac C909, aisles: 1, class: regional_jet}
+  "220": {name: Airbus A220 unspecified, aisles: 1, class: mainline_jet}
+  "146": {name: BAe 146 unspecified, aisles: 1, class: regional_jet}
+  "J32": {name: BAe Jetstream 32, aisles: 1, class: turboprop}
+  "7M7": {name: Boeing 737 MAX 7, aisles: 1, class: mainline_jet}
+  "T20": {name: Tupolev Tu-204 and Tu-214, aisles: 1, class: mainline_jet}
+  "342": {name: Airbus A340-200, aisles: 2, class: mainline_jet}
+  "YK2": {name: Yakovlev Yak-42 and Yak-142, aisles: 1, class: mainline_jet}
+  "L4T": {name: Let L-410, aisles: 1, class: turboprop}
+  "727": {name: Boeing 727 unspecified, aisles: 1, class: mainline_jet}
+  "CR1": {name: Bombardier CRJ100, aisles: 1, class: regional_jet}
+  "75M": {name: Boeing 757-200 mixed configuration, aisles: 1, class: mainline_jet}
+  "PL2": {name: Pilatus PC-12, aisles: 0, class: other}
+  "SFB": {name: Saab 340B, aisles: 1, class: turboprop}
+  "141": {name: BAe 146-100, aisles: 1, class: regional_jet}
+  "909": {name: Comac C909, aisles: 1, class: regional_jet}
+  "AT5": {name: ATR 42-500, aisles: 1, class: turboprop}
+  "A81": {name: Antonov An-148-100, aisles: 1, class: regional_jet}
+  "BNI": {name: Britten-Norman Islander, aisles: 0, class: other}
+  "FRJ": {name: Fairchild Dornier 328JET, aisles: 1, class: regional_jet}
+  "D38": {name: Fairchild Dornier 328-100, aisles: 1, class: turboprop}
+  "D28": {name: Fairchild Dornier 228, aisles: 1, class: turboprop}
+  "722": {name: Boeing 727-200, aisles: 1, class: mainline_jet}
+  "DC9": {name: McDonnell Douglas DC-9, aisles: 1, class: mainline_jet}
+  "M87": {name: McDonnell Douglas MD-87, aisles: 1, class: mainline_jet}
+  "142": {name: BAe 146-200, aisles: 1, class: regional_jet}
+  "YN7": {name: Xian Y7 and MA60, aisles: 1, class: turboprop}
+  "BES": {name: Beechcraft 1900C, aisles: 1, class: turboprop}
+  "CN2": {name: Cessna twin piston light aircraft, aisles: 0, class: other}
+  "EMB": {name: Embraer 110 Bandeirante, aisles: 1, class: turboprop}
+  "DHC": {name: De Havilland Canada DHC-4 Caribou, aisles: 1, class: turboprop}
+  "PA2": {name: Piper twin piston light aircraft, aisles: 0, class: other}
+  "A58": {name: Antonov An-158, aisles: 1, class: regional_jet}
+  "7S7": {name: Boeing 737-700 scimitar winglets, aisles: 1, class: mainline_jet}
+  "M81": {name: McDonnell Douglas MD-81, aisles: 1, class: mainline_jet}
+  "CN1": {name: Cessna single piston light aircraft, aisles: 0, class: other}
+  "DH7": {name: De Havilland Canada DHC-7 Dash 7, aisles: 1, class: turboprop}
+  "DHL": {name: De Havilland Canada DHC-3 Turbo Otter, aisles: 0, class: other}
+  "AWH": {name: AgustaWestland AW139 helicopter, aisles: 0, class: other}
+  "IL9": {name: Ilyushin Il-96, aisles: 2, class: mainline_jet}
+  "S76": {name: Sikorsky S-76 helicopter, aisles: 0, class: other}
+  "EC3": {name: Airbus Helicopters H130, aisles: 0, class: other}
+  "J31": {name: BAe Jetstream 31, aisles: 1, class: turboprop}
+  "T12": {name: Tecnam P2012 Traveller, aisles: 0, class: other}
+  "ATP": {name: BAe ATP, aisles: 1, class: turboprop}
+  "BET": {name: Beechcraft twin turboprop light aircraft, aisles: 0, class: other}
+  "AB3": {name: Airbus A300 unspecified, aisles: 2, class: mainline_jet}
+  "AB4": {name: Airbus A300B2 and B4, aisles: 2, class: mainline_jet}
+  "BNT": {name: Britten-Norman Trislander, aisles: 0, class: other}
+  "PAG": {name: Piper light aircraft, aisles: 0, class: other}
+  "74L": {name: Boeing 747SP, aisles: 2, class: mainline_jet}
+  "ARJ": {name: Avro RJ70 RJ85 RJ100, aisles: 1, class: regional_jet}
+  "NDE": {name: Eurocopter AS350 and AS355 helicopter, aisles: 0, class: other}
+  "BH2": {name: Bell helicopter, aisles: 0, class: other}
+  "I14": {name: Ilyushin Il-114, aisles: 1, class: turboprop}
+  "DHP": {name: De Havilland Canada DHC-2 Beaver, aisles: 0, class: other}
+  "A40": {name: Antonov An-140, aisles: 1, class: turboprop}
+  "31B": {name: Airbus A319 sharklets, aisles: 1, class: mainline_jet}
+  "TU5": {name: Tupolev Tu-154, aisles: 1, class: mainline_jet}
+  "A26": {name: Antonov An-26, aisles: 1, class: turboprop}
+  "YK4": {name: Yakovlev Yak-40, aisles: 1, class: regional_jet}
+  "YN2": {name: Harbin Y-12, aisles: 0, class: other}
+  "A32": {name: Antonov An-32, aisles: 1, class: turboprop}
+  "EC5": {name: Airbus Helicopters H155, aisles: 0, class: other}
+  "73A": {name: Boeing 737-200 and 200C Advanced, aisles: 1, class: mainline_jet}
+  "D93": {name: McDonnell Douglas DC-9-30, aisles: 1, class: mainline_jet}
+  "PA1": {name: Piper single piston light aircraft, aisles: 0, class: other}
+  "CV5": {name: Convair 580, aisles: 1, class: turboprop}
+  "72S": {name: Boeing 727-200, aisles: 1, class: mainline_jet}
+  "TU3": {name: Tupolev Tu-134, aisles: 1, class: regional_jet}
+  "CNT": {name: Cessna twin turboprop light aircraft, aisles: 0, class: other}
+  "73S": {name: Boeing 737 all series, aisles: 1, class: mainline_jet}
+  "BEC": {name: Beechcraft light aircraft, aisles: 0, class: other}
+  "AGH": {name: AgustaWestland A109 helicopter, aisles: 0, class: other}
+  "AN6": {name: Antonov An-26 An-30 An-32, aisles: 1, class: turboprop}
+  "DHS": {name: De Havilland Canada DHC-3 Otter, aisles: 0, class: other}
+  "BE4": {name: Hawker Beechjet 400, aisles: 0, class: other}
+  "BE9": {name: Beechcraft C99, aisles: 1, class: turboprop}
+  "HS7": {name: BAe HS 748, aisles: 1, class: turboprop}
+  "F28": {name: Fokker F28 Fellowship, aisles: 1, class: regional_jet}
+  "DC3": {name: Douglas DC-3, aisles: 0, class: other}
+  "SH6": {name: Shorts 360, aisles: 1, class: turboprop}
+  "BE2": {name: Beechcraft twin piston light aircraft, aisles: 0, class: other}
+  "L10": {name: Lockheed L-1011 TriStar, aisles: 2, class: mainline_jet}
+  "CL3": {name: Bombardier Challenger 300 business jet, aisles: 0, class: other}
+  "73F": {name: Boeing 737 freighter, aisles: 0, class: other}
+  "MIH": {name: Mil Mi-8 and Mi-17 helicopter, aisles: 0, class: other}
+  "CJ1": {name: Cessna Citation 500 series business jet, aisles: 0, class: other}
+  "PAT": {name: Piper twin turboprop light aircraft, aisles: 0, class: other}
+  "CVR": {name: Convair 240 440 580, aisles: 1, class: turboprop}
+  "EP3": {name: Embraer Phenom 300 business jet, aisles: 0, class: other}
+  "DHB": {name: De Havilland Canada DHC-2 Beaver, aisles: 0, class: other}
+  "312": {name: Airbus A310-200, aisles: 2, class: mainline_jet}
+  "D42": {name: Diamond DA42 Twin Star, aisles: 0, class: other}
+  "CNJ": {name: Cessna Citation business jet, aisles: 0, class: other}
+  "A38": {name: Antonov An-38, aisles: 1, class: turboprop}
+  "731": {name: Boeing 737-100, aisles: 1, class: mainline_jet}
+  "D62": {name: Diamond DA62, aisles: 0, class: other}
+  "JST": {name: BAe Jetstream unspecified, aisles: 1, class: turboprop}
+  "AN7": {name: Antonov An-72 and An-74, aisles: 1, class: regional_jet}
+  "GA8": {name: Gippsland GA8 Airvan, aisles: 0, class: other}
+  "SFA": {name: Saab 340, aisles: 1, class: turboprop}
+  "PL6": {name: Pilatus PC-6 Turbo Porter, aisles: 0, class: other}
+  "GRG": {name: Grumman G-21 Goose, aisles: 0, class: other}
+  "CCJ": {name: Canadair Challenger 600 series business jet, aisles: 0, class: other}
+  "73X": {name: Boeing 737-200 freighter, aisles: 0, class: other}
+  "CJ8": {name: Cessna Citation 680 business jet, aisles: 0, class: other}
+  "GJ5": {name: Gulfstream V business jet, aisles: 0, class: other}
+  "DHD": {name: De Havilland DH104 Dove, aisles: 0, class: other}
+  "AR7": {name: Avro RJ70, aisles: 1, class: regional_jet}
+  "SH3": {name: Shorts 330, aisles: 1, class: turboprop}
+  "PN6": {name: Partenavia P68, aisles: 0, class: other}
+  "EQV": {name: Equipment varies, aisles: 0, class: other}
+  "IL7": {name: Ilyushin Il-76 freighter, aisles: 0, class: other}
