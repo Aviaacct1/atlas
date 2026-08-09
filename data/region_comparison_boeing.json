@@ -1,0 +1,89 @@
+{
+ "scheme": "boeing_cmo",
+ "label": "Boeing CMO regions",
+ "scenario": "Baseline",
+ "avia_window": [
+  2024,
+  2044
+ ],
+ "boeing_window": [
+  2024,
+  2044
+ ],
+ "boeing_edition": "2025 Commercial Market Outlook",
+ "rows": [
+  {
+   "region": "Africa",
+   "airports": 227,
+   "avia": 0.045085328489884224,
+   "boeing": 0.06,
+   "diff_pp": -1.4914671510115773
+  },
+  {
+   "region": "China",
+   "airports": 77,
+   "avia": 0.034139946364625695,
+   "boeing": 0.053,
+   "diff_pp": -1.8860053635374303
+  },
+  {
+   "region": "Eurasia",
+   "airports": 697,
+   "avia": 0.02027626536544047,
+   "boeing": 0.031,
+   "diff_pp": -1.072373463455953
+  },
+  {
+   "region": "Latin America",
+   "airports": 446,
+   "avia": 0.027412095853432294,
+   "boeing": 0.043,
+   "diff_pp": -1.5587904146567702
+  },
+  {
+   "region": "Middle East",
+   "airports": 111,
+   "avia": 0.028551111786138117,
+   "boeing": 0.044000000000000004,
+   "diff_pp": -1.5448888213861887
+  },
+  {
+   "region": "North America",
+   "airports": 264,
+   "avia": 0.020420144912524973,
+   "boeing": 0.027999999999999997,
+   "diff_pp": -0.7579855087475024
+  },
+  {
+   "region": "Northeast Asia",
+   "airports": 118,
+   "avia": 0.026448016831047916,
+   "boeing": 0.024,
+   "diff_pp": 0.24480168310479153
+  },
+  {
+   "region": "Oceania",
+   "airports": 173,
+   "avia": 0.02358037030393212,
+   "boeing": 0.03,
+   "diff_pp": -0.641962969606788
+  },
+  {
+   "region": "South Asia",
+   "airports": 143,
+   "avia": 0.07695118297102299,
+   "boeing": 0.07,
+   "diff_pp": 0.6951182971022984
+  },
+  {
+   "region": "Southeast Asia",
+   "airports": 174,
+   "avia": 0.05563087065637817,
+   "boeing": 0.07,
+   "diff_pp": -1.4369129343621834
+  }
+ ],
+ "world_avia": 0.033351743047101534,
+ "world_boeing": 0.042,
+ "unmapped": {}
+}

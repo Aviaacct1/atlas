@@ -19,42 +19,69 @@
 
 retrieved: 2026-08-09          # every rate below was read from its source on this date
 
+# WINDOWS ARE THE PUBLISHER'S OWN AND ARE NOT ALL THE SAME. Boeing's headline CAGR runs
+# from the year BEFORE the edition year (the 2025 CMO quotes 2024-2044), Airbus quotes the
+# edition year forward. The dashboard scores Avia over each comparator's own window, so
+# these have to be right or the comparison is not like for like.
+
 comparators:
   boeing_cmo:
     label: "Boeing CMO"
-    long_label: "Boeing Commercial Market Outlook 2025-2044"
+    long_label: "Boeing Commercial Market Outlook 2026-2045"
     basis: rpk                 # revenue passenger kilometres
-    cagr: 0.042
-    window: [2025, 2044]
-    edition: "2025 Commercial Market Outlook"
-    source: "Boeing, Commercial Market Outlook 2025-2044"
-    url: "https://www.boeing.com/content/dam/boeing/boeingdotcom/market/assets/downloads/2025-commercial-market-outlook.pdf"
-    note: "4.2% a year, revised down from 4.7% in the 2024 edition. The low 2024 base year flatters the CAGR."
+    cagr: 0.040
+    window: [2025, 2045]
+    edition: "2026 Commercial Market Outlook, released July 2026 at Farnborough"
+    source: "Boeing, Commercial Market Outlook 2026-2045, press release 17 July 2026"
+    url: "https://investors.boeing.com/investors/news/press-release-details/2026/Boeing-Global-Commercial-Fleet-Will-Top-50000-Airplanes-in-20-Years-as-Passenger-Traffic-Doubles/default.aspx"
+    note: >
+      4% a year, traffic doubling by 2045; nearly 44,000 deliveries and a fleet above
+      50,000. Down from 4.2% in the 2025 edition and 4.7% in 2024. The press release
+      states 4% without a decimal: the exact figure and the window are in the CMO
+      forecast-on-a-page workbook, which is not yet in the Egnyte library for this
+      edition. PRECISION WATCHPOINT, see the note at the foot of this file.
     overlay: true              # drawn on the RPK and ASK charts only
+    prior_edition:
+      cagr: 0.042
+      window: [2024, 2044]
+      edition: "2025 Commercial Market Outlook"
+      source: "Boeing CMO 2025-2044 Forecast Data (JK).xlsx, Egnyte, Airplane Forecast on a Page"
+      note: "World 4.2% for 2024-2044. Regional RPK growth in the same workbook: Africa 6.0%, China 5.3%, Eurasia 3.1%, Latin America 4.3%, Middle East 4.4%, North America 2.8%, Northeast Asia 2.4%, Oceania 3.0%, South Asia 7.0%, Southeast Asia 7.0%."
 
   airbus_gmf:
     label: "Airbus GMF"
-    long_label: "Airbus Global Market Forecast 2025-2044"
+    long_label: "Airbus Global Market Forecast 2026-2045"
     basis: rpk
-    cagr: 0.036
-    window: [2025, 2044]
-    edition: "Global Market Forecast 2025-2044, June 2025"
-    source: "Airbus, Global Market Forecast 2025"
-    url: "https://www.airbus.com/en/newsroom/press-releases/2025-06-airbus-global-market-forecast-2025-people-and-commerce-driving-air-traffic-growth"
-    note: "3.6% a year, on global GDP at 2.5%, urban population up 1.2bn and the middle class up 1.5bn."
+    cagr: 0.039
+    window: [2026, 2045]
+    edition: "Global Market Forecast 2026-2045, July 2026"
+    source: "Airbus, Global Market Forecast 2026, press release July 2026"
+    url: "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-forecasts-traffic-growth-driven-by-urbanisation-and-increased-connectivity-made-possible-by"
+    note: >
+      3.9% a year, traffic doubling to 10 billion passengers by 2045; 42,060 new aircraft,
+      81% single aisle. Up from 3.6% in the 2025 edition, which is the opposite direction
+      to Boeing's move and worth understanding.
     overlay: true
+    prior_edition:
+      cagr: 0.036
+      window: [2025, 2044]
+      edition: "Global Market Forecast 2025-2044, June 2025"
+      source: "Airbus, Global Market Forecast 2025"
 
   iata_ltf:
     label: "IATA"
-    long_label: "IATA Long-Term Air Transport Passenger Demand Projections"
+    long_label: "IATA Long-Term Passenger Demand Projections"
     basis: rpk                 # NOT passengers: the page labelled this "pax" and was wrong
     cagr: 0.036
     window: [2024, 2044]
     edition: "January 2026"
     source: "IATA, Long-Term Air Transport Passenger Demand Projections, January 2026"
     url: "https://www.iata.org/en/iata-repository/publications/economic-reports/iata-long-term-air-transport-passenger-demand-projections/"
-    note: "9.04tn RPK in 2024 to 18.8tn in 2044. The same publication gives 3.1% for 2024-2050, mid case."
-    overlay: false             # same window as the two OEMs; kept off the chart to avoid clutter
+    note: >
+      9.04tn RPK in 2024 to 18.8tn in 2044. The same publication gives 3.1% for 2024-2050
+      mid case, 3.3% high and 2.9% low. Produced with Oxford Economics, which is also our
+      GDP source, so this is the closest comparator on drivers.
+    overlay: true              # RPK, so it belongs on the RPK chart alongside the two OEMs
 
   aci_watf:
     label: "ACI WATF"
@@ -65,5 +92,19 @@ comparators:
     edition: "World Airport Traffic Forecasts 2024-2053"
     source: "ACI World, World Airport Traffic Forecasts 2024-2053, executive summary"
     url: "https://store.aci.aero/wp-content/uploads/2025/02/World-Airport-Traffic-Forecasts-2024-2053-Executive-Summary.pdf"
-    note: "3.4% for 2024-2043 and 3.0% for 2024-2053, reaching 22.3bn passengers. A newer 2025-2054 edition was released in January 2026 and has not yet been read in."
-    overlay: false
+    note: >
+      3.4% for 2024-2043 and 3.0% for 2024-2053, reaching 22.3bn passengers. ACI counts
+      airport passengers, so a connecting passenger is counted at each airport: that basis
+      sits above an O&D count and below an RPK growth rate. A newer 2025-2054 edition was
+      released in January 2026 and has not yet been read in.
+    overlay: false             # passengers, so it must not go on the RPK chart
+
+# PRECISION WATCHPOINT, 9 August 2026.
+# The rates above for the 2026 editions come from press releases, which round. Jolyon
+# Kingham flagged the same problem on 8 August 2023 against the 2023 CMO: "INDUSTRY PRESS
+# RELEASES QUOTE HIGHER LONG TERM GLOBAL PAX GROWTH THAN THE BOEING EXCEL DATA FILE, NEEDS
+# INVESTIGATION". The authoritative figure is the forecast-on-a-page sheet in the CMO and
+# GMF data workbooks. The 2025 editions of both are in the Egnyte knowledge library at
+# /Shared/Company Data/02 Knowledge/2 Industry Reports/d International Industry Bodies/.
+# The 2026 editions are not yet there. Download them, read the world and regional rates
+# off the workbook, and replace the press-release figures here.

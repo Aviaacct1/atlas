@@ -1,0 +1,63 @@
+# Alternative region classifications, so Avia figures can be cut on somebody else's
+# definitions and compared like for like.
+# Author: Avia Solutions. Added 9 August 2026.
+#
+# Atlas forecasts airport by airport and every airport carries a country, so a region
+# scheme is a partition of ISO2 country codes and nothing more. Adding one is a lookup
+# table, not a modelling change.
+#
+# Why this exists. Our own six regions put China, Japan, India, Indonesia and Australia
+# in a single Asia Pacific. Boeing splits those five ways and their published growth runs
+# from 2.4% for Northeast Asia to 7.0% for South Asia and Southeast Asia. A single Asia
+# Pacific number cannot be reconciled against that, and cannot be defended in a room where
+# somebody is holding their deck.
+#
+# EVERY code is quoted. Unquoted, YAML reads NO (Norway) as the boolean false, and
+# Norway silently leaves the scheme. The unmapped report below caught it on the first
+# run, which is the whole reason that report exists.
+# Countries absent from a scheme fall to its `default`, and the count of airports that
+# land there is reported by the build, because a silent catch-all is how a region ends up
+# quietly wrong.
+
+schemes:
+
+  boeing_cmo:
+    label: "Boeing CMO regions"
+    source: "Boeing Commercial Market Outlook, regional forecast structure, 2025-2044 edition"
+    note: >
+      Ten regions. Boeing reports Eurasia rather than Europe: it carries the EU, the UK,
+      the rest of Europe, Russia and Central Asia. Latin America carries the Caribbean and
+      Mexico, so Mexico sits OUTSIDE North America, unlike our own scheme where it is in
+      North America with the Caribbean. Those two differences alone move material traffic
+      between regions and must be stated whenever the two schemes are shown together.
+    default: "Eurasia"
+    regions:
+      Africa: ["AO", "BF", "BI", "BJ", "BW", "CD", "CF", "CG", "CI", "CM", "CV", "DJ", "DZ", "EG", "EH", "ER", "ET", "GA", "GH",
+               "GM", "GN", "GQ", "GW", "KE", "KM", "LR", "LS", "LY", "MA", "MG", "ML", "MR", "MU", "MW", "MZ", "NA", "NE", "NG",
+               "RE", "RW", "SC", "SD", "SH", "SL", "SN", "SO", "SS", "ST", "SZ", "TD", "TG", "TN", "TZ", "UG", "YT", "ZA", "ZM", "ZW"]
+      China: ["CN", "HK", "MO"]
+      Eurasia: ["AD", "AL", "AM", "AT", "AX", "AZ", "BA", "BE", "BG", "BY", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FO",
+                "FR", "GB", "GE", "GG", "GI", "GR", "HR", "HU", "IE", "IM", "IS", "IT", "JE", "KG", "KZ", "LI", "LT", "LU", "LV",
+                "MC", "MD", "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "RU", "SE", "SI", "SJ", "SK", "SM", "TJ", "TM",
+                "TR", "UA", "UZ", "VA", "XK"]
+      "Latin America": ["AG", "AI", "AR", "AW", "BB", "BL", "BO", "BQ", "BR", "BS", "BZ", "CL", "CO", "CR", "CU", "CW", "DM",
+                        "DO", "EC", "FK", "GD", "GF", "GP", "GT", "GY", "HN", "HT", "JM", "KN", "KY", "LC", "MF", "MQ", "MS",
+                        "MX", "NI", "PA", "PE", "PR", "PY", "SR", "SV", "SX", "TC", "TT", "UY", "VC", "VE", "VG", "VI"]
+      "Middle East": ["AE", "BH", "IL", "IQ", "IR", "JO", "KW", "LB", "OM", "PS", "QA", "SA", "SY", "YE"]
+      "North America": ["BM", "CA", "GL", "PM", "US"]
+      "Northeast Asia": ["JP", "KP", "KR", "MN", "TW"]
+      Oceania: ["AS", "AU", "CK", "FJ", "FM", "GU", "KI", "MH", "MP", "NC", "NF", "NR", "NU", "NZ", "PF", "PG", "PN", "PW", "SB",
+                "TK", "TO", "TV", "VU", "WF", "WS"]
+      "South Asia": ["AF", "BD", "BT", "IN", "LK", "MV", "NP", "PK"]
+      "Southeast Asia": ["BN", "CC", "CX", "ID", "KH", "LA", "MM", "MY", "PH", "SG", "TH", "TL", "VN"]
+
+  airbus_gmf:
+    label: "Airbus GMF regions"
+    source: "Airbus Global Market Forecast, regional structure"
+    note: >
+      PLACEHOLDER, not yet read from the source. Airbus reports on a different structure
+      again, with Asia-Pacific split differently from Boeing and a separate CIS. Populate
+      from the GMF appendix before using it; an unsourced partition is worse than none,
+      because it produces numbers nobody can trace.
+    default: null
+    regions: {}
