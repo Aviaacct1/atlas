@@ -25,6 +25,7 @@ import datetime
 import os as _os, sys as _sys; _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
 from avia_forecast.io_safe import dump_atomic
 from avia_forecast.paths import DATA, OEF_DIR, ACI_DIR, ACI_DECRYPT, SABRE_DB, OAG_DB, QSI_REF, PREAGG, QSI_APP, OEF_GDP_XLSX
+from avia_forecast import paths   # the module, for paths.PREAGG and paths.report()
 import argparse, datetime, csv, json, os, sys
 from collections import defaultdict
 
