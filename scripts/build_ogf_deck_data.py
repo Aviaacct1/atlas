@@ -42,7 +42,7 @@ from avia_forecast.ingest.oag_store import preferred_tilings, home_regions  # no
 from build_fleet_wedge import (  # noqa: E402
     LONGEST_SECTOR_KM, SERVICE_TYPE, cagr, check_guard, load_body_map, segment_of)
 
-YEARS = [2015, 2019, 2025]
+YEARS = [2015, 2016, 2017, 2018, 2019, 2023, 2024, 2025]
 MACRO = {"AF": "Africa", "AS": "Asia", "EU": "Europe", "LA": "Latin America",
          "ME": "Middle East", "NA": "North America", "SW": "Southwest Pacific"}
 
