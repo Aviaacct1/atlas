@@ -217,3 +217,56 @@ counts the dropped traffic; it should name the largest dropped origins and fail 
 threshold, so an aggregate of 3.22% cannot again hide a 23m passenger airport.
 
 Copyright Avia Solutions Limited. All rights reserved.
+
+---
+
+## 4. The propensity ceiling is inert for a fifth of world traffic
+
+**Question.** Astana comes out of the rebuilt dashboard at 4.76m terminal in 2015 growing
+to 80.38m in 2060, 6.48% a year for 45 years, and Ulaanbaatar at 12.23% a year. Neither
+is credible. Is the propensity ceiling binding?
+
+**Run.** Read directly, 9 August 2026, after the base rebuild.
+
+**Answer: it cannot bind, because the data it needs is not there.**
+`global_demand.country_headroom` returns None when a country has no population and GDP
+per capita record, and `data/worldbank_pop_gdppc.json` **holds 30 countries**. Every
+other country compounds at its regional GDP growth rate with no saturation applied at
+all.
+
+| | Outbound O&D 2025 |
+|---|---|
+| Countries where the ceiling can bind | 2,607m, **78.0%** |
+| Countries where it cannot | 734m, **22.0%** |
+
+The 30 with a record: AE, AU, BR, CH, CN, DE, EG, ES, FR, GB, GR, HK, ID, IE, IN, IT,
+JP, MA, MX, NG, NL, NO, PL, PT, SA, SG, TH, TR, US, ZA. The largest without: Russia 64m,
+Korea 61m, Vietnam 46m, Canada 41m, Malaysia 39m, Philippines 36m, Colombia 31m, Taiwan
+27m.
+
+**A correction to the handover of 9 August**, which named the propensity ceilings of 2.2
+trips per capita for Africa and 2.6 for Asia Pacific as the second suspect for the
+emerging market gap and said they "bind in the same places". They do not bind in most
+places. Where the gap against Boeing is largest the position is mixed: China, India,
+Indonesia, Thailand, Brazil, Mexico, Saudi Arabia, Egypt, Nigeria and South Africa all
+have a record and are ceilinged; Vietnam, the Philippines, Malaysia, Colombia, Argentina
+and Chile do not and are not.
+
+**Direction of the error.** A missing ceiling lets a country grow without saturation, so
+it inflates those forecasts rather than depressing them. It therefore cannot explain our
+shortfall against Boeing and, on the countries affected, works against it. What it does
+explain is a set of individual airport numbers that will not survive a client reading
+them: Vietnam at 7.11% a year to 1,217m passengers by 2060, the Philippines at 6.77% to
+934m, Astana seventeen times its 2015 self.
+
+**A note on how this was nearly got wrong.** The first read was of the dashboard's own
+`cty` payload, where 227 of 231 countries carry a zero population, and that would have
+supported a far larger claim. The dashboard payload is not what the engine reads. The
+figures above come from `worldbank_pop_gdppc.json`, which is.
+
+**What would fix it.** Extend the World Bank population and GDP per capita ingest to
+every country in the base, which is a data pull rather than a method change, then re-run
+and measure. Until then no airport-level number in a country outside the 30 should go in
+front of a client. Owner: John.
+
+Copyright Avia Solutions Limited. All rights reserved.

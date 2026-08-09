@@ -1794,3 +1794,38 @@ peak_panel_2025_busy30.csv, 442 airports each.
     incumbent closed, so it misses Daxing and Tianfu. Where they overlap they disagree
     usefully: the handover test paired Phnom Penh Techo with Siem Reap on nothing more
     than both being Cambodian, and the distance test puts it 23 km from Phnom Penh.
+
+113. **The propensity ceiling is inert for 22% of world traffic.** Chased because Astana
+    came out of the rebuilt dashboard at 6.48% a year for 45 years and Ulaanbaatar at
+    12.23%, neither of which is credible. `global_demand.country_headroom` returns None
+    when a country has no population and GDP per capita record, and
+    `data/worldbank_pop_gdppc.json` holds **30 countries**. Everything else compounds at
+    its regional GDP growth with no saturation applied. The ceiling can bind on 2,607m of
+    3,341m outbound O&D, 78%; it cannot bind on 734m, 22%. Largest without: Russia 64m,
+    Korea 61m, Vietnam 46m, Canada 41m, Malaysia 39m, the Philippines 36m.
+
+    **This corrects the handover of 9 August**, which named the propensity ceilings as
+    the second suspect for the emerging market gap and said they "bind in the same
+    places". They do not bind in most places. And the direction is against the
+    hypothesis: a missing ceiling inflates a forecast rather than depressing it, so it
+    cannot explain a shortfall against Boeing. What it does explain is a set of airport
+    numbers that would not survive a client reading them, Vietnam at 1,217m passengers
+    by 2060 among them. Until the World Bank ingest covers every country in the base, no
+    airport-level figure outside the 30 should go in front of anyone. Owner: John.
+
+    **Nearly got wrong, and worth recording.** The first read was of the dashboard's own
+    `cty` payload, where 227 of 231 countries carry a zero population, which would have
+    supported a much larger claim. That payload is not what the engine reads. Read the
+    file the code reads, not the one that is easy to open.
+
+114. **Half the base rebuild reaches the deck, and the more important half does not.**
+    `global_terminal.run_terminal` iterates `aci_hub_calibration_2024.json` and reports
+    `n_airports` as the length of that file, so the 2,430 airports the dashboard, the
+    reconciliation and the deck are built on could never have moved with the base. TFU,
+    NQZ and NLU are in the ACI file and now carry base O&D for the first time: Chengdu
+    Tianfu enters the dashboard at 44.79m terminal growing to 130.81m. **PKX is not in
+    the ACI file, so Beijing Daxing is still absent from every published figure**, and
+    the China number in the deck is still built without it. That needs either the ACI
+    2024 record for Daxing, if they file it under another code or as a Beijing system
+    entry, or a stated rule for admitting an airport the base holds and ACI does not.
+    A method decision, not a lookup. Owner: John.
