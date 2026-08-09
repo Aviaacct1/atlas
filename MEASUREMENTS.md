@@ -148,18 +148,69 @@ carries its own fitted income elasticity of 1.089 estimated over 1994-2024 and C
 over 1999-2024, so both windows run through the transfer and read a reallocation
 between airports as a fall in demand.
 
-**What this does NOT yet establish.** Whether fixing it raises China's forecast growth.
-Two effects pull opposite ways. The depressed incumbent fits pull growth down and
-correcting them pulls it up. Adding 60m to the base raises China's trips per capita and
-moves it up its own propensity curve, which pulls growth down. China is at roughly 0.7
-trips per capita against an Asia Pacific ceiling of 2.6, so the saturation effect should
-be the smaller of the two, but that is a reading of the curve rather than a measurement.
+## 3a. What correcting it does, measured
 
-**The only way to settle it** is to add the missing codes to the Meridian
-`airport_city_country.csv`, re-run `scripts/ingest_global_base.py` and
-`scripts/scope_global.py`, and re-run the region reconciliation. That moves the base
-year and every figure built on it, including everything in the OGF deck, so it is done
-deliberately and once. Owner: John.
+**Question.** Does restoring the missing airports raise China's forecast growth? Two
+effects pull opposite ways: the depressed incumbent fits pull growth down and correcting
+them pulls it up, while adding traffic to the base raises trips per capita and moves a
+country up its propensity curve, which pulls growth down.
+
+**Run.** `scripts/measure_missing_airports_effect.py`, 9 August 2026.
+`global_demand.run_global` accepts `base_od` and `airport_meta` as arguments, so both
+bases exist only in memory and no file on disk was touched. The control rebuilds the
+shipped base from `od_p2p` using only the airport to country pairs the shipped meta
+implies, and reproduces it to 0.00007% of world O&D, so what follows measures the
+correction and not the rebuild. 1,012 of the 2,281 absent codes resolve to a country
+from the OAG store; the rest have no scheduled service and stay out.
+
+| | Shipped | Corrected |
+|---|---|---|
+| Airports in the base | 3,207 | 4,185 |
+| Origin country unmapped | 107.7m | 3.4m |
+| Destination region unmapped | 98.7m | 1.3m |
+| **World O&D 2025** | **3,140m** | **3,341m, +6.42%** |
+| World CAGR 2025-2045 | 3.37% | 3.39% |
+
+| Boeing region | CAGR shipped | CAGR corrected | Change | Base RPK change |
+|---|---|---|---|---|
+| Eurasia | 1.87% | 1.97% | **+0.10pp** | +3.4% |
+| Africa | 4.98% | 5.02% | +0.03pp | +5.7% |
+| Northeast Asia | 2.61% | 2.64% | +0.03pp | +2.0% |
+| North America | 1.65% | 1.65% | 0.00pp | +0.7% |
+| Middle East | 2.62% | 2.61% | -0.01pp | +3.1% |
+| Oceania | 2.24% | 2.23% | -0.01pp | +0.8% |
+| Southeast Asia | 6.03% | 6.01% | -0.02pp | +7.6% |
+| Latin America | 2.82% | 2.79% | -0.03pp | +4.3% |
+| South Asia | 8.43% | 8.38% | -0.06pp | +7.2% |
+| **China** | **3.34%** | **3.19%** | **-0.16pp** | **+22.8%** |
+
+**Answer, and it is the opposite of the hypothesis.** This is a LEVEL defect, not a
+growth defect. The world base year is understated by 6.4% and China's by 22.8%, and
+correcting it moves world growth by 0.02 points and China's growth the WRONG WAY, from
+3.34% to 3.19%, which widens the gap against Boeing rather than closing it. The
+propensity channel dominates: restoring 60m passengers to China raises its trips per
+capita and moves it up its own curve. The hypothesis on 9 August was that this was the
+first candidate for the China gap. On the base channel it is not.
+
+**What is still not measured, and it is the channel the hypothesis was really about.**
+This run leaves `data/airport_regress.json` untouched, so PEK keeps a fitted income
+elasticity of 1.089 estimated over 1994-2024 and CTU 1.5 over 1999-2024, both windows
+running through a transfer that reads as a collapse in demand. Correcting that means
+re-estimating the airport regressions on a combined city system panel, Beijing as
+PEK plus PKX plus NAY and Chengdu as CTU plus TFU, and it is the channel that would push
+China up. Until it is run, the total effect is unknown and only the sign of the base
+channel is established. Owner: John.
+
+**The level finding stands on its own and is larger than the growth one.** A published
+world O&D of 3,140m for 2025 is 6.4% below what Sabre `od_p2p` supports once every
+airport in it is carried. That figure is on the dashboard, in the OGF deck and in the
+comparator table.
+
+**Doing it for real** means adding the missing codes to the Meridian
+`airport_city_country.csv`, re-running `scripts/ingest_global_base.py` and
+`scripts/scope_global.py`, and re-running the reconciliation and the dashboard build.
+That moves the base year and every figure built on it, so it is done deliberately and
+once, and ideally in the same pass as the stage length path.
 
 **The code fix that stops it recurring** is separate and smaller. The ingest already
 counts the dropped traffic; it should name the largest dropped origins and fail above a

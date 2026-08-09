@@ -1724,3 +1724,35 @@ peak_panel_2025_busy30.csv, 442 airports each.
     means adding the codes to the Meridian reference table, re-running the ingest and
     the scope, and re-running the reconciliation, which moves the base year and every
     figure in the OGF deck at once. Owner: John. See `MEASUREMENTS.md` section 3.
+
+111. **The missing airports, corrected and measured, and the hypothesis was wrong.**
+    `scripts/measure_missing_airports_effect.py`. `global_demand.run_global` takes
+    `base_od` and `airport_meta` as arguments, so the shipped base and a corrected base
+    both live in memory for the length of the run and no file on disk changes. A control
+    rebuilds the shipped base from `od_p2p` and reproduces it to 0.00007% of world O&D
+    before anything is compared to it, because a difference that turned out to be mine
+    would look exactly like a finding.
+
+    1,012 of the 2,281 absent codes resolve to a country from the OAG store. The base
+    goes from 3,207 airports to 4,185, origin unmapped from 107.7m to 3.4m and
+    destination unmapped from 98.7m to 1.3m. **World O&D 2025 goes from 3,140m to
+    3,341m, 6.4% higher.**
+
+    **It is a level defect and not a growth defect.** World CAGR 2025-2045 moves 3.37%
+    to 3.39%. China's base RPK rises 22.8% and its CAGR moves 3.34% to **3.19%**, the
+    wrong way, widening the gap against Boeing rather than closing it. The propensity
+    channel dominates: restoring 60m passengers raises China's trips per capita and
+    moves it up its own curve. Eurasia is the only region that gains more than 0.05pp,
+    at +0.10pp. On 9 August this was called the first candidate for the China gap. On
+    the base channel it is not, and the measurement says so.
+
+    **The channel the hypothesis was actually about is still unmeasured.** This run
+    leaves `data/airport_regress.json` alone, so PEK keeps a fitted income elasticity of
+    1.089 over 1994-2024 and CTU 1.5 over 1999-2024, both windows running through a
+    transfer that reads as a collapse in demand. Testing it means re-estimating the
+    airport regressions on a combined city system panel, Beijing as PEK plus PKX plus
+    NAY and Chengdu as CTU plus TFU. That is the run that would push China up, and it
+    has not been done. Owner: John. See `MEASUREMENTS.md` sections 3 and 3a.
+
+    The 6.4% understatement of the world base year is the larger finding and stands on
+    its own: it is on the dashboard, in the OGF deck and in the comparator table.
