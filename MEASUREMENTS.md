@@ -87,4 +87,82 @@ were measuring hub development.
 
 The country elasticities changed nothing because of the switch in section 1.
 
+---
+
+## 3. What the airports missing from the base are worth
+
+**Question.** Beijing Daxing and Chengdu Tianfu carry no record in
+`data/global_airport_meta_2025.json` and therefore none in `global_base_od_2025.json`,
+the base the forecast is built on. How much traffic is outside the base, where is it,
+and does it explain China being 1.9 points behind Boeing?
+
+**Run.** `scripts/measure_missing_airports.py`, 9 August 2026, against `preagg.duckdb`
+`od_p2p` for the base year O&D, the OAG store for country and seats, and
+`data/airport_regress.json` for the fits.
+
+**Where they go missing.** Not in the data. `od_p2p` holds 20.4m outbound O&D for PKX
+in 2025 and 23.5m for TFU. They are dropped at one line of
+`scripts/ingest_global_base.py`, where an origin absent from the Meridian airport to
+country reference table is added to `pax_origin_unmapped` and abandoned. The total is
+reported, at 3.22% of world outbound O&D. It is not silent, it is aggregated, and 3.22%
+reads as acceptable noise. The two largest new airports in China are inside it.
+
+| | 2025 outbound O&D |
+|---|---|
+| World, `od_p2p` | 3,346.1m across 5,235 origins |
+| Absent from the forecast base | 107.7m across 2,002 origins, **3.22%** |
+| Of which PKX and TFU | 43.9m, 41% of everything absent |
+
+**Concentrated in one region.** Absent traffic as a share of the base it belongs to:
+
+| Region | In the base | Absent | Absent as % of base |
+|---|---|---|---|
+| **China** | 491.7m | **60.0m** | **12.2%** |
+| South Asia | 172.8m | 6.6m | 3.8% |
+| Southeast Asia | 255.9m | 9.3m | 3.6% |
+| Africa | 90.9m | 3.2m | 3.5% |
+| Latin America | 275.7m | 6.1m | 2.2% |
+| Eurasia | 878.5m | 13.8m | 1.6% |
+| Middle East | 112.2m | 1.5m | 1.3% |
+| Northeast Asia | 214.9m | 1.7m | 0.8% |
+| Oceania | 72.7m | 0.3m | 0.4% |
+| North America | 574.4m | 1.8m | 0.3% |
+
+Every region except China is inside 4%. China is 12.2% short, and China is where we sit
+furthest from Boeing.
+
+**The growth reading is the damage, not the level.** Departing seats, millions, one way,
+from the OAG store:
+
+| System | 2015 | 2019 | 2025 | 2019 to 2025 |
+|---|---|---|---|---|
+| Beijing, all airports | 66.7 | 75.6 | 82.9 | **+9.7%** |
+| Beijing, as the base sees it | 63.3 | 70.7 | 50.1 | **-29.2%** |
+| Chengdu, all airports | 24.3 | 33.8 | 54.3 | **+60.8%** |
+| Chengdu, as the base sees it | 24.3 | 33.8 | 19.9 | **-41.0%** |
+| Mexico City, all airports | 30.7 | 38.5 | 39.2 | +1.6% |
+| Mexico City, as the base sees it | 30.7 | 38.5 | 34.6 | -10.2% |
+
+A city whose new airport is outside the base reads as a market in steep decline. PEK
+carries its own fitted income elasticity of 1.089 estimated over 1994-2024 and CTU 1.5
+over 1999-2024, so both windows run through the transfer and read a reallocation
+between airports as a fall in demand.
+
+**What this does NOT yet establish.** Whether fixing it raises China's forecast growth.
+Two effects pull opposite ways. The depressed incumbent fits pull growth down and
+correcting them pulls it up. Adding 60m to the base raises China's trips per capita and
+moves it up its own propensity curve, which pulls growth down. China is at roughly 0.7
+trips per capita against an Asia Pacific ceiling of 2.6, so the saturation effect should
+be the smaller of the two, but that is a reading of the curve rather than a measurement.
+
+**The only way to settle it** is to add the missing codes to the Meridian
+`airport_city_country.csv`, re-run `scripts/ingest_global_base.py` and
+`scripts/scope_global.py`, and re-run the region reconciliation. That moves the base
+year and every figure built on it, including everything in the OGF deck, so it is done
+deliberately and once. Owner: John.
+
+**The code fix that stops it recurring** is separate and smaller. The ingest already
+counts the dropped traffic; it should name the largest dropped origins and fail above a
+threshold, so an aggregate of 3.22% cannot again hide a 23m passenger airport.
+
 Copyright Avia Solutions Limited. All rights reserved.

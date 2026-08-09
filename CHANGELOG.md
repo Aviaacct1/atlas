@@ -1695,3 +1695,32 @@ peak_panel_2025_busy30.csv, 442 airports each.
     Also absent: Mexico Felipe Angeles, Astana Nursultan Nazarbayev, Dakar Blaise
     Diagne, Goa Mopa, Yogyakarta International, Medan Kualanamu, Warsaw Modlin. Sizing
     the effect on the China forecast is the next measurement. Owner: John.
+
+110. **The missing airports, measured.** `scripts/measure_missing_airports.py`, a
+    measurement that changes nothing. Beijing Daxing and Chengdu Tianfu are not missing
+    from the data: `preagg.duckdb` `od_p2p` holds 20.4m outbound O&D for PKX in 2025 and
+    23.5m for TFU. They are dropped at one line of `scripts/ingest_global_base.py`,
+    where an origin absent from the Meridian airport to country reference table is added
+    to `pax_origin_unmapped` and abandoned. That total IS printed, at 3.22% of world
+    outbound O&D, which is the part worth learning from: the failure was not silence, it
+    was aggregation. A percentage small enough to ignore with the two largest new
+    airports in China inside it. An ingest report that names no airport cannot be
+    checked by the person reading it.
+
+    107.7m outbound O&D across 2,002 origins sits outside the base, of which PKX and TFU
+    are 43.9m, 41% of the whole. By region the absent traffic is 0.3% to 3.8% of the base
+    everywhere except **China, where it is 12.2%**, and China is where we sit furthest
+    from Boeing. Beijing's airports together grew 9.7% between 2019 and 2025 and Chengdu's
+    60.8%; the base, seeing only PEK and CTU, reads -29.2% and -41.0%. PEK carries an own
+    fitted income elasticity of 1.089 over 1994-2024 and CTU 1.5 over 1999-2024, so both
+    windows run through the transfer and read a reallocation between airports as a fall
+    in demand. Mexico City is the same shape at a tenth of the size.
+
+    **What it does not establish is the sign.** Correcting the depressed incumbent fits
+    raises China's growth; adding 60m to the base raises China's trips per capita and
+    moves it up the propensity curve, which lowers growth. China sits near 0.7 trips per
+    capita against an Asia Pacific ceiling of 2.6, so saturation should be the smaller
+    of the two, but that is a reading of the curve and not a measurement. Settling it
+    means adding the codes to the Meridian reference table, re-running the ingest and
+    the scope, and re-running the reconciliation, which moves the base year and every
+    figure in the OGF deck at once. Owner: John. See `MEASUREMENTS.md` section 3.
