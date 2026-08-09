@@ -58,6 +58,31 @@ OVERRIDES = {
                    "shared destinations"),
 }
 
+# Replacement airports, confirmed by John on 9 August 2026 against the handover evidence
+# printed by candidate_replacements below. These take the city code of the airport they
+# replaced, so a city does not become two catchments with a collapsing history in one
+# and no history at all in the other.
+#
+# The distance test cannot reach any of these: it compares current distance profiles and
+# a closed airport has none. They are a human decision taken on measured evidence, which
+# is why the ratio that justified each one travels with it. Two candidates were REJECTED
+# and are recorded here so the rejection is not silently revisited: SHS against Beijing
+# Nanyuan at a ratio of 0.31, where Nanyuan closed for Daxing and any Chinese field
+# opening since claims it, and DRP against Kalibo at 0.45, where Kalibo still carries a
+# quarter of its 2019 traffic and has not handed anything over.
+CONFIRMED_HANDOVERS = {
+    "NQZ": ("TSE", "Astana. TSE 3.03m departing seats in 2019 to nil in 2025, NQZ nil "
+                   "to 4.85m, ratio 1.60"),
+    "RMO": ("KIV", "Chisinau. KIV 1.72m to nil, RMO nil to 3.12m, ratio 1.82"),
+    "COV": ("ADA", "Cukurova. ADA 2.89m to nil, COV nil to 3.04m, ratio 1.05, the "
+                   "cleanest handover in the set"),
+    "YIA": ("JOG", "Yogyakarta. JOG 4.96m to 0.09m, 2% of its 2019 self, YIA 0.04m to "
+                   "2.59m. Ratio 0.52 because Yogyakarta traffic fell as well as moved"),
+    "UBN": ("ULN", "Ulaanbaatar. ULN 0.76m to nil, UBN nil to 1.26m, ratio 1.64"),
+    "SAI": ("REP", "Siem Reap. REP 2.79m to nil, SAI nil to 1.11m. Ratio 0.40 on the "
+                   "same pattern as Yogyakarta"),
+}
+
 
 def load_names(path):
     """{IATA: city name} from a supplied reference, whatever its column names.
@@ -244,6 +269,8 @@ def main(argv=None):
         ref = list(csv.DictReader(fh))
     fields = list(ref[0].keys())
     have = {r["airport_code"].strip() for r in ref}
+    city_of_ref = {r["airport_code"].strip(): r["city_code"].strip()
+                   for r in ref}
     city_name = {}
     country_name = {}
     for r in ref:
@@ -328,7 +355,16 @@ def main(argv=None):
         if not cc:
             unresolved.append(a)
             continue
-        city, why = coloc.get(a) or OVERRIDES.get(a, (None, None))
+        # Order matters. A confirmed handover wins over everything, because it is a
+        # human decision on evidence. Then the measured colocation, then the hand
+        # written fallback, then OAG's own city code.
+        city, why = (None, None)
+        if a in CONFIRMED_HANDOVERS:
+            old, ev = CONFIRMED_HANDOVERS[a]
+            city = city_of_ref.get(old, old)
+            why = f"confirmed replacement for {old}, 9 August 2026. {ev}"
+        else:
+            city, why = coloc.get(a) or OVERRIDES.get(a, (None, None))
         city = city or oag_city.get(a) or a
         joins = city in city_name
         if not joins:
