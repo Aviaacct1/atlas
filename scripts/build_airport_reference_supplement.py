@@ -79,6 +79,15 @@ def load_names(path):
             "  https://davidmegginson.github.io/ourairports-data/airports.csv\n"
             "Save it outside the repository, for example "
             r"E:\Avia\Global\data\airports_ourairports.csv, and point --names at it.")
+    # Fallbacks, in order, and both were added after the first pass left 45 airports
+    # unnamed. Every one of those 45 turned out to carry scheduled passenger service in
+    # the OAG store, so none was a rail or bus point and the blanks were a matching
+    # problem rather than a data-quality one. Two causes: OurAirports files a small
+    # regional field under its local or ICAO code with iata_code left empty, and it
+    # often has no municipality for an outback strip although it does have a name.
+    alt_code = ("local_code", "gps_code", "ident", "icao_code")
+    facility = (" airport", " airstrip", " heliport", " airfield", " air base",
+                " air force station", " international", " municipal", " regional")
     with open(path, newline="", encoding="utf-8-sig") as fh:
         rdr = csv.DictReader(fh)
         cols = {c.strip().lower(): c for c in (rdr.fieldnames or [])}
@@ -89,14 +98,40 @@ def load_names(path):
                 f"{path} carries no IATA column and city name column this can read. "
                 f"Headers are: {', '.join(rdr.fieldnames or [])}. Expected one of "
                 f"{iata_names} and one of {city_names}.")
-        out = {}
+        alts = [cols[c] for c in alt_code if c in cols]
+        kw = cols.get("keywords")
+        nm = cols.get("name")
+        out, derived = {}, set()
         for r in rdr:
-            code = (r.get(ic) or "").strip().upper()
-            name = (r.get(nc) or "").strip()
-            if len(code) == 3 and code.isalpha() and name:
-                out[code] = name
-    print(f"{os.path.basename(path)}: {len(out):,} IATA codes with a city name, read "
-          f"from columns {ic} and {nc}")
+            place = (r.get(nc) or "").strip()
+            src_derived = False
+            if not place and nm:
+                # The airport's own name with the facility word removed. "Cooktown
+                # Airport" is Cooktown. Derived, so it is counted separately and can be
+                # reviewed; it is not presented as though OurAirports supplied a city.
+                t = (r.get(nm) or "").strip()
+                low = t.lower()
+                for f in facility:
+                    if low.endswith(f):
+                        t = t[: -len(f)].strip()
+                        low = t.lower()
+                place, src_derived = t, bool(t)
+            if not place:
+                continue
+            codes = [(r.get(ic) or "").strip().upper()]
+            codes += [(r.get(c) or "").strip().upper() for c in alts]
+            if kw:
+                codes += [k.strip().upper() for k in (r.get(kw) or "").split(",")]
+            for code in codes:
+                if len(code) == 3 and code.isalpha() and code not in out:
+                    out[code] = place
+                    if src_derived:
+                        derived.add(code)
+    print(f"{os.path.basename(path)}: {len(out):,} three letter codes with a place name, "
+          f"read from {ic} and {nc}, with {', '.join(alts)}"
+          + (f" and {kw}" if kw else "") + " as fallback codes. "
+          f"{len(derived):,} of the names are derived from the airport name because the "
+          f"{nc} field is empty")
     return out
 
 
@@ -361,10 +396,12 @@ def main(argv=None):
         exposure = sorted(((od.get(r["airport_code"], 0.0), r["airport_code"])
                            for r in blank), reverse=True)
         over = [(p, a) for p, a in exposure if p >= args.min_scope]
-        print("\nStill unnamed, largest first. A code in the Sabre O&D that no airport "
-              "reference carries is often not an airport: Sabre itself codes rail and "
-              "bus points into O&D, and they belong out of the airport table rather "
-              "than in it with a name attached.")
+        print("\nStill unnamed, largest first. The working assumption was that a code "
+              "no airport reference carries would be a rail or bus point, since Sabre "
+              "codes those into O&D. It was wrong: every one of the 45 left after the "
+              "first pass carried scheduled passenger service in the OAG store, so "
+              "these are real airports that no reference has filed under this code, "
+              "not surface transport to be excluded.")
         print("  " + ", ".join(f"{a} {p:.3f}m" for p, a in exposure[:45]))
         print(f"\n{len(blank):,} rows still carry no city name. "
               f"{len(over)} of them are above the {args.min_scope}m scope floor and "
