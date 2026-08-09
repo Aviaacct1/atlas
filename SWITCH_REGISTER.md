@@ -34,6 +34,23 @@ only by `avia_forecast/paths.py`, with every other module importing from there.
 | `PORT` | webapp port, default 8000 | `webapp/serve.py`, `webapp/qsi_service.py` | Keep. |
 | `FORECAST_PASSWORD` | overrides `webapp/access_password.txt` | `webapp/qsi_service.py` | Keep. The file is gitignored and stays so. |
 
+## Assumptions-book switches that default to off in code
+
+The scan behind version 1.0 of this register looked at environment variables and
+command-line flags and missed these, which are `config.get(name, False)` with no entry in
+the assumptions book. A switch that is absent from the book reads as though it does not
+exist, and the code default decides. Added 9 August 2026.
+
+| Key | Read in | State | What turning it on would do |
+|---|---|---|---|
+| `global_drivers.use_estimated_elasticities` | `global_demand.py:285` | **Off.** Not in `config/assumptions_book.yaml`, so the code default `False` applies | The 137 estimated country income elasticities in `estimated_bG_by_country.json` are loaded on every run and then discarded. Turning it on applies a country's own estimate in place of the maturity default. Needs a decision on whether the country fits are ready to carry a client forecast, and a back-test of the world total with and without |
+| `global_drivers.use_airport_elasticities` | `global_demand.py:203` | On, code default `True`, also absent from the book | Applies an airport's own fitted elasticity where it is reliable and its connecting share is at or below `airport_elasticity_max_cx` |
+| `global_drivers.airport_elasticity_max_cx` | `global_demand.py:210` | 0.25, code default, absent from the book | The connecting-share screen. 68 of the 111 airports with a reliable own fit sit above it and fall back to the country value, which is 2.1 points of the 12.2% correction of 8 August |
+
+All three belong in the assumptions book with a stated value and a source, because the
+design rule is configuration not code, and at present three numbers that move the world
+forecast live only as Python defaults.
+
 ## Capability switches
 
 | Switch | What it turns on | Default | Test that would let it be turned on | Owner |
