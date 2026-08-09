@@ -59,6 +59,47 @@ OVERRIDES = {
 }
 
 
+def load_names(path):
+    """{IATA: city name} from a supplied reference, whatever its column names.
+
+    Written to take OAG's airport reference or the OurAirports airports.csv without a
+    conversion step, because a conversion step is where a column gets picked wrongly and
+    nobody notices. The IATA column and the name column are found by header, and if
+    neither is present it says so rather than returning an empty mapping that would look
+    like a file with no matches.
+    """
+    iata_names = ("iata_code", "iata", "airport_code", "code", "airport")
+    city_names = ("municipality", "city_name", "city", "cityname", "town", "place")
+    if not os.path.exists(path):
+        raise SystemExit(
+            f"--names file not found: {path}\n"
+            "Supply OAG's own airport reference, from the same subscription the "
+            "schedules come from, or the OurAirports airports.csv, public domain and "
+            "already used in this estate for the runway cache:\n"
+            "  https://davidmegginson.github.io/ourairports-data/airports.csv\n"
+            "Save it outside the repository, for example "
+            r"E:\Avia\Global\data\airports_ourairports.csv, and point --names at it.")
+    with open(path, newline="", encoding="utf-8-sig") as fh:
+        rdr = csv.DictReader(fh)
+        cols = {c.strip().lower(): c for c in (rdr.fieldnames or [])}
+        ic = next((cols[c] for c in iata_names if c in cols), None)
+        nc = next((cols[c] for c in city_names if c in cols), None)
+        if not ic or not nc:
+            raise SystemExit(
+                f"{path} carries no IATA column and city name column this can read. "
+                f"Headers are: {', '.join(rdr.fieldnames or [])}. Expected one of "
+                f"{iata_names} and one of {city_names}.")
+        out = {}
+        for r in rdr:
+            code = (r.get(ic) or "").strip().upper()
+            name = (r.get(nc) or "").strip()
+            if len(code) == 3 and code.isalpha() and name:
+                out[code] = name
+    print(f"{os.path.basename(path)}: {len(out):,} IATA codes with a city name, read "
+          f"from columns {ic} and {nc}")
+    return out
+
+
 def candidate_replacements(new_codes, iso, rise_year=2025, base_year=2019,
                            collapse_to=0.25, min_new=0.5):
     """New airports that look like they replaced an existing one in the same country.
@@ -137,15 +178,33 @@ def main(argv=None):
     ap.add_argument("--reference", default=os.path.join(
         paths.QSI_APP, "reference_tables", "airport_city_country.csv"))
     ap.add_argument("--year", type=int, default=2025)
+    ap.add_argument("--min-scope", type=float, default=2.0,
+                    help="the scope.selection inclusion floor in million outbound O and "
+                         "D, so a blank name below it can be reported as harmless")
     ap.add_argument("--review-above", type=float, default=0.25,
                     help="list for review any missing airport above this many million "
                          "outbound O and D")
+    ap.add_argument("--names", default=None,
+                    help="a CSV carrying a city or municipality name against an IATA "
+                         "code, used to fill city_name for city codes the reference "
+                         "table has never seen. OAG's own airport reference is the "
+                         "right source, because it is the same vendor as the schedule "
+                         "and the codes agree by construction. The OurAirports "
+                         "airports.csv, public domain and already used in this estate "
+                         "for runway data, works too: iata_code and municipality")
+    ap.add_argument("--allow-blank-names", action="store_true",
+                    help="hand over rows with no city name. Off by default: a blank in "
+                         "a shared reference table is a defect somebody else inherits")
     ap.add_argument("--out", default=None)
     args = ap.parse_args(argv)
 
+    # Both input files are checked before any query runs. The first version checked the
+    # names file where it was used, which is after several minutes of reading the store,
+    # so a typed path cost the whole run before it said anything.
     if not os.path.exists(args.reference):
         raise SystemExit(f"reference table not found at {args.reference}. Point "
                          "--reference at the Meridian clone.")
+    names = load_names(args.names) if args.names else {}
     with open(args.reference, newline="", encoding="utf-8-sig") as fh:
         ref = list(csv.DictReader(fh))
     fields = list(ref[0].keys())
@@ -287,6 +346,37 @@ def main(argv=None):
         print(f"{a:<6}{city:<6}{cc:<4}{pax:>8.3f}  {note}")
         if why:
             print(f"        not OAG's city code: {why}")
+
+    # City names for the codes the table has never seen. Nothing is invented: either a
+    # supplied reference carries the name or the row is reported as incomplete.
+    if names:
+        filled = 0
+        for r in rows:
+            if not r["city_name"] and names.get(r["airport_code"]):
+                r["city_name"] = names[r["airport_code"]]
+                filled += 1
+        print(f"\ncity names filled from {os.path.basename(args.names)}: {filled:,}")
+    blank = [r for r in rows if not r["city_name"]]
+    if blank:
+        exposure = sorted(((od.get(r["airport_code"], 0.0), r["airport_code"])
+                           for r in blank), reverse=True)
+        over = [(p, a) for p, a in exposure if p >= args.min_scope]
+        print("\nStill unnamed, largest first. A code in the Sabre O&D that no airport "
+              "reference carries is often not an airport: Sabre itself codes rail and "
+              "bus points into O&D, and they belong out of the airport table rather "
+              "than in it with a name attached.")
+        print("  " + ", ".join(f"{a} {p:.3f}m" for p, a in exposure[:45]))
+        print(f"\n{len(blank):,} rows still carry no city name. "
+              f"{len(over)} of them are above the {args.min_scope}m scope floor and "
+              f"would be modelled as airports in their own right"
+              + (": " + ", ".join(f"{a} {p:.2f}m" for p, a in over[:12]) if over
+                 else ", so every one of them falls into a residual pseudo-airport"))
+        if not args.allow_blank_names:
+            print(f"\nNot writing. A blank city name in a shared reference table is a "
+                  f"defect the next person inherits, and this would be {len(blank):,} "
+                  "of them. Supply --names with OAG's airport reference, or the "
+                  "OurAirports airports.csv, or pass --allow-blank-names deliberately.")
+            return 1
 
     out = args.out or os.path.join(REPO, "data",
                                    f"airport_reference_supplement_{args.year}.csv")
