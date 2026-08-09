@@ -11,6 +11,43 @@ from openpyxl.styles import Font, Alignment
 from . import chart_format as cf
 
 
+def add_forecast_chart(wb, chart_data, base_year, heading,
+                       data_sheet="_chartdata", chart_sheet="Chart - Forecast"):
+    """Add the Avia-format chart to an existing workbook, and return the chartsheet.
+
+    Split out of write_forecast_workbook on 9 August 2026 so the configured-airport
+    deliverable can carry the same chart. Until then this module was imported by nothing,
+    so every Excel deliverable Atlas produced went out with no chart at all while the
+    formatting rules beside it were tested and passing.
+
+    Avia format: dedicated chart sheet, Office 2024 pinned palette, legend at the bottom,
+    no gridlines. The chart must stand on its own, so the heading carries what it shows.
+    """
+    ds = wb.create_sheet(data_sheet)
+    years = chart_data["years"]
+    names = list(chart_data["series"])
+    ds.append(["Year"] + names)
+    for y in years:
+        ds.append([cf.year_label(y, base_year)] + [chart_data["series"][n][y] for n in names])
+    ds.sheet_state = "hidden"          # working data, not a page of the deliverable
+
+    chart = LineChart()
+    chart.title = heading
+    chart.y_axis.majorGridlines = None
+    chart.x_axis.majorGridlines = None
+    chart.legend.position = "b"
+    data = Reference(ds, min_col=2, max_col=1 + len(names), min_row=1, max_row=1 + len(years))
+    chart.add_data(data, titles_from_data=True)
+    cats = Reference(ds, min_col=1, min_row=2, max_row=1 + len(years))
+    chart.set_categories(cats)
+    for i, s in enumerate(chart.series):
+        s.graphicalProperties.line.solidFill = cf.PINNED_PALETTE[i % len(cf.PINNED_PALETTE)]
+        s.graphicalProperties.line.width = 28000
+    cs = wb.create_chartsheet(chart_sheet)
+    cs.add_chart(chart)
+    return cs
+
+
 def write_forecast_workbook(path, impact_table, chart_data, base_year, heading,
                             source="OAG, AviaSolutions analysis"):
     wb = Workbook()
@@ -37,27 +74,7 @@ def write_forecast_workbook(path, impact_table, chart_data, base_year, heading,
     src.font = Font(name=cf.FONT, size=11)
 
     # ---- dedicated chart sheet, Avia format ----
-    ds = wb.create_sheet("_chartdata")
-    years = chart_data["years"]
-    names = list(chart_data["series"])
-    ds.append(["Year"] + names)
-    for y in years:
-        ds.append([cf.year_label(y, base_year)] + [chart_data["series"][n][y] for n in names])
-
-    chart = LineChart()
-    chart.title = heading
-    chart.y_axis.majorGridlines = None          # no gridlines
-    chart.x_axis.majorGridlines = None
-    chart.legend.position = "b"                 # legend at the bottom
-    data = Reference(ds, min_col=2, max_col=1 + len(names), min_row=1, max_row=1 + len(years))
-    chart.add_data(data, titles_from_data=True)
-    cats = Reference(ds, min_col=1, min_row=2, max_row=1 + len(years))
-    chart.set_categories(cats)
-    for i, s in enumerate(chart.series):        # pin the Office 2024 palette
-        s.graphicalProperties.line.solidFill = cf.PINNED_PALETTE[i % len(cf.PINNED_PALETTE)]
-        s.graphicalProperties.line.width = 28000
-    cs = wb.create_chartsheet("Chart - Forecast")
-    cs.add_chart(chart)
+    add_forecast_chart(wb, chart_data, base_year, heading)
 
     wb.properties.creator = cf.AUTHOR
     wb.properties.lastModifiedBy = cf.AUTHOR

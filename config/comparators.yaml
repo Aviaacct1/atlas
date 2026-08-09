@@ -1,0 +1,69 @@
+# External long-term forecasts, for the comparator table and the RPK chart overlays.
+# Author: Avia Solutions. Added 9 August 2026.
+#
+# These were four literals inside webapp/dashboard.html until 9 August 2026: 0.042 and
+# 0.036 written into the chart code in two places, and four growth rates typed into the
+# comparator table. The page's own footnote called them placeholders. A number attributed
+# to Boeing or Airbus in front of a client carries their name, so it needs an edition, a
+# basis and a window against it, and it belongs in configuration, not in a page.
+#
+# BASIS MATTERS AND IS NOT UNIFORM. Boeing, Airbus and IATA publish revenue passenger
+# kilometres. ACI publishes passengers. RPK grows faster than passengers by the rise in
+# average trip length, so a comparison across the two is not like for like, and the
+# dashboard only draws the RPK houses on an RPK chart. The IATA row was labelled "pax" in
+# the page and is in fact RPK, corrected here.
+#
+# Refresh: Boeing publishes the CMO around July, Airbus the GMF around June, IATA in
+# January, ACI in the first quarter. Check each against the source URL and update the
+# edition and retrieved fields together. Do not edit a rate without editing its edition.
+
+retrieved: 2026-08-09          # every rate below was read from its source on this date
+
+comparators:
+  boeing_cmo:
+    label: "Boeing CMO"
+    long_label: "Boeing Commercial Market Outlook 2025-2044"
+    basis: rpk                 # revenue passenger kilometres
+    cagr: 0.042
+    window: [2025, 2044]
+    edition: "2025 Commercial Market Outlook"
+    source: "Boeing, Commercial Market Outlook 2025-2044"
+    url: "https://www.boeing.com/content/dam/boeing/boeingdotcom/market/assets/downloads/2025-commercial-market-outlook.pdf"
+    note: "4.2% a year, revised down from 4.7% in the 2024 edition. The low 2024 base year flatters the CAGR."
+    overlay: true              # drawn on the RPK and ASK charts only
+
+  airbus_gmf:
+    label: "Airbus GMF"
+    long_label: "Airbus Global Market Forecast 2025-2044"
+    basis: rpk
+    cagr: 0.036
+    window: [2025, 2044]
+    edition: "Global Market Forecast 2025-2044, June 2025"
+    source: "Airbus, Global Market Forecast 2025"
+    url: "https://www.airbus.com/en/newsroom/press-releases/2025-06-airbus-global-market-forecast-2025-people-and-commerce-driving-air-traffic-growth"
+    note: "3.6% a year, on global GDP at 2.5%, urban population up 1.2bn and the middle class up 1.5bn."
+    overlay: true
+
+  iata_ltf:
+    label: "IATA"
+    long_label: "IATA Long-Term Air Transport Passenger Demand Projections"
+    basis: rpk                 # NOT passengers: the page labelled this "pax" and was wrong
+    cagr: 0.036
+    window: [2024, 2044]
+    edition: "January 2026"
+    source: "IATA, Long-Term Air Transport Passenger Demand Projections, January 2026"
+    url: "https://www.iata.org/en/iata-repository/publications/economic-reports/iata-long-term-air-transport-passenger-demand-projections/"
+    note: "9.04tn RPK in 2024 to 18.8tn in 2044. The same publication gives 3.1% for 2024-2050, mid case."
+    overlay: false             # same window as the two OEMs; kept off the chart to avoid clutter
+
+  aci_watf:
+    label: "ACI WATF"
+    long_label: "ACI World Airport Traffic Forecasts 2024-2053"
+    basis: pax                 # passengers, so directly comparable with our passenger series
+    cagr: 0.034
+    window: [2024, 2043]
+    edition: "World Airport Traffic Forecasts 2024-2053"
+    source: "ACI World, World Airport Traffic Forecasts 2024-2053, executive summary"
+    url: "https://store.aci.aero/wp-content/uploads/2025/02/World-Airport-Traffic-Forecasts-2024-2053-Executive-Summary.pdf"
+    note: "3.4% for 2024-2043 and 3.0% for 2024-2053, reaching 22.3bn passengers. A newer 2025-2054 edition was released in January 2026 and has not yet been read in."
+    overlay: false

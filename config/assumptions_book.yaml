@@ -412,6 +412,29 @@ global_drivers:
   maturity_gdppc_threshold_usd: 25000      # >= this (PPP) => mature elasticity [P1]
   mature_regions_default: ["EU+UK", "North America"]   # maturity fallback where country GDPpc unknown
 
+  # --- Elasticity application. Added to the book 9 August 2026. All three were code
+  # defaults in global_demand.py and appeared in no configuration file, so three numbers
+  # that move the world forecast could only be found by reading Python, against the
+  # design rule of configuration not code (Data Architecture 5.2). The values here are
+  # exactly the code defaults they replace: nothing moves by adding them.
+  use_estimated_elasticities: false
+  # OFF. estimated_bG_by_country.json holds 137 reliable country fits and they are loaded
+  # on every run and discarded while this is false. Turning it on applies a country's own
+  # estimated income elasticity in place of the maturity default. The test that would let
+  # it be turned on: a review of the country fits, and the world and regional effect
+  # measured with the switch on and off (see MEASUREMENTS.md, 9 August 2026). Owner: John.
+
+  use_airport_elasticities: true
+  # ON. Applies an airport's OWN fitted elasticity where it is reliable and its connecting
+  # share is at or below airport_elasticity_max_cx. 111 airports carry a reliable own fit.
+
+  airport_elasticity_max_cx: 0.25
+  # The connecting-share screen. An airport above it falls back to its country value,
+  # because a terminal-panel fit at a hub measures hub development rather than O&D income
+  # response. 68 of the 111 sit above it. This screen is 2.1 points of the 12.2% forecast
+  # correction of 8 August 2026, so it is not a minor parameter. [P1] pending the O&D
+  # re-estimation, which is what would let the hubs keep their own fits.
+
 # --- Rated-terminal overrun (steer doc 7 Aug 2026; PROVISIONAL until the capacity
 # workstream supersedes the parameters). A rated terminal level is a service-level
 # line, not a wall: airports operate above it (NTE, BSL) at a service cost. K is

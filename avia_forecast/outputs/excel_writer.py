@@ -13,6 +13,7 @@ import openpyxl
 from openpyxl.styles import Font
 
 from ..airports import instance
+from . import chart_writer
 
 _LABELS = [("total", "Total passengers"), ("international", "International"),
            ("domestic", "Domestic"), ("transit", "Transit"), ("charter", "Charter"),
@@ -64,6 +65,25 @@ def write_instance_excel(cfg: dict, path: str, overrides=None) -> str:
                 cell.number_format = '0.00"%"'
         rr += 1
     ws.column_dimensions["B"].width = 26
+
+    # ---- Avia-format chart, on its own sheet ----
+    # Added 9 August 2026. outputs/chart_writer.py was imported by nothing, so every
+    # configured-airport workbook went to a client with no chart while the formatting
+    # rules beside it were tested and green. The heading carries the airport, the unit
+    # and the period, so the chart stands on its own away from the workbook.
+    by = int(cfg["meta"].get("base_year", 2025))
+    yrs = [y for y in o["years"] if isinstance(y, int)]
+    chart_series = {}
+    for key, lab in (("total", "Total passengers"), ("international", "International"),
+                     ("domestic", "Domestic")):
+        s = o["series"].get(key) or {}
+        vals = {y: s.get(y) for y in yrs}
+        if any(v is not None for v in vals.values()):
+            chart_series[lab] = {y: (v if isinstance(v, (int, float)) else None) for y, v in vals.items()}
+    if chart_series and yrs:
+        chart_writer.add_forecast_chart(
+            wb, {"years": yrs, "series": chart_series}, by,
+            f"{name} passengers, million a year, {yrs[0]} to {yrs[-1]} (forecast from {by})")
 
     aw = wb.create_sheet("Assumptions")
     aw["A1"] = "Assumptions register"; aw["A1"].font = Font(bold=True)

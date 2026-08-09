@@ -39,17 +39,25 @@ only by `avia_forecast/paths.py`, with every other module importing from there.
 The scan behind version 1.0 of this register looked at environment variables and
 command-line flags and missed these, which are `config.get(name, False)` with no entry in
 the assumptions book. A switch that is absent from the book reads as though it does not
-exist, and the code default decides. Added 9 August 2026.
+exist, and the code default decides.
+
+**All three moved into `config/assumptions_book.yaml` on 9 August 2026**, at exactly the
+values they had as code defaults, so nothing moved by adding them. The forecast was
+re-run to confirm: world 2060 unchanged at 9,644m, CAGR 3.26%.
 
 | Key | Read in | State | What turning it on would do |
 |---|---|---|---|
-| `global_drivers.use_estimated_elasticities` | `global_demand.py:285` | **Off.** Not in `config/assumptions_book.yaml`, so the code default `False` applies | The 137 estimated country income elasticities in `estimated_bG_by_country.json` are loaded on every run and then discarded. Turning it on applies a country's own estimate in place of the maturity default. Needs a decision on whether the country fits are ready to carry a client forecast, and a back-test of the world total with and without |
-| `global_drivers.use_airport_elasticities` | `global_demand.py:203` | On, code default `True`, also absent from the book | Applies an airport's own fitted elasticity where it is reliable and its connecting share is at or below `airport_elasticity_max_cx` |
-| `global_drivers.airport_elasticity_max_cx` | `global_demand.py:210` | 0.25, code default, absent from the book | The connecting-share screen. 68 of the 111 airports with a reliable own fit sit above it and fall back to the country value, which is 2.1 points of the 12.2% correction of 8 August |
+| `global_drivers.use_estimated_elasticities` | `global_demand.py:285` | **Off**, now stated in the book | The 137 estimated country income elasticities in `estimated_bG_by_country.json` are loaded on every run and then discarded. **Measured on 9 August: turning it on adds 23.3% to the world 2060 figure and takes the CAGR from 3.26% to 3.88%.** Leave it off. 45 of the 137 estimates sit at or beyond the applied bound of 2.2 and are clamped on the way in, the highest at 3.48, which says the fits are reading liberalisation and network build as income response. The test that would let it be turned on: re-estimation on O&D rather than terminal traffic, then this measurement repeated. See `MEASUREMENTS.md` section 1. Owner: John |
+| `global_drivers.use_airport_elasticities` | `global_demand.py:203` | On, now stated in the book | Applies an airport's own fitted elasticity where it is reliable and its connecting share is at or below `airport_elasticity_max_cx`. 111 airports carry a reliable own fit |
+| `global_drivers.airport_elasticity_max_cx` | `global_demand.py:210` | 0.25, now stated in the book | The connecting-share screen. 68 of the 111 sit above it and fall back to the country value, which is 2.1 points of the 12.2% correction of 8 August. [P1] pending the O&D re-estimation |
 
-All three belong in the assumptions book with a stated value and a source, because the
-design rule is configuration not code, and at present three numbers that move the world
-forecast live only as Python defaults.
+## Capability that was off and is now wired
+
+| Item | Was | Now |
+|---|---|---|
+| `outputs/chart_writer.py` | Imported by nothing, so every configured-airport workbook went out with no chart while the formatting rules beside it were tested and green | Split into `add_forecast_chart(wb, ...)` and called by `outputs/excel_writer.write_instance_excel`. `tests/test_excel_writer.py` now asserts on the written workbook: a chart sheet and a chart part inside the file, not merely a module that could draw one |
+| `estimate/fare_construction.py` and `data/jet_fuel_eia.json` | Both read by nothing. The fare index was frozen at 6 July 2026 and `fare_index.pass_through_theta` and `real_yield_trend_tau` changed no number the product reported | `scripts/build_fare_index.py` regenerates the index from the fuel series, check-only by default. `tests/test_fare_index_wiring.py` asserts that both assumptions move the index, and that the shipped file is the one the current assumptions produce, so the book and the file cannot drift apart unnoticed. The rebuild reproduces the shipped index exactly, which confirms it was genuinely built this way |
+| Comparator figures in `webapp/dashboard.html` | `0.042` and `0.036` written into the page in two places, and four growth rates typed into the reconciliation table, all labelled placeholders by the page's own footnote | `config/comparators.yaml`, each with edition, basis, window, source and URL, carried into `dashboard.json` by the build and read by the page. The Avia column is computed from the run over each comparator's own window and basis |
 
 ## Capability switches
 

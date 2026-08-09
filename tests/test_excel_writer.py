@@ -42,3 +42,26 @@ def test_generic_writer_runs_for_arbitrary_config(tmp_path):
     p = tmp_path / "t.xlsx"
     excel_writer.write_instance_excel(cfg, str(p))
     assert qa.check_author_stamp(str(p))["ok"]
+
+
+def test_workbook_carries_an_avia_format_chart(tmp_path):
+    """The deliverable must contain a chart, not merely a module that could draw one.
+
+    outputs/chart_writer.py was imported by nothing until 9 August 2026, so every
+    configured-airport workbook went out with no chart while tests/test_impact_and_charts.py
+    passed on the formatting rules beside it. That is the shape the capability audit exists
+    to catch: a green suite says nothing about what it was never asked. This asks.
+    """
+    import zipfile
+    cfg = instance.load("zagreb")
+    p = tmp_path / "chart.xlsx"
+    excel_writer.write_instance_excel(cfg, str(p))
+    wb = openpyxl.load_workbook(str(p))
+    charts = [s for s in wb.sheetnames if s.startswith("Chart -")]
+    assert charts, f"no chart sheet in the workbook; sheets are {wb.sheetnames}"
+    with zipfile.ZipFile(str(p)) as z:
+        parts = z.namelist()
+    assert any(n.startswith("xl/charts/chart") for n in parts), (
+        "a chart sheet exists but the file holds no chart part")
+    assert wb.properties.creator == "Avia Solutions"
+    assert wb.properties.lastModifiedBy == "Avia Solutions"

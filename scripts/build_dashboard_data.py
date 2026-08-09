@@ -311,8 +311,20 @@ def run():
     except AssertionError as _e:
         raise SystemExit("BUILD STOPPED: adding-up identity failed: %s" % _e)
     print("adding-up: world base-year %.0fm, %d issues, ok=%s" % (_rec["world"], len(_rec["issues"]), _ok))
+    # External comparators, from config/comparators.yaml with an edition, a basis and a
+    # source URL against each. They were literals in the page until 9 August 2026.
+    from avia_forecast.config import _load as _cfg_load
+    try:
+        _cmp = _cfg_load("comparators.yaml") or {}
+    except FileNotFoundError:
+        _cmp = {}
+        print("comparators.yaml absent: the reconciliation table will show no rows, which "
+              "is correct. A comparator with no source is not shown.")
+
     dump_atomic({"years": YRS, "base": BASE, "scenarios": SCEN,
                "airports": list(perAirport.values()), "cty": CTY,
+               "comparators": _cmp.get("comparators", {}),
+               "comparators_retrieved": str(_cmp.get("retrieved", "")),
                "flows": region_pair_flows(), "rg": RG,
                "coverage_country": coverage_country, "coverage_region": coverage_region,
                "checks": {"adds_up": _ok, "world_base_m": round(_rec["world"], 1), "issues": _rec["issues"][:20],
@@ -328,7 +340,7 @@ def run():
                    "Airport capacity: register-derived where held (France pilot; rated-terminal overrun treatment under review), schedule screen state everywhere assessed; illustrative grade-C tiers remain the labelled fallback ceiling",
                    "Interregional RPK matrix uses representative region-pair stage lengths [P1]",
                    "Hard-coded UK catchment populations in the pilot [P1]",
-                   "Comparator CAGRs illustrative pending R14 published values",
+                   "Comparator CAGRs now published values with edition and source (config/comparators.yaml, read 9 Aug 2026); the flow-level comparator column remains illustrative",
                    "Front-end grossing and RPK/ASK/ATM/CO2 derivation factors pending move into the engine",
                ]},
               os.path.join(OUT, "dashboard.json"))

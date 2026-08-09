@@ -193,6 +193,10 @@ let CTY={};
 let APT=[];
 const SCEN={Baseline:0,High:.005,Low:-.005};
 let FLOWS={};
+// External comparators, loaded from dashboard.json which carries config/comparators.yaml.
+// The fallback below is empty on purpose: a comparator with no source is not shown at
+// all, rather than shown as a number nobody can trace.
+let CMP={}, CMP_RETRIEVED="";
 let COV_C={}, COV_R={};   // coverage (grossing) factors, engine-owned data, not browser constants
 function pairKey(a,b){return [a,b].sort().join("|");}
 function flowVal(a,b,year,scen){const base=FLOWS[pairKey(a,b)]||0;
@@ -329,9 +333,14 @@ function ovlDefs(ctx){ // which comparator overlays apply to this chart
   const out=[];
   if(!ctx||ctx.lvl==="airport")return out;
   const tilt=ctx.cty?((CTY[ctx.cty].g-.037)*.8):(RG[ctx.reg]!==undefined?(RG[ctx.reg]-.037):0);
+  // Comparators come from config/comparators.yaml through dashboard.json, each with an
+  // edition, a basis and a source. They were literals here until 9 August 2026. Only the
+  // RPK houses are drawn, and only on an RPK or ASK chart: plotting a revenue passenger
+  // kilometre CAGR against a passenger series overstates it by trip-length growth.
   if((m==="rpk"||m==="ask")&&(ctx.lvl==="global"||ctx.lvl==="region")){
-    out.push({k:"boeing",lab:"Boeing CMO",g:.042+tilt,end:2044});
-    out.push({k:"airbus",lab:"Airbus GMF",g:.036+tilt,end:2044});}
+    Object.entries(CMP).forEach(([k,c])=>{
+      if(c.overlay&&c.basis==="rpk")
+        out.push({k:k,lab:c.label,g:c.cagr+tilt,end:(c.window&&c.window[1])||2044});});}
   if(m==="pax")out.push({k:"aci",lab:"ACI WATF",g:.034+tilt,end:2050});
   return out;}
 function ovlChips(ctx){
@@ -937,19 +946,28 @@ function renderAbout(){
   // a run that gave 3.49%. A figure about our own forecast has no business being a
   // literal in a page. The comparator column remains a published headline and is still
   // a placeholder pending the exact figure with its source and edition (OUT-17).
+  // Both columns are now sourced. Theirs comes from config/comparators.yaml with an
+  // edition and a URL against each; ours is computed from the run over THEIR window and
+  // on THEIR basis, so each row is like for like. Until 9 August 2026 both columns were
+  // literals, and the Avia column still read 3.7% against a run that gave 3.5%.
   const _scen=document.getElementById("scen").value;
-  const aviaCagr=(metric,y0,y1)=>{const i0=YRS.indexOf(y0),i1=YRS.indexOf(y1);
+  const aviaCagr=(basis,y0,y1)=>{const i0=YRS.indexOf(y0),i1=YRS.indexOf(y1);
     if(i0<0||i1<0)return null; let v0=0,v1=0;
-    RNAMES.forEach(r=>{const s=regSeries(r,_scen).u,sl=(metric==="rpk"?(SL[r]||SL._G):1);
+    RNAMES.forEach(r=>{const s=regSeries(r,_scen).u,sl=(basis==="rpk"?(SL[r]||SL._G):1);
       v0+=s[i0]*sl; v1+=s[i1]*sl;});
     return pcagr(v0,v1,i1-i0);};
   const _pc=v=>v==null?"n/a":(v*100).toFixed(1)+"%";
-  const _pp=(theirs,ours)=>ours==null?"n/a":((ours-theirs)*100>=0?"+":"")+((ours-theirs)*100).toFixed(1)+"pp";
-  const _rpk20=aviaCagr("rpk",2025,2044), _pax20=aviaCagr("pax",2025,2044), _pax54=aviaCagr("pax",2025,2054);
-  const rec=[["Airbus GMF 2025 (RPK, 20yr)","3.6%",_pc(_rpk20),_pp(.036,_rpk20),"Unconstrained basis; both on revenue passenger kilometres"],
-   ["Boeing CMO 2025 (RPK, 20yr)","4.2%",_pc(_rpk20),_pp(.042,_rpk20),"CMO's low 2024 base year flatters its CAGR"],
-   ["IATA/TE (pax, 20yr)","3.9%",_pc(_pax20),_pp(.039,_pax20),"Passengers, so below the RPK rates by trip-length growth"],
-   ["ACI WATF (pax, to 2054)","3.4%",_pc(_pax54),_pp(.034,_pax54),"Passengers, to 2054"]];
+  const _pp=(t,o)=>o==null?"n/a":((o-t)*100>=0?"+":"")+((o-t)*100).toFixed(1)+"pp";
+  const _basis={rpk:"RPK",pax:"pax"};
+  const rec=Object.values(CMP).map(c=>{
+    const w=c.window||[2025,2044], n=w[1]-w[0];
+    // our window is clamped to the years the forecast holds, so a comparator starting
+    // before our base year is scored from our base year over the same number of years
+    const y0=Math.max(w[0],YRS[0]), y1=Math.min(y0+n,YRS[YRS.length-1]);
+    const ours=aviaCagr(c.basis,y0,y1);
+    return [`${c.long_label||c.label} (${_basis[c.basis]||c.basis}, ${w[0]}-${w[1]})`,
+            _pc(c.cagr), _pc(ours), _pp(c.cagr,ours),
+            `${c.note||""} Avia scored ${y0}-${y1} on the same basis. Source: ${c.source||"none"}.`];});
   const rrows=rec.map(r=>`<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${r[2]}</td><td class="num"><b>${r[3]}</b></td><td class="mut">${r[4]}</td></tr>`).join("");
   document.getElementById("view").innerHTML=`
   <div class="card"><h3>About Avia Solutions</h3>
@@ -957,9 +975,9 @@ function renderAbout(){
   <div class="card"><h3>Accuracy statement (OUT-18) - measured; archived 6 August 2026, refreshed every vintage</h3>
    ${tbl(["Backtest window","Airports","WMAPE","Within ±20%","Within ±10%"],[arows])}
    <p class="mut" style="margin-top:8px;font-size:12px">Airport-level annual passengers, engine in its operating configuration (published schedules anchor the near year, as in live use); every figure from the archived backtest of 6 August 2026, window as stated. WMAPE = traffic-weighted mean absolute percentage error. No major forecaster publishes its own error statistics; we lead with ours.</p></div>
-  <div class="card"><h3>Reconciliation vs the incumbents (OUT-18) - sample format</h3>
-   ${tbl(["Comparator (published)","Their CAGR","Avia (matched basis)","Diff","Explanation"],[rrows])}
-   <p class="mut" style="margin-top:8px;font-size:12px">Matching the incumbents is not the goal; being explainably different is. Divergence beyond tolerance stops a release (Method Spec 7.5).</p></div>
+  <div class="card"><h3>Reconciliation vs the incumbents (OUT-18)</h3>
+   ${tbl(["Comparator (published)","Their CAGR","Avia (matched basis)","Diff","Explanation and source"],[rrows])}
+   <p class="mut" style="margin-top:8px;font-size:12px">Both columns are sourced. The published figures come from config/comparators.yaml, each with its edition and a link to the publication, read on ${CMP_RETRIEVED||"the date recorded there"}; the Avia figure is computed from this run over the same window and on the same basis, so each row is like for like. Note that Boeing, Airbus and IATA publish revenue passenger kilometres and ACI publishes passengers: RPK grows faster than passengers by the rise in average trip length, so the two groups are not comparable with each other. Matching the incumbents is not the goal; being explainably different is. Divergence beyond tolerance stops a release (Method Spec 7.5).</p></div>
   <div class="card"><h3>Why trust this forecast</h3>
    <div class="pass" style="margin-top:4px">
     <div class="blk"><h4>Independence</h4><p class="mut" style="font-size:12.5px">We sell no aircraft, run no airline and operate no airport. The forecast has no product to justify.</p></div>
@@ -1240,6 +1258,7 @@ async function AVIA_BOOT(){
   const wins=[[2019,HORIZON_Y],[BASE_Y,BASE_Y+20],[BASE_Y,HORIZON_Y],[BASE_Y+5,HORIZON_Y]];
   cw.innerHTML=wins.map(([a,b],i)=>`<option value="${a}|${b}"${i===2?' selected':''}>${a}-${String(b).slice(2)}</option>`).join('');
   RG=DASH.rg; RNAMES=Object.keys(DASH.rg); CTY=DASH.cty; FLOWS=DASH.flows;
+  CMP=DASH.comparators||{}; CMP_RETRIEVED=DASH.comparators_retrieved||"";
   COV_C=DASH.coverage_country||{}; COV_R=DASH.coverage_region||{};
   APT=DASH.airports.map(a=>[a.iata,a.name,a.country,(a.scen.Baseline[YRS.indexOf(2025)]||0),((CTY[a.country]&&CTY[a.country].g)||0),((a.cap&&a.cap>0)?a.cap:illCap(a.scen.Baseline[YRS.indexOf(2025)]||0)),(a.hub||"")]);
   const dlst=document.getElementById("searchlist");
