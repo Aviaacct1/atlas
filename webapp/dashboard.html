@@ -396,10 +396,15 @@ function histChart(scen){
   const fdiv=`<line x1="${fx}" y1="${top}" x2="${fx}" y2="${base}" stroke="#b9b1a0" stroke-dasharray="2 4"/><text x="${fx+4}" y="${top+9}" font-family="Inter" font-size="8.5" letter-spacing="0.12em" fill="#8a8577">FORECAST</text>`;
   const sh=SHOCKS.map(([y,l])=>{const i=h.years.indexOf(y);const v=h.vals[i]||vmin;
     return `<line x1="${X(y)}" y1="${Y(v)-6}" x2="${X(y)}" y2="${Y(v)-24}" stroke="#0F1B28" stroke-width="1"/><text x="${X(y)}" y="${Y(v)-28}" font-family="Inter" font-size="8.5" fill="#8a8577" text-anchor="middle">${l}</text>`;}).join("");
-  const b25=globSeries(scen).u[YRS.indexOf(2025)];
-  const mk=(g,col,lab)=>{const ys=[],vs=[];for(let y=2025;y<=2044;y++){ys.push(y);vs.push(b25*Math.pow(1+g,y-2025));}
-    return `<path d="${path(ys,vs)}" fill="none" stroke="${col}" stroke-width="1.5" stroke-dasharray="6 4"/><text x="${X(2044)+5}" y="${Y(vs[vs.length-1]).toFixed(1)}" font-family="Newsreader" font-style="italic" font-size="11" fill="${col}" dominant-baseline="middle">${lab}</text>`;};
-  const ovl=(OVL.boeing?mk(.042,"#3D6A88","CMO 4.2%"):"")+(OVL.airbus?mk(.036,"#5F8D7A","GMF 3.6%"):"");
+  // No Boeing or Airbus overlay on this chart. Removed 9 August 2026. The axis is
+  // PASSENGERS and both houses publish RPK, which grows faster by the rise in average
+  // trip length. Drawing a 4.2% RPK CAGR against a passenger series put their line above
+  // ours by roughly the stage-length growth, compounded over twenty years, and read as a
+  // gap in the forecast rather than a difference in the measure. The comparison belongs
+  // on the RPK chart above, where ovlDefs() applies it only when the metric is RPK or
+  // ASK. If it is ever wanted here, convert the published CAGR to a passenger-equivalent
+  // rate using our own stage-length path and label it as an Avia derivation.
+  const ovl="";
   const iL=(x,v,txt,col)=>`<text x="${x}" y="${Y(v).toFixed(1)}" font-family="Newsreader" font-style="italic" font-size="12" fill="${col}" dominant-baseline="middle">${txt}</text>`;
   const i50f=fy.indexOf(2050), i50c=cy.indexOf(2050);
   const uCagr=pcagr(fv[0],(i50f>=0?fv[i50f]:fv[fv.length-1]),(i50f>=0?i50f:fv.length-1));
@@ -409,8 +414,6 @@ function histChart(scen){
     `<span><i class="sw" style="background:#D4A249"></i>Observed, 1960-2025 (ICAO/IATA)</span>`+
     `<span><i class="sw" style="background:#0F1B28"></i>Avia forecast, constrained${cCagr!=null?` (circa ${(cCagr*100).toFixed(1)}% a year to 2050)`:""}</span>`+
     `<span><i class="sw" style="${dash('#0F1B28')}"></i>Avia forecast, unconstrained${uCagr!=null?` (${(uCagr*100).toFixed(1)}% a year)`:""}</span>`+
-    (OVL.boeing?`<span><i class="sw" style="${dash('#3D6A88')}"></i>Boeing CMO</span>`:"")+
-    (OVL.airbus?`<span><i class="sw" style="${dash('#5F8D7A')}"></i>Airbus GMF</span>`:"")+
     `</div>`;
   return `<svg id="histsvg" viewBox="0 0 ${W} ${H}" style="width:100%">
    <text transform="translate(15,${((top+base)/2).toFixed(0)}) rotate(-90)" font-family="Inter" font-size="9" letter-spacing="0.05em" fill="#8a8577" text-anchor="middle">Passengers (log scale)</text>
@@ -929,10 +932,24 @@ function renderAbout(){
    ["4 years, pre-pandemic (2015 to 2019)","1,730","5.0%","79%","61%"],
    ["5 years, through the pandemic (2019 to 2024)","1,844","4.4%","80%","63%"]];
   const arows=acc.map(r=>`<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${r[2]}</td><td class="num">${r[3]}</td><td class="num">${r[4]}</td></tr>`).join("");
-  const rec=[["Airbus GMF 2025 (RPK, 20yr)","3.6%","3.7%","+0.1pp","Higher South Asia growth; unconstrained basis"],
-   ["Boeing CMO 2025 (RPK, 20yr)","4.2%","3.7%","-0.5pp","CMO's low 2024 base year flatters its CAGR"],
-   ["IATA/TE (pax, 20yr)","3.9%","3.8%","-0.1pp","Within tolerance"],
-   ["ACI WATF (pax, to 2054)","3.4%","3.5%","+0.1pp","Within tolerance"]];
+  // The Avia column is COMPUTED from the run, not typed. It was four hard-coded strings
+  // until 9 August 2026, so it did not move when the engine did and stated 3.7% against
+  // a run that gave 3.49%. A figure about our own forecast has no business being a
+  // literal in a page. The comparator column remains a published headline and is still
+  // a placeholder pending the exact figure with its source and edition (OUT-17).
+  const _scen=document.getElementById("scen").value;
+  const aviaCagr=(metric,y0,y1)=>{const i0=YRS.indexOf(y0),i1=YRS.indexOf(y1);
+    if(i0<0||i1<0)return null; let v0=0,v1=0;
+    RNAMES.forEach(r=>{const s=regSeries(r,_scen).u,sl=(metric==="rpk"?(SL[r]||SL._G):1);
+      v0+=s[i0]*sl; v1+=s[i1]*sl;});
+    return pcagr(v0,v1,i1-i0);};
+  const _pc=v=>v==null?"n/a":(v*100).toFixed(1)+"%";
+  const _pp=(theirs,ours)=>ours==null?"n/a":((ours-theirs)*100>=0?"+":"")+((ours-theirs)*100).toFixed(1)+"pp";
+  const _rpk20=aviaCagr("rpk",2025,2044), _pax20=aviaCagr("pax",2025,2044), _pax54=aviaCagr("pax",2025,2054);
+  const rec=[["Airbus GMF 2025 (RPK, 20yr)","3.6%",_pc(_rpk20),_pp(.036,_rpk20),"Unconstrained basis; both on revenue passenger kilometres"],
+   ["Boeing CMO 2025 (RPK, 20yr)","4.2%",_pc(_rpk20),_pp(.042,_rpk20),"CMO's low 2024 base year flatters its CAGR"],
+   ["IATA/TE (pax, 20yr)","3.9%",_pc(_pax20),_pp(.039,_pax20),"Passengers, so below the RPK rates by trip-length growth"],
+   ["ACI WATF (pax, to 2054)","3.4%",_pc(_pax54),_pp(.034,_pax54),"Passengers, to 2054"]];
   const rrows=rec.map(r=>`<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${r[2]}</td><td class="num"><b>${r[3]}</b></td><td class="mut">${r[4]}</td></tr>`).join("");
   document.getElementById("view").innerHTML=`
   <div class="card"><h3>About Avia Solutions</h3>
@@ -1058,12 +1075,8 @@ function render(){
     const rows=RNAMES.map(r=>mkRow(r,`go('region','${r}')`,regSeries(r,scen),r));
     v.innerHTML=`<div class="grid"><div class="card"><h3>Global demand (${scen}) - ${document.getElementById("metric").selectedOptions[0].text}${document.getElementById("vmode").value!=="abs"?" (indexed)":""}</h3>${ovlChips({lvl:"global",reg:"_G"})}${chart(conv(s,"_G"),null,{lvl:"global",reg:"_G"})}<span class="method" onclick="setPage('method')">How these numbers are made</span></div><div class="kpis">${kpis(s,"_G")}</div></div>
     <div class="card"><h3>75 years of air travel: every shock absorbed, and our forecast in that context (log scale, global pax)</h3>
-      <div class="ovls">
-        <button class="ovlbtn bo ${OVL.boeing?"on":""}" onclick="toggleOvl('boeing')">${OVL.boeing?"Hide":"Overlay"} Boeing CMO</button>
-        <button class="ovlbtn ab ${OVL.airbus?"on":""}" onclick="toggleOvl('airbus')">${OVL.airbus?"Hide":"Overlay"} Airbus GMF</button>
-      </div>
       ${histChart(scen)}
-      <p class="mut" style="margin-top:8px;font-size:12px">History is ICAO world scheduled passengers, actual, 1960 to 2025; the forecast is the Avia engine carried from the 2025 actual. Overlays use published headline CAGRs (CMO 2025-2044, GMF 2025-2044); year-by-year shape illustrative. Production quotes exact figures with source and edition (OUT-17).</p></div>
+      <p class="mut" style="margin-top:8px;font-size:12px">History is ICAO world scheduled passengers, actual, 1960 to 2025; the forecast is the Avia engine carried from the 2025 actual. Units: passengers. The Boeing CMO and Airbus GMF comparison is on the RPK chart above, not here: both houses publish revenue passenger kilometres, which grow faster than passengers by the rise in average trip length, so plotting their headline rates against a passenger series overstates them.</p></div>
     ${compCard(`Global composition and environment, 2045 ${cs==="c"?"constrained":"unconstrained"} (OUT-07/08/15/24/25)`,RNAMES.map(r=>[r,regSeries(r,scen)[cs][YRS.indexOf(2045)],r,undefined]))}
     <div class="card"><h3>Regions (click to drill) - years: ${document.getElementById("ymode").selectedOptions[0].text}</h3>${tbl(head,rows)}</div>`;}
   if(S.level==="region"){const s=regSeries(S.reg,scen);
