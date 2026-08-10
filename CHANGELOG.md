@@ -1829,3 +1829,286 @@ peak_panel_2025_busy30.csv, 442 airports each.
     2024 record for Daxing, if they file it under another code or as a Beijing system
     entry, or a stated rule for admitting an airport the base holds and ACI does not.
     A method decision, not a lookup. Owner: John.
+
+115. **The World Bank ingest covers the base, and it takes a third of a point off the
+    world growth rate.** `scripts/ingest_worldbank.py` pulls SP.POP.TOTL and
+    NY.GDP.PCAP.PP.CD for every country, checks the result against the base BEFORE
+    writing, and writes only on `--apply`. It also replays a staged pull through the same
+    checks with `--from-pull`, because the World Bank API is not reachable from a Cowork
+    sandbox and a pull taken elsewhere should not travel through a second code path.
+    `data/worldbank_pop_gdppc.json` goes from 30 countries to 200 and covers 99.7% of
+    world outbound O&D against 78.0%. Taiwan is filled from
+    `data/worldbank_overrides.json`, IMF WEO April 2026, because the World Bank does not
+    publish it and it carries 27.0m; 29 territories and Cuba, 8.4m and 0.3%, stay
+    uncovered and are named one by one in the ingest report rather than totalled.
+
+    **Measured before it was applied**, by `scripts/measure_worldbank_coverage.py`, which
+    redirects `global_demand._load` for the World Bank file alone so every case runs on
+    the same base and the same book. World O&D 2060 goes 10,278m to 9,050m and the CAGR
+    2025-2060 from 3.26% to **2.89%**. Two channels move, not one: the record sets the
+    propensity ceiling and it also sets maturity, and 39 countries carrying 284m outbound
+    O&D flip from emerging to mature. By region it does almost nothing where the gap
+    against Boeing is largest, China 0.03pp and South Asia 0.04pp, and moves Southeast
+    Asia 1.04pp and Northeast Asia 0.79pp, which are not the regions the ingest was
+    chased for. Astana falls from 32.63m in 2060 to 9.61m, Incheon from 158.83m to
+    61.54m. It does not fix Hanoi, still 104.98m from a 12.20m base. See `MEASUREMENTS.md`
+    section 5.
+
+116. **How far people fly, measured, and an income relationship that is not there.**
+    `scripts/journey_length_history.py`. Sabre `od_p2p` 2013-2019 and 2023-2025 with great
+    circle distance from the airport coordinates: world average journey length 1,519 km in
+    2013 to 1,651 km in 2025. Guards first, and one of them earned its place: a first
+    version dropped Eurasia from every table, because the Boeing scheme's default region
+    IS Eurasia and the code excluded the default as though it were an unassigned bucket.
+    It read as a data gap and was neither.
+
+    **The income relationship cannot be identified on this history and is not used.**
+    ln(journey length) on ln(real GDP per head) with region fixed effects gives 0.158.
+    Allow a common year term in beside it and the income coefficient turns NEGATIVE,
+    -0.105, the year term takes 0.90% and the R2 more than doubles. Over 2013-2019 alone,
+    -0.207 against a 1.29% trend. Income and time are collinear over a decade in which
+    every region got richer, so a panel this short cannot separate income from longer
+    range narrowbodies, low cost long haul and liberalisation. An income-driven stage
+    length path would have been a story with a number attached.
+
+    **What the history does support is a trend per region.** An endpoint CAGR keeps two of
+    the ten observations; a year term with a region fixed effect uses all of them and
+    carries a standard error of 0.19pp. One rate for every region is rejected,
+    F(8,72) = 5.65, p below 0.0001, and the regional estimates are not stable across
+    sub-windows, South Asia -1.16% before 2019 against 0.04% on the full window. Each is
+    therefore pulled towards the common 0.71% at a weight of 0.83, which is the share of
+    the spread between them that survives their own estimation error and is read off the
+    data rather than chosen. See `MEASUREMENTS.md` section 7.
+
+117. **The stage length now grows inside the conversion, and it closes half the gap.**
+    `config/stage_length.yaml` and `avia_forecast/stage_length.py`. The per-region
+    constant that lived in `scripts/compare_regions_boeing.py` and was copied by hand into
+    two measurement scripts is now in one place, with the estimated growth rate beside it.
+    `compare_regions_boeing.py --constant-stage` reproduces the old basis exactly, which
+    is the control, and the JSON carries both columns so `gap_decomposition.py` draws the
+    bridge from one run rather than from a second that could drift.
+
+    On the rebuilt dashboard the world goes from 3.0% on the constant basis to **3.6%**
+    against the Boeing 2025 CMO at 4.2%, a gap of -0.6pp against -1.2pp. Against the
+    editions in front of a client this autumn, Boeing CMO 2026 at 4.0% and Airbus GMF 2026
+    at 3.9%, we are 0.4 and 0.3 points behind. Oceania closes to -0.1pp and Northeast Asia
+    to +0.1pp, so the over-correction that ruled out a flat historic rate does not appear.
+    What is left is Southeast Asia -1.5pp, China -1.4pp, the Middle East -1.4pp and Africa
+    -1.2pp, and that is affordability, which Boeing model and we do not.
+
+    `tests/test_stage_length.py` asserts the thing that failed silently for a month: that
+    a growing stage length does NOT cancel in a CAGR, and that a constant one does. The
+    suite is 344, 343 pass and 1 skip.
+
+118. **A typed headline number in the deck build, found by moving the forecast twice in
+    one day.** The basis slide carried "3,140m in 2025 to 9,644m in 2060, a compound
+    3.26% a year" as a string. The base rebuild moved the first figure and the World Bank
+    ingest moved the third, and neither moved the slide. It now reads
+    `data/global_forecast_2025_2050.json`. The deck regenerates at 14 slides and
+    `scripts/check_deck.py` passes with 0 failures and 0 warnings: no em dash, no en dash,
+    author and last modified by both Avia Solutions, every declared language en-GB, fonts
+    Arial and Cambria, a source line on all 14 slides.
+
+119. **Maturity was a cliff at 25,000 dollars, and half of China was on the wrong side of
+    it.** `global_drivers.maturity_basis`, new in the assumptions book, with the elasticity
+    now interpolating on a weight between the emerging and the mature value rather than
+    jumping between them. The old basis, `income_threshold`, reproduces the forecast to the
+    fourth decimal, which is the control: a switch whose old setting does not reproduce the
+    old numbers is not a switch.
+
+    **Why it was chased.** 294.0m of China's 583.3m outbound O&D sits at 231 airports with
+    no fit of their own and runs on the country value, and China's country value was the
+    MATURE one, a domestic income elasticity of 1.0, because 29,333 international dollars
+    per head is above a threshold of 25,000. China sits at roughly 0.4 trips per capita. It
+    was a mature air travel market on the income measure and on no other. Mexico at 25,868
+    and Thailand at 26,250 sat the same wrong side of the same cliff while Brazil at 23,433
+    sat the right side.
+
+    **An income band cannot be estimated to replace the cliff.** Across the 134 reliable
+    country fits with an income record, elasticity regressed on log GDP per head has a
+    POSITIVE slope of 0.154 and an R2 of 0.057, and the median by income band runs 1.35,
+    1.82, 1.43, 2.55, 1.99. Our own estimates show no relationship between income and
+    income elasticity, which is an argument against income as the discriminator and not
+    only against the cliff.
+
+    **Shipped: `saturation`**, where maturity is how far up its own propensity curve a
+    country already sits, trips per capita against the regional asymptote the propensity
+    module already applies. World O&D CAGR 2025-2060 goes 2.89% to 3.05% and China 2.61%
+    to 3.13%; Eurasia, North America, Latin America and the Middle East all rise and
+    Africa, South Asia and Southeast Asia fall slightly. John, 9 August 2026.
+
+    **The objection is written into the book rather than left for a reviewer.** Saturation
+    also drives the propensity headroom that damps growth, so maturity is now monotone in
+    the same quantity twice and the combined effect is second order in it. Not measured.
+    If it does not survive that measurement the answer is to drop the mature and emerging
+    split and let the headroom carry maturity alone.
+
+120. **Beijing Daxing is admitted, under a rule rather than by hand.**
+    `config/terminal_admissions.yaml` and `global_terminal._admissions`. An airport the
+    base holds and ACI does not is admitted only when the base carries it above the 2m
+    scope floor, ACI is confirmed not to publish it by code AND by airport name, a terminal
+    figure exists from a named source outside ACI, and that source reproduces ACI for
+    comparable airports. The record lives in configuration and never in
+    `aci_hub_calibration_2024.json`, so an admitted airport can always be told from a
+    published one, and an airport ACI already carries is refused rather than overridden.
+
+    PKX enters at 49.42m terminal in the base year, 98.0m by 2050 and 116.5m by 2060.
+    Airports 2,430 to 2,431 and the world terminal base to 8,945.7m. Two findings sit
+    behind the record. ACI genuinely does not publish Daxing: the monthly store built from
+    the file modified 8 April 2026 returns no PKX row and no airport named Daxing, while
+    Chengdu Tianfu is present from 2023, so the absence is Daxing's and not a gap in
+    Chinese coverage. And the ACI calibration file's `od_both_ends_2024` column is not ACI
+    at all, reproducing Sabre `od_p2p` at ratio 1.000 on TFU, CTU, PEK, PVG, CAN and SZX,
+    so an admitted record is built on the same source the published ones are.
+
+    The terminal figure of 49.42m comes from a published 2024 Chinese throughput ranking
+    that matches the ACI file on four other Chinese airports to within 0.05%. It is good
+    enough to stop excluding a 49m passenger airport and it is not good enough to cite:
+    confirm against the CAAC bulletin before this reaches a client deliverable. The
+    watchpoint is written into the record.
+
+121. **The city system re-estimation was measured and is NOT applied, and the hypothesis
+    was wrong for the third time.** `scripts/measure_city_system_fits.py`, on Sabre O&D
+    because ACI carries no Daxing history at any window, through the restricted covid-dummy
+    fit the book already uses, with Shanghai as a two-airport control and Guangzhou as a
+    one-airport control.
+
+    The transfer defect is real: Chengdu's incumbent alone returns an elasticity of 0.027
+    with an R2 of 0.19, which is not a number, and the CTU plus TFU system returns 1.319
+    with an R2 of 0.995 and a t of 13.60. Against the Shanghai control at -0.199, that
+    +1.292 is the transfer and not the method.
+
+    **But applying it would lower China, not raise it.** The shipped CTU fit of 1.5 is
+    HIGHER than the system fit of 1.319, and Beijing's system fit of 0.246 clamps to 0.6,
+    below what Beijing effectively runs on now. Beijing's outbound O&D went 40.2m in 2013
+    to 46.1m in 2025, 1.1% a year against GDP per head at 5% to 6%: that is a slot-capped
+    airport, and a GDP regression cannot tell a capacity constraint from a weak income
+    response. Applying the fit would write the constraint into a demand elasticity, which
+    is the trap `od_reest.py` already records at Manchester in the other direction. See
+    `MEASUREMENTS.md` section 9.
+
+122. **Where the forecast stands after the day.** World O&D departing passengers 3,341.3m
+    in 2025 to 7,331.5m in 2050, a compound 3.19%, across 2,431 airports. World RPK
+    2024-2044 **3.80% against the Boeing 2025 CMO at 4.2%**, a gap of -0.4pp against the
+    -0.9pp this morning, and 3.15% on the constant stage length basis the conversion used
+    before today. China closes from -2.0pp to -1.0pp, Oceania to -0.0pp, Latin America to
+    -0.4pp, Eurasia to -0.3pp, North America to -0.3pp. Against the editions a client will
+    hold this autumn, Boeing CMO 2026 at 4.0% and Airbus GMF 2026 at 3.9%, we are 0.2 and
+    0.1 points behind. What is left is Southeast Asia at -1.5pp, Africa -1.3pp and the
+    Middle East -1.2pp, and that is affordability, which we do not model and cannot draw
+    while the fare series is an index with no level. Suite 350, 349 pass and 1 skip;
+    `validate_repo.py` exit 0; `check_deck.py` 0 failures and 0 warnings on 14 slides.
+
+123. **Beijing Daxing is in ACI. We dropped it, along with 189 airports carrying 544.0m.**
+    The finding in entry 120, that ACI does not publish Daxing, was wrong. It came from the
+    ACI MONTHLY store; the calibration is built from the ACI ANNUAL dataset, which carries
+    Beijing Daxing at 49,441,029 passengers and 325,246 movements for 2024. Read the file
+    the code reads, not the one that is easy to open. That is twice in two days.
+
+    `scripts/ingest_aci.py` required the "Passenger Terminal" column and skipped any row
+    where it was blank, and ACI leaves it blank for a large minority of airports while
+    filling "Passengers" instead. 189 airports and 544.0m in 2024, between 174 and 221
+    airports in every year from 2013, led by Daxing, Changsha, Zhengzhou, Urumqi, Harbin,
+    Guiyang, Jinan and Dalian. Overwhelmingly Chinese, which is the third data defect in two
+    days to land on the region we sit furthest from Boeing in.
+
+    **The fallback is passengers LESS DIRECT TRANSIT and not passengers.** On the 2,557
+    airports of the 2024 dataset carrying both, terminal = passengers less direct transit
+    holds 2,557 times out of 2,557; terminal = passengers holds 1,709 times and would
+    overstate Los Angeles by 2.3m.
+
+124. **The file the whole terminal forecast is anchored to had no builder, and now does.**
+    `scripts/build_aci_hub_calibration.py`. `aci_hub_calibration_2024.json` was a staged file
+    nothing in the tree produced, which is why a defect in its input survived a year. The
+    builder reproduces the shipped file exactly before it writes anything: 2,430 airports,
+    same set, zero difference on every terminal and O&D field. The screen it had to reproduce
+    is presence of traffic and not a size floor, read off the shipped file rather than
+    assumed after a first version chose a 100,000 floor and cut 826 airports that are in
+    production.
+
+    Measured in memory before applying: airports 2,431 to 2,614, base terminal 8,946m to
+    9,412m, world terminal CAGR 2.95% to 2.96%. **A level defect and not a growth defect, for
+    the third time today.** China gains 0.07pp and nothing else moves more than 0.03pp.
+    Re-estimating the airport regressions on the corrected panel takes airports with a fit
+    from 1,624 to 1,780 and China's own-fit coverage from 36.1% to 37.2%, one airport.
+
+    `config/terminal_admissions.yaml` keeps the rule and loses its only entry, since the
+    builder correctly refused PKX once ACI carried it. Rule 2 now names the file to check.
+
+125. **The regional differences against Boeing are one difference, not ten.**
+    `scripts/regional_defence.py` decomposes every regional rate into the inputs it was built
+    from and puts the implied income elasticity beside Boeing's. Boeing's implied elasticity
+    to regional real GDP is higher than ours in nine regions of ten, by 0.56 to 1.94, and
+    only South Asia agrees. The ranking of regions is broadly the same; the level of income
+    response is not. That is a position to argue rather than a set of unexplained gaps, and
+    it has two possible causes we cannot yet separate: Boeing assume more GDP than Oxford
+    Economics, or a stronger response to it. Our world real GDP is 2.21% a year. Reading
+    Boeing's GDP assumption off the CMO workbook is the next thing to do.
+
+    Northeast Asia is the sharpest: Oxford Economics give it 0.5% real GDP growth against a
+    falling population and Boeing's 2.4% RPK implies traffic growing four and a half times
+    the economy for twenty years.
+
+    **And Boeing is not the closest comparator on drivers.** IATA, produced with Oxford
+    Economics, publishes 3.6% RPK for 2024-2044 and we are at 3.8%, 0.2 points ABOVE. Airbus
+    GMF 2025 is 3.6% on the same reading. We are inside the published range and at the top of
+    the half of it that shares our GDP source.
+
+126. **A freshness guard, after a file with no builder cost a year.**
+    `scripts/check_freshness.py` reports every published and staged file against what it is
+    built from and names anything with no builder. Findings on the tree of 10 August:
+    `oag_final_to_next_M.json` has no builder, dated 6 July, though its coverage is good at
+    2,342 of 2,614 airports with the 272 without a row carrying 0.2% of terminal traffic;
+    `bum_candidates.json` is older than the dashboard and reaches nothing published;
+    `estimated_bG_by_country.json` is older than the panel it is estimated from and is behind
+    a switch that is off. Everything else in the served bundle was rebuilt today and agrees
+    at 2,614 airports and a 9,412m world terminal base.
+
+127. **The destination mix file has a builder, and it reproduces the shipped one.**
+    `scripts/build_oag_final_to_next_M.py`, service type J, departures only, one preferred
+    tiling per region and year, each airport read from its home region file. The control is
+    a comparison and not an equality because the shipped file came from an earlier store on
+    an unrecorded basis: median mix difference 0.000 and 84% of the 3,774 airports in both
+    within 0.05. Applied, world 2050 terminal 20,193m to 20,215m and the CAGR unmoved. 280
+    calibration airports carry no row and grow their connecting traffic on the world
+    international rate, 11.2m of terminal, 0.12%, led by Chisinau and Adana, both cities
+    whose traffic has moved to a new field. `run_terminal` now reports that count and its
+    traffic instead of leaving it silent.
+
+128. **Country elasticities re-estimated on the corrected panel; the verdict stands.**
+    163 countries, 137 reliable, median 1.70 to 1.67, and still 45 of 137 at or beyond the
+    2.2 bound. `use_estimated_elasticities` stays off until the fits are re-estimated on
+    O&D, exactly as MEASUREMENTS section 1 said. China 1.72 to 1.93.
+
+129. **The BUM candidates could not be rebuilt at all, and four defects were stacked behind
+    it.** In the order they surfaced: `_bt2_pending` was never initialised, so every
+    candidate raised a NameError on the append inside the try, was caught by a bare except
+    and recorded as "qsi share failed", and the script then died on the same name outside
+    it; `airportsdata` was missing from requirements.txt, so Meridian's coordinate loader
+    returned an empty dictionary, `pair_metrics` raised "gcd unsourceable" for every route
+    AND the circuity filter was silently passing everything; `scikit-learn` was missing
+    from requirements.txt, so the pickled model could not load, now pinned at 1.7.2 as the
+    pickle records; and a candidate with no measured market is log(0), which took the build
+    down with a bare "math domain error".
+
+    **The file on disk was produced by a version of the script that no longer exists.**
+    That is the definition of a result nobody can reproduce.
+
+    **The first successful run is why BT2 is now default OFF.** It puts Southampton to
+    Heathrow at 41.8k passengers against a measured market of 0.1k and Southampton to Paris
+    at 41.4k against 3.3k, tier B rather than a refusal. The model is being extrapolated far
+    below the markets it was trained on and needs a stated minimum market, read off the
+    training cohort rather than chosen. `--bt2` scores anyway. The default writes the QSI
+    share, which is real and correct on all 136 routes, and says on each row why the model
+    was not applied. The error message now names which stage failed instead of blaming the
+    QSI share for a fault three calls later.
+
+    **The claim-language ruling was left exactly as it stands.** The model card describes
+    the 88.8% as fitted against a blind leave-one-carrier-out of 53.7%, while the ruling of
+    5 August publishes 89% as the calibrated figure on a client-facing string. Whether the
+    two words describe the same measurement is the track record question, and it is John's
+    to answer, not a file's. MEASUREMENTS section 13.
+
+130. **`scripts/check_freshness.py` now reports nothing outstanding.** Every published and
+    staged file is at least as new as what it is built from, and every one of them has a
+    builder in the tree.
