@@ -1,0 +1,13 @@
+{
+ "_source": "Countries the World Bank does not publish, each filled from a named alternative and nothing else. A country absent from both is reported as uncovered by scripts/ingest_worldbank.py rather than given a number.",
+ "_keys": "ISO2 -> {pop (persons), gdp_pc_ppp (current intl $), pop_year, gdp_year, source}",
+ "data": {
+  "TW": {
+   "pop": 23299000,
+   "gdp_pc_ppp": 90233,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "IMF World Economic Outlook April 2026, DataMapper API, Taiwan Province of China: LP 23.299 million people and PPPPC 90,233.262 international dollars, both 2025. Retrieved 9 August 2026. The World Bank does not publish Taiwan, which carries 27.0m outbound O&D in the 2025 base."
+  }
+ }
+}

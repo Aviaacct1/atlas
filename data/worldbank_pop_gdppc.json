@@ -1,21 +1,1406 @@
 {
-  "_source": "World Bank (UN Population Division population, SP.POP.TOTL 2024; GDP per capita PPP NY.GDP.PCAP.PP.CD 2023). Retrieved 5 Jul 2026.",
-  "_keys": "ISO2 -> {pop (persons, 2024), gdp_pc_ppp (current intl $, 2023)}",
-  "data": {
-    "AE": {"pop": 10986400, "gdp_pc_ppp": 77955}, "AU": {"pop": 27194286, "gdp_pc_ppp": 72273},
-    "BR": {"pop": 211998573, "gdp_pc_ppp": 21176}, "CH": {"pop": 9005582, "gdp_pc_ppp": 95142},
-    "CN": {"pop": 1408975000, "gdp_pc_ppp": 25179}, "DE": {"pop": 83516593, "gdp_pc_ppp": 71684},
-    "EG": {"pop": 116538258, "gdp_pc_ppp": 18525}, "ES": {"pop": 48848840, "gdp_pc_ppp": 55682},
-    "FR": {"pop": 68551653, "gdp_pc_ppp": 60839}, "GB": {"pop": 69281000, "gdp_pc_ppp": 59911},
-    "GR": {"pop": 10405134, "gdp_pc_ppp": 42711}, "HK": {"pop": 7524100, "gdp_pc_ppp": 71512},
-    "ID": {"pop": 283487931, "gdp_pc_ppp": 15416}, "IN": {"pop": 1450935791, "gdp_pc_ppp": 10323},
-    "IE": {"pop": 5395790, "gdp_pc_ppp": 129683}, "IT": {"pop": 58952704, "gdp_pc_ppp": 60030},
-    "JP": {"pop": 123975371, "gdp_pc_ppp": 50662}, "MA": {"pop": 38081173, "gdp_pc_ppp": 9895},
-    "MX": {"pop": 130861007, "gdp_pc_ppp": 25243}, "NG": {"pop": 232679478, "gdp_pc_ppp": 8705},
-    "NL": {"pop": 17993485, "gdp_pc_ppp": 81729}, "NO": {"pop": 5572279, "gdp_pc_ppp": 103638},
-    "PL": {"pop": 36559233, "gdp_pc_ppp": 48473}, "PT": {"pop": 10694681, "gdp_pc_ppp": 49353},
-    "SA": {"pop": 35300280, "gdp_pc_ppp": 71565}, "SG": {"pop": 6036860, "gdp_pc_ppp": 143786},
-    "TH": {"pop": 71668011, "gdp_pc_ppp": 23519}, "TR": {"pop": 85518661, "gdp_pc_ppp": 42786},
-    "US": {"pop": 340003797, "gdp_pc_ppp": 82305}, "ZA": {"pop": 64007187, "gdp_pc_ppp": 15200}
+ "_source": "World Bank API, SP.POP.TOTL and NY.GDP.PCAP.PP.CD, mrnev=1, retrieved 9 August 2026 Built by scripts/ingest_worldbank.py --from-pull. Countries the World Bank does not publish are filled from data/worldbank_overrides.json, each with its own source on the record.",
+ "_keys": "ISO2 -> {pop (persons), gdp_pc_ppp (current intl $), pop_year, gdp_year, source}",
+ "data": {
+  "AE": {
+   "pop": 11513149,
+   "gdp_pc_ppp": 79344,
+   "pop_year": 2025,
+   "gdp_year": 2024,
+   "source": "World Bank"
+  },
+  "AF": {
+   "pop": 43844111,
+   "gdp_pc_ppp": 2236,
+   "pop_year": 2025,
+   "gdp_year": 2024,
+   "source": "World Bank"
+  },
+  "AG": {
+   "pop": 94209,
+   "gdp_pc_ppp": 35832,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "AL": {
+   "pop": 2349580,
+   "gdp_pc_ppp": 28221,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "AM": {
+   "pop": 3086700,
+   "gdp_pc_ppp": 24754,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "AO": {
+   "pop": 39040039,
+   "gdp_pc_ppp": 10251,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "AR": {
+   "pop": 45851378,
+   "gdp_pc_ppp": 32587,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "AT": {
+   "pop": 9208163,
+   "gdp_pc_ppp": 76778,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "AU": {
+   "pop": 27614411,
+   "gdp_pc_ppp": 71934,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "AW": {
+   "pop": 108785,
+   "gdp_pc_ppp": 51712,
+   "pop_year": 2025,
+   "gdp_year": 2024,
+   "source": "World Bank"
+  },
+  "AZ": {
+   "pop": 10246996,
+   "gdp_pc_ppp": 26113,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BA": {
+   "pop": 3140095,
+   "gdp_pc_ppp": 25814,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BB": {
+   "pop": 282623,
+   "gdp_pc_ppp": 25894,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BD": {
+   "pop": 175686899,
+   "gdp_pc_ppp": 10154,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BE": {
+   "pop": 11941781,
+   "gdp_pc_ppp": 74676,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BF": {
+   "pop": 24074580,
+   "gdp_pc_ppp": 3072,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BG": {
+   "pop": 6433302,
+   "gdp_pc_ppp": 44451,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BH": {
+   "pop": 1600366,
+   "gdp_pc_ppp": 70997,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BI": {
+   "pop": 14390003,
+   "gdp_pc_ppp": 1248,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BJ": {
+   "pop": 14814460,
+   "gdp_pc_ppp": 4817,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BM": {
+   "pop": 64555,
+   "gdp_pc_ppp": 118728,
+   "pop_year": 2025,
+   "gdp_year": 2024,
+   "source": "World Bank"
+  },
+  "BN": {
+   "pop": 466330,
+   "gdp_pc_ppp": 92430,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BO": {
+   "pop": 12581843,
+   "gdp_pc_ppp": 12873,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BR": {
+   "pop": 212812405,
+   "gdp_pc_ppp": 23433,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BS": {
+   "pop": 403033,
+   "gdp_pc_ppp": 41258,
+   "pop_year": 2025,
+   "gdp_year": 2024,
+   "source": "World Bank"
+  },
+  "BT": {
+   "pop": 796682,
+   "gdp_pc_ppp": 19594,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BW": {
+   "pop": 2562122,
+   "gdp_pc_ppp": 20698,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BY": {
+   "pop": 9085991,
+   "gdp_pc_ppp": 34716,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "BZ": {
+   "pop": 422924,
+   "gdp_pc_ppp": 14966,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CA": {
+   "pop": 41651653,
+   "gdp_pc_ppp": 66746,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CD": {
+   "pop": 112832473,
+   "gdp_pc_ppp": 1920,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CF": {
+   "pop": 5513282,
+   "gdp_pc_ppp": 1314,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CG": {
+   "pop": 6484437,
+   "gdp_pc_ppp": 7248,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CH": {
+   "pop": 9092436,
+   "gdp_pc_ppp": 102513,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CI": {
+   "pop": 32711547,
+   "gdp_pc_ppp": 8209,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CL": {
+   "pop": 19859921,
+   "gdp_pc_ppp": 37774,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CM": {
+   "pop": 29879337,
+   "gdp_pc_ppp": 5788,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CN": {
+   "pop": 1406585000,
+   "gdp_pc_ppp": 29333,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CO": {
+   "pop": 53425635,
+   "gdp_pc_ppp": 22640,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CR": {
+   "pop": 5152950,
+   "gdp_pc_ppp": 33815,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CV": {
+   "pop": 527326,
+   "gdp_pc_ppp": 12165,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CW": {
+   "pop": 156263,
+   "gdp_pc_ppp": 32741,
+   "pop_year": 2025,
+   "gdp_year": 2024,
+   "source": "World Bank"
+  },
+  "CY": {
+   "pop": 1370754,
+   "gdp_pc_ppp": 64575,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "CZ": {
+   "pop": 10886878,
+   "gdp_pc_ppp": 60487,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "DE": {
+   "pop": 83491249,
+   "gdp_pc_ppp": 75407,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "DJ": {
+   "pop": 1184076,
+   "gdp_pc_ppp": 8452,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "DK": {
+   "pop": 6009169,
+   "gdp_pc_ppp": 83218,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "DM": {
+   "pop": 65871,
+   "gdp_pc_ppp": 22713,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "DO": {
+   "pop": 11520487,
+   "gdp_pc_ppp": 28721,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "DZ": {
+   "pop": 47435312,
+   "gdp_pc_ppp": 18586,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "EC": {
+   "pop": 18289896,
+   "gdp_pc_ppp": 16757,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "EE": {
+   "pop": 1366475,
+   "gdp_pc_ppp": 52106,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "EG": {
+   "pop": 118365995,
+   "gdp_pc_ppp": 20204,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "ER": {
+   "pop": 3607003,
+   "gdp_pc_ppp": 1742,
+   "pop_year": 2025,
+   "gdp_year": 2011,
+   "source": "World Bank"
+  },
+  "ES": {
+   "pop": 49355143,
+   "gdp_pc_ppp": 59868,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "ET": {
+   "pop": 135472051,
+   "gdp_pc_ppp": 3622,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "FI": {
+   "pop": 5646436,
+   "gdp_pc_ppp": 65884,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "FJ": {
+   "pop": 933154,
+   "gdp_pc_ppp": 16338,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "FM": {
+   "pop": 113683,
+   "gdp_pc_ppp": 4604,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "FO": {
+   "pop": 54900,
+   "gdp_pc_ppp": 82089,
+   "pop_year": 2025,
+   "gdp_year": 2024,
+   "source": "World Bank"
+  },
+  "FR": {
+   "pop": 68720337,
+   "gdp_pc_ppp": 63975,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "GA": {
+   "pop": 2593130,
+   "gdp_pc_ppp": 22218,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "GB": {
+   "pop": 69487000,
+   "gdp_pc_ppp": 64606,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "GD": {
+   "pop": 117303,
+   "gdp_pc_ppp": 21346,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "GE": {
+   "pop": 3935766,
+   "gdp_pc_ppp": 29414,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "GH": {
+   "pop": 35064272,
+   "gdp_pc_ppp": 8610,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "GL": {
+   "pop": 56831,
+   "gdp_pc_ppp": 78906,
+   "pop_year": 2025,
+   "gdp_year": 2023,
+   "source": "World Bank"
+  },
+  "GM": {
+   "pop": 2822093,
+   "gdp_pc_ppp": 3706,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "GN": {
+   "pop": 15099727,
+   "gdp_pc_ppp": 4935,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "GQ": {
+   "pop": 1938431,
+   "gdp_pc_ppp": 16133,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "GR": {
+   "pop": 10413962,
+   "gdp_pc_ppp": 45264,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "GT": {
+   "pop": 18687881,
+   "gdp_pc_ppp": 15197,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "GW": {
+   "pop": 2249515,
+   "gdp_pc_ppp": 3293,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "GY": {
+   "pop": 835986,
+   "gdp_pc_ppp": 97899,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "HK": {
+   "pop": 7498900,
+   "gdp_pc_ppp": 80423,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "HN": {
+   "pop": 11005850,
+   "gdp_pc_ppp": 7871,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "HR": {
+   "pop": 3876200,
+   "gdp_pc_ppp": 50946,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "HT": {
+   "pop": 11906095,
+   "gdp_pc_ppp": 3134,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "HU": {
+   "pop": 9514251,
+   "gdp_pc_ppp": 49838,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "ID": {
+   "pop": 285721236,
+   "gdp_pc_ppp": 17660,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "IE": {
+   "pop": 5484367,
+   "gdp_pc_ppp": 155089,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "IL": {
+   "pop": 10122800,
+   "gdp_pc_ppp": 59717,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "IN": {
+   "pop": 1463865525,
+   "gdp_pc_ppp": 11748,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "IQ": {
+   "pop": 47020774,
+   "gdp_pc_ppp": 14267,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "IR": {
+   "pop": 92417681,
+   "gdp_pc_ppp": 19699,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "IS": {
+   "pop": 392404,
+   "gdp_pc_ppp": 83431,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "IT": {
+   "pop": 58915656,
+   "gdp_pc_ppp": 62803,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "JM": {
+   "pop": 2837077,
+   "gdp_pc_ppp": 13291,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "JO": {
+   "pop": 11520684,
+   "gdp_pc_ppp": 12632,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "JP": {
+   "pop": 123366734,
+   "gdp_pc_ppp": 55422,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "KE": {
+   "pop": 57532493,
+   "gdp_pc_ppp": 7016,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "KG": {
+   "pop": 7343064,
+   "gdp_pc_ppp": 9220,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "KH": {
+   "pop": 17847982,
+   "gdp_pc_ppp": 8543,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "KI": {
+   "pop": 136488,
+   "gdp_pc_ppp": 3937,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "KM": {
+   "pop": 882847,
+   "gdp_pc_ppp": 4238,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "KN": {
+   "pop": 46922,
+   "gdp_pc_ppp": 36777,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "KR": {
+   "pop": 51684564,
+   "gdp_pc_ppp": 63125,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "KW": {
+   "pop": 4865298,
+   "gdp_pc_ppp": 56468,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "KY": {
+   "pop": 75844,
+   "gdp_pc_ppp": 92201,
+   "pop_year": 2025,
+   "gdp_year": 2024,
+   "source": "World Bank"
+  },
+  "KZ": {
+   "pop": 20843754,
+   "gdp_pc_ppp": 44293,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "LA": {
+   "pop": 7873046,
+   "gdp_pc_ppp": 10383,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "LB": {
+   "pop": 5849421,
+   "gdp_pc_ppp": 11917,
+   "pop_year": 2025,
+   "gdp_year": 2024,
+   "source": "World Bank"
+  },
+  "LC": {
+   "pop": 180149,
+   "gdp_pc_ppp": 28674,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "LK": {
+   "pop": 21756000,
+   "gdp_pc_ppp": 17065,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "LR": {
+   "pop": 5731206,
+   "gdp_pc_ppp": 1981,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "LS": {
+   "pop": 2363325,
+   "gdp_pc_ppp": 3184,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "LT": {
+   "pop": 2888774,
+   "gdp_pc_ppp": 56838,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "LU": {
+   "pop": 686970,
+   "gdp_pc_ppp": 156542,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "LV": {
+   "pop": 1847785,
+   "gdp_pc_ppp": 46137,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "LY": {
+   "pop": 7458555,
+   "gdp_pc_ppp": 16521,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MA": {
+   "pop": 38430770,
+   "gdp_pc_ppp": 11112,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MD": {
+   "pop": 2360527,
+   "gdp_pc_ppp": 19996,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "ME": {
+   "pop": 623129,
+   "gdp_pc_ppp": 35423,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MG": {
+   "pop": 32740678,
+   "gdp_pc_ppp": 1952,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MH": {
+   "pop": 36282,
+   "gdp_pc_ppp": 8964,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MK": {
+   "pop": 1820909,
+   "gdp_pc_ppp": 28029,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "ML": {
+   "pop": 25198821,
+   "gdp_pc_ppp": 3503,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MM": {
+   "pop": 54850648,
+   "gdp_pc_ppp": 6012,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MN": {
+   "pop": 3568978,
+   "gdp_pc_ppp": 20798,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MO": {
+   "pop": 685900,
+   "gdp_pc_ppp": 137031,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MR": {
+   "pop": 5315065,
+   "gdp_pc_ppp": 7676,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MT": {
+   "pop": 579704,
+   "gdp_pc_ppp": 72210,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MU": {
+   "pop": 1243741,
+   "gdp_pc_ppp": 33667,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MV": {
+   "pop": 529676,
+   "gdp_pc_ppp": 28555,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MW": {
+   "pop": 22216120,
+   "gdp_pc_ppp": 1899,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MX": {
+   "pop": 131946900,
+   "gdp_pc_ppp": 25868,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MY": {
+   "pop": 35977838,
+   "gdp_pc_ppp": 41498,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "MZ": {
+   "pop": 35631653,
+   "gdp_pc_ppp": 1698,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "NA": {
+   "pop": 3092816,
+   "gdp_pc_ppp": 11986,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "NE": {
+   "pop": 27917831,
+   "gdp_pc_ppp": 2177,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "NG": {
+   "pop": 237527782,
+   "gdp_pc_ppp": 9532,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "NI": {
+   "pop": 7007502,
+   "gdp_pc_ppp": 9284,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "NL": {
+   "pop": 18087633,
+   "gdp_pc_ppp": 87320,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "NO": {
+   "pop": 5610870,
+   "gdp_pc_ppp": 104044,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "NP": {
+   "pop": 29618118,
+   "gdp_pc_ppp": 6175,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "NR": {
+   "pop": 12025,
+   "gdp_pc_ppp": 14200,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "NZ": {
+   "pop": 5324700,
+   "gdp_pc_ppp": 57350,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "OM": {
+   "pop": 5494691,
+   "gdp_pc_ppp": 42295,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "PA": {
+   "pop": 4571189,
+   "gdp_pc_ppp": 43902,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "PE": {
+   "pop": 34576665,
+   "gdp_pc_ppp": 18816,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "PG": {
+   "pop": 10762817,
+   "gdp_pc_ppp": 5215,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "PH": {
+   "pop": 116786962,
+   "gdp_pc_ppp": 12577,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "PK": {
+   "pop": 255219554,
+   "gdp_pc_ppp": 6573,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "PL": {
+   "pop": 36435861,
+   "gdp_pc_ppp": 54262,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "PR": {
+   "pop": 3184835,
+   "gdp_pc_ppp": 52196,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "PT": {
+   "pop": 10804871,
+   "gdp_pc_ppp": 53146,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "PW": {
+   "pop": 17663,
+   "gdp_pc_ppp": 23052,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "PY": {
+   "pop": 7013078,
+   "gdp_pc_ppp": 20181,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "QA": {
+   "pop": 2972215,
+   "gdp_pc_ppp": 128883,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "RO": {
+   "pop": 19020271,
+   "gdp_pc_ppp": 50895,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "RS": {
+   "pop": 6549143,
+   "gdp_pc_ppp": 33910,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "RU": {
+   "pop": 143513328,
+   "gdp_pc_ppp": 49568,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "RW": {
+   "pop": 14569341,
+   "gdp_pc_ppp": 4164,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SA": {
+   "pop": 36973555,
+   "gdp_pc_ppp": 73784,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SB": {
+   "pop": 838645,
+   "gdp_pc_ppp": 2788,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SC": {
+   "pop": 122730,
+   "gdp_pc_ppp": 35854,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SD": {
+   "pop": 51662147,
+   "gdp_pc_ppp": 2192,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SE": {
+   "pop": 10596620,
+   "gdp_pc_ppp": 72529,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SG": {
+   "pop": 6111175,
+   "gdp_pc_ppp": 163354,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SI": {
+   "pop": 2130986,
+   "gdp_pc_ppp": 59245,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SK": {
+   "pop": 5413813,
+   "gdp_pc_ppp": 49309,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SL": {
+   "pop": 8819794,
+   "gdp_pc_ppp": 3717,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SN": {
+   "pop": 18931966,
+   "gdp_pc_ppp": 5463,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SO": {
+   "pop": 19654739,
+   "gdp_pc_ppp": 1643,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SR": {
+   "pop": 639850,
+   "gdp_pc_ppp": 22652,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SS": {
+   "pop": 12188788,
+   "gdp_pc_ppp": 1155,
+   "pop_year": 2025,
+   "gdp_year": 2015,
+   "source": "World Bank"
+  },
+  "ST": {
+   "pop": 240254,
+   "gdp_pc_ppp": 6388,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SV": {
+   "pop": 6365503,
+   "gdp_pc_ppp": 14101,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SX": {
+   "pop": 43923,
+   "gdp_pc_ppp": 56491,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "SY": {
+   "pop": 25620427,
+   "gdp_pc_ppp": 4905,
+   "pop_year": 2025,
+   "gdp_year": 2022,
+   "source": "World Bank"
+  },
+  "SZ": {
+   "pop": 1256174,
+   "gdp_pc_ppp": 12529,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TC": {
+   "pop": 46855,
+   "gdp_pc_ppp": 38010,
+   "pop_year": 2025,
+   "gdp_year": 2024,
+   "source": "World Bank"
+  },
+  "TD": {
+   "pop": 21003705,
+   "gdp_pc_ppp": 2903,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TG": {
+   "pop": 8591626,
+   "gdp_pc_ppp": 4079,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TH": {
+   "pop": 71619863,
+   "gdp_pc_ppp": 26250,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TJ": {
+   "pop": 10786734,
+   "gdp_pc_ppp": 5923,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TL": {
+   "pop": 1418517,
+   "gdp_pc_ppp": 4809,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TM": {
+   "pop": 7618847,
+   "gdp_pc_ppp": 22602,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TN": {
+   "pop": 12348573,
+   "gdp_pc_ppp": 15233,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TO": {
+   "pop": 103742,
+   "gdp_pc_ppp": 8675,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TR": {
+   "pop": 85878556,
+   "gdp_pc_ppp": 45288,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TT": {
+   "pop": 1367764,
+   "gdp_pc_ppp": 37121,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TV": {
+   "pop": 9492,
+   "gdp_pc_ppp": 6759,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TZ": {
+   "pop": 70545865,
+   "gdp_pc_ppp": 4471,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "UA": {
+   "pop": 38980376,
+   "gdp_pc_ppp": 18905,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "UG": {
+   "pop": 51384894,
+   "gdp_pc_ppp": 3488,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "US": {
+   "pop": 341784857,
+   "gdp_pc_ppp": 90027,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "UY": {
+   "pop": 3384688,
+   "gdp_pc_ppp": 38315,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "UZ": {
+   "pop": 37053428,
+   "gdp_pc_ppp": 13601,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "VC": {
+   "pop": 99924,
+   "gdp_pc_ppp": 22799,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "VE": {
+   "pop": 28516896,
+   "gdp_pc_ppp": 21283,
+   "pop_year": 2025,
+   "gdp_year": 2011,
+   "source": "World Bank"
+  },
+  "VI": {
+   "pop": 103792,
+   "gdp_pc_ppp": 49785,
+   "pop_year": 2025,
+   "gdp_year": 2022,
+   "source": "World Bank"
+  },
+  "VN": {
+   "pop": 101598527,
+   "gdp_pc_ppp": 18088,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "VU": {
+   "pop": 335169,
+   "gdp_pc_ppp": 4525,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "WS": {
+   "pop": 219306,
+   "gdp_pc_ppp": 9319,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "YE": {
+   "pop": 41773878,
+   "gdp_pc_ppp": 3164,
+   "pop_year": 2025,
+   "gdp_year": 2013,
+   "source": "World Bank"
+  },
+  "ZA": {
+   "pop": 64747319,
+   "gdp_pc_ppp": 15906,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "ZM": {
+   "pop": 21913874,
+   "gdp_pc_ppp": 4379,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "ZW": {
+   "pop": 16950795,
+   "gdp_pc_ppp": 6470,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "World Bank"
+  },
+  "TW": {
+   "pop": 23299000,
+   "gdp_pc_ppp": 90233,
+   "pop_year": 2025,
+   "gdp_year": 2025,
+   "source": "IMF World Economic Outlook April 2026, DataMapper API, Taiwan Province of China: LP 23.299 million people and PPPPC 90,233.262 international dollars, both 2025. Retrieved 9 August 2026. The World Bank does not publish Taiwan, which carries 27.0m outbound O&D in the 2025 base."
   }
+ }
 }
