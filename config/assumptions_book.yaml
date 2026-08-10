@@ -409,6 +409,30 @@ global_drivers:
     "Africa": 0.040
     "Middle East": 0.030
     "Asia Pacific": 0.037
+  # How mature a market is treated as being, which decides whether it takes the mature or
+  # the emerging income elasticity from level3_defaults. Added to the book 9 August 2026;
+  # until then the income threshold below was the only basis and it was a cliff.
+  #
+  #   income_threshold  at or above maturity_gdppc_threshold_usd, fully mature; below it,
+  #                     fully emerging. Nothing in between.
+  #   saturation        maturity is how far up its own propensity curve a country already
+  #                     is, trips per capita against the regional asymptote, so the
+  #                     elasticity interpolates and there is no cliff.
+  #
+  # Measured 9 August 2026: on the income threshold China took the mature domestic
+  # elasticity of 1.0 at 29,333 international dollars per head and 0.4 trips per capita,
+  # and half of China's traffic ran on it. Moving to saturation takes the world CAGR
+  # 2025-2060 from 2.89% to 3.05% and China from 2.61% to 3.13%. See MEASUREMENTS.md
+  # section 8. John, 9 August 2026.
+  #
+  # THE OPEN OBJECTION, recorded here rather than in a reviewer's mouth. Saturation also
+  # drives the propensity headroom that damps growth above the mature floor, so maturity
+  # is now monotone in the same quantity twice. The two do different jobs, one setting how
+  # strongly demand answers income and the other how much of the excess is retained, but
+  # the combined effect is second order in saturation and that has not been measured.
+  # Owner: John. The alternative, if it does not survive the measurement, is to drop the
+  # mature and emerging split and let the headroom carry maturity alone.
+  maturity_basis: saturation
   maturity_gdppc_threshold_usd: 25000      # >= this (PPP) => mature elasticity [P1]
   mature_regions_default: ["EU+UK", "North America"]   # maturity fallback where country GDPpc unknown
 

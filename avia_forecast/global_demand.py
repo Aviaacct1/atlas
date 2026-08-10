@@ -143,16 +143,51 @@ def _fare_index(years):
 
 
 def _maturity(country, region, wb):
+    """Kept as the binary reading, for anything that wants the label rather than the
+    weight. The forecast reads _maturity_weight."""
+    return "mature" if _maturity_weight(country, region, wb) >= 0.5 else "emerging"
+
+
+def _maturity_weight(country, region, wb, trips_pc=None):
+    """How mature a market is, on a 0 to 1 scale, where 1 takes the full mature
+    elasticity and 0 the full emerging one.
+
+    Two bases, and the choice is stated in the assumptions book rather than left to code.
+
+    income_threshold, as it ran until 9 August 2026, is a cliff: at or above
+    maturity_gdppc_threshold_usd a country takes the mature elasticity and below it the
+    emerging one, with nothing in between. China sits at 29,333 international dollars
+    against a threshold of 25,000 and roughly 0.4 trips per capita, so half of Chinese
+    traffic, the 294m of O&D at airports with no fit of their own, carried a domestic
+    income elasticity of 1.0 rather than 1.5. China is a mature air travel market on the
+    income measure and on no other. Mexico at 25,868 and Thailand at 26,250 sit the same
+    wrong side of the same cliff while Brazil at 23,433 sits the right side of it.
+
+    saturation reads maturity off behaviour instead: how far up its own propensity curve
+    a country already is, trips per capita against the regional asymptote the propensity
+    module already applies. It is continuous, so there is no cliff, and it uses a quantity
+    the model computes anyway. See MEASUREMENTS.md section 8.
+    """
+    basis = get("global_drivers.maturity_basis", "income_threshold")
+    if basis == "saturation" and trips_pc is not None:
+        asym = pr.asymptote_for(region)
+        return max(0.0, min(1.0, trips_pc / asym)) if asym else 0.0
     thr = get("global_drivers.maturity_gdppc_threshold_usd")
     rec = wb.get(country)
     if rec and rec.get("gdp_pc_ppp"):
-        return "mature" if rec["gdp_pc_ppp"] >= thr else "emerging"
-    return "mature" if region in get("global_drivers.mature_regions_default") else "emerging"
+        return 1.0 if rec["gdp_pc_ppp"] >= thr else 0.0
+    return 1.0 if region in get("global_drivers.mature_regions_default") else 0.0
 
 
 def _bG(segment, maturity):
+    """Income elasticity for a segment. `maturity` is either the label, for the binary
+    reading, or a weight between 0 and 1, in which case the elasticity interpolates
+    between the emerging and the mature value rather than jumping between them."""
     d = get("level3_defaults")[segment]
-    return d["bG_mature"] if maturity == "mature" else d["bG_emerging"]
+    if isinstance(maturity, str):
+        return d["bG_mature"] if maturity == "mature" else d["bG_emerging"]
+    w = max(0.0, min(1.0, float(maturity)))
+    return d["bG_emerging"] + w * (d["bG_mature"] - d["bG_emerging"])
 
 
 def _clamp_bG(bG):
@@ -280,7 +315,11 @@ def run_global(scenario="Baseline", base_od=None, airport_meta=None, years=None,
     for iata, regs in base_od.items():
         m = meta[iata]
         country, a_region = m["country"], m["region"]
-        maturity = _maturity(country, a_region, wb)
+        # Trips per capita on the same basis the propensity ceiling uses, so the maturity
+        # weight and the saturation damping cannot disagree about where a country sits.
+        _pop = (wb.get(country) or {}).get("pop")
+        _tpc = (country_od.get(country, 0.0) * 1e6 / _pop) if _pop else None
+        maturity = _maturity_weight(country, a_region, wb, _tpc)
         G = _gdp_index(a_region, years, country, scenario)
         bG_est = _est_bG().get(country) if get("global_drivers.use_estimated_elasticities", False) else None
         air_bG = _airport_applied_bG(iata)   # airport-own elasticity where earned (reliable + low connecting share)
