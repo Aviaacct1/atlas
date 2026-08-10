@@ -61,6 +61,24 @@ for mod in ("numpy", "pandas", "statsmodels", "duckdb", "openpyxl", "yaml"):
     except Exception as e:
         fail(f"{mod}: {type(e).__name__}: {e}")
 
+# Two that a host runs without, and gets wrong answers instead of an error. Absent
+# airportsdata, Meridian's coordinate loader returns an empty dictionary, every BT2
+# candidate fails with "gcd unsourceable" and the circuity filter silently passes
+# everything. Absent scikit-learn the BT2 model cannot be unpickled at all. Both were
+# missing from requirements.txt until 10 August 2026 and neither failed loudly.
+for mod, why in (("airportsdata", "circuity and BT2 candidate distances"),
+                 ("sklearn", "the BT2 route launch model cannot be loaded")):
+    try:
+        m = importlib.import_module(mod)
+        v = getattr(m, "__version__", "(no version attribute)")
+        ok(f"{mod} {v}")
+        if mod == "sklearn" and v != "1.7.2":
+            warn(f"sklearn {v}: the BT2 pickle records 1.7.2. Unpickling an estimator "
+                 f"across versions is not guaranteed and a silent behaviour change in a "
+                 f"scorer is worse than a refusal to load")
+    except Exception as e:
+        fail(f"{mod}: {type(e).__name__}: {e}. Without it, {why}")
+
 # --- 3. data roots -----------------------------------------------------------
 print("\n3. Data roots (avia_forecast/paths.py)")
 try:
