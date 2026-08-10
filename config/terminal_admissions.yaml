@@ -1,0 +1,42 @@
+# Airports the base holds and ACI does not. Author: Avia Solutions. Added 9 August 2026.
+#
+# THE RULE. `global_terminal.run_terminal` iterates the ACI hub calibration, so an airport
+# absent from ACI carries no terminal forecast and appears in no published figure, however
+# much traffic the base holds for it.
+#
+# An airport is admitted here only when all four hold:
+#
+#   1. the base carries material traffic for it, above 2m outbound O&D, which is the
+#      scope.selection inclusion floor;
+#   2. ACI does not publish it, checked against THE FILE THE CALIBRATION IS BUILT FROM,
+#      which is the ACI annual dataset in data/aci_decrypted, by IATA code AND by airport
+#      name, and not assumed;
+#   3. a terminal figure exists from a named source outside ACI, recorded in full;
+#   4. that source reproduces the ACI figure for comparable airports, so the two are on
+#      the same basis and the admitted record is not a different measure wearing the same
+#      label.
+#
+# The record is kept HERE and not edited into `aci_hub_calibration_2024.json`, so the ACI
+# file stays ACI and an admitted airport can always be told from a published one. The
+# builder refuses to admit an airport ACI already carries.
+#
+# THE LIST IS EMPTY, AND HOW IT GOT THAT WAY IS THE POINT.
+#
+# Beijing Daxing was admitted here on 9 August 2026 on the finding that ACI does not
+# publish it. That finding was wrong. It came from the ACI MONTHLY store, which carries no
+# PKX row, and the monthly store is not what the calibration is built from. The ACI ANNUAL
+# dataset publishes Beijing Daxing at 49,441,029 passengers and 325,246 movements for 2024.
+# It never reached us because `scripts/ingest_aci.py` required the "Passenger Terminal"
+# column and skipped any row where it was blank, and ACI leaves that column blank for a
+# large minority of airports while filling "Passengers" instead. 189 airports carrying
+# 544.0m were dropped from the 2024 dataset that way, and between 174 and 221 airports in
+# every year from 2013.
+#
+# Read the file the code reads, not the one that is easy to open. The same lesson cost a
+# day in the propensity work on the same date, and it was not learned the first time.
+#
+# Rule 2 above now names the file explicitly for that reason. The mechanism stays because
+# the case it was built for is real: an airport in the base and not in ACI has to be
+# admitted deliberately or excluded deliberately, never silently.
+
+admissions: {}

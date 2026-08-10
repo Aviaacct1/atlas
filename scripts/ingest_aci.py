@@ -97,7 +97,8 @@ def parse_modern(path, year):
     for req in ("iata", "terminal"):
         if req not in idx:
             wb.close(); raise RuntimeError(f"{year}: missing column {req} in {sheet}")
-    out = []
+    out, dropped = [], []
+    n_fallback = 0
     for row in ws.iter_rows(min_row=hrow + 1, values_only=True):
         iata = row[idx["iata"]] if idx["iata"] < len(row) else None
         iata = str(iata).strip().upper() if iata is not None else ""
@@ -107,18 +108,46 @@ def parse_modern(path, year):
             j = idx.get(k)
             return _num(row[j]) if (j is not None and j < len(row)) else None
         term = g("terminal")
+        term_source = "passenger terminal"
+        # ACI leaves "Passenger Terminal" blank for a large minority of airports and fills
+        # "Passengers" instead. Skipping those rows, which is what this did until
+        # 9 August 2026, dropped 189 airports carrying 544.0m from the 2024 dataset,
+        # Beijing Daxing at 49.4m among them, and the drop is concentrated in China.
+        #
+        # The fallback is NOT the passengers column on its own. Passengers includes direct
+        # transit and terminal does not: on the 2,557 airports of the 2024 dataset that
+        # carry both, terminal = passengers less direct transit holds exactly, 2,557 times
+        # out of 2,557, while terminal = passengers holds only 1,709 times and would
+        # overstate Los Angeles by 2.3m. None of the 189 blank-terminal rows carries a
+        # direct transit figure, so for them the two are the same number, but the identity
+        # is what is applied and which field was used travels with the row.
         if term is None:
+            pax = g("total_pax")
+            if pax is not None:
+                term = pax - (g("transit") or 0.0)
+                term_source = "passengers less direct transit"
+                n_fallback += 1
+        if term is None:
+            dropped.append(iata)
             continue
         out.append({
             "iata": iata, "year": year,
             "region": (row[idx["region"]] if "region" in idx else None),
             "country_code": (row[idx["country_code"]] if "country_code" in idx else None),
             "city": (row[idx["city"]] if "city" in idx else None),
-            "terminal_pax": term, "domestic": g("domestic"), "international": g("international"),
+            "terminal_pax": term, "terminal_source": term_source,
+            "domestic": g("domestic"), "international": g("international"),
             "direct_transit": g("transit"), "total_pax": g("total_pax"),
             "movements": g("movements"), "total_cargo": g("cargo"),
         })
     wb.close()
+    if n_fallback or dropped:
+        fb_pax = sum(r["terminal_pax"] for r in out
+                     if r["terminal_source"] != "passenger terminal")
+        print(f"    {year}: {n_fallback} airports took passengers less direct transit "
+              f"because the terminal column was blank, carrying {fb_pax / 1e6:,.1f}m; "
+              f"{len(dropped)} rows carried neither and are dropped"
+              + (": " + ", ".join(sorted(dropped)[:12]) if dropped else ""))
     return out
 
 

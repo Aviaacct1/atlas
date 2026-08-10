@@ -42,8 +42,54 @@ def _load(name):
     return json.load(open(os.path.join(DATA, name)))
 
 
+def _admissions(cal):
+    """Airports the base holds and ACI does not, from config/terminal_admissions.yaml.
+
+    This iteration is over the ACI file, so an airport ACI does not publish carries no
+    terminal forecast and reaches no published figure however much traffic the base holds.
+    Beijing Daxing was 20.4m of outbound O&D and absent from the dashboard, the
+    reconciliation and the deck for exactly that reason.
+
+    The admitted records live in configuration and never in the ACI file, so a published
+    airport can always be told from an admitted one, and an airport ACI already carries is
+    refused rather than overridden.
+    """
+    from .config import _load as cfg_load
+    try:
+        cfg = cfg_load("terminal_admissions.yaml") or {}
+    except FileNotFoundError:
+        return {}, []
+    out, notes = {}, []
+    for iata, rec in (cfg.get("admissions") or {}).items():
+        if iata in cal:
+            notes.append(f"{iata} refused: ACI already publishes it, so the ACI record stands")
+            continue
+        term = rec.get("terminal_pax_2024")
+        od = rec.get("od_both_ends_2024")
+        if not term or od is None or not rec.get("country_code") or not rec.get("terminal_source"):
+            notes.append(f"{iata} refused: terminal_pax_2024, od_both_ends_2024, "
+                         f"country_code and terminal_source are all required")
+            continue
+        if od > term:
+            notes.append(f"{iata} refused: O&D at both ends {od:,.0f} exceeds terminal "
+                         f"{term:,.0f}, so one of the two is on a different basis")
+            continue
+        out[iata] = {"od_both_ends_2024": float(od),
+                     "connecting_est": float(term) - float(od),
+                     "country_code": rec["country_code"],
+                     "admitted": True, "admission_source": rec["terminal_source"]}
+        notes.append(f"{iata} admitted: terminal {term / 1e6:,.2f}m, O&D both ends "
+                     f"{od / 1e6:,.2f}m, connecting share "
+                     f"{(float(term) - float(od)) / float(term):.3f}")
+    return out, notes
+
+
 def run_terminal(scenario="Baseline"):
     cal = _load("aci_hub_calibration_2024.json")
+    admitted, admission_notes = _admissions(cal)
+    for note in admission_notes:
+        print("terminal admissions: " + note)
+    cal = {**cal, **admitted}
     # Per-airport destination-region seat shares. Absent, every airport falls back to the
     # region average, which is a different forecast and used to happen in silence.
     M = gd._load_external("oag_final_to_next_M.json",
@@ -138,12 +184,24 @@ def run_terminal(scenario="Baseline"):
             ap.append(round(term_m, 3))
         by_airport[iata] = {"region": region, "country": c.get("country_code"),
                             "connecting_share": round(share, 3), "conn_source": source,
-                            "series": ap}
+                            "admitted": bool(c.get("admitted")), "series": ap}
 
     y0, y1 = years[0], years[-1]
     cagr = (world[y1] / world[y0]) ** (1.0 / (y1 - y0)) - 1.0
     return TerminalResult(years, world, by_region, cagr, base_terminal / 1e6, by_airport,
                           meta={"scenario": scenario, "n_airports": len(cal),
+                                "admitted": sorted(admitted),
+                                "admission_notes": admission_notes,
+                                # An airport with no destination mix row grows its
+                                # connecting traffic on the world international rate,
+                                # which is a different forecast for that airport. The
+                                # count alone reads as small; the traffic behind it is
+                                # what decides whether it matters.
+                                "no_M_row": sum(1 for a in cal if a not in M),
+                                "no_M_row_terminal_m": round(sum(
+                                    (c.get("od_both_ends_2024") or 0.0)
+                                    + (c.get("connecting_est") or 0.0)
+                                    for a, c in cal.items() if a not in M) / 1e6, 1),
                                 "hubs_with_M": sum(1 for a in cal if a in M),
                                 "tb_base_pass": tb_fail == 0, "tb_fail": tb_fail,
                                 "connecting_measured": n_measured, "connecting_residual": n_residual,
