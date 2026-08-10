@@ -1,0 +1,72 @@
+# Stage length for the RPK conversion. Author: Avia Solutions. Added 9 August 2026.
+#
+# Atlas forecasts passengers. Boeing, Airbus and IATA publish revenue passenger
+# kilometres. Converting one to the other needs a distance per passenger, and until
+# 9 August 2026 that distance was a per-region constant written into
+# scripts/compare_regions_boeing.py and copied into two measurement scripts. A constant
+# cancels in a CAGR, so our RPK CAGR equalled our passenger CAGR to the decimal place
+# while every counterparty's carried their own stage length growth inside it. Two thirds
+# of the headline gap against Boeing was that convention.
+#
+# Two parts, from two different sources, and they are not interchangeable.
+
+base_km_per_passenger:
+  # LEVEL. Representative average one-way distance per departing O&D passenger, keyed on
+  # the ENGINE's six regions, because that is what an airport record carries. These are
+  # the constants the conversion has always used. They set the level of our RPK, not its
+  # growth, so the comparison stays indicative on levels and sound on growth. [P1]:
+  # replace with a measured base-year distance per region when the O&D distance join is
+  # built into the base ingest rather than into a measurement script.
+  Europe: 1.35
+  Asia Pacific: 1.95
+  North America: 1.6
+  South America: 1.45
+  Middle East: 2.9
+  Africa: 1.8
+  _G: 1.72            # any region not listed above
+
+growth_by_boeing_region:
+  # GROWTH. Annual growth in stage length, keyed on BOEING's ten regions, because that is
+  # the classification the comparison runs on and the regional differences are estimated
+  # on it.
+  #
+  # Source: scripts/journey_length_history.py, 9 August 2026. Sabre od_p2p true origin and
+  # destination passengers 2013-2019 and 2023-2025, ten years, with great circle distance
+  # from the airport coordinates in E:\Avia\Global\data\airports.csv. ln(journey length)
+  # regressed on a year term with a region fixed effect, so every observation is used
+  # rather than the two an endpoint CAGR keeps. Standard error 0.19pp on each regional
+  # estimate and 0.07pp on the common rate.
+  #
+  # One rate for every region is rejected, F(8,72) = 5.65, p below 0.0001. The regional
+  # estimates are not stable across sub-windows, so each is pulled towards the common
+  # 0.71% at a weight of 0.83, which is the share of the spread between them that survives
+  # once their own estimation error is taken out. The weight is read off the data, not
+  # chosen. See MEASUREMENTS.md section 7.
+  #
+  # Cross-check, a different measure of distance from a different source: OAG flown stage
+  # length 2015-2025 from scripts/build_fleet_wedge.py gives Africa 0.31%, China 0.13%,
+  # Eurasia 0.93%, Latin America 0.92%, Middle East 0.42%, North America 0.45%, Northeast
+  # Asia 0.89%, Oceania 1.26%, South Asia -0.06%, Southeast Asia 1.20%, World 0.61%. The
+  # two sources rank the regions the same way and differ most on China, where the flown
+  # measure is held down by the domestic build-out that the O&D measure sees as longer
+  # journeys.
+  #
+  # NOT an income relationship. ln(journey length) on ln(real GDP per head) gives an
+  # elasticity of 0.158 alone, and -0.105 once a common year term is allowed in beside it,
+  # because income and time are collinear over ten years in which every region got richer.
+  # A panel this short cannot separate an income effect from longer range narrowbodies,
+  # low cost long haul and liberalisation. Revisit when the history is longer.
+
+  Africa: 0.0040
+  China: 0.0066
+  Eurasia: 0.0071
+  Latin America: 0.0130
+  Middle East: 0.0066
+  North America: 0.0027
+  Northeast Asia: 0.0086
+  Oceania: 0.0110
+  South Asia: 0.0016
+  Southeast Asia: 0.0097
+  World: 0.0071          # the common rate, and the fallback for a region not listed
+
+base_year: 2025          # the year at which the growth factor is 1.0

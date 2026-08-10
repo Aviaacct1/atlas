@@ -44,15 +44,18 @@ import duckdb  # noqa: E402
 import yaml  # noqa: E402
 
 from avia_forecast import global_demand as gd  # noqa: E402
+from avia_forecast import stage_length as sl_mod  # noqa: E402
 from avia_forecast import paths  # noqa: E402
 from avia_forecast.geo.regions_iso2 import dest_region, region_for_iso2  # noqa: E402
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Per-region stage length as the RPK conversion applies it, copied from
-# scripts/compare_regions_boeing.py so the two read the same. [P1] there, [P1] here.
-SL = {"Europe": 1.35, "Asia Pacific": 1.95, "North America": 1.6, "South America": 1.45,
-      "Middle East": 2.9, "Africa": 1.8, "_G": 1.72}
+# The stage length constants were copied into this file from
+# scripts/compare_regions_boeing.py. Three copies of one number is three chances for them
+# to disagree, so they now live in config/stage_length.yaml behind
+# avia_forecast/stage_length.py. This measurement holds stage length CONSTANT on purpose:
+# it is measuring what one change does to passenger growth, and a growing stage length
+# would sit on both sides of the comparison and cancel.
 
 
 def boeing_regions():
@@ -149,7 +152,7 @@ def region_series(res, base, meta, iso, default):
         if not b:
             continue
         reg = iso.get(str(m.get("country") or "").upper(), default)
-        sl = SL.get(m.get("region"), SL["_G"])
+        sl = sl_mod.base_km(m.get("region"))
         v = agg.setdefault(reg, [0.0, 0.0, 0])
         v[0] += b * sl
         v[1] += last * sl
