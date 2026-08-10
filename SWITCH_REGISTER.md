@@ -20,7 +20,7 @@ only by `avia_forecast/paths.py`, with every other module importing from there.
 | Variable | Root it sets | Read by | State |
 |---|---|---|---|
 | `AVIA_GLOBAL_ROOT` | `E:\Avia\Global` | `paths.py` | Keep. Canonical. |
-| `AVIA_DB_ROOT` | `C:\Avia` (the duckdb stores) | `paths.py` | Keep. Canonical. |
+| `AVIA_DB_ROOT` | `E:\Avia` (the duckdb stores) | `paths.py` | Keep. Canonical. Moved from `C:\Avia` on 10 August 2026 so ONE drive carries every data location the estate has, and a backup workstation is a copy of one drive rather than a reconstruction from three. `C:\Avia` remains a fallback and prints a line when it is used. |
 | `AVIA_QSI_APP` | the Meridian application folder | `paths.py` | Keep. Canonical. Default must move to `C:\src\meridian\app`. |
 | `AVIA_ZAGREB` | `E:\Avia\Zagreb` | `webapp/zagreb_write_excel.py`, `webapp/zagreb_write_report.py` | Fold into `paths.py`. Two modules define the same default, one of them as `r"E:\\Avia\\Zagreb"` with doubled separators. |
 | `AVIA_OAG` | the OAG raw file folder | `scripts/ingest_oag_annual.py` | Fold into `paths.py`. |

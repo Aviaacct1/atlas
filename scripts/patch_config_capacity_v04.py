@@ -90,8 +90,10 @@ oag_schedules:
   name: "OAG schedules (Avia store)"
   licence_class: C
   rights_summary: "Commercial licence. Estimation and parameter use; no reconstitutable extracts."
-  store_path: "C:/Avia/oag.duckdb"     # dev PC, per STATE OF PLAY 29 Jul 2026; override with AVIA_OAG_STORE
-  # Read directly against C:/Avia/oag.duckdb, 3 August 2026. The store is ONE ROW PER
+  store_path: "E:/Avia/oag.duckdb"     # the store root moved to E:\Avia on 10 August 2026;
+                                       # resolution is --store, then AVIA_DB_ROOT through
+                                       # paths.py, then this line as the last resort
+  # Read directly against the OAG store, 3 August 2026. The store is ONE ROW PER
   # OPERATED FLIGHT. The presence of days_of_op, eff_from and eff_to made it look like
   # service grain, which it is not: see the row grain note below.
   columns:

@@ -17,7 +17,7 @@ FIVE variables, one per location. Nothing else in the tree may read a data path 
 environment or write one as a literal.
 
     AVIA_GLOBAL_ROOT   the Global folder            default E:\Avia\Global
-    AVIA_DB_ROOT       the store root               default C:\Avia
+    AVIA_DB_ROOT       the store root               default E:\Avia
     AVIA_QSI_APP       the Meridian application     default C:\src\meridian\app
     AVIA_ZAGREB        the Zagreb engagement folder default E:\Avia\Zagreb
     AVIA_DUCKDB_TMP    duckdb scratch               unset, duckdb chooses
@@ -68,9 +68,18 @@ def _legacy_env(*names):
 GLOBAL = (os.environ.get("AVIA_GLOBAL_ROOT")
           or _first([r"E:\Avia\Global", _mnt("Global"), _mnt("E:--Avia/Global")]))
 
+# The store root moved to E:\Avia on 10 August 2026, so that ONE drive carries every data
+# location the estate has: the stores, the Global folder, Zagreb, the US market files and
+# the duckdb scratch. A backup workstation is then a copy of one drive rather than a
+# reconstruction from three. C:\Avia is kept as a fallback so a machine part way through
+# the move still resolves, and it is reported when it is used.
 AVIA = (os.environ.get("AVIA_DB_ROOT")
         or _legacy_env("AVIA_OAG_DB", "AVIA_OAG_STORE", "QSI_OAG", "QSI_SABRE")
-        or _first([r"C:\Avia", _mnt("Avia")]))
+        or _first([r"E:\Avia", r"C:\Avia", _mnt("E:--Avia"), _mnt("Avia")]))
+if AVIA == r"C:\Avia":
+    print("paths: the store root resolved to C:\\Avia, which is the pre-10 August 2026 "
+          "location. The estate standard is E:\\Avia, one drive for every data location. "
+          "Set AVIA_DB_ROOT, or move the stores.", file=sys.stderr)
 if os.path.isfile(AVIA):                     # a legacy variable named the store, not the root
     AVIA = os.path.dirname(AVIA)
 
