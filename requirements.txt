@@ -4,3 +4,14 @@ statsmodels
 duckdb
 openpyxl
 PyYAML
+# Offline IATA airport coordinates. Meridian's schedule_chain.load_airport_coords reads
+# this package and returns an EMPTY dictionary without it, with circuity then silently
+# disabled, which is how every BT2 route candidate failed with "gcd unsourceable" and
+# bum_candidates.json of 29 July 2026 carries that error on all 136 of its routes.
+airportsdata
+# The BT2 route launch model is a pickled scikit-learn estimator, so it cannot be loaded
+# without it and scripts/build_bum_candidates.py dies at the scoring step. The version is
+# pinned to the one recorded in the pickle metadata, 1.7.2: unpickling an estimator across
+# versions is not guaranteed and a silent behaviour change in a scorer is worse than a
+# refusal to load.
+scikit-learn==1.7.2

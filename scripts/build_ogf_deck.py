@@ -376,7 +376,8 @@ class Deck:
               ["Region", "Airports", "Avia", "Boeing", "Difference"],
               [[r["region"], f"{r['airports']:,}", pct(r["avia"]), pct(r["boeing"]),
                 pp(r["diff_pp"])] for r in rows]
-              + [["World", "2,430", pct(reg["world_avia"]), pct(reg["world_boeing"]),
+              + [["World", f"{sum(r['airports'] for r in rows):,}",
+                  pct(reg["world_avia"]), pct(reg["world_boeing"]),
                   pp((reg["world_avia"] - reg["world_boeing"]) * 100)]],
               col_w=[2.3, 1, 1, 1, 1.2], size=11, highlight_last_row=True)
         chart(s, XL_CHART_TYPE.BAR_CLUSTERED, Inches(7.2), Inches(1.75),
@@ -391,46 +392,49 @@ class Deck:
                   f"scripts/compare_regions_boeing.py",
                note="Revenue passenger kilometres, compound annual growth "
                     "2024-2044, forecast on both sides. Regions are Boeing's ten, "
-                    "applied to Avia's 2,430 airports by country.")
+                    f"applied to Avia's {sum(r['airports'] for r in rows):,} airports "
+                    f"by country.")
 
     def gap_bridge(self, gd):
-        s = page(self.prs, "Two thirds of the gap against Boeing is a conversion, "
+        s = page(self.prs, "Half the gap against Boeing was a conversion, "
                            "not a view", "The finding")
         rows = gd["rows"] + ([gd["world"]] if gd.get("world") else [])
         table(s, M, Inches(1.72), Inches(6.6),
-              ["Region", "Avia now", "Stage length", "Avia adjusted", "Boeing",
-               "Gap after"],
+              ["Region", "Constant stage", "Stage length", "Published", "Boeing",
+               "Gap now"],
               [[r["region"], pct(r["avia"]), pct(r["stage_cagr"]),
                 pct(r["avia_with_stage"]), pct(r["boeing"]), pp(r["gap_pp_after"])]
                for r in rows],
               col_w=[2.1, 1, 1.2, 1.3, 1, 1.1], size=10.5,
               highlight_last_row=bool(gd.get("world")))
         text_box(s, Inches(7.4), Inches(1.72), Inches(5.3), Inches(4.6),
-                 ["Boeing publishes RPK. Atlas forecasts passengers and converts to "
-                  "RPK with a stage length held constant, so our RPK growth is our "
-                  "passenger growth to the decimal place. Boeing's RPK growth carries "
-                  "their stage length growth inside it.",
+                 ["Boeing publishes RPK. Atlas forecasts passengers and, until August "
+                  "2026, converted to RPK on a stage length held constant, so our RPK "
+                  "growth was our passenger growth to the decimal place while Boeing's "
+                  "carried their stage length growth inside it.",
                   "",
-                  "Measured from the OAG schedule, stage length grew 0.6% a year at "
-                  "world level over 2015-2025. Carried into the conversion as a test, "
-                  "the world gap narrows from 1.9 to 0.2 points against Boeing.",
+                  "The conversion now carries a stage length that grows. The rate is "
+                  "estimated per region from ten years of Sabre true origin and "
+                  "destination journey length, 2013-2025, on every observation rather "
+                  "than two endpoints, with a standard error of 0.19 points.",
+                  "",
+                  "One rate for every region is rejected by the data, so each region "
+                  "keeps its own estimate pulled towards the common 0.71% in proportion "
+                  "to its precision. The world average sector reaches 2,159 km by 2044 "
+                  "against 1,888 km in 2025.",
                   "",
                   "Where the gap closes, we were comparing a passenger CAGR with an "
-                  "RPK CAGR. Where it does not, in China, Africa and the Middle East, "
-                  "we hold a different view of demand, and that has to be argued "
-                  "rather than corrected.",
-                  "",
-                  "Nothing in the forecast has been changed. This is a measurement, "
-                  "and a single historic rate applied everywhere over corrects Oceania "
-                  "and Northeast Asia, so the fix is a stated stage length path per "
-                  "region."],
+                  "RPK CAGR. Where it does not, in Southeast Asia, China and the Middle "
+                  "East, we hold a different view of demand: affordability is the "
+                  "mechanism Boeing use and we do not model it."],
                  size=11)
-        footer(s, "Avia Solutions analysis of the OAG schedule store, 2015-2025, "
-                  "against the Boeing 2025 Commercial Market Outlook. Produced by "
-                  "scripts/gap_decomposition.py",
-               note="Stage length measured as ASK per departing seat, scheduled "
-                    "passenger services, actual. The adjusted column is a test and is "
-                    "not the published forecast.")
+        footer(s, "Avia Solutions analysis of Sabre origin and destination data "
+                  "2013-2025 and the OAG schedule store, against the Boeing 2025 "
+                  "Commercial Market Outlook. Produced by "
+                  "scripts/journey_length_history.py and scripts/gap_decomposition.py",
+               note="Stage length growth estimated on ln journey length against a year "
+                    "term with a region fixed effect. The published column is the "
+                    "forecast as it now stands.")
 
     def wedge(self, wj, segment, label, boeing=None):
         s = page(self.prs, f"Fleet productivity: {label}", "The wedge")
@@ -649,11 +653,25 @@ class Deck:
 
     def basis(self):
         s = page(self.prs, "Basis, and the checks behind it", "Method")
+        # Read from the forecast extract, never typed. This line carried 3,140m and
+        # 3.26% for a day after the base rebuild moved the first to 3,341m, and again
+        # after the World Bank ingest moved the growth rate. A headline number written
+        # into a deck build is a number that goes stale silently.
+        fc = json.load(open(os.path.join(REPO, "data", "global_forecast_2025_2050.json")))
+        _w = fc["world_od_m"]
+        _n_airports = json.load(open(os.path.join(paths.DATA, "regions_boeing.json"))).get(
+            "rows") if os.path.isfile(os.path.join(paths.DATA, "regions_boeing.json")) else None
+        _n_airports = (sum(r["airports"] for r in _n_airports) if _n_airports
+                       else fc.get("n_airports", 0))
+        _y0, _y1 = fc["base_year"], max(int(y) for y in _w)
         text_box(s, M, Inches(1.72), Inches(6.1), Inches(4.6),
-                 ["Forecast. Avia global forecast, Baseline case, 2,430 airports "
-                  "carrying a Boeing region, Oxford Economics country GDP of 31 July "
-                  "2024, world O&D departing passengers 3,140m in 2025 to 9,644m in "
-                  "2060, a compound 3.26% a year.",
+                 [f"Forecast. Avia global forecast, Baseline case, "
+                  f"{_n_airports:,} airports "
+                  f"carrying a Boeing region, Oxford Economics country GDP of 31 July "
+                  f"2024, world O&D departing passengers {_w[str(_y0)]:,.0f}m in {_y0} "
+                  f"to {_w[str(_y1)]:,.0f}m in {_y1}, a compound "
+                  f"{((_w[str(_y1)] / _w[str(_y0)]) ** (1 / (_y1 - _y0)) - 1) * 100:.2f}% "
+                  f"a year.",
                   "",
                   "History. The OAG schedule store, 333m rows, service type J, "
                   "departures only, one preferred tiling for each region and year, "

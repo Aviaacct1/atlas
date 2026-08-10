@@ -76,7 +76,7 @@ def quick(airports, qsi, oag_db):
     return out
 
 
-def qsi_enrich(cands, qsi, oag_db, week=None):
+def qsi_enrich(cands, qsi, oag_db, week=None, bt2=False):
     """Attach the REAL QSI schedule-quality share to each candidate (route_qsi, OAG-only, fast).
     Competitors = the same-country board points that carry O&D to the destination (a coarse
     catchment). est_pax = same-country market x QSI share x stimulation, flagged indicative: the
@@ -89,6 +89,14 @@ def qsi_enrich(cands, qsi, oag_db, week=None):
         w = duckdb.connect(oag_db, read_only=True)
         week = w.execute("select max(week) from oag where year=2025").fetchone()[0]; w.close()
     con = duckdb.connect(paths.PREAGG, read_only=True)
+    # Initialised here, and it was not before 10 August 2026. Every candidate raised a
+    # NameError on the append INSIDE the try, was caught by the bare except below, and was
+    # recorded as "qsi share failed: NameError" while the script then died on the same name
+    # outside the try. The file on disk was therefore last produced by a version of this
+    # script that no longer exists, and could not be regenerated at all. A bare except
+    # around a block that also contains a programming error turns the error into a data
+    # quality note.
+    _bt2_pending: list = []
     for o, rows in cands.items():
         oc = apc.get(o)
         for r in rows:
@@ -105,6 +113,21 @@ def qsi_enrich(cands, qsi, oag_db, week=None):
                 r["qsi"] = round(share, 3)                                   # real schedule-quality QSI share vs the field
                 # BT2 model (29 Jul 2026) supersedes the uplift table for launch candidates.
                 # Features gathered here; batch-scored after the loop (one predict call).
+                if not bt2:
+                    # DEFAULT OFF since 10 August 2026, and this is a stop rather than a
+                    # preference. The BT2 scoring path had never run end to end: the
+                    # pending list was never initialised, airportsdata and scikit-learn
+                    # were absent from requirements, and a zero market took the build down
+                    # on log(0). With all four repaired it runs, and the first run puts
+                    # Southampton to Heathrow at 41.8k passengers off a measured market of
+                    # 0.1k, and Southampton to Paris at 41.4k off 3.3k. The model is being
+                    # extrapolated far below the markets it was trained on and returns a
+                    # tier B forecast rather than a refusal. It needs a stated minimum
+                    # market, read off the training cohort rather than chosen, before its
+                    # output goes anywhere. Owner: John. Run with --bt2 to score anyway.
+                    r["source"] = ("Sabre market only: BT2 launch model not applied, "
+                                   "pending a minimum market threshold (--bt2 to score)")
+                    continue
                 import bt2_features as BF
                 PLAN = {"gauge": 220, "freq": 5, "typ": "LCC",
                         "launch_mon": (datetime.date.today().month % 12) + 1}   # planning assumptions, surfaced per row
@@ -129,12 +152,37 @@ def qsi_enrich(cands, qsi, oag_db, week=None):
                 r["legs_n"] = pm["legs_n"]; r["qcx"] = round(pm["qcx"], 2)
                 r["plan"] = PLAN
                 r["sister_flag"] = _sis
+                # The model takes the log of the base market and of planned seats, so a
+                # candidate with no measured same-country market cannot be scored: it is
+                # log(0) and it took the whole build down with a bare "math domain error"
+                # until 10 August 2026. Skip it and say so on the row. A route with no
+                # measurable market is a real category, not a defect to be floored.
+                if not (feat["base_mkt"] > 0 and feat["seats_ly"] > 0):
+                    r["source"] = ("Sabre market only: no measured same-country O&D market "
+                                   "for this destination, so the BT2 launch model cannot "
+                                   "be scored")
+                    continue
                 _bt2_pending.append((r, feat))
+                # This string is John's claim-language ruling of 5 August 2026, CHANGELOG
+                # entry 90: publish the calibrated figures and the blind twenty-route
+                # portfolio figure; single-route blind numbers stay internal. Do not edit
+                # it without a ruling. The model card in data/bt2_model_v1_2.pkl describes
+                # the 88.8% as "fitted (light-reg)" against a blind leave-one-carrier-out
+                # of 53.7%, and whether "calibrated" and "fitted" are the same thing is a
+                # question for John, not for this file.
                 r["source"] = ("BT2 route launch model v1.2 - calibrated accuracy 89% within +-20% / "
                                "82% within +-10% (n=2,915); 20-route portfolios 94% within +-20%; "
                                "tier A = higher-confidence forecast; plan assumptions on row")
             except Exception as e:
-                r["source"] = f"Sabre market only (qsi share failed: {type(e).__name__})"
+                # Name what failed. This said "qsi share failed" for every failure in the
+                # block, including failures of the BT2 feature gathering that happen long
+                # after the QSI share has been computed and written to the row. Every route
+                # in bum_candidates.json of 29 July 2026 carried "qsi share failed" while
+                # in fact holding a QSI share, and the real fault was a missing coordinate
+                # source three calls later.
+                stage = "qsi share" if r.get("qsi") is None else "BT2 launch model"
+                r["source"] = (f"Sabre market only ({stage} failed: {type(e).__name__}: "
+                               f"{str(e)[:80]})")
     con.close()
     try:
         _bt2_con.close()
@@ -202,6 +250,8 @@ def main():
     ap.add_argument("--oag", default=DEF_OAG)
     ap.add_argument("--sabre", default=DEF_SABRE)
     ap.add_argument("--week", default=None)
+    ap.add_argument("--bt2", action="store_true",
+                    help="score candidates with the BT2 launch model. Off until a\nminimum market threshold is set: see the note in qsi_enrich")
     a = ap.parse_args()
     airports = [x.strip().upper() for x in a.airports.split(",") if x.strip()]
     cands = quick(airports, a.qsi, a.oag)
@@ -209,7 +259,7 @@ def main():
     if a.optimise:
         cands = optimise(cands, a.qsi, a.oag, a.sabre, a.week)
     elif not a.market_only:
-        cands = qsi_enrich(cands, a.qsi, a.oag, a.week)
+        cands = qsi_enrich(cands, a.qsi, a.oag, a.week, bt2=a.bt2)
     dump_atomic(cands, OUT, indent=1)
     n = sum(len(v) for v in cands.values())
     print(f"bum_candidates.json: {len(cands)} airports, {n} candidate routes"

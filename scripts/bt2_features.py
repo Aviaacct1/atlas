@@ -32,9 +32,43 @@ def _cb():
 
 
 def _coords(SC):
+    """Airport coordinates, from Meridian's loader first and our own airport reference
+    second.
+
+    Meridian's `load_airport_coords` reads the optional `airportsdata` package and returns
+    an EMPTY dictionary when it is absent, with circuity then disabled. That package was
+    not in requirements.txt until 10 August 2026, so on any machine installed from it the
+    dictionary was empty, `pair_metrics` raised "gcd unsourceable" for every candidate
+    route, and the circuity filter passed everything. `bum_candidates.json` of 29 July 2026
+    carries "qsi share failed: ValueError" on all 136 of its routes for that reason, and
+    the estimate on each row came from the crude market times capture fallback rather than
+    the BT2 model its source line names.
+
+    The package is now a requirement AND this falls back to
+    E:\\Avia\\Global\\data\\airports.csv, 85,846 rows, which the estate already holds and
+    which journey_length_history.py reads. A missing dependency should degrade to a second
+    source, not to a silently disabled filter.
+    """
     global _COORDS
     if _COORDS is None:
-        _COORDS = SC.load_airport_coords()
+        _COORDS = dict(SC.load_airport_coords() or {})
+        if len(_COORDS) < 1000:
+            import csv
+            fp = os.path.join(paths.DATA, "airports.csv")
+            n = 0
+            if os.path.isfile(fp):
+                with open(fp, encoding="utf-8") as fh:
+                    for row in csv.DictReader(fh):
+                        code = (row.get("iata_code") or "").strip()
+                        if len(code) != 3 or code in _COORDS:
+                            continue
+                        try:
+                            _COORDS[code] = (float(row["latitude_deg"]), float(row["longitude_deg"]))
+                            n += 1
+                        except (TypeError, ValueError):
+                            continue
+            print(f"bt2_features: Meridian supplied coordinates for "
+                  f"{len(_COORDS) - n} airports, {n} filled from {fp}")
     return _COORDS
 
 
