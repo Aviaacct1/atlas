@@ -6,7 +6,7 @@
      Per-tab only (sessionStorage), so a refresh does not re-trigger. Remove this script to
      let dashboard.html open directly again. -->
 <script>try{if(sessionStorage.getItem('gafEntered')!=='1'){location.replace('entry.html');}}catch(e){}</script>
-<title>The Observatory - Global Aviation Forecast (GAF)</title>
+<title>The Observatory - Global Forecast (OGF)</title>
 <meta name="author" content="Avia Solutions">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pptxgenjs/3.12.0/pptxgen.bundle.min.js"></script>
@@ -135,7 +135,7 @@ tr.rowlink{cursor:pointer;transition:background var(--t-instant) var(--e-std)} t
       <path d="M5.9 9.2 A12.5 12.5 0 0 1 26.1 9.2" stroke="#D4A249" stroke-width="1.6"/>
       <circle cx="16" cy="16" r="1.9" fill="#D4A249" stroke="none"/>
     </svg>
-    <div><span class="inst">The Observatory</span><span class="prod">Global Aviation Forecast (GAF) <span class="tag-beta">Beta</span></span><span class="provsub">Avia engine on licensed ACI / Sabre / OAG / OEF data; illustrative elements labelled; internal, access controlled</span></div>
+    <div><span class="inst">The Observatory</span><span class="prod">Global Forecast (OGF) <span class="tag-beta">Beta</span></span><span class="provsub">Avia engine on licensed ACI / Sabre / OAG / OEF data; illustrative elements labelled; internal, access controlled</span></div>
   </div>
   <div class="lenses" id="lenses"></div>
   <div class="spacer"></div>
@@ -167,7 +167,7 @@ tr.rowlink{cursor:pointer;transition:background var(--t-instant) var(--e-std)} t
 <main>
   <div class="crumb" id="crumb"></div>
   <div id="view"></div>
-  <div class="footer">The Observatory - Global Aviation Forecast (GAF). An Avia Solutions product; internal, access controlled.<br>Avia engine on licensed ACI / Sabre / OAG / OEF data; elements marked "illustrative" are labelled as such. Derived metrics use the published assumptions on the Method &amp; assumptions page.</div>
+  <div class="footer">The Observatory - Global Forecast (OGF). An Avia Solutions product; internal, access controlled.<br>Avia engine on licensed ACI / Sabre / OAG / OEF data; elements marked "illustrative" are labelled as such. Derived metrics use the published assumptions on the Method &amp; assumptions page.</div>
 </main>
 <div id="busy"><div class="busybox"><span class="loader"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="#E2DCCC" stroke-width="1.6"/><path d="M16 4 A12 12 0 0 1 28 16" stroke="#D4A249" stroke-width="1.6" stroke-linecap="round"/></svg><span id="busytxt">Working</span></span></div></div>
 <script>
@@ -510,7 +510,7 @@ function chart(s,cap,ctx){
    <path class="observed-draw" style="--len:1" pathLength="1" d="${path(s.c)}" fill="none" stroke="#D4A249" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
    ${capL}${ticks}${xT}${labels}${pvLab}
   </svg>
-  ${rail([["Source","Avia Global Aviation Forecast"],["Units",unitLabel()],["Basis","Unconstrained and constrained; residual is the capacity requirement"],["Vintage","v0",true]])}`;}
+  ${rail([["Source","Avia Global Forecast"],["Units",unitLabel()],["Basis","Unconstrained and constrained; residual is the capacity requirement"],["Vintage","v0",true]])}`;}
 function kpis(s,regKey){
   const g=cagr(s.u),gc=cagr(s.c);const [y1,y2]=win();
   const i45=YRS.indexOf(2045);const capReq=s.u[i45]-s.c[i45];
@@ -937,10 +937,27 @@ function renderNew(){
   <div class="qsi"><b>Event notes (OUT-22):</b> off-cycle flash revisions for major shocks with affected forecasts - published to subscribers within days.</div>`;
   lastRows=[["entity","this_vintage","prior","change","reason"]].concat(bridge);}
 function renderAbout(){
-  const acc=[["1 year (2023 to 2024)","2,024","3.2%","87%","74%"],
-   ["4 years, pre-pandemic (2015 to 2019)","1,730","5.0%","79%","61%"],
-   ["5 years, through the pandemic (2019 to 2024)","1,844","4.4%","80%","63%"]];
-  const arows=acc.map(r=>`<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${r[2]}</td><td class="num">${r[3]}</td><td class="num">${r[4]}</td></tr>`).join("");
+  // The accuracy card renders from DASH.accuracy, generated at build time by
+  // scripts/accuracy_block.py from the archived backtest exhibits. It was three typed
+  // rows until 16 August 2026, captioned as refreshing every vintage while nothing wrote
+  // them. No accuracy figure may be a literal in this page; each table names its basis
+  // beside it, because a schedule-anchored test and a demand-model backtest are
+  // different claims and may not borrow each other's numbers.
+  const ACC=DASH.accuracy||null;
+  const _arow=r=>`<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${r[2]}</td><td class="num">${r[3]}</td><td class="num">${r[4]}</td></tr>`;
+  const accCard=ACC?`
+  <div class="card"><h3>Accuracy statement (OUT-18) - generated from the archived backtests</h3>
+   <h4 style="margin:8px 0 4px">${ACC.seats_anchor.title}</h4>
+   ${tbl(["Window","Scored","WMAPE","Within ±20%","Within ±10%"],[ACC.seats_anchor.rows.map(_arow).join("")])}
+   <p class="mut" style="margin-top:6px;font-size:12px">${ACC.seats_anchor.basis}</p>
+   <h4 style="margin:12px 0 4px">${ACC.engine.title}</h4>
+   ${tbl(["Window","Scored","WMAPE","Naive control WMAPE","Beats naive"],[ACC.engine.rows.map(_arow).join("")])}
+   <p class="mut" style="margin-top:6px;font-size:12px">${ACC.engine.basis}</p>
+   <p class="mut" style="margin-top:6px;font-size:11.5px">${ACC.provenance}</p></div>`
+  :`<div class="card"><h3>Accuracy statement (OUT-18)</h3>
+   <p class="mut">This bundle holds no accuracy block, so no figures are shown. Rebuild with
+   scripts/build_dashboard_data.py; the backtest exhibits in data/ are the only source this
+   card will render.</p></div>`;
   // The Avia column is COMPUTED from the run, not typed. It was four hard-coded strings
   // until 9 August 2026, so it did not move when the engine did and stated 3.7% against
   // a run that gave 3.49%. A figure about our own forecast has no business being a
@@ -972,9 +989,7 @@ function renderAbout(){
   document.getElementById("view").innerHTML=`
   <div class="card"><h3>About Avia Solutions</h3>
    <p style="font-size:13px;line-height:1.55">Avia Solutions is an aviation consultancy based in Surrey, UK. The team behind this forecast has been forecasting air traffic for more than 25 years, through BAA/Heathrow, GECAS and two decades of Avia advisory work: traffic due diligence on airport transactions across Europe, the Middle East, Africa, Asia and the Americas; forecasts for airport operators, lessors, lenders and investors; and regulator-commissioned work, including support to the UK CAA's H8 price control review for Heathrow - the UK regulator's largest airport decision.</p></div>
-  <div class="card"><h3>Accuracy statement (OUT-18) - measured; archived 6 August 2026, refreshed every vintage</h3>
-   ${tbl(["Backtest window","Airports","WMAPE","Within ±20%","Within ±10%"],[arows])}
-   <p class="mut" style="margin-top:8px;font-size:12px">Airport-level annual passengers, engine in its operating configuration (published schedules anchor the near year, as in live use); every figure from the archived backtest of 6 August 2026, window as stated. WMAPE = traffic-weighted mean absolute percentage error. No major forecaster publishes its own error statistics; we lead with ours.</p></div>
+  ${accCard}
   <div class="card"><h3>Reconciliation vs the incumbents (OUT-18)</h3>
    ${tbl(["Comparator (published)","Their CAGR","Avia (matched basis)","Diff","Explanation and source"],[rrows])}
    <p class="mut" style="margin-top:8px;font-size:12px">Both columns are sourced. The published figures come from config/comparators.yaml, each with its edition and a link to the publication, read on ${CMP_RETRIEVED||"the date recorded there"}; the Avia figure is computed from this run over the same window and on the same basis, so each row is like for like. Note that Boeing, Airbus and IATA publish revenue passenger kilometres and ACI publishes passengers: RPK grows faster than passengers by the rise in average trip length, so the two groups are not comparable with each other. Matching the incumbents is not the goal; being explainably different is. Divergence beyond tolerance stops a release (Method Spec 7.5).</p></div>
@@ -1198,19 +1213,19 @@ function busy(txt,fn){const b=document.getElementById("busy");document.getElemen
   requestAnimationFrame(()=>setTimeout(()=>{try{fn();}finally{setTimeout(()=>{b.style.display="none";},220);}},50));}
 function dlCSV(){
   const csv=lastRows.map(r=>r.map(x=>String(x).replace(/<[^>]+>/g,"").replace(/,/g,";")).join(",")).join("\n");
-  const meta=`Avia Global Aviation Forecast (engine build on licensed data; illustrative elements labelled),page=${S.page},scenario=${document.getElementById("scen").value},case=${document.getElementById("ccase").value},metric=${document.getElementById("metric").value},view=${document.getElementById("vmode").value}\n`;
+  const meta=`Avia Global Forecast (engine build on licensed data; illustrative elements labelled),page=${S.page},scenario=${document.getElementById("scen").value},case=${document.getElementById("ccase").value},metric=${document.getElementById("metric").value},view=${document.getElementById("vmode").value}\n`;
   const b=new Blob([meta+csv],{type:"text/csv"});const u=URL.createObjectURL(b);
   const a=document.createElement("a");a.href=u;a.download="avia_forecast_extract.csv";a.click();URL.revokeObjectURL(u);}
 function dlXLSX(){
   if(typeof XLSX==="undefined"){alert("Excel library not loaded (offline?) - downloading CSV instead.");return dlCSV();}
   const clean=r=>r.map(x=>{const s=String(x).replace(/<[^>]+>/g,"");const n=parseFloat(s);return (s!==""&&!isNaN(n)&&/^[\d.+-]+%?$/.test(s.replace("%","")))?(s.endsWith("%")?n/100:n):s;});
   const wb=XLSX.utils.book_new();
-  wb.Props={Title:"Avia Global Aviation Forecast extract (mockup)",Author:"Avia Solutions",LastAuthor:"Avia Solutions"};
-  const meta=[["Avia Global Aviation Forecast - engine build on licensed data; illustrative elements labelled"],
+  wb.Props={Title:"Avia Global Forecast extract (mockup)",Author:"Avia Solutions",LastAuthor:"Avia Solutions"};
+  const meta=[["Avia Global Forecast - engine build on licensed data; illustrative elements labelled"],
    ["Page",S.page],["Scenario",document.getElementById("scen").value],["Case",document.getElementById("ccase").value],
    ["Metric",document.getElementById("metric").value],["View",document.getElementById("vmode").value],
    ["CAGR window",document.getElementById("cwin").value.replace("|","-")],
-   ["Licence","Subscriber extract - cite as Avia Global Aviation Forecast, vintage v0 (mock)"]];
+   ["Licence","Subscriber extract - cite as Avia Global Forecast, vintage v0 (mock)"]];
   XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(meta),"About this extract");
   XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(lastRows.map(clean)),"Data");
   XLSX.writeFile(wb,"avia_forecast_extract.xlsx");}
@@ -1223,7 +1238,7 @@ function svgToPng(cb){
   img.onload=()=>{const cnv=document.createElement("canvas");cnv.width=vb.width*2;cnv.height=vb.height*2;
     const ctx=cnv.getContext("2d");ctx.fillStyle="#FAF8F3";ctx.fillRect(0,0,cnv.width,cnv.height);
     ctx.drawImage(img,0,0,cnv.width,cnv.height);
-    ctx.fillStyle="#8a8577";ctx.font="16px Arial";ctx.fillText("Source: Avia Global Aviation Forecast",12,cnv.height-10);
+    ctx.fillStyle="#8a8577";ctx.font="16px Arial";ctx.fillText("Source: Avia Global Forecast",12,cnv.height-10);
     cb(cnv.toDataURL("image/png"));};
   img.src="data:image/svg+xml;base64,"+btoa(unescape(encodeURIComponent(xml)));}
 function dlPNG(){svgToPng(url=>{const a=document.createElement("a");a.href=url;a.download="avia_chart.png";a.click();});}
@@ -1231,10 +1246,10 @@ function dlPPT(){
   if(typeof PptxGenJS==="undefined"){alert("PowerPoint library not loaded (offline?) - use Chart PNG instead.");return;}
   svgToPng(url=>{const p=new PptxGenJS();p.author="Avia Solutions";p.company="Avia Solutions";
     const s=p.addSlide();
-    s.addText("The Observatory - Global Aviation Forecast (GAF)",{x:.4,y:.25,fontSize:20,bold:true,color:"0F1B28"});
+    s.addText("The Observatory - Global Forecast (OGF)",{x:.4,y:.25,fontSize:20,bold:true,color:"0F1B28"});
     s.addText(`${S.page==="explore"?(S.apt?S.apt[1]:(S.cty||S.reg||"Global")):S.page} - ${document.getElementById("scen").value}, ${document.getElementById("metric").value.toUpperCase()}`,{x:.4,y:.65,fontSize:13,color:"8A8577"});
     s.addImage({data:url,x:.4,y:1.1,w:9.2,h:3.6});
-    s.addText("Cite as: Avia Global Aviation Forecast, vintage v0.",{x:.4,y:5.0,fontSize:10,color:"8A8577"});
+    s.addText("Cite as: Avia Global Forecast, vintage v0.",{x:.4,y:5.0,fontSize:10,color:"8A8577"});
     p.writeFile({fileName:"avia_forecast_chart.pptx"});});}
 const PAGES=["explore","history","comp","capacity","method","new","about","cat"];
 function setHSub(x){HSUB=x;PAGEANIM=true;render();}

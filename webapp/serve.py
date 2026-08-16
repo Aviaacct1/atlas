@@ -1,9 +1,13 @@
-"""Avia Global Aviation Forecast - local viewer. Zero-dependency (Python stdlib only).
+"""Avia Global Forecast - LOCAL PREVIEW ONLY. Zero-dependency (Python stdlib only).
 Run:  python serve.py         then open http://localhost:8000
-Serves the dashboard and the engine data bundle in ./data. Author: Avia Solutions."""
+
+This server has NO authentication, so since 16 August 2026 it binds 127.0.0.1 only:
+the tunnel and the LAN cannot reach it. Serving to anyone else goes through
+qsi_service.py, which fails closed without a password. Author: Avia Solutions."""
 import http.server, socketserver, os, webbrowser, threading
 
 PORT = int(os.environ.get("PORT", "8000"))
+BIND = "127.0.0.1"   # loopback only, deliberately not configurable: this file has no auth
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -21,9 +25,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 def main():
     os.chdir(ROOT)
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    with socketserver.TCPServer((BIND, PORT), Handler) as httpd:
         url = f"http://localhost:{PORT}/"
-        print(f"Avia Global Forecast viewer running at {url}  (Ctrl+C to stop)")
+        print(f"Avia Global Forecast local preview at {url}  (loopback only, no auth; Ctrl+C to stop)")
         try:
             threading.Timer(1.0, lambda: webbrowser.open(url)).start()
         except Exception:

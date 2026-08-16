@@ -66,6 +66,22 @@ def _load_password():
 
 ACCESS_PASSWORD = _load_password()
 
+# Fail closed (16 August 2026). A fresh clone has no access_password.txt, because the
+# file is gitignored, and the old behaviour was to serve the licensed bundle open with
+# a printed warning nobody reads. On Donatello on 16 August that was one double-click
+# from the tunnel. Now: no password, no server, with the remedy named. Local development
+# without a password requires the explicit override, which never belongs on a host with
+# a tunnel.
+if not ACCESS_PASSWORD and os.environ.get("AVIA_ALLOW_OPEN") != "1":
+    sys.exit(
+        "REFUSING TO START: no access password is set and this server holds licensed "
+        "ACI / Sabre / OAG / Oxford Economics data.\n"
+        "Set one:  echo YourPassword> webapp\\access_password.txt   (gitignored, per host)\n"
+        "     or:  set FORECAST_PASSWORD=YourPassword\n"
+        "Local development without a password: set AVIA_ALLOW_OPEN=1 (never on a "
+        "machine the tunnel reaches)."
+    )
+
 MAX_N = 15                                   # cap optimiser routes per request
 _AP_RE = re.compile(r"^[A-Z]{3}$")           # accept only a clean IATA code
 _pending = set()                             # airports queued or running (dedupe)
@@ -248,8 +264,10 @@ def main():
         print("  cockpit -> GET /api/bum?airport=SOU triggers the real optimiser here on the box")
         if ACCESS_PASSWORD:
             print("  access: shared password ON (HTTP Basic Auth) - guests type the password, no account needed")
+        elif os.environ.get("AVIA_ALLOW_OPEN") == "1":
+            print("  access: OPEN under AVIA_ALLOW_OPEN=1 - local development only, never behind the tunnel")
         else:
-            print("  access: NO PASSWORD SET - server is OPEN. Set FORECAST_PASSWORD or webapp/access_password.txt before exposing it over the tunnel.")
+            print("  access: unreachable state - startup refuses without a password unless AVIA_ALLOW_OPEN=1")
         try:
             threading.Timer(1.0, lambda: webbrowser.open(url)).start()
         except Exception:

@@ -1,52 +1,36 @@
 # Team access with a single shared password
 
-This replaces the Cloudflare Access (login) approach. Guests need no Cloudflare account. They open the address, type one shared password, and they are in.
+Rewritten 16 August 2026. The previous version of this file printed the live password in a git-tracked document, and the value it printed was stale, so anyone following it handed a colleague the wrong secret while the repository published an old one. No password value appears in this file or any tracked file; validate_repo should be extended to scan for that (workplan item 1.6).
 
-## How it works now
+## Where things stand
 
-The password is checked by the forecast server itself (HTTP Basic Auth), not by Cloudflare. Cloudflare's only job is the tunnel: carry `forecast.aviacortex.com` to `http://localhost:8000` on your machine. The password sits on the server behind it.
+The live hostname is `https://atlas.aviacortex.com`. Two layers stand in front of the tool, and both are wanted: Cloudflare Access (one-time PIN) on the hostname, then the forecast server's own shared password (HTTP Basic Auth) in `qsi_service.py`. The section in the old version of this file that instructed deleting the Access application is withdrawn; Access stays.
 
-The password lives in one file:
+The password lives in one file on the serving machine, and nowhere else:
 
-    C:\Avia\avia_forecast_build\webapp\access_password.txt
+    C:\src\atlas\webapp\access_password.txt
 
-The first line that is not a comment is the password. It currently reads:
+The first line that is not a comment is the password. The file is gitignored, so each machine sets its own and the secret never enters the repository. `FORECAST_PASSWORD` as an environment variable overrides the file.
 
-    Cortex-Forecast-2026
+Since 16 August 2026 the server fails closed: with no password set it refuses to start and names the remedy. The old open-with-a-warning behaviour is gone. Local development without a password needs `AVIA_ALLOW_OPEN=1`, which must never be set on a machine the tunnel reaches. `serve.py` now binds loopback only and is for local preview; it is not a serving path.
 
-Change it to whatever you want, save the file, restart the server. The file is git-ignored, so the secret never gets committed.
+## Starting it (the workstation, leave running)
 
-## One-time Cloudflare cleanup
-
-You were part-way through adding a Cloudflare Access application for the forecast hostname. Don't. That is the thing that forces a Cloudflare login.
-
-1. If you created an Access application for `forecast.aviacortex.com` under Zero Trust -> Access -> Applications, open it and delete it (or leave its policy empty and set to Bypass). If you never finished creating it, there is nothing to remove.
-2. Keep the tunnel route. Under the Cortex tunnel's public hostnames, `forecast.aviacortex.com` must still point to `http://localhost:8000`. That is what serves the tool; the password is handled by the server, not here.
-
-`app.aviacortex.com` (the QSI tool) is untouched. This only affects the forecast hostname.
-
-## Starting it (your machine, leave running)
-
-1. Windows key, type `powershell`, Enter.
-2. Type and Enter: `cd C:\Avia\avia_forecast_build\webapp`
-3. Type and Enter: `python qsi_service.py`
-4. Wait for: `Avia Cortex server + QSI route service ...` and a line reading `access: shared password ON`. If instead it says `NO PASSWORD SET`, the password file is missing or empty, fix that and restart.
-5. Leave this window open. Closing it takes the tool offline.
-
-The tunnel (`cloudflared`) starts as it does for the QSI tool. Once both are running, the address is live.
+1. PowerShell: `cd C:\src\atlas\webapp`
+2. `& '.\Run Avia Forecast (with QSI service).bat'`
+3. Wait for `access: shared password ON`. If the server refuses to start, the password file is missing or empty; set it and go again.
+4. `cloudflared` runs as a service with the tunnel token; once both are up the address is live.
 
 ## What to send a colleague
 
-- Address: `https://forecast.aviacortex.com`
-- Password: whatever is on the first line of `access_password.txt`
-- Username: anything (leave the default, or type `team`). Only the password is checked.
-
-Your own browser will ask for the password too, the server can't tell your machine apart from a guest coming down the tunnel. Type the same password.
+The address, and the password out of band (never in the same message as the address). Username can be anything; only the password is checked. They will also receive a one-time PIN from Cloudflare Access at their approved email on first visit.
 
 ## Changing or revoking the password
 
-Edit the first non-comment line of `access_password.txt`, save, restart the server. Everyone then needs the new password. There is no per-person access at this stage; when you want to share more widely, we move to per-person identity (the Cloudflare Access route) so you can add and remove people individually.
+Edit the first non-comment line of `access_password.txt`, save, restart the server. Everyone then needs the new value. There is no per-person access at this stage; per-person identity is the Cloudflare Access policy, which is where individual adds and removes happen.
 
 ## Security note
 
-The shared password is the only thing standing in front of the licensed data (ACI, Sabre, OAG, Oxford Economics). Never run the server over the tunnel with `NO PASSWORD SET`. Pick a password that is not trivial to guess and share it out of band (not in the same email as the link).
+The shared password and the Access PIN are what stand in front of the licensed data (ACI, Sabre, OAG, Oxford Economics). Pick a password that is not trivial to guess, share it out of band, and never commit a file containing it.
+
+Copyright Avia Solutions Limited. All rights reserved.

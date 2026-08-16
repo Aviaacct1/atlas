@@ -1,20 +1,9 @@
 @echo off
-cd /d "%~dp0"
-echo Starting the Avia Global Forecast viewer...
-echo Open http://localhost:8000 in your browser (it should open automatically).
-rem Use the interpreter inside the repository's own .venv. "python" is whatever is first
-rem on PATH, which on a machine running several Avia tools is not necessarily the one
-rem with this tool's dependencies. No parenthesised if/else block: cmd.exe handles those
-rem badly, and this file must be CRLF for the same reason.
-set "PY=%~dp0..\.venv\Scripts\python.exe"
-if not exist "%PY%" goto novenv
-goto run
-:novenv
-echo No .venv found at %~dp0..\.venv
-echo Create one:  py -3.12 -m venv .venv
-echo Then:        .venv\Scripts\python.exe -m pip install -r requirements.txt
-echo Falling back to the system interpreter.
-set "PY=python"
-:run
-"%PY%" serve.py
-pause
+rem Disarmed 16 August 2026. This launcher used to start serve.py, which has no
+rem authentication, on the same port the Cloudflare tunnel forwards. One double-click
+rem served the licensed ACI / Sabre / OAG / OEF bundle open. It now hands over to the
+rem authenticated launcher; serve.py remains for localhost-only preview via
+rem "python serve.py" by hand, and now binds 127.0.0.1 only.
+echo This launcher is retired: it started an UNAUTHENTICATED server on the tunnel port.
+echo Starting the authenticated service instead...
+call "%~dp0Run Avia Forecast (with QSI service).bat"

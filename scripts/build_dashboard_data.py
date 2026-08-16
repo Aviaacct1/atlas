@@ -321,7 +321,14 @@ def run():
         print("comparators.yaml absent: the reconciliation table will show no rows, which "
               "is correct. A comparator with no source is not shown.")
 
+    # Accuracy card, generated from the archived backtest exhibits rather than typed into
+    # the page. The three literals this replaces sat in dashboard.html from 6 to 16 August
+    # 2026 and could not move when the exhibits did. See scripts/accuracy_block.py.
+    from accuracy_block import build_accuracy
+    _acc = build_accuracy(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"))
+
     dump_atomic({"years": YRS, "base": BASE, "scenarios": SCEN,
+               "accuracy": _acc,
                "airports": list(perAirport.values()), "cty": CTY,
                "comparators": _cmp.get("comparators", {}),
                "comparators_retrieved": str(_cmp.get("retrieved", "")),
