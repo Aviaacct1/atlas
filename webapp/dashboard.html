@@ -327,7 +327,13 @@ function toggleOvl(k){OVL[k]=!OVL[k];render();}
 function togglePV(){PVON=!PVON;render();}
 function togglePB(){PBON=!PBON;render();}
 const _tok=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const OVLC={boeing:_tok('--s2'),airbus:_tok('--s3'),aci:_tok('--s4')};
+const OVLC={boeing:_tok('--s2'),airbus:_tok('--s3'),aci:_tok('--s4'),iata:_tok('--s5')};
+// Comparator keys changed from boeing/airbus to boeing_cmo/airbus_gmf when the rates
+// moved into config/comparators.yaml on 9 August 2026, and the colour map kept the old
+// keys, so every overlay line drew with stroke="undefined": the toggle chip worked and
+// the line was invisible (found 16 August 2026). Resolve by prefix so a yaml key rename
+// degrades to a visible grey line, never to an invisible one.
+const ovlColour=k=>OVLC[k]||OVLC[Object.keys(OVLC).find(p=>k.startsWith(p))]||"#8a8577";
 function ovlDefs(ctx){ // which comparator overlays apply to this chart
   const m=document.getElementById("metric").value;
   const out=[];
@@ -348,8 +354,8 @@ function ovlChips(ctx){
   const local=`<button class="ovlbtn" style="border-color:#b0a894;color:${PVON?"#FAF8F3":"#6f6a5f"};background:${PVON?"#b0a894":"transparent"}" onclick="togglePV()">${PVON?"Hide":"Show"} prior vintage</button>`
     +`<button class="ovlbtn" style="border-color:#0F1B28;color:${PBON?"#FAF8F3":"#0F1B28"};background:${PBON?"#0F1B28":"transparent"}" onclick="togglePB()">${PBON?"Hide":"Show"} P10-P90 fan</button>`;
   const note=(ctx&&ctx.lvl==="airport")?`<p class="mut" style="font-size:11.5px;margin:2px 0 6px">Comparator overlays unavailable here: no published forecast exists at airport level. Only Avia forecasts airports.</p>`:"";
-  const comps=defs.map(d=>{const on=OVL[d.k];
-    return `<button class="ovlbtn" style="border-color:${OVLC[d.k]};color:${on?"#FAF8F3":OVLC[d.k]};background:${on?OVLC[d.k]:"transparent"}" onclick="toggleOvl('${d.k}')">${on?"Hide":"Overlay"} ${d.lab}</button>`;}).join("");
+  const comps=defs.map(d=>{const on=OVL[d.k];const col=ovlColour(d.k);
+    return `<button class="ovlbtn" style="border-color:${col};color:${on?"#FAF8F3":col};background:${on?col:"transparent"}" onclick="toggleOvl('${d.k}')">${on?"Hide":"Overlay"} ${d.lab}</button>`;}).join("");
   return note+`<div class="ovls">${comps}${local}</div>`;}
 const SHOCKS=[[1973,"Oil crisis"],[1979,"2nd oil shock"],[1991,"Gulf War"],[2001,"9/11"],[2003,"SARS"],[2009,"GFC"],[2020,"COVID-19"]];
 function histSeries(scen){
@@ -495,7 +501,7 @@ function chart(s,cap,ctx){
   const ovlPaths=defs.map(d=>{const pts=[];for(let y=2025;y<=Math.min(d.end,2050);y++){const i=YRS.indexOf(y);pts.push([i,b25*Math.pow(1+d.g,y-2025)]);}
     const dp=pts.map((p,j)=>(j?"L":"M")+X(p[0]).toFixed(1)+","+Y(Math.min(p[1],mx)).toFixed(1)).join(" ");
     const lv=Math.min(pts[pts.length-1][1],mx);
-    return `<path d="${dp}" fill="none" stroke="${OVLC[d.k]}" stroke-width="1.5" stroke-dasharray="6 4"/><text x="${(X(pts[pts.length-1][0])+5).toFixed(1)}" y="${Y(lv).toFixed(1)}" font-family="Newsreader" font-style="italic" font-size="11" fill="${OVLC[d.k]}" dominant-baseline="middle">${d.lab}</text>`;}).join("");
+    return `<path d="${dp}" fill="none" stroke="${ovlColour(d.k)}" stroke-width="1.5" stroke-dasharray="6 4"/><text x="${(X(pts[pts.length-1][0])+5).toFixed(1)}" y="${Y(lv).toFixed(1)}" font-family="Newsreader" font-style="italic" font-size="11" fill="${ovlColour(d.k)}" dominant-baseline="middle">${d.lab}</text>`;}).join("");
   const iL=(v,txt,col)=>`<text x="${plotR+6}" y="${Y(Math.min(v,mx)).toFixed(1)}" font-family="Newsreader" font-style="italic" font-size="12" fill="${col}" dominant-baseline="middle">${txt}</text>`;
   const eg=(s.u[last]-s.c[last])/Math.max(s.u[last],1);
   const labels=eg<0.006?iL(s.c[last],"Demand","#A97C33"):iL(s.u[last],"Unconstrained","#0F1B28")+iL(s.c[last],"Constrained","#A97C33");
