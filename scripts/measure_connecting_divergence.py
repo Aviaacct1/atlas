@@ -44,7 +44,7 @@ def main():
         r = run_with_method(method)
         y0, y1 = r.years[0], r.years[-1]
         cases[method] = r
-        print(f"{method:9s} world {y1}: {r.world[y1]:,.0f}m   CAGR {100*r.cagr:.3f}%")
+        print(f"{method:9s} world {y1}: {r.world[y1]:,.0f}m   CAGR {100*r.world_cagr:.3f}%")
 
     blend, sab, res = cases["blend"], cases["sabre"], cases["residual"]
     y1 = blend.years[-1]

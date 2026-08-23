@@ -317,10 +317,11 @@ def run():
                  _bad_traffic, 100.0 * _bad_traffic / _world_mod))
         for _i, _m in sorted(_clamped + _unmatched, key=lambda x: -x[1])[:10]:
             if _m >= 1.0:
-                print("  coverage watch: group %s holds %.1fm modelled and is %s"
-                      % (_i, _m, "clamped at 3.0" if (_i, _m) in _clamped else
-                         "unmatched in the ACI panel (check the iso mapping: Serbia "
-                         "mapped to XK is the known case)"))
+                _why = ("clamped at 3.0" if (_i, _m) in _clamped
+                        else "unmatched in the ACI panel"
+                             + (" (Serbia mis-mapped to Kosovo's code in the Meridian "
+                                "reference table - fix belongs there)" if _i == "XK" else ""))
+                print("  coverage watch: group %s holds %.1fm modelled and is %s" % (_i, _m, _why))
         _reg_aci = defaultdict(float)
         for c, tot in _ctry_aci.items():
             rr = R6.get(region_for_iso2(c) or "", None)
