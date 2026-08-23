@@ -46,11 +46,17 @@ def test_level3_precision_weight_leans_on_prior_when_estimate_is_noisy():
     assert level3.precision_weight(2.0, 0.05, prior) > 1.9                  # tight -> near estimate
 
 
-def test_level3_segment_default_from_literature_and_bounds():
-    d = level3.segment_default("Long Haul")                 # mature
-    assert d.bG == 1.3 and d.bF == -0.5 and not d.clipped
+def test_level3_segment_default_from_measurement_and_bounds():
+    # Package B, 23 August 2026 (MEASUREMENTS 16): the level 3 defaults are measured,
+    # not literature priors. One elasticity per segment (the mature/emerging split
+    # retired after five failed discriminator tests, so both maturity labels return
+    # the same value), scaled from the pooled panel fit's 1.544 with the former
+    # relativities preserved, and bF re-anchored to the measured -0.292 aggregate.
+    d = level3.segment_default("Long Haul")
+    assert d.bG == 1.739 and d.bF == -0.221 and not d.clipped
     emerging = level3.segment_default("International Short Haul", maturity="emerging")
-    assert emerging.bG == 1.7                               # within bounds, not clipped
+    assert emerging.bG == 1.643                             # same value either label
+    assert level3.segment_default("International Short Haul").bG == 1.643
 
 
 def test_level3_clips_precision_weighted_above_bound():

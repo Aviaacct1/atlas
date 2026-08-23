@@ -35,7 +35,12 @@ reliability:
 # Applied elasticity final bounds after the rule (Method Spec 4.4)
 applied_bounds:
   bG: [0.6, 2.2]
-  bF: [-1.1, -0.3]
+  # bF upper bound widened -0.3 to -0.15 on 23 August 2026: the bound was set around
+  # the literature priors (-0.5/-0.7) and was silently clipping the MEASURED fare
+  # elasticities of package B (aggregate -0.292; Long Haul -0.221, MEASUREMENTS 16),
+  # so the pilot path and the global path disagreed on bF. A bound must bracket the
+  # measured value it now defends, not the prior it replaced.
+  bF: [-1.1, -0.15]
 
 # Level 2 pooled panel (Elasticity Design 3)
 level2:

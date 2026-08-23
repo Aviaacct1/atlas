@@ -8,7 +8,7 @@ import build as build_entry
 
 def test_assumptions_book_loads_key_parameters():
     assert config.get("reliability.T2_range.bG") == [0.5, 2.5]
-    assert config.get("applied_bounds.bF") == [-1.1, -0.3]
+    assert config.get("applied_bounds.bF") == [-1.1, -0.15]   # widened 23 Aug 2026 to bracket the MEASURED bF (MEASUREMENTS 16)
     assert config.get("reconciliation.parity_tolerance_rel") == 0.00001
     assert len(config.regions()["regions"]) == 8
 
