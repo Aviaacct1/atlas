@@ -1,0 +1,24 @@
+{
+ "basis": "year one on the published-schedule seats ratio (the product's operating configuration); the demand model on the GDP driver thereafter, own fitted elasticity, book-clamped; naive control is the 1.5x GDP multiple throughout",
+ "windows": {
+  "2015->2019 (anchor 2016)": {
+   "n": 818,
+   "wmape_composed": 0.0932,
+   "wmape_naive": 0.1159,
+   "median_ape": 0.1177,
+   "within_20pct": 0.687,
+   "within_10pct": 0.4511,
+   "beats_naive_wmape": true
+  },
+  "2023->2024 (anchor 2024)": {
+   "n": 1871,
+   "wmape_composed": 0.0343,
+   "wmape_naive": 0.069,
+   "median_ape": 0.0437,
+   "within_20pct": 0.9065,
+   "within_10pct": 0.7579,
+   "beats_naive_wmape": true
+  }
+ },
+ "db": "E:\\Avia\\oag.duckdb"
+}
