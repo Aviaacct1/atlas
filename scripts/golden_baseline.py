@@ -47,9 +47,17 @@ def eligible(path):
         return False
     return os.path.splitext(path)[1].lower() not in EXCLUDE_EXT
 
+def _is_text(path):
+    # extensionless files under githooks are shell text (the pre-commit hook was the one
+    # line-ending straggler in the 23 August cross-machine verify)
+    if os.sep + "githooks" + os.sep in path or "/githooks/" in path:
+        return True
+    return os.path.splitext(path)[1].lower() in TEXT_EXT
+
+
 def sha(path, h=None):
     h = hashlib.sha256()
-    if os.path.splitext(path)[1].lower() in TEXT_EXT:
+    if _is_text(path):
         with open(path, "rb") as f:
             h.update(f.read().replace(b"\r\n", b"\n"))
         return h.hexdigest()

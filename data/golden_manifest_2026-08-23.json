@@ -2029,8 +2029,8 @@
    "sha256": "f087f7240260c09118a051c1a3c33f9464dfa575f6dbebfe581a88d353071be4"
   },
   "atlas/scripts/golden_baseline.py": {
-   "bytes": 6822,
-   "sha256": "51eed9d1db31a98dd27efae9a8f19efa5ee5b9afc32800981fa4a1bdde3a531c"
+   "bytes": 7115,
+   "sha256": "a540a3b188e4ac8280e5820cbd8f6c63b47bf44c8e31e9cc75e6a7e9122a7ed6"
   },
   "atlas/scripts/guard_oag_wedge.py": {
    "bytes": 25908,
