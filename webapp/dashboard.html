@@ -531,14 +531,28 @@ function chart(s,cap,ctx){
     let fan="";for(let i=i0;i<=zend;i++)fan+=(i===i0?"M":"L")+X(i).toFixed(1)+","+Y(hi[i]).toFixed(1);
     for(let i=zend;i>=i0;i--)fan+="L"+X(i).toFixed(1)+","+Y(lo[i]).toFixed(1);
     pb=`<path d="${fan}Z" fill="rgba(15,27,40,.07)"/><text x="${(X(zend)-4).toFixed(1)}" y="${Math.max(Y(hi[zend])-4,top+6).toFixed(1)}" font-family="Inter" font-size="8.5" fill="#6f6a5f" text-anchor="end">P90</text><text x="${(X(zend)-4).toFixed(1)}" y="${Math.min(Y(lo[zend])+11,base-4).toFixed(1)}" font-family="Inter" font-size="8.5" fill="#6f6a5f" text-anchor="end">P10</text>`;}
+  // Right-margin label stack with leader lines (23 August 2026): when several lines
+  // end within a few pixels of each other, at-line labels pile up and name nothing.
+  // Every line label is collected here, sorted by its true position and pushed apart
+  // to a 12px minimum, with a thin leader from the line end to its label, so labels
+  // can never collide whatever the values do.
+  const labReq=[];
   const ovlPaths=defs.map(d=>{const pts=[];for(let y=2025;y<=Math.min(d.end,2050,YRS[zend]);y++){const i=YRS.indexOf(y);pts.push([i,b25*Math.pow(1+d.g,y-2025)]);}
     const dp=pts.map((p,j)=>(j?"L":"M")+X(p[0]).toFixed(1)+","+Y(Math.min(p[1],yhi)).toFixed(1)).join(" ");
-    const lv=Math.min(pts[pts.length-1][1],yhi);
-    return `<path d="${dp}" fill="none" stroke="${ovlColour(d.k)}" stroke-width="1.5" stroke-dasharray="6 4"/><text x="${(X(pts[pts.length-1][0])+5).toFixed(1)}" y="${Y(lv).toFixed(1)}" font-family="Newsreader" font-style="italic" font-size="11" fill="${ovlColour(d.k)}" dominant-baseline="middle">${d.lab}</text>`;}).join("");
-  const iL=(v,txt,col)=>`<text x="${plotR+6}" y="${Y(Math.min(v,yhi)).toFixed(1)}" font-family="Newsreader" font-style="italic" font-size="12" fill="${col}" dominant-baseline="middle">${txt}</text>`;
+    labReq.push({v:Math.min(pts[pts.length-1][1],yhi),txt:d.lab,col:ovlColour(d.k),lx:X(pts[pts.length-1][0]),fs:11});
+    return `<path d="${dp}" fill="none" stroke="${ovlColour(d.k)}" stroke-width="1.5" stroke-dasharray="6 4"/>`;}).join("");
   const eg=(s.u[zend]-s.c[zend])/Math.max(s.u[zend],1);
-  const labels=eg<0.006?iL(s.c[zend],"Demand","#A97C33"):iL(s.u[zend],"Unconstrained","#0F1B28")+iL(s.c[zend],"Constrained","#A97C33");
-  const pvLab=PVON?iL(s.u[zend]*0.985,"prior","#9a9384"):"";
+  if(eg<0.006){labReq.push({v:s.c[zend],txt:"Demand",col:"#A97C33",lx:X(zend),fs:12});}
+  else{labReq.push({v:s.u[zend],txt:"Unconstrained",col:"#0F1B28",lx:X(zend),fs:12});
+       labReq.push({v:s.c[zend],txt:"Constrained",col:"#A97C33",lx:X(zend),fs:12});}
+  if(PVON)labReq.push({v:s.u[zend]*0.985,txt:"prior",col:"#9a9384",lx:X(zend),fs:11});
+  labReq.forEach(l=>{l.ty=Y(l.v);l.ly=l.ty;});
+  labReq.sort((a,b)=>a.ly-b.ly);
+  for(let i=1;i<labReq.length;i++)if(labReq[i].ly-labReq[i-1].ly<12)labReq[i].ly=labReq[i-1].ly+12;
+  for(let i=labReq.length-1;i>=0;i--){if(labReq[i].ly>base-4)labReq[i].ly=base-4;
+    if(i<labReq.length-1&&labReq[i+1].ly-labReq[i].ly<12)labReq[i].ly=labReq[i+1].ly-12;}
+  const labels=labReq.map(l=>`<line x1="${l.lx.toFixed(1)}" y1="${l.ty.toFixed(1)}" x2="${(plotR+4).toFixed(1)}" y2="${l.ly.toFixed(1)}" stroke="${l.col}" stroke-width="0.6" opacity="0.5"/><text x="${plotR+7}" y="${(l.ly+3.5).toFixed(1)}" font-family="Newsreader" font-style="italic" font-size="${l.fs}" fill="${l.col}">${l.txt}</text>`).join("");
+  const pvLab="";
   return `<svg viewBox="0 0 ${W} ${H}" style="width:100%">
    <text transform="translate(13,${((top+base)/2).toFixed(0)}) rotate(-90)" font-family="Inter" font-size="9" letter-spacing="0.05em" fill="#8a8577" text-anchor="middle">${ylab}</text>
    <text x="${((P+plotR)/2).toFixed(0)}" y="${H-6}" font-family="Inter" font-size="9" letter-spacing="0.05em" fill="#8a8577" text-anchor="middle">Year</text>
