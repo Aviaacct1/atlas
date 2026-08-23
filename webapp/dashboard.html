@@ -6,8 +6,8 @@
      Per-tab only (sessionStorage), so a refresh does not re-trigger. Remove this script to
      let dashboard.html open directly again. -->
 <script>try{if(sessionStorage.getItem('gafEntered')!=='1'){location.replace('entry.html');}}catch(e){}</script>
-<title>The Observatory - Global Forecast (OGF)</title>
-<meta name="author" content="Avia Solutions">
+<title>The Aviation Observatory - Global Forecast (OGF)</title>
+<meta name="author" content="The Aviation Observatory">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pptxgenjs/3.12.0/pptxgen.bundle.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -135,7 +135,7 @@ tr.rowlink{cursor:pointer;transition:background var(--t-instant) var(--e-std)} t
       <path d="M5.9 9.2 A12.5 12.5 0 0 1 26.1 9.2" stroke="#D4A249" stroke-width="1.6"/>
       <circle cx="16" cy="16" r="1.9" fill="#D4A249" stroke="none"/>
     </svg>
-    <div><span class="inst">The Observatory</span><span class="prod">Global Forecast (OGF) <span class="tag-beta">Beta</span></span><span class="provsub">Avia engine on licensed ACI / Sabre / OAG / OEF data; illustrative elements labelled; internal, access controlled</span></div>
+    <div><span class="inst">The Aviation Observatory</span><span class="prod">Global Forecast (OGF) <span class="tag-beta">Beta</span></span><span class="provsub">Observatory engine on licensed ACI / Sabre / OAG / OEF data; illustrative elements labelled; internal, access controlled</span></div>
   </div>
   <div class="lenses" id="lenses"></div>
   <div class="spacer"></div>
@@ -167,7 +167,7 @@ tr.rowlink{cursor:pointer;transition:background var(--t-instant) var(--e-std)} t
 <main>
   <div class="crumb" id="crumb"></div>
   <div id="view"></div>
-  <div class="footer">The Observatory - Global Forecast (OGF). An Avia Solutions product; internal, access controlled.<br>Avia engine on licensed ACI / Sabre / OAG / OEF data; elements marked "illustrative" are labelled as such. Derived metrics use the published assumptions on the Method &amp; assumptions page.</div>
+  <div class="footer">The Aviation Observatory - Global Forecast (OGF). Internal, access controlled.<br>Observatory engine on licensed ACI / Sabre / OAG / OEF data; elements marked "illustrative" are labelled as such. Derived metrics use the published assumptions on the Method &amp; assumptions page.</div>
 </main>
 <div id="busy"><div class="busybox"><span class="loader"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="#E2DCCC" stroke-width="1.6"/><path d="M16 4 A12 12 0 0 1 28 16" stroke="#D4A249" stroke-width="1.6" stroke-linecap="round"/></svg><span id="busytxt">Working</span></span></div></div>
 <script>
@@ -538,7 +538,7 @@ function crumb(){
     :S.page==="capacity"?`Capacity: where airports have room and where they are running out - and the investment gap`
     :S.page==="method"?`Methodology, glossary and assumptions summary (OUT-18)`
     :S.page==="new"?`What's new (OUT-20/21/22): vintage bridge, actuals tracking and your watchlist`
-    :S.page==="about"?`About Avia Solutions, accuracy statement and reconciliation (OUT-18)`
+    :S.page==="about"?`About The Aviation Observatory, accuracy statement and reconciliation (OUT-18)`
     :`Output catalogue: every locked output and where it appears in this mockup`;return;}
   let h=`<a onclick="go('global')">Global</a>`;
   if(S.reg)h+=` &rsaquo; <a onclick="go('region','${S.reg}')">${S.reg}</a>`;
@@ -633,7 +633,7 @@ function csvDownload(name,header,rows){
 }
 function xlsxDownload(name,header,rows){
   try{const ws=XLSX.utils.aoa_to_sheet([header].concat(rows));
-    const wb=XLSX.utils.book_new();wb.Props={Author:"Avia Solutions",Company:"Avia Solutions",Title:name};
+    const wb=XLSX.utils.book_new();wb.Props={Author:"The Aviation Observatory",Company:"The Aviation Observatory",Title:name};
     XLSX.utils.book_append_sheet(wb,ws,"Data");XLSX.writeFile(wb,name);}
   catch(e){csvDownload(name.replace(/\.xlsx$/,".csv"),header,rows);}   // fall back to CSV if the library is unavailable
 }
@@ -902,7 +902,7 @@ function renderCapacity(){
    <div class="card"><h3>Growth fills airports; service pays first; then growth stops</h3>
     ${capChart(d)}
     <p class="mut" style="font-size:12.5px;margin-top:6px">${d.service_exhibit.chart_story}</p>
-    <p class="mut" style="font-size:11px;margin-top:4px">Source: OAG schedules, Skytrax public ratings, AviaSolutions analysis.</p></div>
+    <p class="mut" style="font-size:11px;margin-top:4px">Source: OAG schedules, Skytrax public ratings, Aviation Observatory analysis.</p></div>
    <div class="card"><h3>How it works</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">${meth}</div>
     <p class="mut" style="font-size:12px;margin-top:8px">${d.meta.presentation_rule}.</p></div>
    <div class="card"><h3>What passengers feel as airports fill up</h3>
@@ -993,8 +993,8 @@ function renderAbout(){
             `${c.note||""} Avia scored ${y0}-${y1} on the same basis. Source: ${c.source||"none"}.`];});
   const rrows=rec.map(r=>`<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${r[2]}</td><td class="num"><b>${r[3]}</b></td><td class="mut">${r[4]}</td></tr>`).join("");
   document.getElementById("view").innerHTML=`
-  <div class="card"><h3>About Avia Solutions</h3>
-   <p style="font-size:13px;line-height:1.55">Avia Solutions is an aviation consultancy based in Surrey, UK. The team behind this forecast has been forecasting air traffic for more than 25 years, through BAA/Heathrow, GECAS and two decades of Avia advisory work: traffic due diligence on airport transactions across Europe, the Middle East, Africa, Asia and the Americas; forecasts for airport operators, lessors, lenders and investors; and regulator-commissioned work, including support to the UK CAA's H8 price control review for Heathrow - the UK regulator's largest airport decision.</p></div>
+  <div class="card"><h3>About The Aviation Observatory</h3>
+   <p style="font-size:13px;line-height:1.55">The Aviation Observatory is an independent aviation forecasting house based in Surrey, UK. The team behind this forecast has been forecasting air traffic for more than 25 years, through BAA/Heathrow, GECAS and two decades of airport and airline advisory work: traffic due diligence on airport transactions across Europe, the Middle East, Africa, Asia and the Americas; forecasts for airport operators, lessors, lenders and investors; and regulator-commissioned work, including support to the UK CAA's H8 price control review for Heathrow - the UK regulator's largest airport decision.</p></div>
   ${accCard}
   <div class="card"><h3>Reconciliation vs the incumbents (OUT-18)</h3>
    ${tbl(["Comparator (published)","Their CAGR","Avia (matched basis)","Diff","Explanation and source"],[rrows])}
@@ -1115,7 +1115,7 @@ function render(){
     v.innerHTML=`<div class="grid"><div class="card"><h3>Global demand (${scen}) - ${document.getElementById("metric").selectedOptions[0].text}${document.getElementById("vmode").value!=="abs"?" (indexed)":""}</h3>${ovlChips({lvl:"global",reg:"_G"})}${chart(conv(s,"_G"),null,{lvl:"global",reg:"_G"})}<span class="method" onclick="setPage('method')">How these numbers are made</span></div><div class="kpis">${kpis(s,"_G")}</div></div>
     <div class="card"><h3>75 years of air travel: every shock absorbed, and our forecast in that context (log scale, global pax)</h3>
       ${histChart(scen)}
-      <p class="mut" style="margin-top:8px;font-size:12px">History is ICAO world scheduled passengers, actual, 1960 to 2025; the forecast is the Avia engine carried from the 2025 actual. Units: passengers. The Boeing CMO and Airbus GMF comparison is on the RPK chart above, not here: both houses publish revenue passenger kilometres, which grow faster than passengers by the rise in average trip length, so plotting their headline rates against a passenger series overstates them.</p></div>
+      <p class="mut" style="margin-top:8px;font-size:12px">History is ICAO world scheduled passengers, actual, 1960 to 2025; the forecast is the Observatory engine carried forward from the 2025 actual. Units: passengers. The Boeing CMO and Airbus GMF comparison is on the RPK chart above, not here: both houses publish revenue passenger kilometres, which grow faster than passengers by the rise in average trip length, so plotting their headline rates against a passenger series overstates them.</p></div>
     ${compCard(`Global composition and environment, 2045 ${cs==="c"?"constrained":"unconstrained"} (OUT-07/08/15/24/25)`,RNAMES.map(r=>[r,regSeries(r,scen)[cs][YRS.indexOf(2045)],r,undefined]))}
     <div class="card"><h3>Regions (click to drill) - years: ${document.getElementById("ymode").selectedOptions[0].text}</h3>${tbl(head,rows)}</div>`;}
   if(S.level==="region"){const s=regSeries(S.reg,scen);
@@ -1226,7 +1226,7 @@ function dlXLSX(){
   if(typeof XLSX==="undefined"){alert("Excel library not loaded (offline?) - downloading CSV instead.");return dlCSV();}
   const clean=r=>r.map(x=>{const s=String(x).replace(/<[^>]+>/g,"");const n=parseFloat(s);return (s!==""&&!isNaN(n)&&/^[\d.+-]+%?$/.test(s.replace("%","")))?(s.endsWith("%")?n/100:n):s;});
   const wb=XLSX.utils.book_new();
-  wb.Props={Title:"Avia Global Forecast extract (mockup)",Author:"Avia Solutions",LastAuthor:"Avia Solutions"};
+  wb.Props={Title:"Avia Global Forecast extract (mockup)",Author:"The Aviation Observatory",LastAuthor:"The Aviation Observatory"};
   const meta=[["Avia Global Forecast - engine build on licensed data; illustrative elements labelled"],
    ["Page",S.page],["Scenario",document.getElementById("scen").value],["Case",document.getElementById("ccase").value],
    ["Metric",document.getElementById("metric").value],["View",document.getElementById("vmode").value],
@@ -1250,9 +1250,9 @@ function svgToPng(cb){
 function dlPNG(){svgToPng(url=>{const a=document.createElement("a");a.href=url;a.download="avia_chart.png";a.click();});}
 function dlPPT(){
   if(typeof PptxGenJS==="undefined"){alert("PowerPoint library not loaded (offline?) - use Chart PNG instead.");return;}
-  svgToPng(url=>{const p=new PptxGenJS();p.author="Avia Solutions";p.company="Avia Solutions";
+  svgToPng(url=>{const p=new PptxGenJS();p.author="The Aviation Observatory";p.company="The Aviation Observatory";
     const s=p.addSlide();
-    s.addText("The Observatory - Global Forecast (OGF)",{x:.4,y:.25,fontSize:20,bold:true,color:"0F1B28"});
+    s.addText("The Aviation Observatory - Global Forecast (OGF)",{x:.4,y:.25,fontSize:20,bold:true,color:"0F1B28"});
     s.addText(`${S.page==="explore"?(S.apt?S.apt[1]:(S.cty||S.reg||"Global")):S.page} - ${document.getElementById("scen").value}, ${document.getElementById("metric").value.toUpperCase()}`,{x:.4,y:.65,fontSize:13,color:"8A8577"});
     s.addImage({data:url,x:.4,y:1.1,w:9.2,h:3.6});
     s.addText("Cite as: Avia Global Forecast, vintage v0.",{x:.4,y:5.0,fontSize:10,color:"8A8577"});

@@ -101,7 +101,7 @@ async function boot(){
   document.getElementById("search").addEventListener("change",e=>{
     const q=e.target.value.trim().toUpperCase().slice(0,3); if(APTS.find(a=>a.iata===q)) showAp(q);});
   document.getElementById("src").textContent=
-    `Source: ACI, Sabre, OAG, Oxford Economics; Avia Solutions analysis. ${META.n_airports} airports, ${META.base_year}-${META.horizon}.`;
+    `Source: ACI, Sabre, OAG, Oxford Economics; Aviation Observatory analysis. ${META.n_airports} airports, ${META.base_year}-${META.horizon}.`;
   render(); showAp("LHR");
 }
 

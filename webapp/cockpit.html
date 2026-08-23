@@ -192,7 +192,7 @@ function renderPick(){
    </div>
   </div>
   <div class="note" style="max-width:900px;margin:18px auto">Two purposes, one engine. Editing happens in this front end; every edit auto-serialises to the override pack (the hashable source of truth). Excel is the OUTPUT: the full completed model. All figures synthetic.</div>
-  <div class="footer">Avia Solutions - internal cockpit mockup v2. Companion to the customer Dashboard Mockup; same engine, different surface.</div>`;}
+  <div class="footer">The Aviation Observatory - internal cockpit v2. Companion to the customer Dashboard Mockup; same engine, different surface.</div>`;}
 function renderSB(){
   const edits=editedList();
   const rows=PARAMS.map(p=>{const cur=ED[p.id];const chg=Math.abs(cur-p.vintage)>1e-9;
@@ -701,7 +701,7 @@ function galleryCards(){
   const P=bes.P;
   const sl=(1-P.lh/100)*1.1+(P.lh/100)*5.8; // avg sector '000km from long-haul share
   const spots=SPOTS.map(iY);
-  const SRC="Source: "+a.n+" Airport, OAG, Sabre MI, AviaSolutions analysis";
+  const SRC="Source: "+a.n+" Airport, OAG, Sabre MI, Aviation Observatory analysis";
   // synthetic decompositions off the bespoke run
   const flagSh=y=>Math.max(.24,.36-Math.max(0,y-BY)*.004), lccSh=y=>Math.min(.52,.30+Math.max(0,y-BY)*.006);
   const flag=bes.c.map((v,i)=>v*flagSh(YRS[i])), lcc=bes.c.map((v,i)=>v*lccSh(YRS[i])), oal=bes.c.map((v,i)=>v-flag[i]-lcc[i]);
@@ -734,17 +734,17 @@ function galleryCards(){
     mLine([bes.u,bes.c],[AV[0],AV[1]]),[["Unconstrained",AV[0],1],["Constrained",AV[1],1]]);
   h+=gCard(`${a.c} Forecast Scenarios`,"Millions, unconstrained. "+SRC,
     mLine(scen,[AV[0],AV[2],AV[1]],[0,1,1]),[["Base",AV[0],1],["High",AV[2],1],["Low",AV[1],1]]);
-  h+=gCard(`${a.c} Forecast vs Previous Forecast`,"Millions. Source: AviaSolutions analysis",
+  h+=gCard(`${a.c} Forecast vs Previous Forecast`,"Millions. Source: Aviation Observatory analysis",
     mLine([bes.c,prior],[AV[0],AV[3]],[0,1]),[["This vintage",AV[0],1],["Previous",AV[3],1]]);
   h+=gCard(`${a.c} International vs Domestic Passengers`,"Millions. "+SRC,
     mStackCols([intl,dom],[AV[0],AV[1]],SPOTS.map(yl),spots),
     [["International",AV[0]],["Domestic",AV[1]]]);
-  h+=gCard(`${a.c} Transfer vs O&D Passengers`,"Millions, final-destination basis (Sabre true O&D). Source: Sabre MI, AviaSolutions analysis",
+  h+=gCard(`${a.c} Transfer vs O&D Passengers`,"Millions, final-destination basis (Sabre true O&D). Source: Sabre MI, Aviation Observatory analysis",
     mStackCols([od,conx],[AV[0],AV[4]],SPOTS.map(yl),spots),
     [["O&D",AV[0]],["Transfer",AV[4]]]);
-  h+=gCard(`${a.c} Passenger Growth Rate by Period`,"% per annum, constrained. Source: AviaSolutions analysis",
+  h+=gCard(`${a.c} Passenger Growth Rate by Period`,"% per annum, constrained. Source: Aviation Observatory analysis",
     mCols(growth,[0,5,10,15,20].map(o=>yy(BY+o)+"-"+String(BY+o+5).slice(2)),AV[0],v=>v.toFixed(1)+"%"));
-  h+=gCard(`${a.c} Annual Growth with Market Maturity`,"% per annum, unconstrained; catchment at "+Math.round(P.tpc/P.tpcSat*100)+"% of saturation propensity. Source: AviaSolutions analysis",
+  h+=gCard(`${a.c} Annual Growth with Market Maturity`,"% per annum, unconstrained; catchment at "+Math.round(P.tpc/P.tpcSat*100)+"% of saturation propensity. Source: Aviation Observatory analysis",
     mCols(gpath,[2,7,12,17,22].map(o=>String(BY+o)),AV[3],v=>v.toFixed(1)+"%"));
   h+=`</div><div class="gsec">B. Segmentation, airline and route</div><div class="gallery">`;
   h+=gCard(`${a.c} Traffic Share by Airline Group`,"% of passengers. "+SRC,
@@ -754,30 +754,30 @@ function galleryCards(){
   h+=gCard(`${a.c} Recovery vs 2019 by Segment`,"Index, 2019 = 100. "+SRC,
     mCols([112,96,124,88],["Dom","Long-haul","LCC int'l","Network int'l"],[AV[2],AV[1],AV[2],AV[1]],v=>v),null);
   h+=`</div><div class="gsec">C. Drivers and econometric evidence</div><div class="gallery">`;
-  h+=gCard(`${a.cty} O&D Traffic vs GDP`,"Log-log, estimation window excl. dummied years. Source: OEF, Sabre MI, AviaSolutions analysis",
+  h+=gCard(`${a.cty} O&D Traffic vs GDP`,"Log-log, estimation window excl. dummied years. Source: OEF, Sabre MI, Aviation Observatory analysis",
     mScatter(gdpPts,x=>0.4+a.ge*x),[["Observed",AV[0]],["Fitted (elasticity "+ov("ge",a.ge).toFixed(2)+")",AV[1],1]]);
-  h+=gCard(`${a.cty} Propensity to Fly vs GDP per Capita`,"Log-logistic; curve position drives maturity. Source: OAG, UN population, OEF, AviaSolutions analysis",
+  h+=gCard(`${a.cty} Propensity to Fly vs GDP per Capita`,"Log-logistic; curve position drives maturity. Source: OAG, UN population, OEF, Aviation Observatory analysis",
     mProp(P),[["Propensity curve",AV[0],1],[BY+" position",AV[1]],[(BY+20)+"F position",AV[2]]]);
-  h+=gCard(`Propensity to Fly and Headroom - ${a.cty} on the World Curve`,`Trips per capita (log scale) against GDP per capita (PPP). Curve is the fitted power-law average across countries, 2019. ${a.cty} ${BY} and ${BY+10}: this model, demand-led traffic per capita on a UN medium-variant population path. Comparator ${((CMP[a.reg]||CMP["Europe"])[0])} 2019 actual, ${BY} estimate. Source: OAG, Airbus GMF, Oxford Economics; Avia Solutions analysis`,
+  h+=gCard(`Propensity to Fly and Headroom - ${a.cty} on the World Curve`,`Trips per capita (log scale) against GDP per capita (PPP). Curve is the fitted power-law average across countries, 2019. ${a.cty} ${BY} and ${BY+10}: this model, demand-led traffic per capita on a UN medium-variant population path. Comparator ${((CMP[a.reg]||CMP["Europe"])[0])} 2019 actual, ${BY} estimate. Source: OAG, Airbus GMF, Oxford Economics; Aviation Observatory analysis`,
     mPropWorld(P,bes,a),[["Fitted power-law curve","#4A5B6B",1],["Countries","#C0C6CC"],[a.cty+" (forecast)",TEAL],[((CMP[a.reg]||CMP["Europe"])[0])+" (one step ahead)",NAVY]],true);
   h+=gCard(`${a.cty} GDP Growth: Actual vs Model`,"% per annum. Source: OEF adjusted by Avia",
     mCols(gdpBars,[String(BY-4),String(BY-3),String(BY-2),(BY-1)+"A",BY+"F"],AV[0],v=>v.toFixed(1)+"%"));
   h+=`</div><div class="gsec">D. ATMs, capacity and DDFS</div><div class="gallery">`;
-  h+=gCard(`${a.c} Commercial ATM Forecast`,"'000 movements, constrained. Source: OAG, AviaSolutions analysis",
+  h+=gCard(`${a.c} Commercial ATM Forecast`,"'000 movements, constrained. Source: OAG, Aviation Observatory analysis",
     mLine([atm],[AV[0]]),[["Total ATMs",AV[0],1]]);
-  h+=gCard(`${a.c} Capacity Utilisation`,"% of practical capacity; spill from 85%. Source: AviaSolutions analysis",
+  h+=gCard(`${a.c} Capacity Utilisation`,"% of practical capacity; spill from 85%. Source: Aviation Observatory analysis",
     mLine([util],[AV[1]]),[["Utilisation %",AV[1],1]]);
   h+=gCard(`${a.c} Monthly Seasonality Profile`,"% of annual passengers. "+SRC,
     mCols(season,["J","F","M","A","M","J","J","A","S","O","N","D"],AV[0],v=>""));
-  h+=gCard(`${a.c} Design Day Hourly Profile ${BY+10}`,"Passengers per hour, 30th busy hour method. Source: AviaSolutions DDFS model",
+  h+=gCard(`${a.c} Design Day Hourly Profile ${BY+10}`,"Passengers per hour, 30th busy hour method. Source: Aviation Observatory DDFS model",
     mHourly(hourly,AV[0]),[["Design day PHP",AV[0]]]);
-  h+=gCard(`${a.c} RPK Forecast`,"Billions, constrained. Source: AviaSolutions analysis",
+  h+=gCard(`${a.c} RPK Forecast`,"Billions, constrained. Source: Aviation Observatory analysis",
     mLine([rpk],[AV[4]]),[["RPK bn",AV[4],1]]);
   const cargo=YRS.map(y=>P.cargoT*Math.pow(1+P.cargoG/100,y-BY));
   const totAtm=YRS.map((y,i)=>atm[i]+cargo[i]/P.tPerAtm+P.gaAtmK*Math.pow(1+P.gaG/100,y-BY));
-  h+=gCard(`${a.c} Cargo Tonnage Forecast`,"'000 tonnes. Source: ${a.c} Airport, ACI, AviaSolutions analysis".replace("${a.c}",a.c),
+  h+=gCard(`${a.c} Cargo Tonnage Forecast`,"'000 tonnes. Source: ${a.c} Airport, ACI, Aviation Observatory analysis".replace("${a.c}",a.c),
     mLine([cargo],[AV[2]]),[["Cargo '000 t",AV[2],1]]);
-  h+=gCard(`${a.c} Total ATMs incl Cargo and GA`,"'000 movements. Source: OAG, AviaSolutions analysis",
+  h+=gCard(`${a.c} Total ATMs incl Cargo and GA`,"'000 movements. Source: OAG, Aviation Observatory analysis",
     mLine([totAtm,atm],[AV[0],AV[3]],[0,1]),[["Total incl cargo & GA",AV[0],1],["Commercial pax only",AV[3],1]]);
   h+=`</div>`;
   return h;}
