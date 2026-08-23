@@ -816,3 +816,52 @@ most in absolute terms. The improvement is a second caveat dimension keyed on ab
 2060 spread, not a tighter band. Owner: John, on return; candidate for Jess to size.
 
 Copyright Avia Solutions Limited. All rights reserved.
+
+---
+
+## 15. The maturity architecture, tested and settled for now
+
+**Question.** John asked on 23 August 2026 whether the whole maturity architecture,
+the mature/emerging elasticity split, its basis and its level, could be settled on
+data in one pass before the testing period. Three measurements, in the order run.
+
+**Case C in production, and its reversal.** `maturity_basis: headroom_only` (the
+split dropped, every country on the emerging elasticity) was adopted, verified at
+world O&D CAGR 2025-2060 of 3.16% exactly as measured, and reversed the same evening:
+on the comparison basis it put world RPK 2024-2044 at 4.0%, equal to the Boeing CMO
+2026, 0.1pp above the Airbus GMF 2026 and 0.4pp above IATA on shared drivers, past
+the band MEASUREMENTS 11 defends. The move was +0.2pp on the near window against
++0.11pp on the long horizon, single-cause (this session's two compare runs differ in
+nothing else), and larger near-term because case C silently set the single elasticity
+at the emerging value, the top of the old range.
+
+**The discriminator, tested four ways, supported by none.** Fitted country
+elasticities regressed on income gave R2 0.057 (CHANGELOG 119, terminal fits); on
+saturation position, slope +0.058, t 0.40, R2 0.001 (this session, terminal fits,
+n=134, and the tertile medians RISE with saturation: 1.35 / 1.99 / 1.84); and on the
+clean O&D-based fits below, income t +1.40 and saturation t +1.19. Nothing we hold
+says the income elasticity falls as markets mature. The split is a stated judgement.
+
+**The O&D re-estimation, the [P1] open since July, run at last.**
+`scripts/estimate_country_bG_od.py`: Sabre od_p2p outbound by origin country
+(unmapped 0.16%, from 3.22% before the reference supplement), OEF GDP, the restricted
+covid-dummy fit, ten usable years. 195 countries fitted, 42 reliable, and the
+reliable set is CLEAN: median 1.672, ZERO at either applied bound, against 45 of 137
+(33%) clamped in the terminal-based set. The contamination diagnosis of MEASUREMENTS
+1 is confirmed from the other side. But the instrument is underpowered for
+level-setting: ten observations with a covid dummy fail the heavyweights (China 0.79,
+Japan 3.95, Italy 5.05, Mexico 4.47, the short-window trap of the 7 July review), and
+the reliable 42 skew to small markets, so their traffic-weighted 1.794 is a selected
+level that would over-impose emerging response on mature markets.
+
+**The settlement.** The split stays, recorded as tested-and-unreplaced rather than
+assumed: no discriminator is supported, and no evidenced replacement level exists.
+External coherence holds the configuration (world 3.8%, IATA +0.2 on shared drivers,
+behind both OEMs). The candidate file `data/estimated_bG_by_country_od.json` is the
+starting point for the instrument that can settle it: a pooled panel fit with country
+effects over the O&D window, or the affordability-conditioned estimation once the
+fare levels of `data/fare_levels_exhibit.json` join the income paths. September, and
+it should be one weighing with the propensity slope re-fit (candidate 1.422).
+Owner: John.
+
+Copyright Avia Solutions Limited. All rights reserved.

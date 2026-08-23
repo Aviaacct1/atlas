@@ -464,7 +464,37 @@ global_drivers:
   # see the outcome: if the rebuild lands materially away from those figures, REVERSE by
   # setting this back to `saturation`, which reproduces the 9-22 August forecasts and is
   # kept as the control, as `income_threshold` is for the pre-9-August ones.
-  maturity_basis: headroom_only
+  #
+  # REVERSED, same day (John, 23 August 2026, evening). The mechanism landed exactly as
+  # measured (3.16% verified), but the comparison run on the new basis put world RPK
+  # 2024-2044 at 4.0%: equal to the Boeing CMO 2026, 0.1pp ABOVE the Airbus GMF 2026 and
+  # 0.4pp above IATA on the same Oxford Economics drivers, past the top of the band the
+  # review of 16 August defends ("inside the published range, at the top of the half
+  # that shares our drivers"). John's stated comfort is closer to IATA and Airbus, so
+  # saturation returns and world RPK returns to 3.8% (-0.2 vs CMO 2026, -0.1 vs GMF,
+  # +0.2 vs IATA). The case C measurement stands in the review and CHANGELOG; revisit in
+  # September TOGETHER with the propensity re-fit (candidate slope 1.422, measured
+  # -0.04pp world, scripts/measure_propensity_refit.py) and the income join, because the
+  # split decision and the curve slope pull opposite ways and belong in one weighing.
+  #
+  # THE ARCHITECTURE, SETTLED FOR NOW ON THE EVIDENCE OF 23 AUGUST 2026 (MEASUREMENTS
+  # 15). The split's discriminator was tested four ways and supported by none: fitted
+  # country elasticities against income (CHANGELOG 119, R2 0.057) and against
+  # saturation (slope +0.06, t 0.4) on the terminal-based fits, and both again on the
+  # clean O&D-based re-estimation (income t 1.40, saturation t 1.19). The split is
+  # therefore a stated judgement, not a measured one. It stays anyway, because no
+  # evidenced replacement exists: the O&D fits are clean where they converge (zero of
+  # 42 reliable at any bound, against a third of the terminal set) but underpowered on
+  # ten observations, so the heavyweights fail reliability (China, Japan, Germany,
+  # Brazil, Mexico among them) and the reliable subsample is small markets, whose
+  # traffic-weighted level (1.794) would over-impose emerging response on mature
+  # markets - the harm the split guards against. External coherence holds the applied
+  # configuration: world RPK 3.8% for 2024-2044, 0.2 above IATA on shared drivers,
+  # behind both OEMs (MEASUREMENTS 11). The instrument that can settle level and split
+  # together is a POOLED panel fit with country effects over the O&D window, or the
+  # affordability-conditioned estimation once the fare levels join the income paths:
+  # September, with data/estimated_bG_by_country_od.json as the starting point.
+  maturity_basis: saturation
   maturity_gdppc_threshold_usd: 25000      # >= this (PPP) => mature elasticity [P1]
   mature_regions_default: ["EU+UK", "North America"]   # maturity fallback where country GDPpc unknown
 

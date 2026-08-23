@@ -363,7 +363,7 @@ function ovlChips(ctx){
   const defs=ovlDefs(ctx);
   const local=`<button class="ovlbtn" style="border-color:#b0a894;color:${PVON?"#FAF8F3":"#6f6a5f"};background:${PVON?"#b0a894":"transparent"}" onclick="togglePV()">${PVON?"Hide":"Show"} prior vintage</button>`
     +`<button class="ovlbtn" style="border-color:#0F1B28;color:${PBON?"#FAF8F3":"#0F1B28"};background:${PBON?"#0F1B28":"transparent"}" onclick="togglePB()">${PBON?"Hide":"Show"} P10-P90 fan</button>`;
-  const note=(ctx&&ctx.lvl==="airport")?`<p class="mut" style="font-size:11.5px;margin:2px 0 6px">Comparator overlays unavailable here: no published forecast exists at airport level. Only Avia forecasts airports.</p>`:"";
+  const note=(ctx&&ctx.lvl==="airport")?`<p class="mut" style="font-size:11.5px;margin:2px 0 6px">Comparator overlays unavailable here: no published forecast exists at airport level. Only the Observatory forecasts airports.</p>`:"";
   const comps=defs.map(d=>{const on=OVL[d.k];const col=ovlColour(d.k);
     return `<button class="ovlbtn" style="border-color:${col};color:${on?"#FAF8F3":col};background:${on?col:"transparent"}" onclick="toggleOvl('${d.k}')">${on?"Hide":"Overlay"} ${d.lab}</button>`;}).join("");
   return note+`<div class="ovls">${comps}${local}</div>`;}
@@ -437,8 +437,8 @@ function histChart(scen){
   const dash=c=>`background:repeating-linear-gradient(90deg,${c} 0 4px,transparent 4px 7px)`;
   const hlegend=`<div class="legend" style="display:flex;flex-wrap:wrap;justify-content:flex-start;margin-top:8px">`+
     `<span><i class="sw" style="background:#D4A249"></i>Observed, 1960-2025 (ICAO/IATA)</span>`+
-    `<span><i class="sw" style="background:#0F1B28"></i>Avia forecast, constrained${cCagr!=null?` (circa ${(cCagr*100).toFixed(1)}% a year to 2050)`:""}</span>`+
-    `<span><i class="sw" style="${dash('#0F1B28')}"></i>Avia forecast, unconstrained${uCagr!=null?` (${(uCagr*100).toFixed(1)}% a year)`:""}</span>`+
+    `<span><i class="sw" style="background:#0F1B28"></i>Observatory forecast, constrained${cCagr!=null?` (circa ${(cCagr*100).toFixed(1)}% a year to 2050)`:""}</span>`+
+    `<span><i class="sw" style="${dash('#0F1B28')}"></i>Observatory forecast, unconstrained${uCagr!=null?` (${(uCagr*100).toFixed(1)}% a year)`:""}</span>`+
     `</div>`;
   return `<svg id="histsvg" viewBox="0 0 ${W} ${H}" style="width:100%">
    <text transform="translate(15,${((top+base)/2).toFixed(0)}) rotate(-90)" font-family="Inter" font-size="9" letter-spacing="0.05em" fill="#8a8577" text-anchor="middle">Passengers (log scale)</text>
@@ -450,7 +450,7 @@ function histChart(scen){
    ${ovl}${sh}${ticks}${xt}
   </svg>
   ${hlegend}
-  ${rail([["Source","ICAO observed to 2025, Avia forecast thereafter"],["Units","Passengers, log scale"],["Overlays","Published headline CAGR; year shape illustrative"],["Vintage","v0",true]])}`;}
+  ${rail([["Source","ICAO observed to 2025, Observatory forecast thereafter"],["Units","Passengers, log scale"],["Overlays","Published headline CAGR; year shape illustrative"],["Vintage","v0",true]])}`;}
 function compCells(cPax45,regKey,domAdj){ // composition row: sector, WB share, fleet, CO2, SAF for one entity
   const sl=slAt(regKey,2045)*(domAdj!==undefined?(1-domAdj*.35):1);
   const wbs=WBBASE[regKey]||WBBASE._G;
@@ -526,7 +526,7 @@ function chart(s,cap,ctx){
    <path class="observed-draw" style="--len:1" pathLength="1" d="${path(s.c)}" fill="none" stroke="#D4A249" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
    ${capL}${ticks}${xT}${labels}${pvLab}
   </svg>
-  ${rail([["Source","Avia Global Forecast"],["Units",unitLabel()],["Basis","Unconstrained and constrained; residual is the capacity requirement"],["Vintage","v0",true]])}`;}
+  ${rail([["Source","The Aviation Observatory Global Forecast (OGF)"],["Units",unitLabel()],["Basis","Unconstrained and constrained; residual is the capacity requirement"],["Vintage","v0",true]])}`;}
 function kpis(s,regKey){
   const g=cagr(s.u),gc=cagr(s.c);const [y1,y2]=win();
   const i45=YRS.indexOf(2045);const capReq=s.u[i45]-s.c[i45];
@@ -1089,7 +1089,7 @@ const CAT=[
  ["OUT-27","Affordability index","ok","Country indicators table"],
  ["OUT-28","Growth attribution","ok","Country attribution card"],
  ["UI","Search, glossary, assumptions, index toggle, annual/spot years, prior-vintage overlay","ok","All live in header and Method page"],
- ["UI-2","Comparator overlays on every applicable chart","ok","OEM overlays on RPK/ASK charts (global/region); ACI overlay on pax charts (to country); airport charts state that no comparator exists - only Avia forecasts airports"],
+ ["UI-2","Comparator overlays on every applicable chart","ok","OEM overlays on RPK/ASK charts (global/region); ACI overlay on pax charts (to country); airport charts state that no comparator exists - only the Observatory forecasts airports"],
  ["NEW-1","P10-P90 confidence fan (proposed OUT-29, spec Draft 7)","ok","P10-P90 header toggle; Bank lens P90 debt-case KPI"],
  ["NEW-2","Design-day peak metrics (proposed add-on, from Avia Peak Hour DB)","ok","Airport passport peak block"],
  ["NEW-3","Growth attribution at region level (OUT-28 extension)","ok","Region page KPI card"],
@@ -1235,19 +1235,19 @@ function busy(txt,fn){const b=document.getElementById("busy");document.getElemen
   requestAnimationFrame(()=>setTimeout(()=>{try{fn();}finally{setTimeout(()=>{b.style.display="none";},220);}},50));}
 function dlCSV(){
   const csv=lastRows.map(r=>r.map(x=>String(x).replace(/<[^>]+>/g,"").replace(/,/g,";")).join(",")).join("\n");
-  const meta=`Avia Global Forecast (engine build on licensed data; illustrative elements labelled),page=${S.page},scenario=${document.getElementById("scen").value},case=${document.getElementById("ccase").value},metric=${document.getElementById("metric").value},view=${document.getElementById("vmode").value}\n`;
+  const meta=`The Aviation Observatory Global Forecast (OGF) (engine build on licensed data; illustrative elements labelled),page=${S.page},scenario=${document.getElementById("scen").value},case=${document.getElementById("ccase").value},metric=${document.getElementById("metric").value},view=${document.getElementById("vmode").value}\n`;
   const b=new Blob([meta+csv],{type:"text/csv"});const u=URL.createObjectURL(b);
   const a=document.createElement("a");a.href=u;a.download="avia_forecast_extract.csv";a.click();URL.revokeObjectURL(u);}
 function dlXLSX(){
   if(typeof XLSX==="undefined"){alert("Excel library not loaded (offline?) - downloading CSV instead.");return dlCSV();}
   const clean=r=>r.map(x=>{const s=String(x).replace(/<[^>]+>/g,"");const n=parseFloat(s);return (s!==""&&!isNaN(n)&&/^[\d.+-]+%?$/.test(s.replace("%","")))?(s.endsWith("%")?n/100:n):s;});
   const wb=XLSX.utils.book_new();
-  wb.Props={Title:"Avia Global Forecast extract (mockup)",Author:"The Aviation Observatory",LastAuthor:"The Aviation Observatory"};
-  const meta=[["Avia Global Forecast - engine build on licensed data; illustrative elements labelled"],
+  wb.Props={Title:"The Aviation Observatory Global Forecast (OGF) extract (mockup)",Author:"The Aviation Observatory",LastAuthor:"The Aviation Observatory"};
+  const meta=[["The Aviation Observatory Global Forecast (OGF) - engine build on licensed data; illustrative elements labelled"],
    ["Page",S.page],["Scenario",document.getElementById("scen").value],["Case",document.getElementById("ccase").value],
    ["Metric",document.getElementById("metric").value],["View",document.getElementById("vmode").value],
    ["CAGR window",document.getElementById("cwin").value.replace("|","-")],
-   ["Licence","Subscriber extract - cite as Avia Global Forecast, vintage v0 (mock)"]];
+   ["Licence","Subscriber extract - cite as The Aviation Observatory Global Forecast (OGF), vintage v0 (mock)"]];
   XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(meta),"About this extract");
   XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(lastRows.map(clean)),"Data");
   XLSX.writeFile(wb,"avia_forecast_extract.xlsx");}
@@ -1260,7 +1260,7 @@ function svgToPng(cb){
   img.onload=()=>{const cnv=document.createElement("canvas");cnv.width=vb.width*2;cnv.height=vb.height*2;
     const ctx=cnv.getContext("2d");ctx.fillStyle="#FAF8F3";ctx.fillRect(0,0,cnv.width,cnv.height);
     ctx.drawImage(img,0,0,cnv.width,cnv.height);
-    ctx.fillStyle="#8a8577";ctx.font="16px Arial";ctx.fillText("Source: Avia Global Forecast",12,cnv.height-10);
+    ctx.fillStyle="#8a8577";ctx.font="16px Arial";ctx.fillText("Source: The Aviation Observatory Global Forecast (OGF)",12,cnv.height-10);
     cb(cnv.toDataURL("image/png"));};
   img.src="data:image/svg+xml;base64,"+btoa(unescape(encodeURIComponent(xml)));}
 function dlPNG(){svgToPng(url=>{const a=document.createElement("a");a.href=url;a.download="avia_chart.png";a.click();});}
@@ -1271,7 +1271,7 @@ function dlPPT(){
     s.addText("The Aviation Observatory - Global Forecast (OGF)",{x:.4,y:.25,fontSize:20,bold:true,color:"0F1B28"});
     s.addText(`${S.page==="explore"?(S.apt?S.apt[1]:(S.cty||S.reg||"Global")):S.page} - ${document.getElementById("scen").value}, ${document.getElementById("metric").value.toUpperCase()}`,{x:.4,y:.65,fontSize:13,color:"8A8577"});
     s.addImage({data:url,x:.4,y:1.1,w:9.2,h:3.6});
-    s.addText("Cite as: Avia Global Forecast, vintage v0.",{x:.4,y:5.0,fontSize:10,color:"8A8577"});
+    s.addText("Cite as: The Aviation Observatory Global Forecast (OGF), vintage v0.",{x:.4,y:5.0,fontSize:10,color:"8A8577"});
     p.writeFile({fileName:"avia_forecast_chart.pptx"});});}
 const PAGES=["explore","history","comp","capacity","method","new","about","cat"];
 function setHSub(x){HSUB=x;PAGEANIM=true;render();}

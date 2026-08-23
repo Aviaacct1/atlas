@@ -1,0 +1,1952 @@
+{
+ "CN": {
+  "bG_raw": 0.787,
+  "bG_clamped": 0.787,
+  "r2": 0.794,
+  "t": 1.31,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "TJ": {
+  "bG_raw": 0.619,
+  "bG_clamped": 0.619,
+  "r2": 0.765,
+  "t": 0.51,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "IE": {
+  "bG_raw": 0.789,
+  "bG_clamped": 0.789,
+  "r2": 0.942,
+  "t": 5.15,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "US": {
+  "bG_raw": 1.919,
+  "bG_clamped": 1.919,
+  "r2": 0.904,
+  "t": 1.88,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "RU": {
+  "bG_raw": 1.329,
+  "bG_clamped": 1.329,
+  "r2": 0.413,
+  "t": 0.36,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "FR": {
+  "bG_raw": 2.143,
+  "bG_clamped": 2.143,
+  "r2": 0.802,
+  "t": 1.92,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BR": {
+  "bG_raw": 0.526,
+  "bG_clamped": 0.6,
+  "r2": 0.678,
+  "t": 0.44,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "TH": {
+  "bG_raw": 2.226,
+  "bG_clamped": 2.2,
+  "r2": 0.598,
+  "t": 1.5,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "HK": {
+  "bG_raw": 0.701,
+  "bG_clamped": 0.701,
+  "r2": 0.591,
+  "t": 0.43,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MM": {
+  "bG_raw": 0.872,
+  "bG_clamped": 0.872,
+  "r2": 0.34,
+  "t": 0.7,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BB": {
+  "bG_raw": 2.897,
+  "bG_clamped": 2.2,
+  "r2": 0.451,
+  "t": 0.74,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GR": {
+  "bG_raw": 4.23,
+  "bG_clamped": 2.2,
+  "r2": 0.915,
+  "t": 7.87,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "DZ": {
+  "bG_raw": 2.903,
+  "bG_clamped": 2.2,
+  "r2": 0.866,
+  "t": 4.19,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "TG": {
+  "bG_raw": 0.984,
+  "bG_clamped": 0.984,
+  "r2": 0.869,
+  "t": 1.25,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GB": {
+  "bG_raw": 1.838,
+  "bG_clamped": 1.838,
+  "r2": 0.772,
+  "t": 2.47,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BE": {
+  "bG_raw": 1.691,
+  "bG_clamped": 1.691,
+  "r2": 0.858,
+  "t": 5.89,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "NG": {
+  "bG_raw": 0.715,
+  "bG_clamped": 0.715,
+  "r2": 0.367,
+  "t": 1.33,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "NZ": {
+  "bG_raw": 0.341,
+  "bG_clamped": 0.6,
+  "r2": 0.246,
+  "t": 0.23,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "HN": {
+  "bG_raw": 1.473,
+  "bG_clamped": 1.473,
+  "r2": 0.685,
+  "t": 1.24,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CO": {
+  "bG_raw": 2.204,
+  "bG_clamped": 2.2,
+  "r2": 0.906,
+  "t": 2.43,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "TR": {
+  "bG_raw": 0.291,
+  "bG_clamped": 0.6,
+  "r2": 0.534,
+  "t": 0.51,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "PK": {
+  "bG_raw": 0.637,
+  "bG_clamped": 0.637,
+  "r2": 0.575,
+  "t": 2.4,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "KE": {
+  "bG_raw": 1.51,
+  "bG_clamped": 1.51,
+  "r2": 0.852,
+  "t": 1.68,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "EG": {
+  "bG_raw": 1.675,
+  "bG_clamped": 1.675,
+  "r2": 0.919,
+  "t": 2.26,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "PE": {
+  "bG_raw": 2.115,
+  "bG_clamped": 2.115,
+  "r2": 0.932,
+  "t": 10.39,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CH": {
+  "bG_raw": 1.466,
+  "bG_clamped": 1.466,
+  "r2": 0.703,
+  "t": 1.19,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MT": {
+  "bG_raw": 1.57,
+  "bG_clamped": 1.57,
+  "r2": 0.981,
+  "t": 14.3,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CA": {
+  "bG_raw": 1.065,
+  "bG_clamped": 1.065,
+  "r2": 0.334,
+  "t": 0.62,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "PH": {
+  "bG_raw": 0.578,
+  "bG_clamped": 0.6,
+  "r2": 0.827,
+  "t": 2.19,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "ES": {
+  "bG_raw": 2.541,
+  "bG_clamped": 2.2,
+  "r2": 0.979,
+  "t": 23.38,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "NL": {
+  "bG_raw": 1.425,
+  "bG_clamped": 1.425,
+  "r2": 0.414,
+  "t": 0.67,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "AR": {
+  "bG_raw": -0.724,
+  "bG_clamped": 0.6,
+  "r2": 0.267,
+  "t": -0.22,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "VN": {
+  "bG_raw": 1.462,
+  "bG_clamped": 1.462,
+  "r2": 0.775,
+  "t": 1.34,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "JP": {
+  "bG_raw": 3.949,
+  "bG_clamped": 2.2,
+  "r2": 0.641,
+  "t": 2.14,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "IT": {
+  "bG_raw": 5.052,
+  "bG_clamped": 2.2,
+  "r2": 0.956,
+  "t": 6.09,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "RO": {
+  "bG_raw": 2.757,
+  "bG_clamped": 2.2,
+  "r2": 0.933,
+  "t": 4.13,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "AU": {
+  "bG_raw": 0.102,
+  "bG_clamped": 0.6,
+  "r2": 0.385,
+  "t": 0.11,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MX": {
+  "bG_raw": 4.472,
+  "bG_clamped": 2.2,
+  "r2": 0.962,
+  "t": 4.6,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "PL": {
+  "bG_raw": 2.364,
+  "bG_clamped": 2.2,
+  "r2": 0.993,
+  "t": 30.87,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "KI": {
+  "bG_raw": 6.257,
+  "bG_clamped": 2.2,
+  "r2": 0.878,
+  "t": 1.4,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CV": {
+  "bG_raw": 1.583,
+  "bG_clamped": 1.583,
+  "r2": 0.656,
+  "t": 1.3,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "NO": {
+  "bG_raw": -0.778,
+  "bG_clamped": 0.6,
+  "r2": 0.755,
+  "t": -0.91,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MY": {
+  "bG_raw": 0.649,
+  "bG_clamped": 0.649,
+  "r2": 0.605,
+  "t": 1.04,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "HU": {
+  "bG_raw": 2.766,
+  "bG_clamped": 2.2,
+  "r2": 0.947,
+  "t": 5.06,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BD": {
+  "bG_raw": 1.341,
+  "bG_clamped": 1.341,
+  "r2": 0.78,
+  "t": 1.23,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "FI": {
+  "bG_raw": -0.103,
+  "bG_clamped": 0.6,
+  "r2": 0.421,
+  "t": -0.04,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "IR": {
+  "bG_raw": -0.778,
+  "bG_clamped": 0.6,
+  "r2": 0.189,
+  "t": -0.21,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BT": {
+  "bG_raw": 1.474,
+  "bG_clamped": 1.474,
+  "r2": 0.567,
+  "t": 1.62,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "HT": {
+  "bG_raw": 8.841,
+  "bG_clamped": 2.2,
+  "r2": 0.623,
+  "t": 2.32,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "DE": {
+  "bG_raw": 1.451,
+  "bG_clamped": 1.451,
+  "r2": 0.503,
+  "t": 0.94,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "LB": {
+  "bG_raw": 0.1,
+  "bG_clamped": 0.6,
+  "r2": 0.092,
+  "t": 0.26,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "ID": {
+  "bG_raw": 0.076,
+  "bG_clamped": 0.6,
+  "r2": 0.297,
+  "t": 0.05,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "UZ": {
+  "bG_raw": 1.402,
+  "bG_clamped": 1.402,
+  "r2": 0.82,
+  "t": 1.47,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "TZ": {
+  "bG_raw": 0.524,
+  "bG_clamped": 0.6,
+  "r2": 0.784,
+  "t": 4.72,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "VI": {
+  "bG_raw": 1.82,
+  "bG_clamped": 1.82,
+  "r2": 0.502,
+  "t": 3.64,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "AL": {
+  "bG_raw": 6.102,
+  "bG_clamped": 2.2,
+  "r2": 0.962,
+  "t": 8.6,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "AT": {
+  "bG_raw": 3.532,
+  "bG_clamped": 2.2,
+  "r2": 0.867,
+  "t": 7.71,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BZ": {
+  "bG_raw": 2.307,
+  "bG_clamped": 2.2,
+  "r2": 0.424,
+  "t": 5.86,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "IN": {
+  "bG_raw": 1.463,
+  "bG_clamped": 1.463,
+  "r2": 0.877,
+  "t": 1.85,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CD": {
+  "bG_raw": 1.347,
+  "bG_clamped": 1.347,
+  "r2": 0.876,
+  "t": 2.68,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "UY": {
+  "bG_raw": 1.157,
+  "bG_clamped": 1.157,
+  "r2": 0.255,
+  "t": 0.97,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GL": {
+  "bG_raw": 4.276,
+  "bG_clamped": 2.2,
+  "r2": 0.742,
+  "t": 3.23,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "AF": {
+  "bG_raw": 2.351,
+  "bG_clamped": 2.2,
+  "r2": 0.837,
+  "t": 2.6,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BA": {
+  "bG_raw": 4.84,
+  "bG_clamped": 2.2,
+  "r2": 0.96,
+  "t": 4.38,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CL": {
+  "bG_raw": 3.171,
+  "bG_clamped": 2.2,
+  "r2": 0.82,
+  "t": 1.49,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "KH": {
+  "bG_raw": 1.434,
+  "bG_clamped": 1.434,
+  "r2": 0.49,
+  "t": 0.79,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "DO": {
+  "bG_raw": 1.346,
+  "bG_clamped": 1.346,
+  "r2": 0.991,
+  "t": 15.19,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GE": {
+  "bG_raw": 3.034,
+  "bG_clamped": 2.2,
+  "r2": 0.908,
+  "t": 1.66,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "ZM": {
+  "bG_raw": 0.781,
+  "bG_clamped": 0.781,
+  "r2": 0.587,
+  "t": 1.08,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "TN": {
+  "bG_raw": 3.026,
+  "bG_clamped": 2.2,
+  "r2": 0.498,
+  "t": 1.2,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SI": {
+  "bG_raw": 0.946,
+  "bG_clamped": 0.946,
+  "r2": 0.402,
+  "t": 0.62,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "KZ": {
+  "bG_raw": 2.693,
+  "bG_clamped": 2.2,
+  "r2": 0.95,
+  "t": 2.57,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "PT": {
+  "bG_raw": 3.696,
+  "bG_clamped": 2.2,
+  "r2": 0.951,
+  "t": 3.93,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "EC": {
+  "bG_raw": -1.737,
+  "bG_clamped": 0.6,
+  "r2": 0.764,
+  "t": -1.58,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "ET": {
+  "bG_raw": 1.358,
+  "bG_clamped": 1.358,
+  "r2": 0.978,
+  "t": 8.93,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BY": {
+  "bG_raw": 2.322,
+  "bG_clamped": 2.2,
+  "r2": 0.209,
+  "t": 2.22,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "HR": {
+  "bG_raw": 3.097,
+  "bG_clamped": 2.2,
+  "r2": 0.929,
+  "t": 1.94,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "JO": {
+  "bG_raw": 1.787,
+  "bG_clamped": 1.787,
+  "r2": 0.866,
+  "t": 4.76,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SA": {
+  "bG_raw": 2.713,
+  "bG_clamped": 2.2,
+  "r2": 0.925,
+  "t": 2.62,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "IQ": {
+  "bG_raw": 4.356,
+  "bG_clamped": 2.2,
+  "r2": 0.824,
+  "t": 4.92,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MG": {
+  "bG_raw": 2.031,
+  "bG_clamped": 2.031,
+  "r2": 0.495,
+  "t": 0.94,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "VU": {
+  "bG_raw": -2.859,
+  "bG_clamped": 0.6,
+  "r2": 0.406,
+  "t": -0.68,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "NP": {
+  "bG_raw": 2.971,
+  "bG_clamped": 2.2,
+  "r2": 0.927,
+  "t": 4.97,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "PG": {
+  "bG_raw": -0.538,
+  "bG_clamped": 0.6,
+  "r2": 0.634,
+  "t": -0.65,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "EE": {
+  "bG_raw": 2.09,
+  "bG_clamped": 2.09,
+  "r2": 0.833,
+  "t": 9.94,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SE": {
+  "bG_raw": -0.923,
+  "bG_clamped": 0.6,
+  "r2": 0.61,
+  "t": -0.51,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "PR": {
+  "bG_raw": -0.322,
+  "bG_clamped": 0.6,
+  "r2": 0.469,
+  "t": -0.15,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "DM": {
+  "bG_raw": -0.326,
+  "bG_clamped": 0.6,
+  "r2": 0.24,
+  "t": -0.21,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SB": {
+  "bG_raw": 0.886,
+  "bG_clamped": 0.886,
+  "r2": 0.347,
+  "t": 0.44,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "VE": {
+  "bG_raw": 0.995,
+  "bG_clamped": 0.995,
+  "r2": 0.679,
+  "t": 2.44,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "KR": {
+  "bG_raw": 2.001,
+  "bG_clamped": 2.001,
+  "r2": 0.777,
+  "t": 1.56,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "OM": {
+  "bG_raw": 3.041,
+  "bG_clamped": 2.2,
+  "r2": 0.886,
+  "t": 4.15,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MV": {
+  "bG_raw": 1.189,
+  "bG_clamped": 1.189,
+  "r2": 0.978,
+  "t": 9.7,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SK": {
+  "bG_raw": 2.941,
+  "bG_clamped": 2.2,
+  "r2": 0.944,
+  "t": 6.69,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "IS": {
+  "bG_raw": 2.478,
+  "bG_clamped": 2.2,
+  "r2": 0.61,
+  "t": 1.33,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "TT": {
+  "bG_raw": 0.112,
+  "bG_clamped": 0.6,
+  "r2": 0.549,
+  "t": 0.2,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CY": {
+  "bG_raw": 1.713,
+  "bG_clamped": 1.713,
+  "r2": 0.956,
+  "t": 7.54,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SG": {
+  "bG_raw": 0.864,
+  "bG_clamped": 0.864,
+  "r2": 0.612,
+  "t": 1.31,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MN": {
+  "bG_raw": 1.09,
+  "bG_clamped": 1.09,
+  "r2": 0.547,
+  "t": 0.76,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "DK": {
+  "bG_raw": 0.825,
+  "bG_clamped": 0.825,
+  "r2": 0.372,
+  "t": 0.59,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MZ": {
+  "bG_raw": -0.342,
+  "bG_clamped": 0.6,
+  "r2": 0.153,
+  "t": -0.53,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BG": {
+  "bG_raw": 2.425,
+  "bG_clamped": 2.2,
+  "r2": 0.897,
+  "t": 2.53,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "LC": {
+  "bG_raw": 2.065,
+  "bG_clamped": 2.065,
+  "r2": 0.863,
+  "t": 1.69,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "UA": {
+  "bG_raw": 36.621,
+  "bG_clamped": 2.2,
+  "r2": 0.662,
+  "t": 0.86,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CU": {
+  "bG_raw": 6.256,
+  "bG_clamped": 2.2,
+  "r2": 0.505,
+  "t": 3.88,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BO": {
+  "bG_raw": 0.245,
+  "bG_clamped": 0.6,
+  "r2": 0.137,
+  "t": 0.15,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "LV": {
+  "bG_raw": 2.02,
+  "bG_clamped": 2.02,
+  "r2": 0.915,
+  "t": 3.38,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "ZW": {
+  "bG_raw": 3.824,
+  "bG_clamped": 2.2,
+  "r2": 0.486,
+  "t": 0.97,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "ER": {
+  "bG_raw": 1.549,
+  "bG_clamped": 1.549,
+  "r2": 0.124,
+  "t": 0.69,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "TW": {
+  "bG_raw": 1.477,
+  "bG_clamped": 1.477,
+  "r2": 0.648,
+  "t": 0.74,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "FJ": {
+  "bG_raw": 1.29,
+  "bG_clamped": 1.29,
+  "r2": 0.908,
+  "t": 3.45,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MQ": {
+  "bG_raw": 1.308,
+  "bG_clamped": 1.308,
+  "r2": 0.298,
+  "t": 0.59,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MA": {
+  "bG_raw": 3.183,
+  "bG_clamped": 2.2,
+  "r2": 0.937,
+  "t": 5.37,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "LY": {
+  "bG_raw": 0.299,
+  "bG_clamped": 0.6,
+  "r2": 0.02,
+  "t": 0.26,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "LR": {
+  "bG_raw": -1.006,
+  "bG_clamped": 0.6,
+  "r2": 0.137,
+  "t": -0.32,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MW": {
+  "bG_raw": 1.581,
+  "bG_clamped": 1.581,
+  "r2": 0.443,
+  "t": 0.79,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CZ": {
+  "bG_raw": 2.863,
+  "bG_clamped": 2.2,
+  "r2": 0.921,
+  "t": 10.65,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "PA": {
+  "bG_raw": 1.718,
+  "bG_clamped": 1.718,
+  "r2": 0.741,
+  "t": 2.63,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "TL": {
+  "bG_raw": 9.226,
+  "bG_clamped": 2.2,
+  "r2": 0.503,
+  "t": 1.82,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SN": {
+  "bG_raw": 0.845,
+  "bG_clamped": 0.845,
+  "r2": 0.824,
+  "t": 2.7,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "ST": {
+  "bG_raw": 1.896,
+  "bG_clamped": 1.896,
+  "r2": 0.576,
+  "t": 2.54,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SD": {
+  "bG_raw": 3.736,
+  "bG_clamped": 2.2,
+  "r2": 0.808,
+  "t": 1.42,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "AG": {
+  "bG_raw": 1.583,
+  "bG_clamped": 1.583,
+  "r2": 0.937,
+  "t": 11.41,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GD": {
+  "bG_raw": 1.998,
+  "bG_clamped": 1.998,
+  "r2": 0.909,
+  "t": 3.75,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GY": {
+  "bG_raw": 0.429,
+  "bG_clamped": 0.6,
+  "r2": 0.822,
+  "t": 2.01,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CR": {
+  "bG_raw": 2.484,
+  "bG_clamped": 2.2,
+  "r2": 0.959,
+  "t": 22.13,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BW": {
+  "bG_raw": 0.299,
+  "bG_clamped": 0.6,
+  "r2": 0.061,
+  "t": 0.53,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "PY": {
+  "bG_raw": 1.352,
+  "bG_clamped": 1.352,
+  "r2": 0.629,
+  "t": 1.24,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CG": {
+  "bG_raw": 4.892,
+  "bG_clamped": 2.2,
+  "r2": 0.661,
+  "t": 4.1,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "ME": {
+  "bG_raw": 2.282,
+  "bG_clamped": 2.2,
+  "r2": 0.944,
+  "t": 6.14,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "VG": {
+  "bG_raw": 0.304,
+  "bG_clamped": 0.6,
+  "r2": 0.538,
+  "t": 0.11,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BF": {
+  "bG_raw": 0.177,
+  "bG_clamped": 0.6,
+  "r2": 0.156,
+  "t": 0.1,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GH": {
+  "bG_raw": 0.105,
+  "bG_clamped": 0.6,
+  "r2": 0.018,
+  "t": 0.27,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "RW": {
+  "bG_raw": 0.718,
+  "bG_clamped": 0.718,
+  "r2": 0.635,
+  "t": 1.43,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "NA": {
+  "bG_raw": 0.26,
+  "bG_clamped": 0.6,
+  "r2": 0.061,
+  "t": 0.11,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "TM": {
+  "bG_raw": 4.077,
+  "bG_clamped": 2.2,
+  "r2": 0.342,
+  "t": 0.56,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "KY": {
+  "bG_raw": 2.198,
+  "bG_clamped": 2.198,
+  "r2": 0.828,
+  "t": 3.85,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "YE": {
+  "bG_raw": 6.91,
+  "bG_clamped": 2.2,
+  "r2": 0.65,
+  "t": 5.16,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CI": {
+  "bG_raw": 1.095,
+  "bG_clamped": 1.095,
+  "r2": 0.846,
+  "t": 1.64,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "NI": {
+  "bG_raw": 1.672,
+  "bG_clamped": 1.672,
+  "r2": 0.8,
+  "t": 1.98,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "NE": {
+  "bG_raw": 0.078,
+  "bG_clamped": 0.6,
+  "r2": 0.017,
+  "t": 0.04,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "AZ": {
+  "bG_raw": 2.989,
+  "bG_clamped": 2.2,
+  "r2": 0.933,
+  "t": 6.31,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GA": {
+  "bG_raw": 3.489,
+  "bG_clamped": 2.2,
+  "r2": 0.771,
+  "t": 1.76,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "TD": {
+  "bG_raw": 1.974,
+  "bG_clamped": 1.974,
+  "r2": 0.564,
+  "t": 1.28,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "IL": {
+  "bG_raw": 0.973,
+  "bG_clamped": 0.973,
+  "r2": 0.346,
+  "t": 0.65,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BS": {
+  "bG_raw": 2.114,
+  "bG_clamped": 2.114,
+  "r2": 0.941,
+  "t": 5.84,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SS": {
+  "bG_raw": 3.052,
+  "bG_clamped": 2.2,
+  "r2": 0.661,
+  "t": 2.79,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SO": {
+  "bG_raw": 1.63,
+  "bG_clamped": 1.63,
+  "r2": 0.708,
+  "t": 2.89,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "LK": {
+  "bG_raw": 1.526,
+  "bG_clamped": 1.526,
+  "r2": 0.617,
+  "t": 2.64,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MD": {
+  "bG_raw": 4.75,
+  "bG_clamped": 2.2,
+  "r2": 0.836,
+  "t": 5.55,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "AE": {
+  "bG_raw": 1.407,
+  "bG_clamped": 1.407,
+  "r2": 0.99,
+  "t": 34.98,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SV": {
+  "bG_raw": 4.179,
+  "bG_clamped": 2.2,
+  "r2": 0.947,
+  "t": 5.04,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GP": {
+  "bG_raw": 1.85,
+  "bG_clamped": 1.85,
+  "r2": 0.838,
+  "t": 2.42,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MK": {
+  "bG_raw": 5.973,
+  "bG_clamped": 2.2,
+  "r2": 0.946,
+  "t": 3.62,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "AW": {
+  "bG_raw": 1.23,
+  "bG_clamped": 1.23,
+  "r2": 0.477,
+  "t": 1.89,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "TO": {
+  "bG_raw": 4.425,
+  "bG_clamped": 2.2,
+  "r2": 0.877,
+  "t": 3.93,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "WS": {
+  "bG_raw": 3.545,
+  "bG_clamped": 2.2,
+  "r2": 0.793,
+  "t": 4.08,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GM": {
+  "bG_raw": 0.274,
+  "bG_clamped": 0.6,
+  "r2": 0.086,
+  "t": 0.14,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "KW": {
+  "bG_raw": 6.639,
+  "bG_clamped": 2.2,
+  "r2": 0.692,
+  "t": 1.72,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "ML": {
+  "bG_raw": 2.064,
+  "bG_clamped": 2.064,
+  "r2": 0.888,
+  "t": 7.55,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BN": {
+  "bG_raw": 2.325,
+  "bG_clamped": 2.2,
+  "r2": 0.294,
+  "t": 2.34,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "CM": {
+  "bG_raw": 0.077,
+  "bG_clamped": 0.6,
+  "r2": 0.448,
+  "t": 0.38,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BM": {
+  "bG_raw": 1.379,
+  "bG_clamped": 1.379,
+  "r2": 0.677,
+  "t": 0.54,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "LA": {
+  "bG_raw": 1.231,
+  "bG_clamped": 1.231,
+  "r2": 0.801,
+  "t": 3.22,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GN": {
+  "bG_raw": 1.328,
+  "bG_clamped": 1.328,
+  "r2": 0.89,
+  "t": 3.76,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "UG": {
+  "bG_raw": 1.531,
+  "bG_clamped": 1.531,
+  "r2": 0.886,
+  "t": 2.48,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SY": {
+  "bG_raw": -4.026,
+  "bG_clamped": 0.6,
+  "r2": 0.138,
+  "t": -0.26,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GT": {
+  "bG_raw": 3.0,
+  "bG_clamped": 2.2,
+  "r2": 0.987,
+  "t": 6.71,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "KG": {
+  "bG_raw": -0.024,
+  "bG_clamped": 0.6,
+  "r2": 0.584,
+  "t": -0.12,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "KN": {
+  "bG_raw": 1.508,
+  "bG_clamped": 1.508,
+  "r2": 0.508,
+  "t": 2.22,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "KM": {
+  "bG_raw": -1.061,
+  "bG_clamped": 0.6,
+  "r2": 0.216,
+  "t": -0.15,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "AO": {
+  "bG_raw": -2.476,
+  "bG_clamped": 0.6,
+  "r2": 0.379,
+  "t": -0.56,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MR": {
+  "bG_raw": 0.381,
+  "bG_clamped": 0.6,
+  "r2": 0.061,
+  "t": 0.2,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GW": {
+  "bG_raw": 2.263,
+  "bG_clamped": 2.2,
+  "r2": 0.727,
+  "t": 1.89,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MU": {
+  "bG_raw": 1.378,
+  "bG_clamped": 1.378,
+  "r2": 0.9,
+  "t": 8.62,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SC": {
+  "bG_raw": 2.304,
+  "bG_clamped": 2.2,
+  "r2": 0.805,
+  "t": 3.15,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "LS": {
+  "bG_raw": 2.628,
+  "bG_clamped": 2.2,
+  "r2": 0.728,
+  "t": 2.69,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "JM": {
+  "bG_raw": 3.005,
+  "bG_clamped": 2.2,
+  "r2": 0.866,
+  "t": 1.6,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "LU": {
+  "bG_raw": 5.075,
+  "bG_clamped": 2.2,
+  "r2": 0.92,
+  "t": 2.83,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "LT": {
+  "bG_raw": 2.242,
+  "bG_clamped": 2.2,
+  "r2": 0.935,
+  "t": 3.9,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "DJ": {
+  "bG_raw": -0.096,
+  "bG_clamped": 0.6,
+  "r2": 0.378,
+  "t": -0.13,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SL": {
+  "bG_raw": 2.511,
+  "bG_clamped": 2.2,
+  "r2": 0.266,
+  "t": 0.62,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "AM": {
+  "bG_raw": 1.686,
+  "bG_clamped": 1.686,
+  "r2": 0.959,
+  "t": 12.11,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "QA": {
+  "bG_raw": 2.58,
+  "bG_clamped": 2.2,
+  "r2": 0.938,
+  "t": 4.28,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "MO": {
+  "bG_raw": -0.195,
+  "bG_clamped": 0.6,
+  "r2": 0.136,
+  "t": -0.21,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BH": {
+  "bG_raw": 1.278,
+  "bG_clamped": 1.278,
+  "r2": 0.937,
+  "t": 8.67,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "GQ": {
+  "bG_raw": 0.22,
+  "bG_clamped": 0.6,
+  "r2": 0.018,
+  "t": 0.2,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "RS": {
+  "bG_raw": 2.709,
+  "bG_clamped": 2.2,
+  "r2": 0.968,
+  "t": 3.77,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "AI": {
+  "bG_raw": 2.179,
+  "bG_clamped": 2.179,
+  "r2": 0.712,
+  "t": 2.47,
+  "n": 10,
+  "reliable": true,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BI": {
+  "bG_raw": 2.38,
+  "bG_clamped": 2.2,
+  "r2": 0.571,
+  "t": 0.74,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "VC": {
+  "bG_raw": 1.605,
+  "bG_clamped": 1.605,
+  "r2": 0.599,
+  "t": 0.99,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": false,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SR": {
+  "bG_raw": 0.496,
+  "bG_clamped": 0.6,
+  "r2": 0.074,
+  "t": 0.51,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "SZ": {
+  "bG_raw": 4.362,
+  "bG_clamped": 2.2,
+  "r2": 0.896,
+  "t": 0.91,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "BJ": {
+  "bG_raw": -0.88,
+  "bG_clamped": 0.6,
+  "r2": 0.743,
+  "t": -2.18,
+  "n": 10,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ },
+ "KP": {
+  "bG_raw": 2.321,
+  "bG_clamped": 2.2,
+  "r2": 0.912,
+  "t": 0.75,
+  "n": 9,
+  "reliable": false,
+  "clamp_binds": true,
+  "basis": "Sabre od_p2p outbound O&D by origin country; OEF GDP; restricted covid-dummy fit"
+ }
+}
