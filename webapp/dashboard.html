@@ -546,12 +546,17 @@ function chart(s,cap,ctx){
   else{labReq.push({v:s.u[zend],txt:"Unconstrained",col:"#0F1B28",lx:X(zend),fs:12});
        labReq.push({v:s.c[zend],txt:"Constrained",col:"#A97C33",lx:X(zend),fs:12});}
   if(PVON)labReq.push({v:s.u[zend]*0.985,txt:"prior",col:"#9a9384",lx:X(zend),fs:11});
-  labReq.forEach(l=>{l.ty=Y(l.v);l.ly=l.ty;});
-  labReq.sort((a,b)=>a.ly-b.ly);
-  for(let i=1;i<labReq.length;i++)if(labReq[i].ly-labReq[i-1].ly<12)labReq[i].ly=labReq[i-1].ly+12;
-  for(let i=labReq.length-1;i>=0;i--){if(labReq[i].ly>base-4)labReq[i].ly=base-4;
-    if(i<labReq.length-1&&labReq[i+1].ly-labReq[i].ly<12)labReq[i].ly=labReq[i+1].ly-12;}
-  const labels=labReq.map(l=>`<line x1="${l.lx.toFixed(1)}" y1="${l.ty.toFixed(1)}" x2="${(plotR+4).toFixed(1)}" y2="${l.ly.toFixed(1)}" stroke="${l.col}" stroke-width="0.6" opacity="0.5"/><text x="${plotR+7}" y="${(l.ly+3.5).toFixed(1)}" font-family="Newsreader" font-style="italic" font-size="${l.fs}" fill="${l.col}">${l.txt}</text>`).join("");
+  labReq.forEach(l=>{l.ty=Y(l.v);});
+  labReq.sort((a,b)=>a.ty-b.ty);
+  // single-direction spacing walk, then a whole-stack shift on overflow: the earlier
+  // two-direction squash could re-collapse rows and hide one label under another
+  const topMin=ZLEVEL?top+20:top+8;                 // clear the zoom note row when zoomed
+  let _p=topMin-12;
+  labReq.forEach(l=>{l.ly=Math.max(l.ty,_p+12);_p=l.ly;});
+  const _over=labReq.length?labReq[labReq.length-1].ly-(base-4):0;
+  if(_over>0){labReq.forEach(l=>l.ly-=_over);
+    _p=topMin-12;labReq.forEach(l=>{l.ly=Math.max(l.ly,_p+12);_p=l.ly;});}
+  const labels=labReq.map(l=>`<line x1="${l.lx.toFixed(1)}" y1="${l.ty.toFixed(1)}" x2="${(plotR+3).toFixed(1)}" y2="${l.ly.toFixed(1)}" stroke="${l.col}" stroke-width="0.6" opacity="0.5"/><text x="${plotR+6}" y="${(l.ly+3.5).toFixed(1)}" font-family="Newsreader" font-style="italic" font-size="10.5" fill="${l.col}">${l.txt}</text>`).join("");
   const pvLab="";
   return `<svg viewBox="0 0 ${W} ${H}" style="width:100%">
    <text transform="translate(13,${((top+base)/2).toFixed(0)}) rotate(-90)" font-family="Inter" font-size="9" letter-spacing="0.05em" fill="#8a8577" text-anchor="middle">${ylab}</text>
