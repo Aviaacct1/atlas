@@ -11,6 +11,9 @@ import sys
 
 import openpyxl
 
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from avia_forecast.io_safe import dump_atomic  # atomic write with parse-back (io_safe rule, 23 Aug 2026)
+
 
 def _rows(path):
     wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
@@ -73,7 +76,7 @@ def main():
     growth = extract_growth(_rows(path))
     idx = to_index(growth, base_year)
     out = sys.argv[3] if len(sys.argv) > 3 else os.path.splitext(path)[0] + f"_gdp_index_{base_year}.json"
-    json.dump({"base_year": base_year, "gdp_index": idx}, open(out, "w"), indent=0)
+    dump_atomic({"base_year": base_year, "gdp_index": idx}, out, indent=0)
     print(f"{len(idx)} countries -> {out}  (base {base_year})")
 
 

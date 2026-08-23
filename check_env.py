@@ -139,6 +139,31 @@ try:
 except Exception as e:
     fail(f"configuration will not load: {type(e).__name__}: {e}")
 
+# --- 5a. the served bundle ---------------------------------------------------
+# webapp/data/*.json is gitignored by design (data never travels in the repo), so a
+# fresh clone serves pages with no numbers and every check still passed: on Donatello
+# on 23 August 2026 this host check said READY while the dashboard was blank, because
+# validate_repo's "served JSON valid" is vacuous over an empty folder. Deploy means
+# rebuild on the machine that serves; this check is what says so.
+print("\n5a. Served bundle (webapp/data)")
+_bundle = os.path.join(REPO, "webapp", "data")
+_dash = os.path.join(_bundle, "dashboard.json")
+if os.path.isfile(_dash):
+    try:
+        import json as _json
+        _n = len(_json.load(open(_dash)).get("airports", []))
+        ok(f"dashboard.json present ({_n} airports)")
+    except Exception as _e:
+        fail(f"dashboard.json present but unreadable ({_e}): rebuild with scripts/build_dashboard_data.py")
+    for _f in ("world.json", "airports.json", "meta.json", "cockpit.json", "capacity.json", "history.json"):
+        if not os.path.isfile(os.path.join(_bundle, _f)):
+            warn(f"{_f} absent from the bundle: the page that reads it will not populate")
+else:
+    fail("webapp/data/dashboard.json is absent: this clone serves BLANK PAGES. The bundle "
+         "is gitignored by design; build it here with scripts/build_webapp_data.py then "
+         "scripts/build_dashboard_data.py, build_cockpit_data.py, build_capacity_webapp_data.py "
+         "and webapp/build_history.py.")
+
 # --- 6. smoke tests ----------------------------------------------------------
 print("\n6. Smoke tests")
 try:

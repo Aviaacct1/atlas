@@ -9,6 +9,15 @@ watchpoints:
   - scope: zagreb
     opened: 2026-08-16
     by: independent review, 16 August 2026, item 1.5
+    progress: >
+      23 August 2026: the 2022 history point is corrected on the page (3,113,219 from
+      the ACI annual dataset) and the two drags are named on the page beside hwF with
+      their provenance flagged unconfirmed; the engine instance embeds the same drags
+      in its calibrated ramp, so they must NOT be added to config.headwinds as well.
+      Remaining before clearing: confirm the drags' provenance against Model 007, and
+      run the round-trip (writer output against the page series) - the person clearing
+      this entry runs the writers deliberately as part of the clearance and records
+      the comparison here.
     reason: >
       zagreb.html applies two hard-coded annual drags (1.0% and 0.7% from 2026) that
       exist nowhere in config/airports/zagreb.yaml, so the Excel and Word writers

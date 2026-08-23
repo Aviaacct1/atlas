@@ -142,12 +142,23 @@ def run():
     if not _tmeta.get("tb_base_pass", True):                          # identity T-B is now build-stopping
         raise SystemExit("BUILD STOPPED: base-year identity T-B failed at %d airports" % _tmeta.get("tb_fail", 0))
     _flag_traffic = _tmeta.get("connecting_flagged_traffic_share", 0.0)
-    _pub_ok = _flag_traffic <= 0.10           # weighted by traffic, not airport count (small thin-Sabre airports do not trip it)
+    from avia_forecast.config import get as _cfg_get
+    _band = float(_cfg_get("global_drivers.connecting_flag_band", 0.10))
+    _pub_ok = _flag_traffic <= _band          # weighted by traffic, not airport count (small thin-Sabre airports do not trip it)
     if not _pub_ok:
-        print("PUBLICATION WATCHPOINT: flagged connecting airports carry %.1f%% of world traffic (>10%%) - review before publication"
-              % (100 * _flag_traffic))
-    else:
-        print("connecting flagged airports carry %.1f%% of world traffic (within band)" % (100 * _flag_traffic))
+        # A watchpoint that prints and ships is a caption (review of 16 August 2026).
+        # Breaching the band stops the build the same way the adding-up identity does;
+        # the remedy is to reconcile the flagged airports, or to raise the band in the
+        # assumptions book with the reasoning written beside it, never an env var.
+        raise SystemExit(
+            "BUILD STOPPED: airports whose connecting sources disagree by >30 points hold "
+            "%.1f%% of world terminal traffic, above the %.0f%% band in the assumptions book "
+            "(global_drivers.connecting_flag_band). Reconcile the flagged set (run "
+            "scripts/measure_connecting_divergence.py for the size of the effect) or raise "
+            "the band in config/assumptions_book.yaml with the reasoning recorded beside it."
+            % (100 * _flag_traffic, 100 * _band))
+    print("connecting flagged airports hold %.1f%% of world traffic (band %.0f%%, see assumptions book)"
+          % (100 * _flag_traffic, 100 * _band))
 
     # domestic share + gdppc/pop from ACI + OEF/WB
     panel24 = [r for r in json.load(open(os.path.join(E, "aci_panel_2013_2024.json"))) if r["year"] == 2024]
@@ -225,7 +236,7 @@ def run():
                             "country": ctry, "region": reg, "cap": cap,
                             "capsrc": capsrc, "capst": capst, "capnote": capnote,
                             "hub": ("Alliance hub" if (a.get("connecting_share") or 0) > 0.30 else ""),
-                            "cnx": a.get("connecting_share"), "scen": scen,
+                            "cnx": a.get("connecting_share"), "cnx_flag": bool(a.get("cx_flag")), "scen": scen,
                             "dests": DESTS.get(iata, [])}
         if ctry not in CTY:
             popser = oefp.get(iso, {})
@@ -271,17 +282,45 @@ def run():
         for r in _panel:
             if str(r.get("year")) == str(_latest) and r.get("country_code") and r.get("terminal_pax"):
                 _ctry_aci[r["country_code"]] += float(r["terminal_pax"]) / 1e6
-        coverage_country = {}
-        _fallback = 0
+        # Countries are keyed by DISPLAY NAME, and an airport missing from the Meridian
+        # reference falls back to its ISO code as the display name (perAirport build,
+        # `qref.get(iata, ("", iso))`), so the table holds both "China" and "CN" as
+        # separate entities. Grossing per display key handed each stub its whole real
+        # country's ACI total over a handful of airports, which is how 37 factors sat
+        # pinned at the 3.0 clamp while 172 sat at the floor (diagnosed 23 August 2026
+        # from the served bundle). Factors are therefore computed per ISO GROUP and
+        # assigned to every member, and any group that still clamps or misses is NAMED,
+        # because an aggregate is how Beijing Daxing hid.
+        _groups = defaultdict(list)
         for c in CTY:
-            m, tot = _modelled_c.get(c, 0.0), _ctry_aci.get(CTY[c].get("iso"), 0.0)   # ACI keyed by ISO2, not name
+            _groups[CTY[c].get("iso") or c].append(c)
+        coverage_country = {}
+        _clamped, _unmatched = [], []
+        for _iso, _members in _groups.items():
+            m = sum(_modelled_c.get(c, 0.0) for c in _members)
+            tot = _ctry_aci.get(_iso, 0.0)
             if m > 0 and tot > 0:
-                coverage_country[c] = round(max(1.0, min(3.0, tot / m)), 3)
+                f = round(max(1.0, min(3.0, tot / m)), 3)
+                if f >= 3.0:
+                    _clamped.append((_iso, round(m, 1)))
             else:
-                coverage_country[c] = 1.08; _fallback += 1
+                f = 1.08
+                _unmatched.append((_iso, round(m, 1)))
+            for c in _members:
+                coverage_country[c] = f
         _disp = len(set(round(v, 2) for v in coverage_country.values()))
-        print("coverage_country: %d countries, %d distinct values, %d on fallback"
-              % (len(coverage_country), _disp, _fallback))
+        _world_mod = sum(_modelled_c.values()) or 1.0
+        _bad_traffic = sum(m for _i, m in _clamped + _unmatched)
+        print("coverage_country: %d countries in %d ISO groups, %d distinct values; "
+              "%d groups clamped, %d unmatched, together %.1fm modelled (%.2f%% of world)"
+              % (len(coverage_country), len(_groups), _disp, len(_clamped), len(_unmatched),
+                 _bad_traffic, 100.0 * _bad_traffic / _world_mod))
+        for _i, _m in sorted(_clamped + _unmatched, key=lambda x: -x[1])[:10]:
+            if _m >= 1.0:
+                print("  coverage watch: group %s holds %.1fm modelled and is %s"
+                      % (_i, _m, "clamped at 3.0" if (_i, _m) in _clamped else
+                         "unmatched in the ACI panel (check the iso mapping: Serbia "
+                         "mapped to XK is the known case)"))
         _reg_aci = defaultdict(float)
         for c, tot in _ctry_aci.items():
             rr = R6.get(region_for_iso2(c) or "", None)
@@ -296,9 +335,13 @@ def run():
         for rr in set(list(_reg_aci) + list(_modelled_r)):
             mr, tr = _modelled_r.get(rr, 0.0), _reg_aci.get(rr, 0.0)
             coverage_region[rr] = round(max(1.0, min(4.0, tr / mr)), 3) if (mr > 0 and tr > 0) else 1.1
-        _cov_source = ("ACI-based (country/region total over modelled)"
-                       if (_disp > 5 and _fallback < 0.5 * len(coverage_country))
-                       else "ACI-based but LOW DISPERSION - check panel/key grain")
+        # Health is measured in traffic, not counts: the factors are sound when the
+        # groups that clamp or miss together hold under 2% of modelled traffic.
+        _cov_source = ("ACI-based (country/region total over modelled, ISO-grouped)"
+                       if (100.0 * _bad_traffic / _world_mod) < 2.0
+                       else ("ACI-based but DEGRADED: clamped or unmatched ISO groups hold "
+                             "%.1f%% of modelled traffic - names in the build log"
+                             % (100.0 * _bad_traffic / _world_mod)))
     except Exception as _e:
         coverage_region = {"Europe": 2.6, "Asia Pacific": 2.2, "North America": 1.35,
                            "South America": 2.2, "Middle East": 1.9, "Africa": 3.4}
@@ -361,11 +404,14 @@ def run():
                "comparators_retrieved": str(_cmp.get("retrieved", "")),
                "flows": region_pair_flows(), "rg": RG,
                "coverage_country": coverage_country, "coverage_region": coverage_region,
-               "checks": {"adds_up": _ok, "world_base_m": round(_rec["world"], 1), "issues": _rec["issues"][:20],
+               "checks": {"adds_up": _ok, "world_base_m": round(_rec["world"], 1),
+                          "world_base_terminal_m": round(sum(_modelled_c.values()), 1),
+                          "issues": _rec["issues"][:20],
                           "coverage_source": _cov_source, "tb_base_pass": _tmeta.get("tb_base_pass"),
                           "connecting_measured": _tmeta.get("connecting_measured"), "connecting_residual": _tmeta.get("connecting_residual"),
                           "connecting_floored": _tmeta.get("connecting_floored"), "connecting_flagged": _tmeta.get("connecting_flagged"),
                           "publication_ok": _pub_ok, "connecting_flagged_traffic_share": _flag_traffic,
+                          "connecting_flag_band": _band,
                           "connecting_discrepancies": _tmeta.get("connecting_discrepancies", [])},
                "note": f"Avia engine: ACI history to 2024 + forecast to {HORIZON}; Sabre O&D, OAG routing, OEF GDP. Licensed data, internal.",
                "fixtures": [

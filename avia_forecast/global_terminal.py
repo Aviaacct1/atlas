@@ -184,6 +184,7 @@ def run_terminal(scenario="Baseline"):
             ap.append(round(term_m, 3))
         by_airport[iata] = {"region": region, "country": c.get("country_code"),
                             "connecting_share": round(share, 3), "conn_source": source,
+                            "cx_flag": bool(flag),   # the two connecting sources disagree materially here
                             "admitted": bool(c.get("admitted")), "series": ap}
 
     y0, y1 = years[0], years[-1]

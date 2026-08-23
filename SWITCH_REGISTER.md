@@ -1,6 +1,10 @@
 # Atlas switch register
 
-Version 1.0, 8 August 2026. Avia Solutions.
+Version 1.1, 23 August 2026. Avia Solutions. Version 1.0 was 8 August 2026 and by
+16 August contradicted both the code and itself: the "now wired" table recorded the
+chart writer and fare index fixes three sections above a table still stating "nothing
+calls it". A register that disagrees with itself is worse than a stale one. Rows below
+are corrected in place; switches added since 8 August are in the new table at the end.
 
 Every switch, flag and environment variable that changes what the tool does, with an
 owner and the test that would let it be turned on. A default-off switch is a temporary
@@ -21,12 +25,12 @@ only by `avia_forecast/paths.py`, with every other module importing from there.
 |---|---|---|---|
 | `AVIA_GLOBAL_ROOT` | `E:\Avia\Global` | `paths.py` | Keep. Canonical. |
 | `AVIA_DB_ROOT` | `E:\Avia` (the duckdb stores) | `paths.py` | Keep. Canonical. Moved from `C:\Avia` on 10 August 2026 so ONE drive carries every data location the estate has, and a backup workstation is a copy of one drive rather than a reconstruction from three. `C:\Avia` remains a fallback and prints a line when it is used. |
-| `AVIA_QSI_APP` | the Meridian application folder | `paths.py` | Keep. Canonical. Default must move to `C:\src\meridian\app`. |
-| `AVIA_ZAGREB` | `E:\Avia\Zagreb` | `webapp/zagreb_write_excel.py`, `webapp/zagreb_write_report.py` | Fold into `paths.py`. Two modules define the same default, one of them as `r"E:\\Avia\\Zagreb"` with doubled separators. |
+| `AVIA_QSI_APP` | the Meridian application folder | `paths.py` | Keep. Canonical. Default moved to `C:\src\meridian\app` on 8 August 2026 (paths.py:87); the OneDrive copy survives only as a fallback for hosts that lack the clone. |
+| `AVIA_ZAGREB` | `E:\Avia\Zagreb` | `paths.py` (ZAGREB), both Zagreb writers import from there | Done: folded into `paths.py`, the doubled-separator default removed, both writers resolve through the one definition. |
 | `AVIA_OAG` | the OAG raw file folder | `scripts/ingest_oag_annual.py` | Fold into `paths.py`. |
 | `AVIA_OAG_DB` | the OAG store | `scripts/backtest_seats_anchor.py` | Fold into `paths.py`, which already exports `OAG_DB`. |
 | `AVIA_OAG_STORE` | the OAG store | `avia_forecast/ingest/oag_peak.py` | Duplicate of the above under a third name. Fold in. |
-| `QSI_APP` | the Meridian application folder | `webapp/qsi_service.py` | Duplicate of `AVIA_QSI_APP`. Setting one and not the other gives a half-pointed host. Remove. |
+| `QSI_APP` | the Meridian application folder | `paths.py` only, as a legacy read | Superseded: `paths.py` reads it through `_legacy_env()` with a stderr warning naming the replacement; `qsi_service.py` no longer reads it directly. Remove the legacy read once no host sets it. |
 | `QSI_OAG` | the OAG store | `webapp/qsi_service.py` | The third name for the same store, after `AVIA_OAG_DB` and `AVIA_OAG_STORE`. Fold in. |
 | `QSI_SABRE` | the Sabre store | `webapp/qsi_service.py`, `webapp/build_history.py` | Fold into `paths.py`, which already exports `SABRE_DB`. |
 | `AVIA_DUCKDB_TMP` | duckdb scratch | `avia_forecast/ingest/oag_peak.py` | Keep as a host-level override; add to `paths.py`. |
@@ -76,10 +80,23 @@ re-run to confirm: world 2060 unchanged at 9,644m, CAGR 3.26%.
 
 ## Capability that is not behind a switch, and is off anyway
 
-| Item | State | What would turn it on |
-|---|---|---|
-| `avia_forecast/outputs/chart_writer.py` | Nothing calls it. The Excel deliverable carries no charts. | Wire it into the Excel output path and extend `tests/test_impact_and_charts.py` to assert on the written workbook, not only on the format module. |
-| `avia_forecast/estimate/fare_construction.py` | Nothing calls it. `data/fare_index_constructed.json` is frozen at 6 July 2026 and `fare_index.pass_through_theta` and `real_yield_trend_tau` are inert. | A build script that regenerates the fare index from the EIA fuel series, and a test that changing theta in the assumptions book changes a forecast number. |
-| BT2 training scripts in `C:\Avia\bt2` | Hard-code a Cowork session path that no longer exists, so they cannot run on any machine today | Repoint them through `paths.py`. Until then `data/bt2_model_v1_2.pkl` cannot be reproduced, only used. |
+All three rows of this table closed between 8 and 23 August 2026 and the closures are
+recorded in the "now wired" table above and here: the chart writer is called by
+`outputs/excel_writer.py` with a test on the written workbook; the fare index has a
+builder (`scripts/build_fare_index.py`) and `tests/test_fare_index_wiring.py` asserts
+both book assumptions move it; the BT2 training scripts moved into `scripts/bt2/` and
+resolve through `paths.py` (their README records the twelve dead session paths this
+replaced). Reproduction of `bt2_model_v1_2.pkl` from the repointed scripts has not yet
+been exercised; that is workplan item 2.4, owner John.
+
+## Switches and registers added since version 1.0
+
+| Item | Where | Default | State |
+|---|---|---|---|
+| `global_drivers.connecting_share_method` | assumptions book | `blend` | Was a code default only; in the book since 23 August 2026. Options sabre / residual / blend; `scripts/measure_connecting_divergence.py` measures the spread between them. |
+| `global_drivers.connecting_flag_band` | assumptions book | 0.12 | The publication watchpoint band; a breach STOPS the dashboard build. 0.12 is a recorded interim of 23 August 2026, reasoning beside the value in the book; tighten to 0.10 or below once the flagged set is reconciled. |
+| Export watchpoints | `config/export_watchpoints.yaml` | one open zagreb entry | A warned run never becomes a client artefact (`avia_forecast/export_guard.py`): uncleared entries refuse the Zagreb writers at the service (409) and at the script. Clearing is a dated, named yaml edit; there is no override flag. |
+| `AVIA_ALLOW_OPEN` | environment, `webapp/qsi_service.py` | unset (fail closed) | The service refuses to start with no access password; this override permits an open server for local development only and must never be set on a host the tunnel reaches. |
+| `stage_length` block | `dashboard.json`, built from `config/stage_length.yaml` | always on | The page's RPK/ASK/CO2/fleet derivations read stage length from the bundle since 23 August 2026; a bundle without the block makes those views fail loudly. `tests/test_dashboard_stage_length.py` bans the typed constant. |
 
 Copyright Avia Solutions Limited. All rights reserved.

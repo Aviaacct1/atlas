@@ -2,6 +2,20 @@
 
 Version 1.0, 8 August 2026. Avia Solutions.
 
+**Status note, 23 August 2026.** This audit is kept as the historical record of the tree
+on 8 August; several of its findings have since closed and reading it without this note
+would mislead. Superseded: section 6's Meridian default (now `C:\src\meridian\app` first
+in paths.py); section 3's frozen fare channel (builder and wiring tests landed 9 August);
+section 1's unwired chart writer (called by excel_writer since 9 August); the browser
+grossing critique (moved into the build, and the ISO-grouping defect that survived the
+move was fixed 23 August). The question the audit ends on, whether the published accuracy
+describes what a client is shown, was answered by the independent review of 16 August
+(the answer was no, on three counts) and the surface was rebuilt: accuracy card generated
+from the exhibits, Text A claim language ruled by John on 23 August, both under tests.
+Still open from this document: the six silent data-load fallbacks are now loud, but
+reproduction of the BT2 pickle from the repointed training scripts has not been exercised
+(workplan 2.4).
+
 What is built and live, and what is built and nothing calls. Produced by a static read
 of the tree on 8 August 2026, cross-checked against `capability_audit.py` in the
 `meridian` repo. Every count below was re-checked by hand against the filesystem before

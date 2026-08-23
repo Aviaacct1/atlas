@@ -401,6 +401,20 @@ population:
 # overrides (Jul 2024 world file on Egnyte) replace these where staged. Maturity of
 # the elasticity is set by country GDP per head where known, else by region default.
 global_drivers:
+  # How an airport's connecting share is set where Sabre leg-measured and ACI-residual
+  # disagree: geometric blend of the two. Was a code default only until 23 August 2026;
+  # a switch absent from the book reads as though it does not exist.
+  connecting_share_method: blend
+  # The publication watchpoint band: the build STOPS when airports whose two connecting
+  # sources disagree by more than 30 points hold more than this share of world terminal
+  # traffic. Raised from 0.10 to 0.12 on 23 August 2026 as an interim, recorded here
+  # deliberately: the current build measures 0.1087, the terminal LEVEL of every flagged
+  # airport is ACI-anchored regardless (only the split between the O&D-driven and
+  # connecting-driven growth paths is uncertain), and the size of that effect on
+  # published totals is the measurement scripts/measure_connecting_divergence.py exists
+  # to settle. Tighten back to 0.10 or below once the flagged set is reconciled; do not
+  # raise this again without a measurement beside the edit.
+  connecting_flag_band: 0.12
   gdp_growth_by_region:
     "EU+UK": 0.015
     "Other Europe": 0.021

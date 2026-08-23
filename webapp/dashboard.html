@@ -828,11 +828,11 @@ function renderMethod(){
   ${(()=>{const k=DASH.checks||{};if(!Object.keys(k).length)return"";
     const yn=v=>v?'<b class="pos">pass</b>':'<b class="neg">FAIL</b>';
     const rows=[];
-    if(k.adds_up!=null)rows.push(`<tr><td>Adding-up: airport &#8594; country &#8594; region &#8594; world</td><td>${yn(k.adds_up)}</td><td class="mut">world base ${k.world_base_m!=null?Math.round(k.world_base_m).toLocaleString()+"m":"-"}</td></tr>`);
+    if(k.adds_up!=null)rows.push(`<tr><td>Adding-up: airport &#8594; country &#8594; region &#8594; world</td><td>${yn(k.adds_up)}</td><td class="mut">grossed world base ${k.world_base_m!=null?Math.round(k.world_base_m).toLocaleString()+"m":"-"} (modelled set x coverage factors); the served headline base is the ${k.world_base_terminal_m!=null?Math.round(k.world_base_terminal_m).toLocaleString()+"m":"9,412m"} calibration total - two bases, each labelled, not one number disagreeing with itself</td></tr>`);
     if(k.tb_base_pass!=null)rows.push(`<tr><td>Identity T-B: terminal = O&amp;D + connecting (base year)</td><td>${yn(k.tb_base_pass)}</td><td class="mut">${k.connecting_floored!=null?(k.connecting_floored+" residuals floored, "+(k.connecting_flagged||0)+" flagged"):""}</td></tr>`);
     if(k.connecting_measured!=null)rows.push(`<tr><td>Connecting basis</td><td><b class="pos">${k.connecting_measured} leg-measured</b></td><td class="mut">${k.connecting_residual||0} on ACI residual fallback; ${(k.connecting_flagged||0)} ACI/Sabre divergences flagged</td></tr>`);
-    if(k.coverage_source)rows.push(`<tr><td>Coverage basis</td><td>${(""+k.coverage_source).indexOf("ACI")===0?'<b class="pos">ACI-based</b>':'<b class="neg">placeholder</b>'}</td><td class="mut">${k.coverage_source}</td></tr>`);
-    if(k.publication_ok!=null)rows.push(`<tr><td>Publication watchpoint (connecting discrepancies)</td><td>${k.publication_ok===false?'<b class="neg">review</b>':'<b class="pos">within band</b>'}</td><td class="mut">flagged residuals reported, not silently dropped</td></tr>`);
+    if(k.coverage_source)rows.push(`<tr><td>Coverage basis</td><td>${/DEGRADED|LOW DISPERSION|placeholder/.test(""+k.coverage_source)?'<b class="neg">review</b>':'<b class="pos">ACI-based</b>'}</td><td class="mut">${k.coverage_source}</td></tr>`);
+    if(k.publication_ok!=null)rows.push(`<tr><td>Publication watchpoint (connecting discrepancies)</td><td>${k.publication_ok===false?'<b class="neg">review</b>':'<b class="pos">within band</b>'}</td><td class="mut">${(k.connecting_flagged||0)} airports at ${k.connecting_flagged_traffic_share!=null?(100*k.connecting_flagged_traffic_share).toFixed(1)+"%":"-"} of traffic, band ${k.connecting_flag_band!=null?(100*k.connecting_flag_band).toFixed(0)+"%":"10%"} (assumptions book, with reasoning); a breach stops the build. Flagged airports show a split caveat on their own page.</td></tr>`);
     if(!rows.length)return"";
     return `<div class="card"><h3>Engine identity checks (this build)</h3>
      <table>${rows.join("")}</table>
@@ -1185,6 +1185,7 @@ function render(){
     lastRows=[["year","unconstrained","constrained"]];YRS.forEach((y,i)=>lastRows.push([y,cv.u[i].toFixed(3),cv.c[i].toFixed(3)]));
     v.innerHTML=`<div class="grid"><div class="card"><h3>${a[1]} (${a[0]}) - ${document.getElementById("metric").selectedOptions[0].text}, ${scen}
       <button class="star ${WL.has(a[0])?"on":""}" style="margin-left:10px" onclick="toggleWatch('${a[0]}')">${WL.has(a[0])?"★ Watching":"☆ Watch"}</button></h3>
+      ${a[7]?`<p class="mut" style="font-size:11.5px;margin:2px 0 6px;color:#a35b00">Connecting split caveat: the Sabre leg-measured and ACI-residual connecting shares disagree by more than 30 points at this airport, so the split between local and connecting growth paths is uncertain; the terminal level is ACI-anchored and unaffected. See the publication watchpoint on the checks page.</p>`:""}
       ${ovlChips({lvl:"airport"})}${chart(cv,(document.getElementById("metric").value==="pax"&&document.getElementById("vmode").value==="abs")?(a[5]||null):null,{lvl:"airport"})}</div><div class="kpis">${kpis(as,rk)}</div></div>
     <div class="card"><h3>Growth markets (OUT-19): top destination markets by demand growth, ${y1}-${y2} (unconstrained; top 8 of 20 shown)</h3>
       ${tbl(["Market","Demand "+y1,"Demand "+y2,"CAGR","Growth"],[gmRows])}
@@ -1295,7 +1296,7 @@ async function AVIA_BOOT(){
   if(_slb){SL=_slb.km||{};SLG=_slb.growth||{};SLY=_slb.base_year||2025;}
   else console.error("dashboard.json carries no stage_length block: RPK, ASK, CO2 and fleet views will not draw. Rebuild the bundle with scripts/build_dashboard_data.py.");
   COV_C=DASH.coverage_country||{}; COV_R=DASH.coverage_region||{};
-  APT=DASH.airports.map(a=>[a.iata,a.name,a.country,(a.scen.Baseline[YRS.indexOf(2025)]||0),((CTY[a.country]&&CTY[a.country].g)||0),((a.cap&&a.cap>0)?a.cap:illCap(a.scen.Baseline[YRS.indexOf(2025)]||0)),(a.hub||"")]);
+  APT=DASH.airports.map(a=>[a.iata,a.name,a.country,(a.scen.Baseline[YRS.indexOf(2025)]||0),((CTY[a.country]&&CTY[a.country].g)||0),((a.cap&&a.cap>0)?a.cap:illCap(a.scen.Baseline[YRS.indexOf(2025)]||0)),(a.hub||""),!!a.cnx_flag]);
   const dlst=document.getElementById("searchlist");
 APT.forEach(a=>{const o=document.createElement("option");o.value=`${a[0]} - ${a[1]} (${a[2]})`;dlst.appendChild(o);});
 Object.keys(CTY).forEach(k=>{const o=document.createElement("option");o.value=k;dlst.appendChild(o);});

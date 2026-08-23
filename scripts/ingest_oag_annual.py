@@ -60,9 +60,9 @@ def load_manifest():
 
 
 def save_manifest(m):
-    tmp = MANIFEST + ".tmp"
-    json.dump(m, open(tmp, "w"), indent=1)
-    os.replace(tmp, MANIFEST)
+    # dump_atomic: same-dir temp, fsync, parse-back, replace (io_safe rule, 23 Aug 2026)
+    from avia_forecast.io_safe import dump_atomic
+    dump_atomic(m, MANIFEST, indent=1)
 
 
 def parse_filename(name):
