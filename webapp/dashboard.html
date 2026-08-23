@@ -963,7 +963,10 @@ function renderAbout(){
   const _arow=r=>`<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${r[2]}</td><td class="num">${r[3]}</td><td class="num">${r[4]}</td></tr>`;
   const accCard=ACC?`
   <div class="card"><h3>Accuracy statement (OUT-18) - generated from the archived backtests</h3>
-   <h4 style="margin:8px 0 4px">${ACC.seats_anchor.title}</h4>
+   ${ACC.composed?`<h4 style="margin:8px 0 4px">${ACC.composed.title}</h4>
+   ${tbl(["Window","Scored","WMAPE","Within ±20%","Within ±10%"],[ACC.composed.rows.map(_arow).join("")])}
+   <p class="mut" style="margin-top:6px;font-size:12px">${ACC.composed.basis}</p>`:""}
+   <h4 style="margin:${ACC.composed?"12px":"8px"} 0 4px">${ACC.seats_anchor.title}</h4>
    ${tbl(["Window","Scored","WMAPE","Within ±20%","Within ±10%"],[ACC.seats_anchor.rows.map(_arow).join("")])}
    <p class="mut" style="margin-top:6px;font-size:12px">${ACC.seats_anchor.basis}</p>
    <h4 style="margin:12px 0 4px">${ACC.engine.title}</h4>

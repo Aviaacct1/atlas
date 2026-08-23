@@ -11,12 +11,32 @@ def _sha(p):
     return hashlib.sha256(open(p, "rb").read()).hexdigest()
 
 
+def _zip_diff(p1, p2):
+    """Name the differing members, because two hashes name nothing. Added 23 August 2026
+    after this test failed on a machine whose shared system Python held a different
+    openpyxl than the venv: the failure message must say WHERE the bytes differ, so an
+    environment fault can be told from a writer fault in one read. Run the suite with
+    .venv\\Scripts\\python.exe, never the shared interpreter."""
+    import zipfile
+    z1, z2 = zipfile.ZipFile(p1), zipfile.ZipFile(p2)
+    out = []
+    for n in sorted(set(z1.namelist()) | set(z2.namelist())):
+        a = z1.read(n) if n in z1.namelist() else b"<absent>"
+        b = z2.read(n) if n in z2.namelist() else b"<absent>"
+        if a != b:
+            i = next((k for k, (x, y) in enumerate(zip(a, b)) if x != y), min(len(a), len(b)))
+            out.append(f"{n}: first difference at byte {i} ({len(a)} vs {len(b)} bytes)")
+    return out
+
+
 def test_generic_writer_deterministic_and_stamped(tmp_path):
     cfg = instance.load("zagreb")
     p1 = tmp_path / "z1.xlsx"; p2 = tmp_path / "z2.xlsx"
     excel_writer.write_instance_excel(cfg, str(p1))
     excel_writer.write_instance_excel(cfg, str(p2))
-    assert _sha(str(p1)) == _sha(str(p2))                       # byte-comparable regeneration
+    assert _sha(str(p1)) == _sha(str(p2)), (                    # byte-comparable regeneration
+        "two consecutive writes differ; differing members: "
+        + "; ".join(_zip_diff(str(p1), str(p2))))
     wb = openpyxl.load_workbook(str(p1))
     assert wb.properties.creator == "Avia Solutions" and "Assumptions" in wb.sheetnames
     assert qa.check_author_stamp(str(p1))["ok"]
