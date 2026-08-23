@@ -574,7 +574,7 @@ function chart(s,cap,ctx){
    <path class="observed-draw" style="--len:1" pathLength="1" d="${path(s.c)}" fill="none" stroke="#D4A249" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
    ${capL}${ticks}${xT}${labels}${pvLab}${zNote}
   </svg>
-  ${rail([["Source","The Aviation Observatory Global Forecast (OGF)"],["Units",unitLabel()],["Basis","Unconstrained and constrained; residual is the capacity requirement"],["Vintage","v0",true]])}`;}
+  ${rail(defs.length?[["Source","The Aviation Observatory Global Forecast (OGF)"],["Units",unitLabel()],["Basis","Unconstrained and constrained; residual is the capacity requirement"],["Overlays","Published headline CAGRs compounded from the 2025 base; the comparators' year shape is not published, so overlay lines are straight rays, not their year paths"],["Vintage","v0",true]]:[["Source","The Aviation Observatory Global Forecast (OGF)"],["Units",unitLabel()],["Basis","Unconstrained and constrained; residual is the capacity requirement"],["Vintage","v0",true]])}`;}
 function kpis(s,regKey){
   const g=cagr(s.u),gc=cagr(s.c);const [y1,y2]=win();
   const i45=YRS.indexOf(2045);const capReq=s.u[i45]-s.c[i45];
