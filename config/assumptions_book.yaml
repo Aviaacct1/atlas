@@ -47,12 +47,34 @@ level2:
 level3:
   se_lit: 0.25                             # pseudo-standard error of literature prior (P1)
 
-# Literature priors / Level 3 defaults (Method Spec 4.5 table)
-# segment -> maturity -> value
+# Level 3 defaults (Method Spec 4.5 table): MEASURED since 23 August 2026, no longer
+# literature priors. John's decision, package B of the architecture measurement
+# (MEASUREMENTS 16; scripts/estimate_pooled_panel.py + measure_architecture_package.py).
+#
+# bG: the mature/emerging split is RETIRED after failing five discriminator tests, the
+# last a pooled panel fit over 1,890 country-years with country fixed effects, where
+# the group slopes were not significantly different and pointed the wrong way
+# (emerging 1.508, mature 1.948). One elasticity per segment: the pooled estimate
+# 1.544 (se 0.089, t 17.3) applied as the traffic-weighted world aggregate with the
+# former emerging relativities preserved (weights 0.607/0.203/0.191). bG_mature equals
+# bG_emerging by construction; the fields stay so nothing downstream breaks, and the
+# maturity weight is inert while they are equal.
+#
+# bF: re-anchored from the prior aggregate -0.66 to the measured -0.292 (se 0.099,
+# t -2.95), the world real-fare covariate identified within-country in the same panel,
+# relativities preserved. The affordability question is thereby answered by
+# measurement, not deferred.
+#
+# EXPECTED OUTCOME (with the propensity slope 1.422 in the same package): world O&D
+# 2060 9,252m, CAGR 2025-2060 2.95%, China 3.08%, comparison position circa 3.7% RPK
+# (-0.3 Boeing CMO26, -0.2 Airbus GMF26, +0.1 IATA). REVERSAL: restore
+# {1.0/1.5/-0.7, 1.1/1.7/-0.7, 1.3/1.8/-0.5} and slope 1.30; one block, one commit.
+# The traffic-weighted alternative level (1.161) was measured and NOT chosen: se 0.142,
+# dominated by the two largest country series, lands below the whole published range.
 level3_defaults:
-  Domestic: {bG_mature: 1.0, bG_emerging: 1.5, bF: -0.7}
-  International Short Haul: {bG_mature: 1.1, bG_emerging: 1.7, bF: -0.7}
-  Long Haul: {bG_mature: 1.3, bG_emerging: 1.8, bF: -0.5}
+  Domestic: {bG_mature: 1.45, bG_emerging: 1.45, bF: -0.309}
+  International Short Haul: {bG_mature: 1.643, bG_emerging: 1.643, bF: -0.309}
+  Long Haul: {bG_mature: 1.739, bG_emerging: 1.739, bF: -0.221}
 
 # Maturity decay (Method Spec 4.5)
 maturity:
@@ -342,7 +364,12 @@ propensity:
     "Other Europe": 3.0
     Domestic: 3.2
   terminal_tpc_growth: 0.007           # mature floor: growth slows to ~0.7%/yr, never stops (no hard ceiling) [P1 John]
-  income_elasticity_tpc: 1.30          # FITTED world-curve slope (Sabre 2025 trips / WB pop / WB GDPpc PPP, 30 countries)
+  income_elasticity_tpc: 1.422         # FITTED world-curve slope, re-fitted 23 August 2026 on
+                                       # 191 countries (visitor economies excluded by name), the
+                                       # population it is applied to; the 30-country control
+                                       # reproduces the previous 1.30 at 1.296
+                                       # (scripts/measure_propensity_refit.py). Applied as part
+                                       # of package B, MEASUREMENTS 16.
 
 # --- Segment output splits (Cockpit build update B2) ---
 segment_splits:
@@ -494,6 +521,12 @@ global_drivers:
   # together is a POOLED panel fit with country effects over the O&D window, or the
   # affordability-conditioned estimation once the fare levels join the income paths:
   # September, with data/estimated_bG_by_country_od.json as the starting point.
+  #
+  # RESOLVED the same night: the pooled panel fit ran (MEASUREMENTS 16), the split
+  # failed its fifth test and retired via package B, and level3_defaults now sets
+  # bG_mature equal to bG_emerging per segment, which makes this basis INERT for the
+  # elasticity; the propensity headroom still reads saturation, once, as intended.
+  # The setting stays as documentation and for reversal.
   maturity_basis: saturation
   maturity_gdppc_threshold_usd: 25000      # >= this (PPP) => mature elasticity [P1]
   mature_regions_default: ["EU+UK", "North America"]   # maturity fallback where country GDPpc unknown

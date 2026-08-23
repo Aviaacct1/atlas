@@ -865,3 +865,46 @@ it should be one weighing with the propensity slope re-fit (candidate 1.422).
 Owner: John.
 
 Copyright Avia Solutions Limited. All rights reserved.
+
+---
+
+## 16. The architecture completed: the pooled panel fit and package B
+
+**Question.** John asked on 23 August 2026 that Block 2 finish before his leave, so
+Jess reviews a complete methodology. MEASUREMENTS 15 had settled the architecture
+provisionally for want of a powered instrument; this section records the instrument,
+its results, and the decision.
+
+**The instrument.** `scripts/estimate_pooled_panel.py`: every country's O&D history
+in one regression, ln(pax) on ln(GDP) with country fixed effects and a post-covid
+dummy, 1,890 country-years across 189 countries. Validated on synthetic panels
+before touching data: recovers a true 1.8/1.1 split at t 35, finds nothing on a true
+single slope. Decision rules stated in the script header before any result.
+
+**Results.** Pooled bG 1.544 (se 0.089, t 17.3); covid level shift -14.4%;
+traffic-weighted sensitivity 1.161 (se 0.142). The split test, with power at last:
+emerging 1.508, mature 1.948, difference not significant (t -1.74) and in the WRONG
+order, the fifth and final failure of the split's discriminator. The fare term,
+world real fare from `data/fare_levels_exhibit.json` as a within-country covariate:
+-0.292 (se 0.099, t -2.95), significant with the sane sign, against the stated
+expectation of weak identification. The 2018 fare kink has a single source file per
+year, so vintage and market cannot be separated; 2018 stays flagged.
+
+**The package, measured** (`scripts/measure_architecture_package.py`, four cases in
+memory): shipped A gives world 2060 9,565m, CAGR 3.05%; package B (single bG at the
+pooled 1.544 with segment relativities preserved, slope 1.422, bF re-anchored to
+-0.292) gives 9,252m, 2.95%, China 3.08%, comparison position circa 3.7% RPK
+(-0.3 Boeing CMO26, -0.2 Airbus GMF26, +0.1 IATA); the traffic-weighted alternative
+C gives 2.47% and falls below the whole published range.
+
+**Decision: package B applied (John, 23 August 2026).** The split is retired after
+five failed tests; every bG and bF in the book now traces to a named regression; the
+propensity slope applies at its re-fitted value. The unweighted pooled level was
+chosen over the traffic-weighted on the pre-stated ground that it is the
+better-identified structural parameter (the weighted estimate has 60% more error
+and is dominated by the two largest country series); the resulting band position is
+reported, not selected for. Reversal is one book block. What the panel still cannot
+do, and September can: separate the fare term from other common year shocks with a
+longer window, and give the heavyweights reliable own fits.
+
+Copyright Avia Solutions Limited. All rights reserved.
