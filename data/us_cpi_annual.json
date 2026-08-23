@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "indicator": "FP.CPI.TOTL, Consumer price index (2010 = 100), United States",
+    "source": "World Bank Open Data API",
+    "url": "https://api.worldbank.org/v2/country/US/indicator/FP.CPI.TOTL?format=json&date=2012:2025",
+    "retrieved": "2026-08-23",
+    "source_lastupdated": "2026-07-13",
+    "note": "Deflator for USD fare series in the affordability work. 2025 not yet published; real series therefore end at 2024. Fares across all countries are deflated by US CPI because Sabre fares are stated in USD; that is a stated basis, not a claim about local purchasing power."
+  },
+  "cpi": {
+    "2012": 105.291504532867,
+    "2013": 106.833848874866,
+    "2014": 108.566932118964,
+    "2015": 108.695721960694,
+    "2016": 110.06700893427,
+    "2017": 112.411557302308,
+    "2018": 115.157303224791,
+    "2019": 117.244195476228,
+    "2020": 118.690501577198,
+    "2021": 124.266413825838,
+    "2022": 134.21120616846,
+    "2023": 139.73579356326,
+    "2024": 143.857336014608
+  }
+}

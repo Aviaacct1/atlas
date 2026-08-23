@@ -1,0 +1,1551 @@
+{
+ "meta": {
+  "built": "2026-08-23",
+  "basis": "Sabre: sum(total_revenue_usd)/sum(passengers) over fare-bearing rows only, by point-of-origin region and year; yield divides by passenger-km. DB1B od_market: pax-weighted average market fare, US, public and citable. Real terms: USD deflated by US CPI, base 2024. 2020-2022 excluded by store policy; Sabre 2013 and 2015 are point-of-origin, other years nondirectional.",
+  "licensing": "DB1B publishes under its own name; Sabre-derived figures publish as outcomes and indices only, never raw rows (ruling of 16 August 2026).",
+  "cpi": {
+   "indicator": "FP.CPI.TOTL, Consumer price index (2010 = 100), United States",
+   "source": "World Bank Open Data API",
+   "url": "https://api.worldbank.org/v2/country/US/indicator/FP.CPI.TOTL?format=json&date=2012:2025",
+   "retrieved": "2026-08-23",
+   "source_lastupdated": "2026-07-13",
+   "note": "Deflator for USD fare series in the affordability work. 2025 not yet published; real series therefore end at 2024. Fares across all countries are deflated by US CPI because Sabre fares are stated in USD; that is a stated basis, not a claim about local purchasing power."
+  }
+ },
+ "us_db1b": {
+  "2015": {
+   "pax_m": 485.0,
+   "fare_usd": 210.68,
+   "fare_real_usd_2024": 278.84
+  },
+  "2016": {
+   "pax_m": 396.2,
+   "fare_usd": 198.3,
+   "fare_real_usd_2024": 259.18
+  },
+  "2017": {
+   "pax_m": 535.7,
+   "fare_usd": 196.97,
+   "fare_real_usd_2024": 252.07
+  },
+  "2018": {
+   "pax_m": 567.8,
+   "fare_usd": 197.75,
+   "fare_real_usd_2024": 247.03
+  },
+  "2019": {
+   "pax_m": 593.3,
+   "fare_usd": 198.44,
+   "fare_real_usd_2024": 243.48
+  },
+  "2020": {
+   "pax_m": 240.4,
+   "fare_usd": 161.32,
+   "fare_real_usd_2024": 195.53
+  },
+  "2021": {
+   "pax_m": 449.2,
+   "fare_usd": 168.63,
+   "fare_real_usd_2024": 195.21
+  },
+  "2022": {
+   "pax_m": 552.5,
+   "fare_usd": 218.72,
+   "fare_real_usd_2024": 234.44
+  },
+  "2023": {
+   "pax_m": 594.6,
+   "fare_usd": 216.48,
+   "fare_real_usd_2024": 222.87
+  },
+  "2024": {
+   "pax_m": 620.4,
+   "fare_usd": 218.05,
+   "fare_real_usd_2024": 218.05
+  }
+ },
+ "sabre_regions": {
+  "SOUTHEAST ASIA": {
+   "2023": {
+    "pax_m": 273.81,
+    "fare_coverage": 1.0,
+    "fare_usd": 176.45,
+    "yield_usd_km": 0.1037,
+    "fare_real_usd_2024": 181.66
+   },
+   "2019": {
+    "pax_m": 349.43,
+    "fare_coverage": 1.0,
+    "fare_usd": 130.42,
+    "yield_usd_km": 0.0844,
+    "fare_real_usd_2024": 160.03
+   },
+   "2014": {
+    "pax_m": 238.41,
+    "fare_coverage": 1.0,
+    "fare_usd": 180.98,
+    "yield_usd_km": 0.1175,
+    "fare_real_usd_2024": 239.81
+   },
+   "2024": {
+    "pax_m": 298.88,
+    "fare_coverage": 1.0,
+    "fare_usd": 183.97,
+    "yield_usd_km": 0.102,
+    "fare_real_usd_2024": 183.97
+   },
+   "2013": {
+    "pax_m": 222.19,
+    "fare_coverage": 1.0,
+    "fare_usd": 202.65,
+    "yield_usd_km": 0.1291,
+    "fare_real_usd_2024": 272.88
+   },
+   "2015": {
+    "pax_m": 266.74,
+    "fare_coverage": 1.0,
+    "fare_usd": 190.79,
+    "yield_usd_km": 0.128,
+    "fare_real_usd_2024": 252.5
+   },
+   "2018": {
+    "pax_m": 348.34,
+    "fare_coverage": 1.0,
+    "fare_usd": 160.32,
+    "yield_usd_km": 0.1061,
+    "fare_real_usd_2024": 200.27
+   },
+   "2016": {
+    "pax_m": 294.38,
+    "fare_coverage": 1.0,
+    "fare_usd": 163.41,
+    "yield_usd_km": 0.1095,
+    "fare_real_usd_2024": 213.58
+   },
+   "2025": {
+    "pax_m": 308.9,
+    "fare_coverage": 1.0,
+    "fare_usd": 190.07,
+    "yield_usd_km": 0.1006
+   },
+   "2017": {
+    "pax_m": 319.47,
+    "fare_coverage": 1.0,
+    "fare_usd": 152.67,
+    "yield_usd_km": 0.1001,
+    "fare_real_usd_2024": 195.37
+   }
+  },
+  "SOUTH AMERICA": {
+   "2016": {
+    "pax_m": 176.01,
+    "fare_coverage": 1.0,
+    "fare_usd": 201.99,
+    "yield_usd_km": 0.1037,
+    "fare_real_usd_2024": 264.0
+   },
+   "2025": {
+    "pax_m": 216.99,
+    "fare_coverage": 1.0,
+    "fare_usd": 248.04,
+    "yield_usd_km": 0.1206
+   },
+   "2017": {
+    "pax_m": 181.84,
+    "fare_coverage": 1.0,
+    "fare_usd": 189.43,
+    "yield_usd_km": 0.0923,
+    "fare_real_usd_2024": 242.42
+   },
+   "2013": {
+    "pax_m": 174.58,
+    "fare_coverage": 1.0,
+    "fare_usd": 266.32,
+    "yield_usd_km": 0.1466,
+    "fare_real_usd_2024": 358.61
+   },
+   "2015": {
+    "pax_m": 184.3,
+    "fare_coverage": 1.0,
+    "fare_usd": 228.2,
+    "yield_usd_km": 0.1234,
+    "fare_real_usd_2024": 302.02
+   },
+   "2018": {
+    "pax_m": 193.3,
+    "fare_coverage": 1.0,
+    "fare_usd": 201.59,
+    "yield_usd_km": 0.0979,
+    "fare_real_usd_2024": 251.83
+   },
+   "2024": {
+    "pax_m": 206.22,
+    "fare_coverage": 1.0,
+    "fare_usd": 243.01,
+    "yield_usd_km": 0.1208,
+    "fare_real_usd_2024": 243.01
+   },
+   "2023": {
+    "pax_m": 188.64,
+    "fare_coverage": 1.0,
+    "fare_usd": 247.57,
+    "yield_usd_km": 0.1208,
+    "fare_real_usd_2024": 254.87
+   },
+   "2014": {
+    "pax_m": 182.04,
+    "fare_coverage": 1.0,
+    "fare_usd": 251.91,
+    "yield_usd_km": 0.1396,
+    "fare_real_usd_2024": 333.79
+   },
+   "2019": {
+    "pax_m": 203.87,
+    "fare_coverage": 1.0,
+    "fare_usd": 177.47,
+    "yield_usd_km": 0.0884,
+    "fare_real_usd_2024": 217.76
+   }
+  },
+  "MIDDLE EAST": {
+   "2017": {
+    "pax_m": 42.27,
+    "fare_coverage": 1.0,
+    "fare_usd": 257.11,
+    "yield_usd_km": 0.1032,
+    "fare_real_usd_2024": 329.04
+   },
+   "2016": {
+    "pax_m": 38.61,
+    "fare_coverage": 1.0,
+    "fare_usd": 280.33,
+    "yield_usd_km": 0.1097,
+    "fare_real_usd_2024": 366.4
+   },
+   "2025": {
+    "pax_m": 42.89,
+    "fare_coverage": 1.0,
+    "fare_usd": 352.43,
+    "yield_usd_km": 0.1281
+   },
+   "2024": {
+    "pax_m": 41.37,
+    "fare_coverage": 1.0,
+    "fare_usd": 344.45,
+    "yield_usd_km": 0.1325,
+    "fare_real_usd_2024": 344.45
+   },
+   "2019": {
+    "pax_m": 50.05,
+    "fare_coverage": 1.0,
+    "fare_usd": 223.75,
+    "yield_usd_km": 0.0943,
+    "fare_real_usd_2024": 274.54
+   },
+   "2014": {
+    "pax_m": 32.91,
+    "fare_coverage": 1.0,
+    "fare_usd": 309.88,
+    "yield_usd_km": 0.1173,
+    "fare_real_usd_2024": 410.61
+   },
+   "2023": {
+    "pax_m": 42.61,
+    "fare_coverage": 1.0,
+    "fare_usd": 318.4,
+    "yield_usd_km": 0.1227,
+    "fare_real_usd_2024": 327.79
+   },
+   "2013": {
+    "pax_m": 34.22,
+    "fare_coverage": 1.0,
+    "fare_usd": 332.18,
+    "yield_usd_km": 0.1368,
+    "fare_real_usd_2024": 447.29
+   },
+   "2015": {
+    "pax_m": 34.41,
+    "fare_coverage": 1.0,
+    "fare_usd": 313.33,
+    "yield_usd_km": 0.1178,
+    "fare_real_usd_2024": 414.68
+   },
+   "2018": {
+    "pax_m": 50.17,
+    "fare_coverage": 1.0,
+    "fare_usd": 282.35,
+    "yield_usd_km": 0.1213,
+    "fare_real_usd_2024": 352.72
+   }
+  },
+  "FAR EAST ASIA": {
+   "2017": {
+    "pax_m": 827.66,
+    "fare_coverage": 1.0,
+    "fare_usd": 203.65,
+    "yield_usd_km": 0.1173,
+    "fare_real_usd_2024": 260.62
+   },
+   "2016": {
+    "pax_m": 744.63,
+    "fare_coverage": 1.0,
+    "fare_usd": 222.26,
+    "yield_usd_km": 0.1289,
+    "fare_real_usd_2024": 290.49
+   },
+   "2025": {
+    "pax_m": 941.11,
+    "fare_coverage": 1.0,
+    "fare_usd": 220.68,
+    "yield_usd_km": 0.1211
+   },
+   "2024": {
+    "pax_m": 979.91,
+    "fare_coverage": 1.0,
+    "fare_usd": 227.14,
+    "yield_usd_km": 0.1314,
+    "fare_real_usd_2024": 227.14
+   },
+   "2019": {
+    "pax_m": 953.79,
+    "fare_coverage": 1.0,
+    "fare_usd": 200.01,
+    "yield_usd_km": 0.1145,
+    "fare_real_usd_2024": 245.4
+   },
+   "2014": {
+    "pax_m": 633.91,
+    "fare_coverage": 1.0,
+    "fare_usd": 246.8,
+    "yield_usd_km": 0.1453,
+    "fare_real_usd_2024": 327.03
+   },
+   "2023": {
+    "pax_m": 910.88,
+    "fare_coverage": 1.0,
+    "fare_usd": 271.58,
+    "yield_usd_km": 0.1659,
+    "fare_real_usd_2024": 279.59
+   },
+   "2013": {
+    "pax_m": 582.02,
+    "fare_coverage": 1.0,
+    "fare_usd": 253.93,
+    "yield_usd_km": 0.1493,
+    "fare_real_usd_2024": 341.93
+   },
+   "2015": {
+    "pax_m": 695.19,
+    "fare_coverage": 1.0,
+    "fare_usd": 248.7,
+    "yield_usd_km": 0.1441,
+    "fare_real_usd_2024": 329.15
+   },
+   "2018": {
+    "pax_m": 886.92,
+    "fare_coverage": 1.0,
+    "fare_usd": 227.21,
+    "yield_usd_km": 0.1307,
+    "fare_real_usd_2024": 283.83
+   }
+  },
+  "WEST AFRICA": {
+   "2019": {
+    "pax_m": 15.63,
+    "fare_coverage": 1.0,
+    "fare_usd": 332.06,
+    "yield_usd_km": 0.1086,
+    "fare_real_usd_2024": 407.43
+   },
+   "2023": {
+    "pax_m": 16.84,
+    "fare_coverage": 1.0,
+    "fare_usd": 430.45,
+    "yield_usd_km": 0.15,
+    "fare_real_usd_2024": 443.15
+   },
+   "2017": {
+    "pax_m": 12.41,
+    "fare_coverage": 1.0,
+    "fare_usd": 397.65,
+    "yield_usd_km": 0.1215,
+    "fare_real_usd_2024": 508.89
+   },
+   "2013": {
+    "pax_m": 12.32,
+    "fare_coverage": 1.0,
+    "fare_usd": 407.49,
+    "yield_usd_km": 0.1546,
+    "fare_real_usd_2024": 548.7
+   },
+   "2015": {
+    "pax_m": 14.19,
+    "fare_coverage": 1.0,
+    "fare_usd": 398.28,
+    "yield_usd_km": 0.1509,
+    "fare_real_usd_2024": 527.11
+   },
+   "2018": {
+    "pax_m": 13.19,
+    "fare_coverage": 1.0,
+    "fare_usd": 490.55,
+    "yield_usd_km": 0.1426,
+    "fare_real_usd_2024": 612.81
+   },
+   "2014": {
+    "pax_m": 13.82,
+    "fare_coverage": 1.0,
+    "fare_usd": 403.31,
+    "yield_usd_km": 0.1518,
+    "fare_real_usd_2024": 534.41
+   },
+   "2016": {
+    "pax_m": 13.58,
+    "fare_coverage": 1.0,
+    "fare_usd": 390.34,
+    "yield_usd_km": 0.1356,
+    "fare_real_usd_2024": 510.18
+   },
+   "2025": {
+    "pax_m": 16.77,
+    "fare_coverage": 1.0,
+    "fare_usd": 416.7,
+    "yield_usd_km": 0.1337
+   },
+   "2024": {
+    "pax_m": 16.75,
+    "fare_coverage": 1.0,
+    "fare_usd": 377.61,
+    "yield_usd_km": 0.1308,
+    "fare_real_usd_2024": 377.61
+   }
+  },
+  "WESTERN EUROPE": {
+   "2019": {
+    "pax_m": 786.64,
+    "fare_coverage": 1.0,
+    "fare_usd": 215.01,
+    "yield_usd_km": 0.093,
+    "fare_real_usd_2024": 263.81
+   },
+   "2023": {
+    "pax_m": 711.28,
+    "fare_coverage": 1.0,
+    "fare_usd": 263.96,
+    "yield_usd_km": 0.1128,
+    "fare_real_usd_2024": 271.75
+   },
+   "2017": {
+    "pax_m": 713.78,
+    "fare_coverage": 1.0,
+    "fare_usd": 229.62,
+    "yield_usd_km": 0.0983,
+    "fare_real_usd_2024": 293.85
+   },
+   "2013": {
+    "pax_m": 577.92,
+    "fare_coverage": 1.0,
+    "fare_usd": 296.62,
+    "yield_usd_km": 0.1286,
+    "fare_real_usd_2024": 399.41
+   },
+   "2015": {
+    "pax_m": 634.88,
+    "fare_coverage": 1.0,
+    "fare_usd": 281.4,
+    "yield_usd_km": 0.122,
+    "fare_real_usd_2024": 372.43
+   },
+   "2018": {
+    "pax_m": 751.33,
+    "fare_coverage": 1.0,
+    "fare_usd": 277.69,
+    "yield_usd_km": 0.1193,
+    "fare_real_usd_2024": 346.89
+   },
+   "2014": {
+    "pax_m": 601.81,
+    "fare_coverage": 1.0,
+    "fare_usd": 287.38,
+    "yield_usd_km": 0.1245,
+    "fare_real_usd_2024": 380.8
+   },
+   "2016": {
+    "pax_m": 665.55,
+    "fare_coverage": 1.0,
+    "fare_usd": 257.81,
+    "yield_usd_km": 0.1106,
+    "fare_real_usd_2024": 336.96
+   },
+   "2025": {
+    "pax_m": 816.51,
+    "fare_coverage": 1.0,
+    "fare_usd": 274.03,
+    "yield_usd_km": 0.1141
+   },
+   "2024": {
+    "pax_m": 786.92,
+    "fare_coverage": 1.0,
+    "fare_usd": 269.4,
+    "yield_usd_km": 0.1149,
+    "fare_real_usd_2024": 269.4
+   }
+  },
+  "EAST AFRICA": {
+   "2024": {
+    "pax_m": 19.18,
+    "fare_coverage": 1.0,
+    "fare_usd": 311.83,
+    "yield_usd_km": 0.1176,
+    "fare_real_usd_2024": 311.83
+   },
+   "2017": {
+    "pax_m": 13.92,
+    "fare_coverage": 1.0,
+    "fare_usd": 305.35,
+    "yield_usd_km": 0.1057,
+    "fare_real_usd_2024": 390.77
+   },
+   "2023": {
+    "pax_m": 17.58,
+    "fare_coverage": 1.0,
+    "fare_usd": 305.01,
+    "yield_usd_km": 0.1188,
+    "fare_real_usd_2024": 314.01
+   },
+   "2016": {
+    "pax_m": 13.12,
+    "fare_coverage": 1.0,
+    "fare_usd": 339.8,
+    "yield_usd_km": 0.121,
+    "fare_real_usd_2024": 444.12
+   },
+   "2025": {
+    "pax_m": 20.43,
+    "fare_coverage": 1.0,
+    "fare_usd": 326.51,
+    "yield_usd_km": 0.119
+   },
+   "2013": {
+    "pax_m": 10.47,
+    "fare_coverage": 1.0,
+    "fare_usd": 381.92,
+    "yield_usd_km": 0.1285,
+    "fare_real_usd_2024": 514.28
+   },
+   "2015": {
+    "pax_m": 11.86,
+    "fare_coverage": 1.0,
+    "fare_usd": 384.24,
+    "yield_usd_km": 0.1307,
+    "fare_real_usd_2024": 508.54
+   },
+   "2018": {
+    "pax_m": 15.73,
+    "fare_coverage": 1.0,
+    "fare_usd": 336.89,
+    "yield_usd_km": 0.1232,
+    "fare_real_usd_2024": 420.85
+   },
+   "2019": {
+    "pax_m": 17.04,
+    "fare_coverage": 1.0,
+    "fare_usd": 259.18,
+    "yield_usd_km": 0.0993,
+    "fare_real_usd_2024": 318.01
+   },
+   "2014": {
+    "pax_m": 11.03,
+    "fare_coverage": 1.0,
+    "fare_usd": 403.85,
+    "yield_usd_km": 0.136,
+    "fare_real_usd_2024": 535.12
+   }
+  },
+  "CENTRAL AFRICA": {
+   "2013": {
+    "pax_m": 8.55,
+    "fare_coverage": 1.0,
+    "fare_usd": 464.53,
+    "yield_usd_km": 0.184,
+    "fare_real_usd_2024": 625.52
+   },
+   "2015": {
+    "pax_m": 8.93,
+    "fare_coverage": 1.0,
+    "fare_usd": 452.27,
+    "yield_usd_km": 0.1687,
+    "fare_real_usd_2024": 598.57
+   },
+   "2018": {
+    "pax_m": 8.29,
+    "fare_coverage": 1.0,
+    "fare_usd": 439.14,
+    "yield_usd_km": 0.159,
+    "fare_real_usd_2024": 548.59
+   },
+   "2017": {
+    "pax_m": 8.02,
+    "fare_coverage": 1.0,
+    "fare_usd": 392.73,
+    "yield_usd_km": 0.1415,
+    "fare_real_usd_2024": 502.59
+   },
+   "2014": {
+    "pax_m": 8.91,
+    "fare_coverage": 1.0,
+    "fare_usd": 505.21,
+    "yield_usd_km": 0.1937,
+    "fare_real_usd_2024": 669.43
+   },
+   "2019": {
+    "pax_m": 7.88,
+    "fare_coverage": 1.0,
+    "fare_usd": 344.49,
+    "yield_usd_km": 0.118,
+    "fare_real_usd_2024": 422.68
+   },
+   "2023": {
+    "pax_m": 6.98,
+    "fare_coverage": 1.0,
+    "fare_usd": 449.34,
+    "yield_usd_km": 0.1548,
+    "fare_real_usd_2024": 462.6
+   },
+   "2024": {
+    "pax_m": 6.76,
+    "fare_coverage": 1.0,
+    "fare_usd": 491.63,
+    "yield_usd_km": 0.1591,
+    "fare_real_usd_2024": 491.63
+   },
+   "2016": {
+    "pax_m": 8.11,
+    "fare_coverage": 1.0,
+    "fare_usd": 421.56,
+    "yield_usd_km": 0.151,
+    "fare_real_usd_2024": 550.98
+   },
+   "2025": {
+    "pax_m": 6.99,
+    "fare_coverage": 1.0,
+    "fare_usd": 488.94,
+    "yield_usd_km": 0.1548
+   }
+  },
+  "EASTERN EUROPE": {
+   "2013": {
+    "pax_m": 164.79,
+    "fare_coverage": 1.0,
+    "fare_usd": 251.37,
+    "yield_usd_km": 0.1256,
+    "fare_real_usd_2024": 338.48
+   },
+   "2015": {
+    "pax_m": 183.65,
+    "fare_coverage": 1.0,
+    "fare_usd": 190.48,
+    "yield_usd_km": 0.1019,
+    "fare_real_usd_2024": 252.1
+   },
+   "2018": {
+    "pax_m": 224.05,
+    "fare_coverage": 1.0,
+    "fare_usd": 183.99,
+    "yield_usd_km": 0.1008,
+    "fare_real_usd_2024": 229.85
+   },
+   "2017": {
+    "pax_m": 205.76,
+    "fare_coverage": 1.0,
+    "fare_usd": 161.72,
+    "yield_usd_km": 0.0878,
+    "fare_real_usd_2024": 206.95
+   },
+   "2014": {
+    "pax_m": 175.45,
+    "fare_coverage": 1.0,
+    "fare_usd": 224.23,
+    "yield_usd_km": 0.1154,
+    "fare_real_usd_2024": 297.12
+   },
+   "2019": {
+    "pax_m": 232.96,
+    "fare_coverage": 1.0,
+    "fare_usd": 154.03,
+    "yield_usd_km": 0.082,
+    "fare_real_usd_2024": 188.99
+   },
+   "2023": {
+    "pax_m": 188.67,
+    "fare_coverage": 1.0,
+    "fare_usd": 225.56,
+    "yield_usd_km": 0.1095,
+    "fare_real_usd_2024": 232.21
+   },
+   "2024": {
+    "pax_m": 225.88,
+    "fare_coverage": 1.0,
+    "fare_usd": 226.08,
+    "yield_usd_km": 0.1092,
+    "fare_real_usd_2024": 226.08
+   },
+   "2016": {
+    "pax_m": 186.0,
+    "fare_coverage": 1.0,
+    "fare_usd": 169.98,
+    "yield_usd_km": 0.0932,
+    "fare_real_usd_2024": 222.16
+   },
+   "2025": {
+    "pax_m": 251.81,
+    "fare_coverage": 1.0,
+    "fare_usd": 230.87,
+    "yield_usd_km": 0.1098
+   }
+  },
+  "GULF": {
+   "2013": {
+    "pax_m": 63.06,
+    "fare_coverage": 1.0,
+    "fare_usd": 319.01,
+    "yield_usd_km": 0.1207,
+    "fare_real_usd_2024": 429.57
+   },
+   "2015": {
+    "pax_m": 74.3,
+    "fare_coverage": 1.0,
+    "fare_usd": 315.95,
+    "yield_usd_km": 0.1198,
+    "fare_real_usd_2024": 418.16
+   },
+   "2018": {
+    "pax_m": 90.96,
+    "fare_coverage": 1.0,
+    "fare_usd": 277.07,
+    "yield_usd_km": 0.1122,
+    "fare_real_usd_2024": 346.12
+   },
+   "2017": {
+    "pax_m": 84.74,
+    "fare_coverage": 1.0,
+    "fare_usd": 254.69,
+    "yield_usd_km": 0.0995,
+    "fare_real_usd_2024": 325.93
+   },
+   "2014": {
+    "pax_m": 68.91,
+    "fare_coverage": 1.0,
+    "fare_usd": 310.65,
+    "yield_usd_km": 0.1183,
+    "fare_real_usd_2024": 411.63
+   },
+   "2019": {
+    "pax_m": 92.19,
+    "fare_coverage": 1.0,
+    "fare_usd": 251.33,
+    "yield_usd_km": 0.1032,
+    "fare_real_usd_2024": 308.38
+   },
+   "2023": {
+    "pax_m": 98.28,
+    "fare_coverage": 1.0,
+    "fare_usd": 297.29,
+    "yield_usd_km": 0.1213,
+    "fare_real_usd_2024": 306.06
+   },
+   "2024": {
+    "pax_m": 106.67,
+    "fare_coverage": 1.0,
+    "fare_usd": 288.51,
+    "yield_usd_km": 0.1168,
+    "fare_real_usd_2024": 288.51
+   },
+   "2016": {
+    "pax_m": 79.71,
+    "fare_coverage": 1.0,
+    "fare_usd": 280.41,
+    "yield_usd_km": 0.1071,
+    "fare_real_usd_2024": 366.49
+   },
+   "2025": {
+    "pax_m": 111.55,
+    "fare_coverage": 1.0,
+    "fare_usd": 300.93,
+    "yield_usd_km": 0.1199
+   }
+  },
+  "CENTRAL ASIA": {
+   "2013": {
+    "pax_m": 5.94,
+    "fare_coverage": 1.0,
+    "fare_usd": 365.17,
+    "yield_usd_km": 0.1532,
+    "fare_real_usd_2024": 491.72
+   },
+   "2015": {
+    "pax_m": 6.84,
+    "fare_coverage": 1.0,
+    "fare_usd": 289.98,
+    "yield_usd_km": 0.1253,
+    "fare_real_usd_2024": 383.78
+   },
+   "2018": {
+    "pax_m": 7.72,
+    "fare_coverage": 1.0,
+    "fare_usd": 242.84,
+    "yield_usd_km": 0.1023,
+    "fare_real_usd_2024": 303.37
+   },
+   "2017": {
+    "pax_m": 7.48,
+    "fare_coverage": 1.0,
+    "fare_usd": 206.2,
+    "yield_usd_km": 0.0879,
+    "fare_real_usd_2024": 263.88
+   },
+   "2014": {
+    "pax_m": 6.2,
+    "fare_coverage": 1.0,
+    "fare_usd": 338.44,
+    "yield_usd_km": 0.1412,
+    "fare_real_usd_2024": 448.45
+   },
+   "2019": {
+    "pax_m": 7.79,
+    "fare_coverage": 1.0,
+    "fare_usd": 209.94,
+    "yield_usd_km": 0.0895,
+    "fare_real_usd_2024": 257.59
+   },
+   "2023": {
+    "pax_m": 10.75,
+    "fare_coverage": 1.0,
+    "fare_usd": 205.4,
+    "yield_usd_km": 0.096,
+    "fare_real_usd_2024": 211.46
+   },
+   "2024": {
+    "pax_m": 12.47,
+    "fare_coverage": 1.0,
+    "fare_usd": 188.97,
+    "yield_usd_km": 0.0893,
+    "fare_real_usd_2024": 188.97
+   },
+   "2016": {
+    "pax_m": 6.8,
+    "fare_coverage": 1.0,
+    "fare_usd": 241.05,
+    "yield_usd_km": 0.1057,
+    "fare_real_usd_2024": 315.05
+   },
+   "2025": {
+    "pax_m": 14.52,
+    "fare_coverage": 1.0,
+    "fare_usd": 174.96,
+    "yield_usd_km": 0.0863
+   }
+  },
+  "UNASSIGNED": {
+   "2013": {
+    "pax_m": 0.14,
+    "fare_coverage": 1.0,
+    "fare_usd": 239.13,
+    "yield_usd_km": 149.6211,
+    "fare_real_usd_2024": 322.0
+   },
+   "2015": {
+    "pax_m": 0.17,
+    "fare_coverage": 1.0,
+    "fare_usd": 220.71,
+    "yield_usd_km": 6.3336,
+    "fare_real_usd_2024": 292.1
+   },
+   "2018": {
+    "pax_m": 0.2,
+    "fare_coverage": 1.0,
+    "fare_usd": 198.2,
+    "yield_usd_km": 28.3965,
+    "fare_real_usd_2024": 247.6
+   },
+   "2017": {
+    "pax_m": 0.19,
+    "fare_coverage": 1.0,
+    "fare_usd": 174.64,
+    "yield_usd_km": 31.7542,
+    "fare_real_usd_2024": 223.49
+   },
+   "2014": {
+    "pax_m": 0.14,
+    "fare_coverage": 1.0,
+    "fare_usd": 235.78,
+    "yield_usd_km": 41.6767,
+    "fare_real_usd_2024": 312.42
+   },
+   "2019": {
+    "pax_m": 0.2,
+    "fare_coverage": 1.0,
+    "fare_usd": 149.44,
+    "yield_usd_km": 0.2503,
+    "fare_real_usd_2024": 183.37
+   },
+   "2023": {
+    "pax_m": 0.23,
+    "fare_coverage": 1.0,
+    "fare_usd": 176.9,
+    "yield_usd_km": 0.2881,
+    "fare_real_usd_2024": 182.12
+   },
+   "2024": {
+    "pax_m": 0.23,
+    "fare_coverage": 1.0,
+    "fare_usd": 188.81,
+    "yield_usd_km": 0.3066,
+    "fare_real_usd_2024": 188.81
+   },
+   "2016": {
+    "pax_m": 0.18,
+    "fare_coverage": 1.0,
+    "fare_usd": 185.52,
+    "yield_usd_km": 14.9928,
+    "fare_real_usd_2024": 242.47
+   },
+   "2025": {
+    "pax_m": 0.17,
+    "fare_coverage": 1.0,
+    "fare_usd": 187.21,
+    "yield_usd_km": 0.3054
+   }
+  },
+  "ASIA SUB-CONTINENT": {
+   "2014": {
+    "pax_m": 102.89,
+    "fare_coverage": 1.0,
+    "fare_usd": 199.7,
+    "yield_usd_km": 0.0935,
+    "fare_real_usd_2024": 264.62
+   },
+   "2024": {
+    "pax_m": 215.42,
+    "fare_coverage": 1.0,
+    "fare_usd": 164.9,
+    "yield_usd_km": 0.0884,
+    "fare_real_usd_2024": 164.9
+   },
+   "2019": {
+    "pax_m": 195.63,
+    "fare_coverage": 1.0,
+    "fare_usd": 146.01,
+    "yield_usd_km": 0.0778,
+    "fare_real_usd_2024": 179.15
+   },
+   "2016": {
+    "pax_m": 139.5,
+    "fare_coverage": 1.0,
+    "fare_usd": 172.9,
+    "yield_usd_km": 0.0854,
+    "fare_real_usd_2024": 225.98
+   },
+   "2025": {
+    "pax_m": 216.91,
+    "fare_coverage": 1.0,
+    "fare_usd": 165.84,
+    "yield_usd_km": 0.086
+   },
+   "2013": {
+    "pax_m": 94.55,
+    "fare_coverage": 1.0,
+    "fare_usd": 203.18,
+    "yield_usd_km": 0.095,
+    "fare_real_usd_2024": 273.59
+   },
+   "2015": {
+    "pax_m": 119.7,
+    "fare_coverage": 1.0,
+    "fare_usd": 206.04,
+    "yield_usd_km": 0.0983,
+    "fare_real_usd_2024": 272.69
+   },
+   "2018": {
+    "pax_m": 190.03,
+    "fare_coverage": 1.0,
+    "fare_usd": 166.99,
+    "yield_usd_km": 0.0886,
+    "fare_real_usd_2024": 208.61
+   },
+   "2023": {
+    "pax_m": 195.94,
+    "fare_coverage": 1.0,
+    "fare_usd": 178.21,
+    "yield_usd_km": 0.0932,
+    "fare_real_usd_2024": 183.47
+   },
+   "2017": {
+    "pax_m": 162.74,
+    "fare_coverage": 1.0,
+    "fare_usd": 157.99,
+    "yield_usd_km": 0.0801,
+    "fare_real_usd_2024": 202.19
+   }
+  },
+  "NORTH AFRICA": {
+   "2016": {
+    "pax_m": 24.62,
+    "fare_coverage": 1.0,
+    "fare_usd": 240.89,
+    "yield_usd_km": 0.1202,
+    "fare_real_usd_2024": 314.84
+   },
+   "2025": {
+    "pax_m": 45.87,
+    "fare_coverage": 1.0,
+    "fare_usd": 234.22,
+    "yield_usd_km": 0.1065
+   },
+   "2014": {
+    "pax_m": 23.64,
+    "fare_coverage": 1.0,
+    "fare_usd": 259.77,
+    "yield_usd_km": 0.1229,
+    "fare_real_usd_2024": 344.21
+   },
+   "2024": {
+    "pax_m": 42.25,
+    "fare_coverage": 1.0,
+    "fare_usd": 230.46,
+    "yield_usd_km": 0.1076,
+    "fare_real_usd_2024": 230.46
+   },
+   "2019": {
+    "pax_m": 30.63,
+    "fare_coverage": 1.0,
+    "fare_usd": 217.23,
+    "yield_usd_km": 0.1028,
+    "fare_real_usd_2024": 266.54
+   },
+   "2017": {
+    "pax_m": 26.7,
+    "fare_coverage": 1.0,
+    "fare_usd": 219.91,
+    "yield_usd_km": 0.1087,
+    "fare_real_usd_2024": 281.42
+   },
+   "2023": {
+    "pax_m": 36.04,
+    "fare_coverage": 1.0,
+    "fare_usd": 233.69,
+    "yield_usd_km": 0.1107,
+    "fare_real_usd_2024": 240.59
+   },
+   "2013": {
+    "pax_m": 23.59,
+    "fare_coverage": 1.0,
+    "fare_usd": 263.22,
+    "yield_usd_km": 0.125,
+    "fare_real_usd_2024": 354.44
+   },
+   "2015": {
+    "pax_m": 23.07,
+    "fare_coverage": 1.0,
+    "fare_usd": 270.64,
+    "yield_usd_km": 0.1274,
+    "fare_real_usd_2024": 358.19
+   },
+   "2018": {
+    "pax_m": 28.45,
+    "fare_coverage": 1.0,
+    "fare_usd": 259.14,
+    "yield_usd_km": 0.1255,
+    "fare_real_usd_2024": 323.73
+   }
+  },
+  "CENTRAL AMERICA": {
+   "2016": {
+    "pax_m": 8.72,
+    "fare_coverage": 1.0,
+    "fare_usd": 281.08,
+    "yield_usd_km": 0.1194,
+    "fare_real_usd_2024": 367.38
+   },
+   "2025": {
+    "pax_m": 14.2,
+    "fare_coverage": 1.0,
+    "fare_usd": 300.44,
+    "yield_usd_km": 0.1287
+   },
+   "2014": {
+    "pax_m": 6.68,
+    "fare_coverage": 1.0,
+    "fare_usd": 314.62,
+    "yield_usd_km": 0.1407,
+    "fare_real_usd_2024": 416.89
+   },
+   "2024": {
+    "pax_m": 13.12,
+    "fare_coverage": 1.0,
+    "fare_usd": 302.48,
+    "yield_usd_km": 0.1297,
+    "fare_real_usd_2024": 302.48
+   },
+   "2019": {
+    "pax_m": 9.9,
+    "fare_coverage": 1.0,
+    "fare_usd": 257.52,
+    "yield_usd_km": 0.1001,
+    "fare_real_usd_2024": 315.97
+   },
+   "2017": {
+    "pax_m": 9.5,
+    "fare_coverage": 1.0,
+    "fare_usd": 255.77,
+    "yield_usd_km": 0.112,
+    "fare_real_usd_2024": 327.32
+   },
+   "2023": {
+    "pax_m": 10.85,
+    "fare_coverage": 1.0,
+    "fare_usd": 318.1,
+    "yield_usd_km": 0.1283,
+    "fare_real_usd_2024": 327.49
+   },
+   "2013": {
+    "pax_m": 6.2,
+    "fare_coverage": 1.0,
+    "fare_usd": 353.58,
+    "yield_usd_km": 0.1583,
+    "fare_real_usd_2024": 476.12
+   },
+   "2015": {
+    "pax_m": 7.32,
+    "fare_coverage": 1.0,
+    "fare_usd": 300.76,
+    "yield_usd_km": 0.1313,
+    "fare_real_usd_2024": 398.06
+   },
+   "2018": {
+    "pax_m": 9.58,
+    "fare_coverage": 1.0,
+    "fare_usd": 298.69,
+    "yield_usd_km": 0.1218,
+    "fare_real_usd_2024": 373.13
+   }
+  },
+  "PACIFIC": {
+   "2023": {
+    "pax_m": 19.28,
+    "fare_coverage": 1.0,
+    "fare_usd": 337.72,
+    "yield_usd_km": 0.1208,
+    "fare_real_usd_2024": 347.68
+   },
+   "2013": {
+    "pax_m": 17.57,
+    "fare_coverage": 1.0,
+    "fare_usd": 356.03,
+    "yield_usd_km": 0.1431,
+    "fare_real_usd_2024": 479.41
+   },
+   "2015": {
+    "pax_m": 19.84,
+    "fare_coverage": 1.0,
+    "fare_usd": 288.46,
+    "yield_usd_km": 0.1172,
+    "fare_real_usd_2024": 381.77
+   },
+   "2018": {
+    "pax_m": 23.3,
+    "fare_coverage": 1.0,
+    "fare_usd": 285.91,
+    "yield_usd_km": 0.1043,
+    "fare_real_usd_2024": 357.16
+   },
+   "2016": {
+    "pax_m": 22.65,
+    "fare_coverage": 1.0,
+    "fare_usd": 260.49,
+    "yield_usd_km": 0.108,
+    "fare_real_usd_2024": 340.46
+   },
+   "2025": {
+    "pax_m": 20.54,
+    "fare_coverage": 1.0,
+    "fare_usd": 364.26,
+    "yield_usd_km": 0.1143
+   },
+   "2017": {
+    "pax_m": 23.38,
+    "fare_coverage": 1.0,
+    "fare_usd": 256.68,
+    "yield_usd_km": 0.1,
+    "fare_real_usd_2024": 328.49
+   },
+   "2024": {
+    "pax_m": 20.43,
+    "fare_coverage": 1.0,
+    "fare_usd": 350.05,
+    "yield_usd_km": 0.1177,
+    "fare_real_usd_2024": 350.05
+   },
+   "2014": {
+    "pax_m": 18.03,
+    "fare_coverage": 1.0,
+    "fare_usd": 358.16,
+    "yield_usd_km": 0.1413,
+    "fare_real_usd_2024": 474.58
+   },
+   "2019": {
+    "pax_m": 24.33,
+    "fare_coverage": 1.0,
+    "fare_usd": 250.98,
+    "yield_usd_km": 0.0933,
+    "fare_real_usd_2024": 307.95
+   }
+  },
+  "NORTH AMERICA": {
+   "2016": {
+    "pax_m": 724.73,
+    "fare_coverage": 1.0,
+    "fare_usd": 283.1,
+    "yield_usd_km": 0.1086,
+    "fare_real_usd_2024": 370.01
+   },
+   "2025": {
+    "pax_m": 913.72,
+    "fare_coverage": 1.0,
+    "fare_usd": 353.1,
+    "yield_usd_km": 0.1292
+   },
+   "2019": {
+    "pax_m": 859.49,
+    "fare_coverage": 1.0,
+    "fare_usd": 275.8,
+    "yield_usd_km": 0.1048,
+    "fare_real_usd_2024": 338.4
+   },
+   "2024": {
+    "pax_m": 922.29,
+    "fare_coverage": 1.0,
+    "fare_usd": 347.77,
+    "yield_usd_km": 0.1306,
+    "fare_real_usd_2024": 347.77
+   },
+   "2023": {
+    "pax_m": 876.4,
+    "fare_coverage": 1.0,
+    "fare_usd": 331.87,
+    "yield_usd_km": 0.1249,
+    "fare_real_usd_2024": 341.66
+   },
+   "2014": {
+    "pax_m": 637.77,
+    "fare_coverage": 1.0,
+    "fare_usd": 309.13,
+    "yield_usd_km": 0.1199,
+    "fare_real_usd_2024": 409.62
+   },
+   "2013": {
+    "pax_m": 614.17,
+    "fare_coverage": 1.0,
+    "fare_usd": 309.05,
+    "yield_usd_km": 0.1205,
+    "fare_real_usd_2024": 416.15
+   },
+   "2015": {
+    "pax_m": 680.61,
+    "fare_coverage": 1.0,
+    "fare_usd": 305.0,
+    "yield_usd_km": 0.1177,
+    "fare_real_usd_2024": 403.67
+   },
+   "2018": {
+    "pax_m": 805.11,
+    "fare_coverage": 1.0,
+    "fare_usd": 296.11,
+    "yield_usd_km": 0.1117,
+    "fare_real_usd_2024": 369.91
+   },
+   "2017": {
+    "pax_m": 764.94,
+    "fare_coverage": 1.0,
+    "fare_usd": 270.93,
+    "yield_usd_km": 0.1036,
+    "fare_real_usd_2024": 346.72
+   }
+  },
+  "SOUTHERN AFRICA": {
+   "2016": {
+    "pax_m": 20.11,
+    "fare_coverage": 1.0,
+    "fare_usd": 276.75,
+    "yield_usd_km": 0.1028,
+    "fare_real_usd_2024": 361.71
+   },
+   "2025": {
+    "pax_m": 21.09,
+    "fare_coverage": 1.0,
+    "fare_usd": 316.23,
+    "yield_usd_km": 0.1091
+   },
+   "2019": {
+    "pax_m": 23.05,
+    "fare_coverage": 1.0,
+    "fare_usd": 247.16,
+    "yield_usd_km": 0.0908,
+    "fare_real_usd_2024": 303.26
+   },
+   "2024": {
+    "pax_m": 19.92,
+    "fare_coverage": 1.0,
+    "fare_usd": 310.28,
+    "yield_usd_km": 0.1058,
+    "fare_real_usd_2024": 310.28
+   },
+   "2023": {
+    "pax_m": 20.14,
+    "fare_coverage": 1.0,
+    "fare_usd": 282.74,
+    "yield_usd_km": 0.0984,
+    "fare_real_usd_2024": 291.08
+   },
+   "2014": {
+    "pax_m": 17.1,
+    "fare_coverage": 1.0,
+    "fare_usd": 386.18,
+    "yield_usd_km": 0.1437,
+    "fare_real_usd_2024": 511.72
+   },
+   "2013": {
+    "pax_m": 17.06,
+    "fare_coverage": 1.0,
+    "fare_usd": 342.98,
+    "yield_usd_km": 0.1284,
+    "fare_real_usd_2024": 461.83
+   },
+   "2015": {
+    "pax_m": 19.63,
+    "fare_coverage": 1.0,
+    "fare_usd": 309.66,
+    "yield_usd_km": 0.117,
+    "fare_real_usd_2024": 409.83
+   },
+   "2018": {
+    "pax_m": 22.0,
+    "fare_coverage": 1.0,
+    "fare_usd": 323.07,
+    "yield_usd_km": 0.1159,
+    "fare_real_usd_2024": 403.59
+   },
+   "2017": {
+    "pax_m": 20.84,
+    "fare_coverage": 1.0,
+    "fare_usd": 270.47,
+    "yield_usd_km": 0.0968,
+    "fare_real_usd_2024": 346.13
+   }
+  },
+  "CARIBBEAN": {
+   "2019": {
+    "pax_m": 22.0,
+    "fare_coverage": 1.0,
+    "fare_usd": 246.48,
+    "yield_usd_km": 0.1025,
+    "fare_real_usd_2024": 302.43
+   },
+   "2024": {
+    "pax_m": 24.49,
+    "fare_coverage": 1.0,
+    "fare_usd": 331.59,
+    "yield_usd_km": 0.1317,
+    "fare_real_usd_2024": 331.59
+   },
+   "2016": {
+    "pax_m": 18.87,
+    "fare_coverage": 1.0,
+    "fare_usd": 269.4,
+    "yield_usd_km": 0.1163,
+    "fare_real_usd_2024": 352.1
+   },
+   "2025": {
+    "pax_m": 24.6,
+    "fare_coverage": 1.0,
+    "fare_usd": 342.4,
+    "yield_usd_km": 0.1303
+   },
+   "2014": {
+    "pax_m": 15.68,
+    "fare_coverage": 1.0,
+    "fare_usd": 291.68,
+    "yield_usd_km": 0.1254,
+    "fare_real_usd_2024": 386.49
+   },
+   "2017": {
+    "pax_m": 20.23,
+    "fare_coverage": 1.0,
+    "fare_usd": 254.34,
+    "yield_usd_km": 0.1101,
+    "fare_real_usd_2024": 325.49
+   },
+   "2013": {
+    "pax_m": 15.23,
+    "fare_coverage": 1.0,
+    "fare_usd": 275.29,
+    "yield_usd_km": 0.1203,
+    "fare_real_usd_2024": 370.7
+   },
+   "2015": {
+    "pax_m": 16.8,
+    "fare_coverage": 1.0,
+    "fare_usd": 292.45,
+    "yield_usd_km": 0.1244,
+    "fare_real_usd_2024": 387.05
+   },
+   "2018": {
+    "pax_m": 20.68,
+    "fare_coverage": 1.0,
+    "fare_usd": 288.89,
+    "yield_usd_km": 0.1216,
+    "fare_real_usd_2024": 360.89
+   },
+   "2023": {
+    "pax_m": 22.52,
+    "fare_coverage": 1.0,
+    "fare_usd": 328.29,
+    "yield_usd_km": 0.1301,
+    "fare_real_usd_2024": 337.98
+   }
+  },
+  "AUSTRALIA": {
+   "2013": {
+    "pax_m": 73.92,
+    "fare_coverage": 1.0,
+    "fare_usd": 397.64,
+    "yield_usd_km": 0.134,
+    "fare_real_usd_2024": 535.44
+   },
+   "2015": {
+    "pax_m": 76.18,
+    "fare_coverage": 1.0,
+    "fare_usd": 325.82,
+    "yield_usd_km": 0.1057,
+    "fare_real_usd_2024": 431.22
+   },
+   "2018": {
+    "pax_m": 85.07,
+    "fare_coverage": 1.0,
+    "fare_usd": 338.32,
+    "yield_usd_km": 0.1002,
+    "fare_real_usd_2024": 422.64
+   },
+   "2023": {
+    "pax_m": 73.43,
+    "fare_coverage": 1.0,
+    "fare_usd": 391.06,
+    "yield_usd_km": 0.1153,
+    "fare_real_usd_2024": 402.6
+   },
+   "2019": {
+    "pax_m": 85.38,
+    "fare_coverage": 1.0,
+    "fare_usd": 287.75,
+    "yield_usd_km": 0.0866,
+    "fare_real_usd_2024": 353.07
+   },
+   "2017": {
+    "pax_m": 83.13,
+    "fare_coverage": 1.0,
+    "fare_usd": 301.41,
+    "yield_usd_km": 0.0912,
+    "fare_real_usd_2024": 385.73
+   },
+   "2014": {
+    "pax_m": 74.11,
+    "fare_coverage": 1.0,
+    "fare_usd": 365.64,
+    "yield_usd_km": 0.1212,
+    "fare_real_usd_2024": 484.49
+   },
+   "2024": {
+    "pax_m": 79.22,
+    "fare_coverage": 1.0,
+    "fare_usd": 391.18,
+    "yield_usd_km": 0.1124,
+    "fare_real_usd_2024": 391.18
+   },
+   "2016": {
+    "pax_m": 79.72,
+    "fare_coverage": 1.0,
+    "fare_usd": 302.27,
+    "yield_usd_km": 0.0959,
+    "fare_real_usd_2024": 395.07
+   },
+   "2025": {
+    "pax_m": 81.07,
+    "fare_coverage": 1.0,
+    "fare_usd": 403.27,
+    "yield_usd_km": 0.1113
+   }
+  }
+ },
+ "world": {
+  "2023": {
+   "pax_m": 3721.2,
+   "fare_usd": 273.96,
+   "yield_usd_km": 0.1257,
+   "fare_real_usd_2024": 282.04
+  },
+  "2019": {
+   "pax_m": 3967.9,
+   "fare_usd": 212.33,
+   "yield_usd_km": 0.0987,
+   "fare_real_usd_2024": 260.53
+  },
+  "2014": {
+   "pax_m": 2869.4,
+   "fare_usd": 270.67,
+   "yield_usd_km": 0.1261,
+   "fare_real_usd_2024": 358.65
+  },
+  "2024": {
+   "pax_m": 4038.4,
+   "fare_usd": 266.5,
+   "yield_usd_km": 0.1207,
+   "fare_real_usd_2024": 266.5
+  },
+  "2013": {
+   "pax_m": 2718.5,
+   "fare_usd": 280.28,
+   "yield_usd_km": 0.1302,
+   "fare_real_usd_2024": 377.41
+  },
+  "2015": {
+   "pax_m": 3078.6,
+   "fare_usd": 263.83,
+   "yield_usd_km": 0.123,
+   "fare_real_usd_2024": 349.18
+  },
+  "2018": {
+   "pax_m": 3774.4,
+   "fare_usd": 246.87,
+   "yield_usd_km": 0.1146,
+   "fare_real_usd_2024": 308.4
+  },
+  "2016": {
+   "pax_m": 3265.6,
+   "fare_usd": 238.46,
+   "yield_usd_km": 0.1109,
+   "fare_real_usd_2024": 311.67
+  },
+  "2025": {
+   "pax_m": 4086.6,
+   "fare_usd": 269.0,
+   "yield_usd_km": 0.1179
+  },
+  "2017": {
+   "pax_m": 3529.0,
+   "fare_usd": 220.57,
+   "yield_usd_km": 0.1021,
+   "fare_real_usd_2024": 282.27
+  }
+ },
+ "coverage_flags": []
+}
