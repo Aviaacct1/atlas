@@ -50,6 +50,37 @@ def growth(boeing_region):
     return float(tbl.get(boeing_region, tbl["World"]))
 
 
+# The growth rates are estimated on Boeing's ten regions; the webapp works on the
+# engine's six. This fold is the stated mapping between the two, added 23 August 2026
+# when the dashboard's RPK basis moved off its typed constants: until then the page
+# converted passengers to RPK with a constant stage length, so its RPK CAGR equalled
+# its passenger CAGR while every comparator's carried stage length growth inside it,
+# and the reconciliation table's "matched basis" claim did not hold for RPK rows.
+BOEING_TO_ENGINE = {
+    "China": "Asia Pacific", "Northeast Asia": "Asia Pacific",
+    "Southeast Asia": "Asia Pacific", "South Asia": "Asia Pacific",
+    "Oceania": "Asia Pacific", "Eurasia": "Europe",
+    "Middle East": "Middle East", "Africa": "Africa",
+    "North America": "North America", "Latin America": "South America",
+}
+
+
+def growth_engine(engine_region, weights=None):
+    """Stage length growth for an ENGINE region: the weighted mean of the Boeing
+    regions that fold into it. `weights` maps Boeing region to a weight (the dashboard
+    build uses airport counts from regions_boeing.json, the same file the applied
+    rates come from); equal weights when None. A region with no members takes the
+    common world rate."""
+    members = [b for b, e in BOEING_TO_ENGINE.items() if e == engine_region]
+    if not members:
+        return growth("World")
+    w = [(weights or {}).get(b, 1.0) for b in members]
+    tot = sum(w)
+    if tot <= 0:
+        w, tot = [1.0] * len(members), float(len(members))
+    return sum(wi * growth(b) for wi, b in zip(w, members)) / tot
+
+
 def factor(boeing_region, year, base=None):
     """Stage length index, 1.0 in the base year."""
     b = base_year() if base is None else base

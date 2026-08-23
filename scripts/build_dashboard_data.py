@@ -327,8 +327,35 @@ def run():
     from accuracy_block import build_accuracy
     _acc = build_accuracy(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"))
 
+    # Stage length for the page's RPK/ASK/CO2/fleet derivations, from the same yaml the
+    # engine's conversion reads, so the page and compare_regions_boeing.py cannot state
+    # two different RPK bases. Until 23 August 2026 the page held typed constants and
+    # its RPK CAGR equalled its passenger CAGR, circa 0.6pp below the engine's basis,
+    # which made the visible comparator overlays read as a far larger gap than the
+    # engine reports. Weights for the Boeing-to-engine fold are airport counts from
+    # regions_boeing.json, the file the applied per-region rates come from.
+    from avia_forecast import stage_length as _slm
+    try:
+        _rbw = {r["region"]: float(r.get("airports", 1)) for r in
+                json.load(open(os.path.join(E, "regions_boeing.json"))).get("rows", [])}
+        _w_src = "airport counts, regions_boeing.json"
+    except Exception:
+        _rbw, _w_src = {}, "equal weights (regions_boeing.json unavailable at build)"
+    _eng_regions = ["Europe", "Asia Pacific", "North America", "South America", "Middle East", "Africa"]
+    _sl_block = {
+        "base_year": _slm.base_year(),
+        "km": {r: _slm.base_km(r) for r in _eng_regions} | {"_G": _slm.base_km("_G")},
+        "growth": {r: round(_slm.growth_engine(r, _rbw), 5) for r in _eng_regions}
+                  | {"_G": round(_slm.growth("World"), 5)},
+        "note": ("config/stage_length.yaml: level representative [P1], growth estimated from "
+                 "Sabre O&D journey length 2013-2025 (MEASUREMENTS 7); Boeing-to-engine fold "
+                 "weighted by " + _w_src),
+    }
+    print("stage_length block:", {k: _sl_block["growth"][k] for k in _sl_block["growth"]})
+
     dump_atomic({"years": YRS, "base": BASE, "scenarios": SCEN,
                "accuracy": _acc,
+               "stage_length": _sl_block,
                "airports": list(perAirport.values()), "cty": CTY,
                "comparators": _cmp.get("comparators", {}),
                "comparators_retrieved": str(_cmp.get("retrieved", "")),
@@ -348,7 +375,7 @@ def run():
                    "Interregional RPK matrix uses representative region-pair stage lengths [P1]",
                    "Hard-coded UK catchment populations in the pilot [P1]",
                    "Comparator CAGRs now published values with edition and source (config/comparators.yaml, read 9 Aug 2026); the flow-level comparator column remains illustrative",
-                   "Front-end grossing and RPK/ASK/ATM/CO2 derivation factors pending move into the engine",
+                   "Stage length in the page's RPK/ASK basis now comes from config/stage_length.yaml (23 Aug 2026); front-end grossing plus the LF, seats, fuel and fleet-productivity factors remain typed pending their move into the engine",
                ]},
               os.path.join(OUT, "dashboard.json"))
     print(f"dashboard.json: {len(perAirport)} airports, {len(CTY)} countries, "

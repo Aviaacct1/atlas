@@ -177,7 +177,17 @@ let YRS2=[], BASE_Y=2025, HORIZON_Y=2060;
 let DASH=null, DASHBYI={}, HIST=null, HSUB="premium";
 let RG={"Europe":.02,"Asia Pacific":.045,"North America":.022,"South America":.03,"Middle East":.03,"Africa":.045};
 let RNAMES=Object.keys(RG);
-const SL={"Europe":1.35,"Asia Pacific":1.95,"North America":1.6,"South America":1.45,"Middle East":2.9,"Africa":1.8,"_G":1.72};
+// Stage length comes from the built bundle (DASH.stage_length), sourced from
+// config/stage_length.yaml, the same file the engine's RPK conversion reads. It was a
+// typed constant here until 23 August 2026, which froze the page's stage length while
+// every comparator's published RPK CAGR grew theirs: the page understated our RPK
+// growth by circa 0.6pp against the engine's own basis. slAt(region, year) applies the
+// estimated growth from the base year; with no bundle block it returns NaN so the
+// affected charts visibly fail rather than quietly reverting to a constant.
+let SL={},SLG={},SLY=2025;
+const slAt=(regKey,y)=>{const b=(SL[regKey]!==undefined?SL[regKey]:SL._G);
+  const g=(SLG[regKey]!==undefined?SLG[regKey]:SLG._G)||0;
+  return b*Math.pow(1+g,Math.max(0,(y||SLY)-SLY));};
 const SEATS={"Europe":172,"Asia Pacific":196,"North America":164,"South America":158,"Middle East":238,"Africa":149,"_G":180};
 const WBBASE={"Europe":.12,"Asia Pacific":.18,"North America":.14,"South America":.08,"Middle East":.35,"Africa":.12,"_G":.16};
 const BFARE={"Europe":210,"Asia Pacific":260,"North America":280,"South America":230,"Middle East":320,"Africa":260,"_G":250};
@@ -234,13 +244,13 @@ function regSeries(reg,scen){const u=YRS.map(()=>0),c=YRS.map(()=>0);
   return {u:u.map(v=>v*f),c:c.map(v=>v*f)};}
 function globSeries(scen){const u=YRS.map(()=>0),c=YRS.map(()=>0);
   RNAMES.forEach(r=>{const s=regSeries(r,scen);YRS.forEach((y,i)=>{u[i]+=s.u[i];c[i]+=s.c[i];});});return {u,c};}
-function co2FromPax(v,y,regKey){const sl=SL[regKey]||SL._G;const askBn=v*sl/LF(y);
+function co2FromPax(v,y,regKey){const sl=slAt(regKey,y);const askBn=v*sl/LF(y);
   return askBn*FPA(y)*3.16*(1-0.8*blend(y,regKey));}
 function conv(s,regKey){
   const m=document.getElementById("metric").value;
-  const sl=SL[regKey]||SL._G, st=SEATS[regKey]||SEATS._G;
+  const st=SEATS[regKey]||SEATS._G;
   const f=(arr)=>arr.map((v,i)=>{const y=YRS[i];
-    if(m==="pax")return v; if(m==="rpk")return v*sl; if(m==="ask")return v*sl/LF(y);
+    if(m==="pax")return v; if(m==="rpk")return v*slAt(regKey,y); if(m==="ask")return v*slAt(regKey,y)/LF(y);
     if(m==="co2")return co2FromPax(v,y,regKey);
     return v*1e6/(st*LF(y))/1000;});
   let out={u:f(s.u),c:f(s.c)};
@@ -269,7 +279,7 @@ function ycols(){const m=document.getElementById("ymode").value;
   const out=[];for(let y=BASE_Y;y<=HORIZON_Y;y++)out.push(y);return out;}
 function cagr(s){const [y1,y2]=win();const i1=YRS.indexOf(y1),i2=YRS.indexOf(y2);return Math.pow(s[i2]/s[i1],1/(y2-y1))-1;}
 function fleetSplit(s,regKey,year,hub){
-  const sl=SL[regKey]||SL._G;const i=YRS.indexOf(year);
+  const sl=slAt(regKey,year);const i=YRS.indexOf(year);
   const wbs=Math.min((WBBASE[regKey]||WBBASE._G)+(hub?0.15:0),.6);
   const askBn=s.c[i]*sl/LF(year);
   const w=wbs*3/(wbs*3+(1-wbs));
@@ -442,7 +452,7 @@ function histChart(scen){
   ${hlegend}
   ${rail([["Source","ICAO observed to 2025, Avia forecast thereafter"],["Units","Passengers, log scale"],["Overlays","Published headline CAGR; year shape illustrative"],["Vintage","v0",true]])}`;}
 function compCells(cPax45,regKey,domAdj){ // composition row: sector, WB share, fleet, CO2, SAF for one entity
-  const sl=(SL[regKey]||SL._G)*(domAdj!==undefined?(1-domAdj*.35):1);
+  const sl=slAt(regKey,2045)*(domAdj!==undefined?(1-domAdj*.35):1);
   const wbs=WBBASE[regKey]||WBBASE._G;
   const askBn=cPax45*sl/LF(2045);
   const w=wbs*3/(wbs*3+(1-wbs));
@@ -976,8 +986,9 @@ function renderAbout(){
   const _scen=document.getElementById("scen").value;
   const aviaCagr=(basis,y0,y1)=>{const i0=YRS.indexOf(y0),i1=YRS.indexOf(y1);
     if(i0<0||i1<0)return null; let v0=0,v1=0;
-    RNAMES.forEach(r=>{const s=regSeries(r,_scen).u,sl=(basis==="rpk"?(SL[r]||SL._G):1);
-      v0+=s[i0]*sl; v1+=s[i1]*sl;});
+    RNAMES.forEach(r=>{const s=regSeries(r,_scen).u;
+      const sl0=(basis==="rpk"?slAt(r,y0):1),sl1=(basis==="rpk"?slAt(r,y1):1);
+      v0+=s[i0]*sl0; v1+=s[i1]*sl1;});
     return pcagr(v0,v1,i1-i0);};
   const _pc=v=>v==null?"n/a":(v*100).toFixed(1)+"%";
   const _pp=(t,o)=>o==null?"n/a":((o-t)*100>=0?"+":"")+((o-t)*100).toFixed(1)+"pp";
@@ -998,7 +1009,7 @@ function renderAbout(){
   ${accCard}
   <div class="card"><h3>Reconciliation vs the incumbents (OUT-18)</h3>
    ${tbl(["Comparator (published)","Their CAGR","Avia (matched basis)","Diff","Explanation and source"],[rrows])}
-   <p class="mut" style="margin-top:8px;font-size:12px">Both columns are sourced. The published figures come from config/comparators.yaml, each with its edition and a link to the publication, read on ${CMP_RETRIEVED||"the date recorded there"}; the Avia figure is computed from this run over the same window and on the same basis, so each row is like for like. Note that Boeing, Airbus and IATA publish revenue passenger kilometres and ACI publishes passengers: RPK grows faster than passengers by the rise in average trip length, so the two groups are not comparable with each other. Matching the incumbents is not the goal; being explainably different is. Divergence beyond tolerance stops a release (Method Spec 7.5).</p></div>
+   <p class="mut" style="margin-top:8px;font-size:12px">Both columns are sourced. The published figures come from config/comparators.yaml, each with its edition and a link to the publication, read on ${CMP_RETRIEVED||"the date recorded there"}; the Avia figure is computed from this run over the same window and on the same basis, so each row is like for like. Note that Boeing, Airbus and IATA publish revenue passenger kilometres and ACI publishes passengers: RPK grows faster than passengers by the rise in average trip length, so the two groups are not comparable with each other. The Avia RPK figures here grow stage length on the rates estimated from Sabre O&amp;D journey length 2013-2025 (config/stage_length.yaml), the same basis as the engine's published comparison; a constant stage length would understate our RPK growth by circa 0.6pp against every comparator. Matching the incumbents is not the goal; being explainably different is. Divergence beyond tolerance stops a release (Method Spec 7.5).</p></div>
   <div class="card"><h3>Why trust this forecast</h3>
    <div class="pass" style="margin-top:4px">
     <div class="blk"><h4>Independence</h4><p class="mut" style="font-size:12.5px">We sell no aircraft, run no airline and operate no airport. The forecast has no product to justify.</p></div>
@@ -1163,11 +1174,11 @@ function render(){
     const atmT=(t,y)=>t*1e6/(SEATS[rk]*LF(y))/1000;
     const gm=growthMarkets(a,scen);
     const gmRows=gm.map((m,i)=>`<tr><td>${i+1}. ${m.m}${m.served?"":' <span class="tag un">underserved</span>'}</td><td class="num">${fmD(m.d1)}</td><td class="num">${fmD(m.d2)}</td><td class="num"><b>${pct(m.g)}</b></td><td class="num">+${fmD(m.abs)}</td></tr>`).join("");
-    const askB=(t,y)=>t*(SL[rk]||SL._G)/LF(y);
+    const askB=(t,y)=>t*slAt(rk,y)/LF(y);
     const fuel25=askB(t25,2025)*FPA(2025), fuel45=askB(t45,2045)*FPA(2045);
     const co225=fuel25*3.16*(1-0.8*blend(2025,rk)), co245=fuel45*3.16*(1-0.8*blend(2045,rk));
     const saf35=askB(as[cs][YRS.indexOf(2035)],2035)*FPA(2035)*blend(2035,rk), saf45=fuel45*blend(2045,rk);
-    const int45=(co245*1e6)/(t45*(SL[rk]||SL._G)*1e3);
+    const int45=(co245*1e6)/(t45*slAt(rk,2045)*1e3);
     const spillShare=a[2]==="United Kingdom"||["GRU","CGH"].includes(a[0])?[.6,.4]:[.25,.75];
     const capReq45=as.u[i45]-as.c[i45];
     const direct=hub?.85:.72;
@@ -1280,6 +1291,9 @@ async function AVIA_BOOT(){
   cw.innerHTML=wins.map(([a,b],i)=>`<option value="${a}|${b}"${i===2?' selected':''}>${a}-${String(b).slice(2)}</option>`).join('');
   RG=DASH.rg; RNAMES=Object.keys(DASH.rg); CTY=DASH.cty; FLOWS=DASH.flows;
   CMP=DASH.comparators||{}; CMP_RETRIEVED=DASH.comparators_retrieved||"";
+  const _slb=DASH.stage_length;
+  if(_slb){SL=_slb.km||{};SLG=_slb.growth||{};SLY=_slb.base_year||2025;}
+  else console.error("dashboard.json carries no stage_length block: RPK, ASK, CO2 and fleet views will not draw. Rebuild the bundle with scripts/build_dashboard_data.py.");
   COV_C=DASH.coverage_country||{}; COV_R=DASH.coverage_region||{};
   APT=DASH.airports.map(a=>[a.iata,a.name,a.country,(a.scen.Baseline[YRS.indexOf(2025)]||0),((CTY[a.country]&&CTY[a.country].g)||0),((a.cap&&a.cap>0)?a.cap:illCap(a.scen.Baseline[YRS.indexOf(2025)]||0)),(a.hub||"")]);
   const dlst=document.getElementById("searchlist");
