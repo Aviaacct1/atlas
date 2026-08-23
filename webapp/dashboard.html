@@ -469,7 +469,7 @@ function compCard(title,rows){ // rows: [name, cPax45, regKey, domAdj]
    +`<tr style="font-weight:500;background:#EFE9DB"><td>Total</td><td class="num">-</td><td class="num">-</td><td class="num">${tNb.toLocaleString()} / ${tWb.toLocaleString()}</td><td class="num">${tCo2.toFixed(1)}</td><td class="num">${tSaf.toFixed(1)}</td></tr>`;
   return `<div class="card"><h3>${title}</h3>
    ${tbl(["","Avg sector (km)","WB mvt share","Implied fleet 2045 (NB / WB)","CO2 2045 (Mt, net SAF)","SAF 2045 (Mt)"],[trs])}
-   <p class="mut" style="margin-top:8px;font-size:12px">Composition from the model's destination mix (OUT-07/08/15) and environment derivations (OUT-24/25); assumptions on the Method &amp; assumptions page. Fleet figures are demand-implied, not a fleet forecast.</p></div>`;}
+   <p class="mut" style="margin-top:8px;font-size:12px">Composition from the model's destination mix (OUT-07/08/15) and environment derivations (OUT-24/25); assumptions on the Method &amp; assumptions page. Fleet figures are demand-implied and ILLUSTRATIVE: ASK divided by typed productivity constants (330 NB / 1,050 WB ASK m per aircraft-year), pending a fleet count source (John, 23 August 2026). Not a fleet forecast.</p></div>`;}
 function fixAlign(){
   document.querySelectorAll("#view table").forEach(t=>{
     const rows=[...t.rows]; if(rows.length<2) return;
@@ -539,7 +539,7 @@ function kpis(s,regKey){
    "Airline":[[`O&D CAGR ${y1}-${String(y2).slice(2)}`,pct(g)],["ASK CAGR (derived)",pct(Math.pow((s.u[YRS.indexOf(y2)]/LF(y2))/(s.u[YRS.indexOf(y1)]/LF(y1)),1/(y2-y1))-1)],["Real fare trend","-0.3%/yr"],["Policy cost drag by 2045","-0.24pp"]],
    "Government / Policy":[["Constrained pax 2045",capS(s.c[i45])],["Suppressed + spilled 2045",capS(capReq)],["CO2 2045 (OUT-24)",co245.toFixed(1)+" Mt (2025: "+co225.toFixed(1)+")"],["Low scenario",pct(g-.005)]]};
   const extra=document.getElementById("metric").value!=="pax"||S.lens==="Investor / Lessor"?
-    `<div class="note">Derived figures (OUT-07/08/15/24). Assumptions on the Method &amp; assumptions page. Implied demand, not a fleet forecast.</div>`:"";
+    `<div class="note">Derived figures (OUT-07/08/15/24). Assumptions on the Method &amp; assumptions page. Implied fleet is ILLUSTRATIVE (typed productivity constants, 330 NB / 1,050 WB ASK m per aircraft-year); implied demand, not a fleet forecast.</div>`:"";
   return K[S.lens].map(k=>`<div class="kpi"><div class="v">${k[1]}</div><div class="l">${k[0]}</div></div>`).join("")+extra;}
 function crumb(){
   if(S.page!=="explore"){document.getElementById("crumb").innerHTML=
@@ -1054,7 +1054,8 @@ function renderComp(){
   <div class="card"><h3>Country table (WATF-style layout): constrained pax 2045, int/dom split (OUT-05), movements (OUT-08)</h3>
    ${tbl(["Country","Domestic m","International m","Total m","ATMs k",`Avia CAGR ${y1}-${String(y2).slice(2)}`,"ACI CAGR"],[crows])}</div>
   <div class="card"><h3>Implied fleet 2045 by size class (OUT-17d): demand-implied vs supply forecasts</h3>
-   ${tbl(["Region","Narrowbody","Widebody","Total","Comparator fleet"],[frows])}</div>`;}
+   ${tbl(["Region","Narrowbody","Widebody","Total","Comparator fleet"],[frows])}
+   <p class="mut" style="margin-top:6px;font-size:12px">Illustrative: our column is ASK divided by typed productivity constants (330 NB / 1,050 WB ASK m per aircraft-year), pending a fleet count source; the comparator columns are the OEMs' own published fleet forecasts and are not derived this way.</p></div>`;}
 const CAT=[
  ["OUT-01","True O&D passengers","ok","Airport passport traffic mix: True O&D row (terminal minus transfer)"],
  ["OUT-02","Connecting passengers","ok","Airport passport traffic mix"],
@@ -1185,7 +1186,7 @@ function render(){
     lastRows=[["year","unconstrained","constrained"]];YRS.forEach((y,i)=>lastRows.push([y,cv.u[i].toFixed(3),cv.c[i].toFixed(3)]));
     v.innerHTML=`<div class="grid"><div class="card"><h3>${a[1]} (${a[0]}) - ${document.getElementById("metric").selectedOptions[0].text}, ${scen}
       <button class="star ${WL.has(a[0])?"on":""}" style="margin-left:10px" onclick="toggleWatch('${a[0]}')">${WL.has(a[0])?"★ Watching":"☆ Watch"}</button></h3>
-      ${a[7]?`<p class="mut" style="font-size:11.5px;margin:2px 0 6px;color:#a35b00">Connecting split caveat: the Sabre leg-measured and ACI-residual connecting shares disagree by more than 30 points at this airport, so the split between local and connecting growth paths is uncertain; the terminal level is ACI-anchored and unaffected. See the publication watchpoint on the checks page.</p>`:""}
+      ${a[7]?`<p class="mut" style="font-size:11.5px;margin:2px 0 6px;color:#a35b00">Connecting split caveat: the Sabre leg-measured and ACI-residual connecting shares disagree materially at this airport (by more than 30 share points, more than 2m passengers of base-year split, or both), so the split between local and connecting growth paths is uncertain; the terminal level is ACI-anchored and unaffected. Basis and bound: MEASUREMENTS 14 and the publication watchpoint on the checks page.</p>`:""}
       ${ovlChips({lvl:"airport"})}${chart(cv,(document.getElementById("metric").value==="pax"&&document.getElementById("vmode").value==="abs")?(a[5]||null):null,{lvl:"airport"})}</div><div class="kpis">${kpis(as,rk)}</div></div>
     <div class="card"><h3>Growth markets (OUT-19): top destination markets by demand growth, ${y1}-${y2} (unconstrained; top 8 of 20 shown)</h3>
       ${tbl(["Market","Demand "+y1,"Demand "+y2,"CAGR","Growth"],[gmRows])}
@@ -1296,7 +1297,7 @@ async function AVIA_BOOT(){
   if(_slb){SL=_slb.km||{};SLG=_slb.growth||{};SLY=_slb.base_year||2025;}
   else console.error("dashboard.json carries no stage_length block: RPK, ASK, CO2 and fleet views will not draw. Rebuild the bundle with scripts/build_dashboard_data.py.");
   COV_C=DASH.coverage_country||{}; COV_R=DASH.coverage_region||{};
-  APT=DASH.airports.map(a=>[a.iata,a.name,a.country,(a.scen.Baseline[YRS.indexOf(2025)]||0),((CTY[a.country]&&CTY[a.country].g)||0),((a.cap&&a.cap>0)?a.cap:illCap(a.scen.Baseline[YRS.indexOf(2025)]||0)),(a.hub||""),!!a.cnx_flag]);
+  APT=DASH.airports.map(a=>[a.iata,a.name,a.country,(a.scen.Baseline[YRS.indexOf(2025)]||0),((CTY[a.country]&&CTY[a.country].g)||0),((a.cap&&a.cap>0)?a.cap:illCap(a.scen.Baseline[YRS.indexOf(2025)]||0)),(a.hub||""),!!(a.cnx_flag||a.cnx_mat)]);
   const dlst=document.getElementById("searchlist");
 APT.forEach(a=>{const o=document.createElement("option");o.value=`${a[0]} - ${a[1]} (${a[2]})`;dlst.appendChild(o);});
 Object.keys(CTY).forEach(k=>{const o=document.createElement("option");o.value=k;dlst.appendChild(o);});

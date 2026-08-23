@@ -169,6 +169,15 @@ def _maturity_weight(country, region, wb, trips_pc=None):
     the model computes anyway. See MEASUREMENTS.md section 8.
     """
     basis = get("global_drivers.maturity_basis", "income_threshold")
+    if basis == "headroom_only":
+        # John's decision of 23 August 2026 (case C of the four-case measurement in the
+        # independent review): the mature/emerging elasticity split is dropped and the
+        # propensity headroom alone reads maturity, so saturation damps growth once
+        # rather than twice. Every country takes the emerging elasticity (weight 0) and
+        # od_recursion_damped's headroom term does the maturing. The earlier bases stay
+        # below as controls: saturation reproduces the 9-22 August forecasts and
+        # income_threshold the pre-9-August ones.
+        return 0.0
     if basis == "saturation" and trips_pc is not None:
         asym = pr.asymptote_for(region)
         return max(0.0, min(1.0, trips_pc / asym)) if asym else 0.0

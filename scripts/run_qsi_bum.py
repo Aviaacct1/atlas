@@ -192,12 +192,12 @@ def run(airports, qsi, oag_db, sabre_db, n, week):
                                    "qcx": pm["qcx"], "mkt_growth": 1.0, "carrier": "",
                                    "base_seats_a": 0.0, "base_seats_b": 0.0,
                                    "airport_seats_a": _ta, "airport_seats_b": _tb, "sister_flag": _sis})
-                    _keys.append(c["dst"])
+                    _keys.append((c["dst"], pm["gcd"], apc.get(o) == apc.get(c["dst"])))
                 except ValueError as _e:
                     print(f"  BT2 feature unsourceable for {o}-{c['dst']}: {_e}", flush=True)
             if _feats:
-                for k, s in zip(_keys, BF.batch_score(_feats)):
-                    _bt2[k] = s
+                for (k, _gcd, _dom), s in zip(_keys, BF.batch_score(_feats)):
+                    _bt2[k] = {"score": s, "gcd": _gcd, "dom": _dom}
             _con.close()
         except Exception as _e:
             print(f"  BT2 scoring unavailable ({type(_e).__name__}: {_e}) - rows carry engine numbers only", flush=True)
@@ -213,12 +213,33 @@ def run(airports, qsi, oag_db, sabre_db, n, week):
                 res = RF.forecast(sabre_db, oag_db, week, o, [c["dst"]], c["comp"],
                                   aircraft="A21X", freq=7, block_min=_bm, stimulation=STIM)
                 row["stimulation"] = STIM; row["block_min"] = _bm
-                _b = _bt2.get(c["dst"])                # BT2 batch result, scored before the slow loop
-                if _b:
+                _bx = _bt2.get(c["dst"])               # BT2 batch result, scored before the slow loop
+                if _bx:
+                    _b = _bx["score"]
                     row["bt2_est_000"] = round(_b["pax"] / 1000.0, 1)
                     row["bt2_lo_000"] = round(_b["lo"] / 1000.0, 1)
                     row["bt2_hi_000"] = round(_b["hi"] / 1000.0, 1)
                     row["tier"] = _b["tier"]
+                    # The segment rule is the confidence shape (Meridian note, 16 August
+                    # 2026; adopted for Atlas 23 August): the split is known entirely in
+                    # advance and a client can check it, where the tier is a band only.
+                    # Figures from bt2_experiments.log, 9 August 2026. The plan basis
+                    # here is an LCC single-aisle, so distance and domesticity decide.
+                    # The rule is "under 2,500 km AND (domestic OR LCC)"; the plan basis
+                    # here is always LCC, so distance alone decides the short-haul arm.
+                    if _bx["gcd"] < 2500:
+                        row["segment"] = "short-haul (under 2,500 km, domestic or LCC)"
+                        row["segment_confidence"] = ("blind 70.4% within +-20% on this segment "
+                                                     "(n=1,432, bt2_experiments.log 9 Aug 2026)")
+                    elif not _bx["dom"]:
+                        row["segment"] = "long-haul international"
+                        row["segment_confidence"] = ("the measured pole is international full-service at "
+                                                     "blind 36.5% within +-20% (n=1,090); treat this "
+                                                     "estimate as low confidence")
+                    else:
+                        row["segment"] = "long-haul domestic"
+                        row["segment_confidence"] = ("between the measured poles; no segment-level "
+                                                     "blind figure is published for this shape")
                 qs = _qsi(res)
                 if isinstance(res, dict):
                     for _sk, _dk in (("captured_demand","p2p_000"),("connecting_feed","conx_000"),

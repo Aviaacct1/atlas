@@ -17,7 +17,10 @@
 # January, ACI in the first quarter. Check each against the source URL and update the
 # edition and retrieved fields together. Do not edit a rate without editing its edition.
 
-retrieved: 2026-08-09          # every rate below was read from its source on this date
+retrieved: 2026-08-23          # Boeing and Airbus re-read from the FULL 2026 documents
+                               # on this date (extracts with source URLs in the project
+                               # folder's Comparators subfolder); IATA and ACI unchanged
+                               # from the 9 August read of their publications.
 
 # WINDOWS ARE THE PUBLISHER'S OWN AND ARE NOT ALL THE SAME. Boeing's headline CAGR runs
 # from the year BEFORE the edition year (the 2025 CMO quotes 2024-2044), Airbus quotes the
@@ -32,14 +35,18 @@ comparators:
     cagr: 0.040
     window: [2025, 2045]
     edition: "2026 Commercial Market Outlook, released July 2026 at Farnborough"
-    source: "Boeing, Commercial Market Outlook 2026-2045, press release 17 July 2026"
-    url: "https://investors.boeing.com/investors/news/press-release-details/2026/Boeing-Global-Commercial-Fleet-Will-Top-50000-Airplanes-in-20-Years-as-Passenger-Traffic-Doubles/default.aspx"
+    source: "Boeing, Commercial Market Outlook 2026-2045, full document, retrieved 23 August 2026"
+    url: "https://www.boeing.com/content/dam/boeing/v2/products/commercial-market-outlook/downloads/2026-cmo-download.pdf"
     note: >
-      4% a year, traffic doubling by 2045; nearly 44,000 deliveries and a fleet above
-      50,000. Down from 4.2% in the 2025 edition and 4.7% in 2024. The press release
-      states 4% without a decimal: the exact figure and the window are in the CMO
-      forecast-on-a-page workbook, which is not yet in the Egnyte library for this
-      edition. PRECISION WATCHPOINT, see the note at the foot of this file.
+      4.0% annual traffic growth, traffic doubling by 2045; 43,625 deliveries and a
+      2045 fleet of 50,095, from the full CMO document rather than the press release
+      (extract in the project folder, retrieved 23 August 2026). Down from 4.2% in the
+      2025 edition. Regional traffic CAGRs in the same document: South Asia 6.8%,
+      Southeast Asia 6.7%, Africa 5.8%, China 5.0%, Middle East 4.3%, Latin America
+      4.1%, Eurasia 2.8%, Oceania 2.8%, North America 2.7%, Northeast Asia 2.1%; and
+      Boeing's own regional GDP assumptions are printed beside them, which is what
+      splits the implied-elasticity difference (Comparators headline note, 23 August).
+      Still wanted: the CMO data workbook on Egnyte for cell-level citation.
     overlay: true              # drawn on the RPK and ASK charts only
     prior_edition:
       cagr: 0.042
@@ -53,14 +60,19 @@ comparators:
     long_label: "Airbus Global Market Forecast 2026-2045"
     basis: rpk
     cagr: 0.039
-    window: [2026, 2045]
+    window: [2025, 2045]       # corrected 23 August 2026: the GMF presentation states
+                               # "3.9% Passenger Traffic 2025-2045" and 9.9tn RPK in 2025
+                               # to 21.3tn in 2045; the previous [2026, 2045] followed the
+                               # press release's edition-year convention and was wrong.
     edition: "Global Market Forecast 2026-2045, July 2026"
-    source: "Airbus, Global Market Forecast 2026, press release July 2026"
-    url: "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-forecasts-traffic-growth-driven-by-urbanisation-and-increased-connectivity-made-possible-by"
+    source: "Airbus, GMF 2026 presentation (en-presentation-gmf-2026-2045.pdf), retrieved 23 August 2026"
+    url: "https://mediaassets.airbus.com/pm_38_916_916404-8waq6egqgj.pdf"
     note: >
-      3.9% a year, traffic doubling to 10 billion passengers by 2045; 42,060 new aircraft,
-      81% single aisle. Up from 3.6% in the 2025 edition, which is the opposite direction
-      to Boeing's move and worth understanding.
+      3.9% a year 2025-2045, RPK 9.9tn to 21.3tn; 42,060 new deliveries of passenger
+      aircraft over 100 seats, fleet 23,310 to 45,550, 47% replacement (full presentation,
+      extract in the project folder, retrieved 23 August 2026). Up from 3.6% in the 2025
+      edition, the opposite direction to Boeing's move and worth understanding. World
+      real GDP behind it: 2.6% CAGR 2025-2045 (Oxford Economics / S&P via the GMF).
     overlay: true
     prior_edition:
       cagr: 0.036

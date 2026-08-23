@@ -411,9 +411,15 @@ global_drivers:
   # deliberately: the current build measures 0.1087, the terminal LEVEL of every flagged
   # airport is ACI-anchored regardless (only the split between the O&D-driven and
   # connecting-driven growth paths is uncertain), and the size of that effect on
-  # published totals is the measurement scripts/measure_connecting_divergence.py exists
-  # to settle. Tighten back to 0.10 or below once the flagged set is reconciled; do not
-  # raise this again without a measurement beside the edit.
+  # published totals was measured on 23 August 2026 (scripts/measure_connecting_divergence.py):
+  # applying every airport's Sabre share against its ACI-residual share moves world 2060
+  # terminal by 816m, 3.12% of the blended figure, and the CAGR by 0.09pp (2.935% to
+  # 3.027% around the blend's 2.962%). That bounds the METHOD choice across all airports,
+  # so the flagged set alone contributes less; the band stands with this bound recorded.
+  # Noted follow-up from the same run: the largest absolute spreads are at hubs BELOW the
+  # 30-point flag (BLR 101m on a 843m level, DEL 67m, SVO 26m on 88m), so a second caveat
+  # dimension keyed on absolute spread is the improvement, not a tighter band. Tighten to
+  # 0.10 or below once the flagged set is reconciled; never raise without a measurement.
   connecting_flag_band: 0.12
   gdp_growth_by_region:
     "EU+UK": 0.015
@@ -445,8 +451,20 @@ global_drivers:
   # strongly demand answers income and the other how much of the excess is retained, but
   # the combined effect is second order in saturation and that has not been measured.
   # Owner: John. The alternative, if it does not survive the measurement, is to drop the
-  # mature and emerging split and let the headroom carry maturity alone.
-  maturity_basis: saturation
+  # mature and emerging split and let the headroom read maturity alone.
+  #
+  # DECIDED 23 August 2026 (John): headroom_only, which is exactly that alternative,
+  # case C of the four-case measurement in the independent review. The double-count
+  # objection was measured on 16 August: the saturation basis damped growth through the
+  # elasticity split AND the headroom, an interaction of -0.12pp world / -0.20pp China,
+  # second order and conservative. headroom_only removes the split so saturation damps
+  # once; every country takes the emerging elasticity and od_recursion_damped matures it.
+  # EXPECTED OUTCOME of the rebuild, from that measurement: world O&D CAGR 2025-2060
+  # circa 3.16% (from 3.05%) and China circa 3.29% (from 3.18%). This is a decision to
+  # see the outcome: if the rebuild lands materially away from those figures, REVERSE by
+  # setting this back to `saturation`, which reproduces the 9-22 August forecasts and is
+  # kept as the control, as `income_threshold` is for the pre-9-August ones.
+  maturity_basis: headroom_only
   maturity_gdppc_threshold_usd: 25000      # >= this (PPP) => mature elasticity [P1]
   mature_regions_default: ["EU+UK", "North America"]   # maturity fallback where country GDPpc unknown
 

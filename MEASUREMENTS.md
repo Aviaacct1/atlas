@@ -782,3 +782,37 @@ client-facing string. The string has been left exactly as ruled and the point is
 here. Owner: John.
 
 Copyright Avia Solutions Limited. All rights reserved.
+
+---
+
+## 14. What the connecting-split disagreement is worth
+
+**Question.** The publication watchpoint flags 314 airports where the Sabre leg-measured
+and ACI-residual connecting shares disagree by more than 30 points, 10.9% of world
+terminal traffic. The band was raised to 12% on 23 August 2026 as a recorded interim.
+How much does the disagreement actually move published totals?
+
+**Run.** `scripts/measure_connecting_divergence.py`, 23 August 2026, on the tree at
+commit 5d6d627. The terminal forecast run three times in memory with
+`connecting_share_method` forced to blend, sabre and residual; nothing written.
+
+| Method | World 2060 terminal | CAGR |
+|---|---|---|
+| Blend (shipped) | 26,142m | 2.962% |
+| Sabre leg-measured | 25,909m | 2.935% |
+| ACI residual | 26,725m | 3.027% |
+
+**The bound: 816m at 2060, 3.12% of the blended figure, 0.09pp on the CAGR**, and it is
+a bound on the method choice across every airport with both sources, so the flagged set
+alone contributes less. The terminal LEVEL is ACI-anchored under all three; what moves
+is the split between the O&D-driven and connecting-driven growth paths. The band note in
+the assumptions book stands with this measurement written beside it.
+
+**The finding that was not the question.** The largest absolute spreads are at hubs
+BELOW the 30-point flag threshold: BLR 101m on a blended 843m, DEL 67m on 601m, SVO 26m
+on 88m (30% of its own level), SIN 28m on 123m. The flag is keyed on share disagreement,
+which catches small leisure airports and misses the airports where the split matters
+most in absolute terms. The improvement is a second caveat dimension keyed on absolute
+2060 spread, not a tighter band. Owner: John, on return; candidate for Jess to size.
+
+Copyright Avia Solutions Limited. All rights reserved.

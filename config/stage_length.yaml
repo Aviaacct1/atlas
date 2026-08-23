@@ -30,6 +30,14 @@ growth_by_boeing_region:
   # the classification the comparison runs on and the regional differences are estimated
   # on it.
   #
+  # SIGNED OFF: the held path, John Carter, 23 August 2026. The estimated regional
+  # trends, shrunk, held flat over the window (MEASUREMENTS 7's proposal), against the
+  # decay and converge alternatives of MEASUREMENTS 6 (measured deceleration half-life
+  # 9.6 years; world gap vs Boeing CMO 2025 would be -0.5pp converged, -0.6pp decayed,
+  # against -0.4pp held). A decision to see the outcome: the km-per-seat implied by each
+  # path is tabulated in MEASUREMENTS 6 and is the claim a counterparty will query;
+  # revisit if the Boeing meeting turns on it.
+  #
   # Source: scripts/journey_length_history.py, 9 August 2026. Sabre od_p2p true origin and
   # destination passengers 2013-2019 and 2023-2025, ten years, with great circle distance
   # from the airport coordinates in E:\Avia\Global\data\airports.csv. ln(journey length)

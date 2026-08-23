@@ -236,7 +236,8 @@ def run():
                             "country": ctry, "region": reg, "cap": cap,
                             "capsrc": capsrc, "capst": capst, "capnote": capnote,
                             "hub": ("Alliance hub" if (a.get("connecting_share") or 0) > 0.30 else ""),
-                            "cnx": a.get("connecting_share"), "cnx_flag": bool(a.get("cx_flag")), "scen": scen,
+                            "cnx": a.get("connecting_share"),
+                            "cnx_flag": bool(a.get("cx_flag")), "cnx_mat": bool(a.get("cx_material")), "scen": scen,
                             "dests": DESTS.get(iata, [])}
         if ctry not in CTY:
             popser = oefp.get(iso, {})

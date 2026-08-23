@@ -162,6 +162,13 @@ def run_terminal(scenario="Baseline"):
             flag = "aci_sabre_share_divergence" if (aci_terminal > 5e5 and abs(sabre_share - resid_share) > 0.30) else None
         else:
             flag = "negative_residual" if (source == "aci_residual" and conn_est < -0.02 * (od_both or 1.0) and aci_terminal > 5e5) else None
+        # Second caveat dimension (MEASUREMENTS 14, 23 August 2026): the share-based flag
+        # catches small leisure airports and misses the hubs where the split matters most
+        # in absolute terms (BLR, DEL, SVO, SIN in the divergence run). Material = the two
+        # sources disagree by more than 2m passengers of base-year split, a stated
+        # threshold; caveat only, it does not feed the publication band.
+        material = (sabre_share is not None and resid_share is not None
+                    and aci_terminal * abs(sabre_share - resid_share) > 2e6)
         share = max(0.0, min(0.9, share))                           # keep the split sane
         conn_base = aci_terminal * share            # LEVEL anchored to ACI, split by the (Sabre-measured) connecting share
         od_anchor = aci_terminal * (1.0 - share)
@@ -184,7 +191,8 @@ def run_terminal(scenario="Baseline"):
             ap.append(round(term_m, 3))
         by_airport[iata] = {"region": region, "country": c.get("country_code"),
                             "connecting_share": round(share, 3), "conn_source": source,
-                            "cx_flag": bool(flag),   # the two connecting sources disagree materially here
+                            "cx_flag": bool(flag),        # >30-point share disagreement between the sources
+                            "cx_material": bool(material),  # >2m pax of base-year split between the sources
                             "admitted": bool(c.get("admitted")), "series": ap}
 
     y0, y1 = years[0], years[-1]
