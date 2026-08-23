@@ -1,0 +1,8 @@
+watchpoints:
+- cleared:
+    by: Jess
+    date: '2026-08-20'
+    note: fixed and verified
+  opened: '2026-08-16'
+  reason: was broken
+  scope: zagreb

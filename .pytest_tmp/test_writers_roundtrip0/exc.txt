@@ -1,0 +1,5 @@
+Avia Global Aviation Forecast - exception report
+vintage=pilot scenario=Baseline
+identities: T-A,T-B,T-C,T-D,T-E,T-F enforced; constrained<=unconstrained; CapReq>=0
+
+No exceptions raised; all identities within tolerance.

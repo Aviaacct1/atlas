@@ -1,0 +1,5 @@
+reporting_period,reporting_airport,origin_destination_country,total_pax,scheduled_charter
+202312,HEATHROW,United States,1000000,SCH
+202312,HEATHROW,France,500000,SCH
+202312,HEATHROW,United States,250000,SCH
+202212,HEATHROW,France,400000,SCH

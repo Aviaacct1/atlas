@@ -1,0 +1,7 @@
+origin_airport,destination_country,od_passengers,year
+LHR,United States,8000000,2025
+LHR,France,14000000,2025
+LHR,India,6000000,2025
+MAN,Spain,9000000,2025
+MAN,United States,2000000,2025
+LHR,United States,1000000,2024

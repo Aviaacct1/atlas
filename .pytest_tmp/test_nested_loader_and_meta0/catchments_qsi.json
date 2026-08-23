@@ -1,0 +1,1 @@
+{"meta": {"vintage": "QSI-CATCH-2026.1"}, "NTE": {"od_share": 0.9, "surface": {"members": ["NTE", "RNS"], "weights": {"RNS": 1.0}, "access_penalty_min": {"RNS": 60}}, "network": {"members": ["CDG"], "weights": {"CDG": 1.0}}, "flags": ["road_network_ok"]}}

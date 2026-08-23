@@ -320,8 +320,9 @@ def run():
             if _m >= 1.0:
                 _why = ("clamped at 3.0" if (_i, _m) in _clamped
                         else "unmatched in the ACI panel"
-                             + (" (Serbia mis-mapped to Kosovo's code in the Meridian "
-                                "reference table - fix belongs there)" if _i == "XK" else ""))
+                             + (" (Kosovo: Pristina corrected to XK in the Meridian "
+                                "reference on 23 Aug 2026; the ACI panel holds no XK "
+                                "rows, so the group takes the fallback)" if _i == "XK" else ""))
                 print("  coverage watch: group %s holds %.1fm modelled and is %s" % (_i, _m, _why))
         _reg_aci = defaultdict(float)
         for c, tot in _ctry_aci.items():

@@ -19,7 +19,27 @@ def _book():
 
 
 def test_the_book_states_the_basis():
-    assert _book()["global_drivers"]["maturity_basis"] in ("income_threshold", "saturation")
+    # headroom_only added 23 August 2026: John's case C decision, the split dropped and
+    # the propensity headroom alone reads maturity. The two earlier bases stay as the
+    # controls that reproduce the earlier forecasts.
+    assert _book()["global_drivers"]["maturity_basis"] in ("income_threshold", "saturation", "headroom_only")
+
+
+def test_headroom_only_drops_the_split():
+    """Case C (John, 23 August 2026): under headroom_only every country takes the
+    emerging elasticity whatever its income or trips per capita, and the maturing is
+    done once, by od_recursion_damped's headroom term. Expected outcome recorded in the
+    book: world O&D CAGR 2025-2060 circa 3.16%; reversal is one book line back to
+    `saturation`."""
+    book = _book()
+    keep = book["global_drivers"]["maturity_basis"]
+    book["global_drivers"]["maturity_basis"] = "headroom_only"
+    try:
+        rich = {"CN": {"gdp_pc_ppp": 29333, "pop": 1.4e9}}
+        assert gd._maturity_weight("CN", "Asia Pacific", rich, 5.0) == 0.0   # even at its ceiling
+        assert gd._maturity_weight("ZZ", "North America", {}, None) == 0.0  # even with no record
+    finally:
+        book["global_drivers"]["maturity_basis"] = keep
 
 
 def test_bG_interpolates_between_emerging_and_mature():

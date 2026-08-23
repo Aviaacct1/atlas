@@ -1,0 +1,4 @@
+watchpoints:
+- opened: '2026-08-16'
+  reason: estate-wide halt
+  scope: all
