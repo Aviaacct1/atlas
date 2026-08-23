@@ -163,16 +163,19 @@ def qsi_enrich(cands, qsi, oag_db, week=None, bt2=False):
                                    "be scored")
                     continue
                 _bt2_pending.append((r, feat))
-                # This string is John's claim-language ruling of 5 August 2026, CHANGELOG
-                # entry 90: publish the calibrated figures and the blind twenty-route
-                # portfolio figure; single-route blind numbers stay internal. Do not edit
-                # it without a ruling. The model card in data/bt2_model_v1_2.pkl describes
-                # the 88.8% as "fitted (light-reg)" against a blind leave-one-carrier-out
-                # of 53.7%, and whether "calibrated" and "fitted" are the same thing is a
-                # question for John, not for this file.
-                r["source"] = ("BT2 route launch model v1.2 - calibrated accuracy 89% within +-20% / "
-                               "82% within +-10% (n=2,915); 20-route portfolios 94% within +-20%; "
-                               "tier A = higher-confidence forecast; plan assumptions on row")
+                # This string is Text A of John's ruling of 23 August 2026, which reaffirms
+                # the 5 August claim-language ruling (CHANGELOG 90) with the basis named
+                # beside each figure: calibrated leads, blind evidence second and only as
+                # portfolios, single-route blind numbers stay internal. Do not edit it
+                # without a ruling. The figures were verified on 23 August 2026 against
+                # E:\Avia\qsi-tool\app\master_backtest_scored.csv (n=2,915: 2,534 Sabre
+                # MIDT + 381 US DOT DB1B; fc_over_out within the bt2_score.within bands
+                # returns 88.8% and 82.4% exactly).
+                r["source"] = ("BT2 route launch model v1.2. Calibrated on the 2,915-route training set "
+                               "(US routes graded against DOT DB1B): 88.8% within +-20%, 82.4% within "
+                               "+-10%, distribution chart alongside. On unseen launches, portfolios of "
+                               "twenty routes: 94% within +-20%; portfolios of ten: 80%. Tier A is a "
+                               "higher-confidence forecast, not a route-level accuracy claim.")
             except Exception as e:
                 # Name what failed. This said "qsi share failed" for every failure in the
                 # block, including failures of the BT2 feature gathering that happen long

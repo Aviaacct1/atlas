@@ -185,6 +185,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return self._deny()
         if self.path.startswith("/api/zagreb_excel"):
             try:
+                from avia_forecast.export_guard import refusal_message
+                _ref = refusal_message("zagreb")
+                if _ref:
+                    return self._json({"refused": _ref}, 409)
                 import tempfile, subprocess, sys, os as _os
                 length = int(self.headers.get("Content-Length", 0))
                 body = self.rfile.read(length)
@@ -209,6 +213,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return
         if self.path.startswith("/api/zagreb_report"):
             try:
+                from avia_forecast.export_guard import refusal_message
+                _ref = refusal_message("zagreb")
+                if _ref:
+                    return self._json({"refused": _ref}, 409)
                 import tempfile, subprocess, sys, os as _os
                 length = int(self.headers.get("Content-Length", 0))
                 body = self.rfile.read(length)

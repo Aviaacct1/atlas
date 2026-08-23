@@ -1,0 +1,19 @@
+# Export watchpoints: while an entry here is uncleared, every client artefact in its
+# scope refuses to build (avia_forecast/export_guard.py). Clearing is a deliberate
+# edit: add cleared: {date, by, note}. Never delete an entry; the history is the point.
+# Scopes: zagreb (the Zagreb Excel and Word writers), bum (route candidate exports),
+# all (every client artefact). Author: Avia Solutions. Created 16 August 2026 on
+# John's instruction adopting Meridian's refusal rule.
+
+watchpoints:
+  - scope: zagreb
+    opened: 2026-08-16
+    by: independent review, 16 August 2026, item 1.5
+    reason: >
+      zagreb.html applies two hard-coded annual drags (1.0% and 0.7% from 2026) that
+      exist nowhere in config/airports/zagreb.yaml, so the Excel and Word writers
+      produce numbers that disagree with the screen a client has just seen; and the
+      page's 2022 history point reads 5,162 passengers against 1.40m (2021) and 3.72m
+      (2023) in the same file. Until the drags live in the config and the history
+      point is corrected from the ACI store, a Zagreb client artefact contradicts
+      the portal and must not ship.

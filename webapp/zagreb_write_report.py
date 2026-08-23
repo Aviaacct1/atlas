@@ -14,6 +14,14 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from avia_forecast import paths
 
+# Refusal rule (16 August 2026): a warned run never becomes a client artefact, whether
+# reached over the service or run by hand. Clearing happens in
+# config/export_watchpoints.yaml, deliberately and auditably; there is no override flag.
+from avia_forecast.export_guard import refusal_message as _refusal
+_r = _refusal("zagreb")
+if _r:
+    sys.exit(_r)
+
 def _zag(sub):
     return os.path.join(paths.ZAGREB, sub)
 INP=_zag("Inputs/03 Forecast Model 2026 007 202620515.xlsx")
