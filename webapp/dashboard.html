@@ -332,11 +332,12 @@ let lastRows=[];
 const WL=new Set(); // watchlist (in-memory for the mockup)
 function toggleWatch(code){if(WL.has(code))WL.delete(code);else WL.add(code);render();}
 let OVL={boeing:false,airbus:false,aci:false};
-let PVON=false,PBON=false,ZLEVEL=0;   // 0 full scale, 1 forecast window, 2 comparator window to 2045
+let PVON=false,PBON=false,ZLEVEL=0;   // 0 full scale .. 4 deepest (2040-2045), see chart()
+const ZMAX=4;
 function toggleOvl(k){OVL[k]=!OVL[k];render();}
 function togglePV(){PVON=!PVON;render();}
 function togglePB(){PBON=!PBON;render();}
-function toggleZoom(){ZLEVEL=(ZLEVEL+1)%3;render();}
+function zoomStep(d){ZLEVEL=Math.min(ZMAX,Math.max(0,ZLEVEL+d));render();}
 const _tok=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const OVLC={boeing:_tok('--s2'),airbus:_tok('--s3'),aci:_tok('--s4'),iata:_tok('--s5')};
 // Comparator keys changed from boeing/airbus to boeing_cmo/airbus_gmf when the rates
@@ -364,7 +365,9 @@ function ovlChips(ctx){
   const defs=ovlDefs(ctx);
   const local=`<button class="ovlbtn" style="border-color:#b0a894;color:${PVON?"#FAF8F3":"#6f6a5f"};background:${PVON?"#b0a894":"transparent"}" onclick="togglePV()">${PVON?"Hide":"Show"} prior vintage</button>`
     +`<button class="ovlbtn" style="border-color:#0F1B28;color:${PBON?"#FAF8F3":"#0F1B28"};background:${PBON?"#0F1B28":"transparent"}" onclick="togglePB()">${PBON?"Hide":"Show"} P10-P90 fan</button>`
-    +`<button class="ovlbtn" style="border-color:#a35b00;color:${ZLEVEL?"#FAF8F3":"#a35b00"};background:${ZLEVEL?"#a35b00":"transparent"}" onclick="toggleZoom()">${["Zoom: full scale +","Zoom: forecast +","Zoom: to 2045 &#8634;"][ZLEVEL]}</button>`;
+    +`<button class="ovlbtn" style="border-color:#a35b00;color:#a35b00;background:transparent;${ZLEVEL?"":"opacity:.4"}" onclick="zoomStep(-1)">&minus;</button>`
+    +`<span class="ovlbtn" style="border-color:#a35b00;color:${ZLEVEL?"#FAF8F3":"#a35b00"};background:${ZLEVEL?"#a35b00":"transparent"};cursor:default">${["Full scale","Zoom 2025-60","Zoom 2025-45","Zoom 2035-45","Zoom 2040-45"][ZLEVEL]}</span>`
+    +`<button class="ovlbtn" style="border-color:#a35b00;color:#a35b00;background:transparent;${ZLEVEL<ZMAX?"":"opacity:.4"}" onclick="zoomStep(1)">+</button>`;
   const note=(ctx&&ctx.lvl==="airport")?`<p class="mut" style="font-size:11.5px;margin:2px 0 6px">Comparator overlays unavailable here: no published forecast exists at airport level. Only the Observatory forecasts airports.</p>`:"";
   const comps=defs.map(d=>{const on=OVL[d.k];const col=ovlColour(d.k);
     return `<button class="ovlbtn" style="border-color:${col};color:${on?"#FAF8F3":col};background:${on?col:"transparent"}" onclick="toggleOvl('${d.k}')">${on?"Hide":"Overlay"} ${d.lab}</button>`;}).join("");
@@ -494,8 +497,10 @@ function chart(s,cap,ctx){
   // zoomed level the y-domain fits every DRAWN line over the visible window, and the
   // non-zero baseline is stated ON the chart, because an unlabelled truncated axis is
   // how honest lines tell dishonest stories.
-  const _i45=YRS.indexOf(2045);
-  const zi=ZLEVEL?i25:0, zend=(ZLEVEL===2&&_i45>0)?_i45:last;
+  const _iy=y=>{const i=YRS.indexOf(y);return i<0?null:i;};
+  const _i45=_iy(2045)??last;
+  const _zw=[[0,last],[i25,last],[i25,_i45],[_iy(2035)??i25,_i45],[_iy(2040)??i25,_i45]][ZLEVEL];
+  const zi=_zw[0], zend=_zw[1];
   const mxU=Math.max(...s.u);
   const mx=(PBON?Math.max(mxU,s.u[last]*Math.pow(1.006,YRS[last]-2025)):mxU)*1.10;
   let ylo=0,yhi=mx;
@@ -505,7 +510,7 @@ function chart(s,cap,ctx){
       if(PBON){vals.push(s.u[i]*Math.pow(1.006,YRS[i]-2025),s.u[i]*Math.pow(0.994,YRS[i]-2025));}
       if(PVON)vals.push(s.u[i]*0.985);
       if(cap)vals.push(cap*KCAP(YRS[i]));}
-    defs.forEach(d=>{for(let y=2025;y<=Math.min(d.end,2050,YRS[zend]);y++)vals.push(b25*Math.pow(1+d.g,y-2025));});
+    defs.forEach(d=>{for(let y=Math.max(2025,YRS[zi]);y<=Math.min(d.end,2050,YRS[zend]);y++)vals.push(b25*Math.pow(1+d.g,y-2025));});
     ylo=Math.min(...vals)*0.98;yhi=Math.max(...vals)*1.02;
   }
   const X=i=>P+(plotR-P)*((i-zi)/(zend-zi)),Y=v=>base-(base-top)*(Math.min(Math.max(v,ylo),yhi)-ylo)/(yhi-ylo);
@@ -515,17 +520,17 @@ function chart(s,cap,ctx){
   const gfmt=v=>v>=1000?(v/1000).toFixed(1)+"k":Math.round(v);
   const guides=(ZLEVEL?[0,.25,.5,.75,1]:[.25,.5,.75,1]).map(t=>{const v=ylo+(yhi-ylo)*t;return `<line x1="${P}" y1="${Y(v)}" x2="${plotR}" y2="${Y(v)}" stroke="#E7E0D0"/><text x="${P-7}" y="${Y(v)+3.5}" font-family="Inter" font-size="9.5" fill="#8a8577" text-anchor="end">${gfmt(v)}</text>`;}).join("");
   const axes=`<line x1="${P}" y1="${top}" x2="${P}" y2="${base}" stroke="#9a9384" stroke-width="1"/><line x1="${P}" y1="${base}" x2="${plotR}" y2="${base}" stroke="#9a9384" stroke-width="1"/>`;
-  const zNote=ZLEVEL?`<text x="${plotR-4}" y="${top+9}" font-family="Inter" font-size="8.5" letter-spacing="0.08em" fill="#a35b00" text-anchor="end">${ZLEVEL===2?"COMPARATOR ZOOM":"ZOOM"} ${YRS[zi]}-${YRS[zend]} &middot; Y AXIS FROM ${gfmt(ylo)}, NOT ZERO</text>`:"";
+  const zNote=ZLEVEL?`<text x="${plotR-4}" y="${top+9}" font-family="Inter" font-size="8.5" letter-spacing="0.08em" fill="#a35b00" text-anchor="end">ZOOM ${YRS[zi]}-${YRS[zend]} &middot; Y AXIS FROM ${gfmt(ylo)}, NOT ZERO</text>`:"";
   const xT=YRS.filter((y,i)=>y%5===0&&i>=zi&&i<=zend).map(y=>`<text x="${X(YRS.indexOf(y))}" y="${base+15}" font-family="Inter" font-size="9.5" fill="#8a8577" text-anchor="middle">${y}</text>`).join("");
   const corner=(x,y,dx,dy)=>`<path d="M${(x+dx*8).toFixed(1)} ${y.toFixed(1)} H${x.toFixed(1)} V${(y+dy*8).toFixed(1)}" fill="none" stroke="#0F1B28" stroke-width="1"/>`;
   const ticks=corner(P,top,1,1)+corner(plotR,top,-1,1)+corner(P,base,1,-1)+corner(plotR,base,-1,-1);
   const fx=X(i25);
-  const fdiv=`<line x1="${fx}" y1="${top}" x2="${fx}" y2="${base}" stroke="#b9b1a0" stroke-dasharray="2 4"/><text x="${fx+4}" y="${top+9}" font-family="Inter" font-size="8.5" letter-spacing="0.12em" fill="#8a8577">FORECAST</text>`;
+  const fdiv=(i25>=zi&&i25<=zend)?`<line x1="${fx}" y1="${top}" x2="${fx}" y2="${base}" stroke="#b9b1a0" stroke-dasharray="2 4"/><text x="${fx+4}" y="${top+9}" font-family="Inter" font-size="8.5" letter-spacing="0.12em" fill="#8a8577">FORECAST</text>`:"";
   const capL=cap?`<path d="${YRS.slice(zi,zend+1).map((y,j)=>(j?"L":"M")+X(zi+j).toFixed(1)+","+Y(cap*KCAP(y)).toFixed(1)).join(" ")}" fill="none" stroke="#CE3B2A" stroke-dasharray="5 4" stroke-width="1.3"/><text x="${plotR+6}" y="${(Y(cap*KCAP(YRS[zend]))+3).toFixed(1)}" font-family="Inter" font-size="8" letter-spacing="0.08em" fill="#CE3B2A">PRACTICAL CAP.</text>`:"";
   const pv=PVON?`<path d="${path(s.u.map(v=>v*0.985))}" fill="none" stroke="#b0a894" stroke-width="1.4" stroke-dasharray="5 4"/>`:"";
   let pb="";
   if(PBON){
-    const i0=i25;
+    const i0=Math.max(i25,zi);
     const hi=s.u.map((v,i)=>i<i0?v:v*Math.pow(1.006,YRS[i]-2025));
     const lo=s.u.map((v,i)=>i<i0?v:v*Math.pow(0.994,YRS[i]-2025));
     let fan="";for(let i=i0;i<=zend;i++)fan+=(i===i0?"M":"L")+X(i).toFixed(1)+","+Y(hi[i]).toFixed(1);
@@ -537,7 +542,8 @@ function chart(s,cap,ctx){
   // to a 12px minimum, with a thin leader from the line end to its label, so labels
   // can never collide whatever the values do.
   const labReq=[];
-  const ovlPaths=defs.map(d=>{const pts=[];for(let y=2025;y<=Math.min(d.end,2050,YRS[zend]);y++){const i=YRS.indexOf(y);pts.push([i,b25*Math.pow(1+d.g,y-2025)]);}
+  const ovlPaths=defs.map(d=>{const pts=[];for(let y=Math.max(2025,YRS[zi]);y<=Math.min(d.end,2050,YRS[zend]);y++){const i=YRS.indexOf(y);pts.push([i,b25*Math.pow(1+d.g,y-2025)]);}
+    if(!pts.length)return "";
     const dp=pts.map((p,j)=>(j?"L":"M")+X(p[0]).toFixed(1)+","+Y(Math.min(p[1],yhi)).toFixed(1)).join(" ");
     labReq.push({v:Math.min(pts[pts.length-1][1],yhi),txt:d.lab,col:ovlColour(d.k),lx:X(pts[pts.length-1][0]),fs:11});
     return `<path d="${dp}" fill="none" stroke="${ovlColour(d.k)}" stroke-width="1.5" stroke-dasharray="6 4"/>`;}).join("");
