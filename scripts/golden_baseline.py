@@ -30,7 +30,17 @@ ROOTS = [
 ]
 ROOT_FILES_GLOB = [".py"]   # loose scripts at C:\Avia root
 EXCLUDE_EXT = {".duckdb", ".log", ".pyc", ".tmp"}
-EXCLUDE_SUBSTR = ("oag_serve_", "__pycache__", ".git", "err.log", "golden_manifest")
+EXCLUDE_SUBSTR = ("oag_serve_", "__pycache__", ".git", "err.log", "golden_manifest",
+                  ".bak-",     # editor backup snapshots are machine-local clutter, not artefacts
+                  ".pytest_tmp", ".venv")
+
+# The first cross-machine verify (23 August 2026) reported every source file CHANGED:
+# the dev PC checks out CRLF (Windows autocrlf) and the workstation clone keeps LF, so
+# identical git content hashed differently on disk. Text files are therefore hashed with
+# newlines normalised, so the manifest states content, not checkout convention. Binary
+# and data extensions are hashed as bytes, exactly as before.
+TEXT_EXT = {".py", ".md", ".yaml", ".yml", ".html", ".css", ".js", ".txt", ".csv",
+            ".json", ".sql", ".ps1", ".bat", ".cfg", ".toml", ".in"}
 
 def eligible(path):
     if any(s in path for s in EXCLUDE_SUBSTR):
@@ -39,6 +49,10 @@ def eligible(path):
 
 def sha(path, h=None):
     h = hashlib.sha256()
+    if os.path.splitext(path)[1].lower() in TEXT_EXT:
+        with open(path, "rb") as f:
+            h.update(f.read().replace(b"\r\n", b"\n"))
+        return h.hexdigest()
     with open(path, "rb") as f:
         for chunk in iter(lambda: f.read(1 << 20), b""):
             h.update(chunk)
